@@ -1,0 +1,8 @@
+<%# locals: (title:, open: true) %>
+<details class="group border-t border-ink-200 py-3 dark:border-ink-800" <%= "open" if open %>>
+  <summary class="flex min-h-9 cursor-pointer items-center justify-between text-xs font-semibold uppercase tracking-wider text-ink-500">
+    <%= title %>
+    <%= icon(:plus, css: "size-4 group-open:hidden") %><%= icon(:minus, css: "hidden size-4 group-open:block") %>
+  </summary>
+  <div class="pt-1"><%= yield %></div>
+</details>

@@ -1,0 +1,17 @@
+<nav class="pagination mt-10" aria-label="<%= t("layout.pagination") %>">
+  <% if pagy.previous %>
+    <%= link_to pagy.page_url(pagy.previous), rel: "prev", aria: { label: t("layout.previous_page") } do %><%= icon(:chevron_left, css: "size-4") %><% end %>
+  <% end %>
+  <% series.each do |item| %>
+    <% if item == pagy.page %>
+      <span class="current" aria-current="page"><%= item %></span>
+    <% elsif item.is_a?(Integer) %>
+      <%= link_to item, pagy.page_url(item) %>
+    <% else %>
+      <span class="gap">…</span>
+    <% end %>
+  <% end %>
+  <% if pagy.next %>
+    <%= link_to pagy.page_url(pagy.next), rel: "next", aria: { label: t("layout.next_page") } do %><%= icon(:chevron_right, css: "size-4") %><% end %>
+  <% end %>
+</nav>

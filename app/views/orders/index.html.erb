@@ -1,0 +1,10 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page max-w-4xl py-8">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <% if @orders.any? %>
+    <ul class="mt-6 space-y-3"><% @orders.each do |order| %><%= render "orders/row", order: order, counterpart: order.seller %><% end %></ul>
+    <%= pagination(@pagy) %>
+  <% else %>
+    <%= render "shared/empty_state", icon_name: :receipt, title: t(".empty_title"), body: t(".empty_body"), cta: [t("favorites.index.browse"), listings_path] %>
+  <% end %>
+</div>

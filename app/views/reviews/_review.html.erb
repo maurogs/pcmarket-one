@@ -1,0 +1,20 @@
+<%# locals: (review:) %>
+<article class="panel">
+  <header class="flex items-start justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <%= avatar_for(review.reviewer, size: 36) %>
+      <div><p class="text-sm font-semibold"><%= review.reviewer.username %></p><%= stars(review.rating, css: "size-3.5") %></div>
+    </div>
+    <time class="text-xs text-ink-500" datetime="<%= review.created_at.iso8601 %>"><%= l(review.created_at.to_date, format: :short) %></time>
+  </header>
+  <% if review.order.items.first %><p class="mt-2 text-xs text-ink-500"><%= t("reviews.purchased", title: review.order.items.first.title.truncate(60)) %></p><% end %>
+  <% if review.body.present? %><p class="mt-3 whitespace-pre-line text-sm text-ink-700 dark:text-ink-200"><%= review.body %></p><% end %>
+  <% if review.seller_reply.present? %>
+    <div class="mt-3 rounded-xl bg-ink-50 p-3 text-sm dark:bg-ink-800"><p class="text-xs font-semibold"><%= t("reviews.seller_reply") %></p><p class="mt-1"><%= review.seller_reply %></p></div>
+  <% elsif current_user&.id == review.seller_id %>
+    <%= form_with url: seller_review_reply_path(review), method: :patch, class: "mt-3 flex gap-2" do %>
+      <input name="seller_reply" class="input" placeholder="<%= t("reviews.reply_placeholder") %>" maxlength="1000" aria-label="<%= t("reviews.reply_placeholder") %>">
+      <button class="btn-outline btn-sm shrink-0"><%= t("reviews.reply") %></button>
+    <% end %>
+  <% end %>
+</article>

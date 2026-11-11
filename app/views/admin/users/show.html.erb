@@ -1,0 +1,38 @@
+<%= render "admin/shared/page_header", title: @user.display_name, subtitle: "@#{@user.username} · #{@user.email}" do %>
+  <%= link_to t("admin.view_public"), store_path(@user), class: "btn-outline btn-sm", target: "_blank" %>
+  <%= link_to t("admin.nav.listings"), admin_listings_path(user_id: @user.id), class: "btn-outline btn-sm" %>
+  <%= link_to t("admin.nav.conversations"), admin_conversations_path(user: @user.username), class: "btn-outline btn-sm" %>
+  <%= link_to t("shared.edit"), edit_admin_user_path(@user), class: "btn-primary btn-sm" %>
+<% end %>
+<div class="grid gap-4 lg:grid-cols-3">
+  <section class="panel text-sm">
+    <dl class="grid grid-cols-[130px_1fr] gap-y-1.5">
+      <dt class="text-ink-500"><%= t("admin.users.status") %></dt><dd><%= status_badge(@user.status, "admin.users.statuses") %></dd>
+      <% if @user.suspension_reason.present? %><dt class="text-ink-500"><%= t("admin.users.reason") %></dt><dd><%= @user.suspension_reason %></dd><% end %>
+      <dt class="text-ink-500"><%= t("admin.users.role") %></dt><dd><%= t("admin.roles.#{@user.role}") %></dd>
+      <dt class="text-ink-500"><%= t("listings.filters.seller_type") %></dt><dd><%= t("stores.seller_types.#{@user.seller_type}") %></dd>
+      <dt class="text-ink-500"><%= t("stores.verified") %></dt><dd><%= @user.verified? ? l(@user.verified_at.to_date) : "—" %></dd>
+      <dt class="text-ink-500"><%= t("admin.users.confirmed") %></dt><dd><%= @user.confirmed? ? l(@user.confirmed_at.to_date) : t("admin.no") %></dd>
+      <dt class="text-ink-500"><%= t("admin.users.joined") %></dt><dd><%= l(@user.created_at, format: :short) %></dd>
+      <dt class="text-ink-500"><%= t("admin.users.last_login") %></dt><dd><%= @user.last_sign_in_at ? "#{l(@user.last_sign_in_at, format: :short)} (#{@user.last_sign_in_ip})" : "—" %></dd>
+      <dt class="text-ink-500"><%= t("admin.users.sign_ins") %></dt><dd><%= @user.sign_in_count %></dd>
+      <dt class="text-ink-500"><%= t("layout.country") %></dt><dd><%= @user.country&.name %> <%= @user.region&.name %></dd>
+      <dt class="text-ink-500"><%= t("admin.users.rating") %></dt><dd><%= number_with_precision(@user.rating_avg, precision: 2) %> (<%= @user.reviews_count %>)</dd>
+      <dt class="text-ink-500"><%= t("admin.users.terms") %></dt><dd><%= @user.terms_accepted_at ? l(@user.terms_accepted_at, format: :short) : "—" %></dd>
+      <dt class="text-ink-500"><%= t("admin.users.marketing") %></dt><dd><%= @user.marketing_consent ? t("admin.yes") : t("admin.no") %></dd>
+      <% if @user.business? %><dt class="text-ink-500"><%= t("account.stores.edit.legal_name") %></dt><dd><%= @user.legal_name %> · <%= @user.tax_id %></dd><% end %>
+    </dl>
+  </section>
+  <section class="panel lg:col-span-2">
+    <h2 class="font-semibold"><%= t("admin.nav.listings") %></h2>
+    <table class="table mt-2"><tbody><% @listings.each do |listing| %><tr><td><%= link_to listing.title.truncate(60), admin_listing_path(listing), class: "hover:text-brand-700" %></td><td><%= status_badge(listing.status, "listings.statuses") %></td><td class="text-right"><%= money(listing.price_cents, listing.currency) %></td></tr><% end %></tbody></table>
+  </section>
+  <% [[:sales, @sales], [:purchases, @purchases]].each do |key, orders| %>
+    <section class="panel"><h2 class="font-semibold"><%= t("admin.users.#{key}") %></h2>
+      <ul class="mt-2 space-y-1 text-sm"><% orders.each do |order| %><li class="flex justify-between gap-2"><%= link_to order.number, admin_order_path(order), class: "link" %><span><%= money(order.total_cents, order.currency) %></span><%= status_badge(order.status, "orders.statuses") %></li><% end %></ul></section>
+  <% end %>
+  <section class="panel"><h2 class="font-semibold"><%= t("admin.nav.reports") %></h2>
+    <ul class="mt-2 space-y-1 text-sm"><% @reports.each do |report| %><li><%= link_to t("reports.reasons.#{report.reason}"), admin_report_path(report), class: "link" %> · <%= status_badge(report.status, "reports.statuses") %></li><% end %></ul></section>
+  <section class="panel lg:col-span-3"><h2 class="font-semibold"><%= t("admin.nav.audit_logs") %></h2>
+    <ul class="mt-2 space-y-1 text-xs"><% @audit.each do |log| %><li><strong><%= log.action %></strong> · <%= log.actor&.username %> · <%= l(log.created_at, format: :short) %> · <code><%= log.details.to_json.truncate(160) %></code></li><% end %></ul></section>
+</div>

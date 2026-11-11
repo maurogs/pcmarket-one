@@ -1,0 +1,20 @@
+<%= render "admin/shared/page_header", title: @country.name, subtitle: t("admin.countries.edit_subtitle") %>
+<%= form_with model: @country, url: admin_country_path(@country), method: :patch, class: "panel max-w-4xl space-y-5" do |f| %>
+  <%= render "admin/shared/errors", record: @country %>
+  <div class="grid gap-4 sm:grid-cols-4">
+    <label class="flex items-center gap-2 text-sm"><%= f.check_box :enabled, class: "checkbox" %><%= t("admin.countries.enabled") %></label>
+    <div><%= f.label :currency, t("admin.countries.currency"), class: "label" %><%= f.select :currency, %w[EUR GBP], {}, class: "input" %></div>
+    <div><%= f.label :vat_rate, t("admin.countries.vat"), class: "label" %><%= f.number_field :vat_rate, step: 0.01, class: "input" %></div>
+    <div><%= f.label :default_locale, t("admin.countries.locale"), class: "label" %><%= f.select :default_locale, I18n.available_locales.map { |l| [t("locales.#{l}"), l] }, {}, class: "input" %></div>
+  </div>
+  <fieldset class="rounded-xl border border-ink-200 p-4 dark:border-ink-700">
+    <legend class="px-1 text-xs font-semibold uppercase tracking-wide text-ink-500"><%= t("admin.countries.legal_facts") %></legend>
+    <p class="hint mb-3"><%= t("admin.countries.legal_facts_hint") %></p>
+    <div class="grid gap-3 sm:grid-cols-2">
+      <% LegalFacts.for(@country.code).each do |key, default| %>
+        <div><label for="legal_<%= key %>" class="label"><%= key.humanize %></label><input id="legal_<%= key %>" name="legal[<%= key %>]" value="<%= @country.legal[key] %>" placeholder="<%= default %>" class="input text-xs"></div>
+      <% end %>
+    </div>
+  </fieldset>
+  <div class="flex justify-end gap-2"><%= link_to t("shared.cancel"), admin_countries_path, class: "btn-ghost" %><button class="btn-primary"><%= t("shared.save") %></button></div>
+<% end %>

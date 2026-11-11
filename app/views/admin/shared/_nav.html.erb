@@ -1,0 +1,28 @@
+<div class="p-4">
+  <%= link_to admin_root_path, class: "flex items-center gap-2 font-display text-lg font-bold" do %><%= render "shared/logo", css: "size-7" %><%= t("admin.title") %><% end %>
+</div>
+<% pending = Listing.pending_review.count %>
+<% open_reports = Report.open.count %>
+<% groups = {
+     overview: [[:dashboard, admin_root_path, :chart]],
+     marketplace: [[:moderation, admin_listings_path(status: :pending_review), :check, pending], [:listings, admin_listings_path, :layers], [:users, admin_users_path, :users],
+                   [:orders, admin_orders_path, :receipt], [:conversations, admin_conversations_path, :message], [:reviews, admin_reviews_path, :star]],
+     trust: [[:reports, admin_reports_path, :flag, open_reports], [:support_tickets, admin_support_tickets_path, :mail, SupportTicket.open.count]],
+     catalogue: [[:categories, admin_categories_path, :grid], [:filters, admin_filter_definitions_path, :filter], [:collections, admin_collections_path, :sparkles], [:games, admin_games_path, :gamepad]],
+     growth: [[:newsletter, admin_newsletter_subscriptions_path, :mail], [:promotions, admin_promotions_path, :zap], [:buyback, admin_buyback_requests_path, :euro]],
+     configuration: [[:settings, admin_settings_path, :settings], [:countries, admin_countries_path, :globe], [:legal_pages, admin_legal_pages_path, :info], [:audit_logs, admin_audit_logs_path, :clock]]
+   } %>
+<nav class="space-y-5 px-3 pb-8" aria-label="<%= t("admin.title") %>">
+  <% groups.each do |group, items| %>
+    <div>
+      <p class="px-3 pb-1 text-[11px] font-semibold uppercase tracking-wider text-ink-400"><%= t("admin.nav.groups.#{group}") %></p>
+      <ul>
+        <% items.each do |key, path, icon_name, count| %>
+          <li><%= link_to path, class: "flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm hover:bg-ink-100 dark:hover:bg-ink-800 #{'bg-brand-50 font-semibold text-brand-800 dark:bg-brand-950 dark:text-brand-200' if request.path == path.split('?').first && (key != :listings || params[:status] != 'pending_review') && (key != :moderation || params[:status] == 'pending_review')}" do %>
+            <%= icon(icon_name, css: "size-4") %><span class="flex-1"><%= t("admin.nav.#{key}") %></span><% if count.to_i.positive? %><span class="badge-warning"><%= count %></span><% end %>
+          <% end %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</nav>

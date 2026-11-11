@@ -1,0 +1,44 @@
+<header class="sticky top-0 z-40 border-b border-ink-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85 dark:border-ink-800 dark:bg-ink-950/90" data-controller="drawer">
+  <div class="container-page flex h-16 items-center gap-3 lg:gap-6">
+    <button type="button" class="btn-ghost -ml-2 px-2 lg:hidden" data-action="drawer#open" aria-label="<%= t("layout.open_menu") %>" aria-controls="mobile-menu"><%= icon(:menu, css: "size-6") %></button>
+    <%= link_to root_path, class: "flex shrink-0 items-center gap-2", aria: { label: t("layout.home_label", site: site_name) } do %>
+      <%= render "shared/logo", css: "size-8" %>
+      <span class="font-display text-xl font-bold tracking-tight max-sm:hidden"><%= site_name %></span>
+    <% end %>
+
+    <%= form_with url: listings_path, method: :get, class: "relative flex-1 max-md:hidden", role: "search", data: { turbo_frame: "_top" } do %>
+      <label for="header-search" class="sr-only"><%= t("layout.search_label") %></label>
+      <span class="pointer-events-none absolute inset-y-0 left-3.5 grid place-items-center text-ink-400"><%= icon(:search, css: "size-4") %></span>
+      <input id="header-search" type="search" name="q" value="<%= params[:q] %>" placeholder="<%= t("layout.search_placeholder") %>" class="input rounded-full bg-ink-50 pl-10 dark:bg-ink-900" autocomplete="off" enterkeyhint="search">
+    <% end %>
+
+    <div class="ml-auto flex items-center gap-1 sm:gap-2">
+      <%= link_to t("layout.list_item"), new_listing_path, class: "btn-primary max-sm:hidden" %>
+      <% if feature?(:sell_to_us_enabled) %>
+        <%= link_to t("layout.sell_to_us"), new_buyback_request_path, class: "btn-outline max-xl:hidden" %>
+      <% end %>
+      <%= link_to favorites_path, class: "btn-ghost relative px-2.5", aria: { label: t("layout.wishlist") }, title: t("layout.wishlist") do %><%= icon(:heart) %><% end %>
+      <% if user_signed_in? %>
+        <%= link_to notifications_path, class: "btn-ghost relative px-2.5 max-sm:hidden", aria: { label: t("layout.notifications") }, title: t("layout.notifications") do %>
+          <%= icon(:bell) %><%= render "notifications/badge", count: current_user.unread_notifications_count %>
+        <% end %>
+      <% end %>
+      <%= link_to cart_path, class: "btn-ghost relative px-2.5", aria: { label: t("layout.cart_label", count: cart_items_count) }, title: t("layout.cart") do %>
+        <%= icon(:cart) %>
+        <% if cart_items_count.positive? %><span class="absolute -right-0.5 -top-0.5 grid min-w-5 place-items-center rounded-full bg-accent-500 px-1 text-[11px] font-bold text-ink-950"><%= cart_items_count %></span><% end %>
+      <% end %>
+      <%= render "shared/user_menu" %>
+    </div>
+  </div>
+
+  <div class="container-page pb-3 md:hidden">
+    <%= form_with url: listings_path, method: :get, class: "relative", role: "search" do %>
+      <label for="mobile-search" class="sr-only"><%= t("layout.search_label") %></label>
+      <span class="pointer-events-none absolute inset-y-0 left-3.5 grid place-items-center text-ink-400"><%= icon(:search, css: "size-4") %></span>
+      <input id="mobile-search" type="search" name="q" value="<%= params[:q] %>" placeholder="<%= t("layout.search_placeholder") %>" class="input rounded-full bg-ink-50 pl-10 dark:bg-ink-900" enterkeyhint="search">
+    <% end %>
+  </div>
+
+  <%= render "shared/mega_menu" %>
+  <%= render "shared/mobile_menu" %>
+</header>

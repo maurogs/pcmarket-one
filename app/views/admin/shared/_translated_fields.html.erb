@@ -1,0 +1,10 @@
+<%# locals: (form:, attribute:, label:, type: :text_field) %>
+<fieldset class="rounded-xl border border-ink-200 p-4 dark:border-ink-700">
+  <legend class="px-1 text-xs font-semibold uppercase tracking-wide text-ink-500"><%= label %></legend>
+  <div class="grid gap-3 sm:grid-cols-2">
+    <% I18n.available_locales.each do |locale| %>
+      <div><%= form.label "#{attribute}_#{locale}", t("locales.#{locale}"), class: "label" %>
+        <%= form.public_send(type, "#{attribute}_#{locale}", class: "input", rows: (3 if type == :text_area)) %></div>
+    <% end %>
+  </div>
+</fieldset>

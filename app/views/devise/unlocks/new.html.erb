@@ -1,0 +1,8 @@
+<%= render "devise/shared/auth_layout", title: t("devise.unlocks.new.resend_unlock_instructions") do %>
+  <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: "space-y-4" }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div><%= f.label :email, class: "label" %><%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "input" %></div>
+    <%= f.submit t("devise.unlocks.new.resend_unlock_instructions"), class: "btn-primary w-full" %>
+  <% end %>
+  <%= render "devise/shared/links" %>
+<% end %>

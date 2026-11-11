@@ -1,0 +1,10 @@
+<%# locals: (store:) %>
+<div id="<%= dom_id(store, :follow) %>">
+  <% if user_signed_in? && current_user.following?(store) %>
+    <%= button_to t("stores.unfollow"), store_follow_path(store), method: :delete, class: "btn-outline btn-sm", aria: { pressed: true } %>
+  <% elsif user_signed_in? %>
+    <%= button_to t("stores.follow"), store_follow_path(store), class: "btn-primary btn-sm", aria: { pressed: false } %>
+  <% else %>
+    <%= link_to t("stores.follow"), new_user_session_path, class: "btn-primary btn-sm" %>
+  <% end %>
+</div>

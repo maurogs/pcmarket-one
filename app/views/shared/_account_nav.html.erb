@@ -1,0 +1,15 @@
+<%# locals: (section:) %>
+<nav class="lg:w-60 lg:shrink-0" aria-label="<%= t("layout.account_menu") %>">
+  <div class="panel mb-3 flex items-center gap-3 p-4"><%= avatar_for(current_user, size: 40) %><div class="min-w-0"><p class="truncate font-semibold"><%= current_user.display_name %></p><p class="truncate text-xs text-ink-500">@<%= current_user.username %></p></div></div>
+  <ul class="panel flex gap-1 overflow-x-auto p-2 lg:flex-col">
+    <% items = section == :seller ?
+         [[t("layout.menu.dashboard"), seller_dashboard_path], [t("layout.menu.my_listings"), seller_listings_path], [t("layout.menu.my_sales"), seller_sales_path],
+          [t("layout.menu.public_profile"), store_path(current_user)], [t("layout.menu.store_settings"), edit_account_store_path]] +
+         (feature?(:discount_codes_enabled) ? [[t("seller.discount_codes.index.title"), seller_discount_codes_path]] : []) :
+         [[t("account.nav.profile"), edit_account_profile_path], [t("account.nav.security"), edit_user_registration_path], [t("account.nav.addresses"), account_addresses_path],
+          [t("account.nav.notifications"), edit_account_notification_settings_path], [t("account.nav.privacy"), new_account_deletion_path]] %>
+    <% items.each do |label, path| %>
+      <li class="shrink-0"><%= nav_link_to label, path, css: "block rounded-lg px-3 py-2 text-sm hover:bg-ink-100 dark:hover:bg-ink-800 whitespace-nowrap" %></li>
+    <% end %>
+  </ul>
+</nav>

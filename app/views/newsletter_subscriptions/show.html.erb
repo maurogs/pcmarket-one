@@ -1,0 +1,9 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page max-w-md py-16 text-center">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <p class="mt-2 text-ink-600 dark:text-ink-300"><%= @subscription.email %></p>
+  <div class="mt-6 flex justify-center gap-3">
+    <%= button_to t(".confirm"), newsletter_subscription_path(@subscription.token), method: :patch, class: "btn-primary" %>
+    <%= button_to t(".unsubscribe"), newsletter_subscription_path(@subscription.token), method: :delete, class: "btn-outline" %>
+  </div>
+</div>

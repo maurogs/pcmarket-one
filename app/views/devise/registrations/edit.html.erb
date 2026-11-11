@@ -1,0 +1,16 @@
+<% seo title: t("account.nav.security"), noindex: true %>
+<div class="container-page py-8">
+  <h1 class="section-title"><%= t("account.nav.security") %></h1>
+  <div class="mt-6 flex flex-col gap-6 lg:flex-row">
+    <%= render "shared/account_nav", section: :account %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "panel flex-1 space-y-4" }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div><%= f.label :email, class: "label" %><%= f.email_field :email, autocomplete: "email", class: "input", readonly: resource.provider.present? %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %><p class="hint"><%= t("devise.registrations.edit.currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) %></p><% end %></div>
+      <div><%= f.label :password, class: "label" %><%= f.password_field :password, autocomplete: "new-password", class: "input" %><p class="hint"><%= t("devise.registrations.edit.leave_blank_if_you_don_t_want_to_change_it") %></p></div>
+      <div><%= f.label :password_confirmation, class: "label" %><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %></div>
+      <div><%= f.label :current_password, class: "label" %><%= f.password_field :current_password, autocomplete: "current-password", class: "input", required: true %><p class="hint"><%= t("devise.registrations.edit.we_need_your_current_password_to_confirm_your_changes") %></p></div>
+      <div class="flex justify-end"><%= f.submit t("devise.registrations.edit.update"), class: "btn-primary" %></div>
+    <% end %>
+  </div>
+</div>

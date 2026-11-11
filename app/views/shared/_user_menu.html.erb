@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+  <div class="relative" data-controller="dropdown" data-action="keydown.esc->dropdown#close click@window->dropdown#closeOutside">
+    <button type="button" class="flex items-center rounded-full p-1 hover:bg-ink-100 dark:hover:bg-ink-800" data-action="dropdown#toggle" data-dropdown-target="button" aria-haspopup="menu" aria-expanded="false" aria-label="<%= t("layout.account_menu") %>">
+      <%= avatar_for(current_user, size: 32) %>
+    </button>
+    <div class="absolute right-0 top-full z-50 mt-2 w-64 origin-top-right rounded-2xl border border-ink-200 bg-white p-2 shadow-xl dark:border-ink-700 dark:bg-ink-900" data-dropdown-target="menu" role="menu" hidden>
+      <p class="truncate px-3 pb-2 pt-1 text-xs text-ink-500"><%= current_user.email %></p>
+      <% [[t("layout.menu.orders"), orders_path, :receipt], [t("layout.menu.inbox"), conversations_path, :message], [t("layout.menu.wishlist"), favorites_path, :heart],
+          [t("layout.menu.saved_searches"), saved_searches_path, :bell], [t("layout.menu.account"), edit_account_profile_path, :settings]].each do |label, path, icon_name| %>
+        <%= link_to path, class: "flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-ink-100 dark:hover:bg-ink-800", role: "menuitem" do %><%= icon(icon_name, css: "size-4 text-ink-500") %><%= label %><% end %>
+      <% end %>
+      <p class="mt-2 border-t border-ink-100 px-3 pb-1 pt-3 text-[11px] font-semibold uppercase tracking-wider text-ink-400 dark:border-ink-800"><%= t("layout.menu.my_store") %></p>
+      <% [[t("layout.menu.public_profile"), store_path(current_user), :store], [t("layout.menu.dashboard"), seller_dashboard_path, :chart],
+          [t("layout.menu.my_listings"), seller_listings_path, :layers], [t("layout.menu.my_sales"), seller_sales_path, :package], [t("layout.menu.store_settings"), edit_account_store_path, :settings]].each do |label, path, icon_name| %>
+        <%= link_to path, class: "flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-ink-100 dark:hover:bg-ink-800", role: "menuitem" do %><%= icon(icon_name, css: "size-4 text-ink-500") %><%= label %><% end %>
+      <% end %>
+      <% if current_user.staff? %>
+        <%= link_to admin_root_path, class: "mt-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50 dark:text-brand-300 dark:hover:bg-brand-950", role: "menuitem" do %><%= icon(:shield, css: "size-4") %><%= t("layout.menu.admin") %><% end %>
+      <% end %>
+      <div class="mt-2 border-t border-ink-100 pt-2 dark:border-ink-800">
+        <%= button_to destroy_user_session_path, method: :delete, class: "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-ink-100 dark:hover:bg-ink-800", form: { data: { turbo: false } }, role: "menuitem" do %><%= icon(:log_out, css: "size-4 text-ink-500") %><%= t("layout.menu.log_out") %><% end %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <%= link_to new_user_session_path, class: "btn-ghost px-2.5", aria: { label: t("layout.log_in") }, title: t("layout.log_in") do %><%= icon(:user) %><% end %>
+<% end %>

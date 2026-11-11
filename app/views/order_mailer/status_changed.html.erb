@@ -1,0 +1,5 @@
+<h1 style="font-size:20px;margin:0 0 12px"><%= t("mailers.order.status_changed.subject.#{@order.status}", number: @order.number) %></h1>
+<p><%= t("mailers.order.status_changed.body.#{@role}.#{@order.status}", number: @order.number, days: Setting.get(:seller_ship_days)) %></p>
+<p><strong><%= @order.title %></strong> — <%= money(@order.total_cents, @order.currency) %></p>
+<% if @order.tracking_number.present? %><p><%= t("orders.show.tracking") %>: <%= @order.carrier %> <%= @order.tracking_number %></p><% end %>
+<p><a href="<%= order_url(@order) %>" style="display:inline-block;background:#067d74;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600"><%= t("mailers.order.status_changed.cta") %></a></p>

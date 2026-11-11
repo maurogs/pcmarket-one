@@ -1,0 +1,74 @@
+<%# locals: (listing:, details:) %>
+<% seller = details.seller %>
+<div class="space-y-4">
+  <div>
+    <h1 class="text-2xl font-bold leading-tight sm:text-3xl"><%= listing.title %></h1>
+    <p class="mt-3"><%= price_tag(listing, css: "text-3xl") %></p>
+    <p class="mt-1 flex items-center gap-1.5 text-sm text-ink-600 dark:text-ink-300">
+      <%= icon(:truck, css: "size-4") %>
+      <%= listing.shipping_available? ? (listing.free_shipping? ? t("listings.show.free_shipping") : t("listings.show.plus_shipping", price: money(listing.shipping_price_cents, listing.currency))) : t("listings.show.pickup_only") %>
+    </p>
+    <p class="mt-1 flex items-center gap-1.5 text-sm text-ink-600 dark:text-ink-300"><%= icon(:eye, css: "size-4") %><span id="<%= dom_id(listing, :watchers) %>"><%= t("listings.show.watchers", count: listing.favorites_count) %></span></p>
+  </div>
+
+  <div class="space-y-2">
+    <% if listing.sold? %>
+      <p class="rounded-xl bg-ink-100 p-4 text-center font-semibold dark:bg-ink-800"><%= t("listings.show.sold_out") %></p>
+    <% elsif !listing.available? %>
+      <p class="rounded-xl bg-amber-50 p-4 text-center text-sm font-semibold text-amber-900 dark:bg-amber-950 dark:text-amber-100"><%= seller.vacation_mode? ? t("listings.show.seller_on_vacation", message: seller.vacation_message) : t("listings.show.not_available") %></p>
+    <% elsif current_user&.id == seller.id %>
+      <p class="rounded-xl bg-ink-100 p-4 text-center text-sm dark:bg-ink-800"><%= t("listings.show.your_listing") %></p>
+    <% else %>
+      <% if feature?(:checkout_enabled) %>
+        <% offer = details.accepted_offer %>
+        <%= button_to cart_items_path, params: { listing_id: listing.id, buy_now: 1, offer_id: offer&.id }, class: "btn-accent w-full text-base", form: { data: { turbo: false } } do %>
+          <%= offer ? t("listings.show.buy_at_offer", price: money(offer.amount_cents, listing.currency)) : t("listings.show.buy_now") %>
+        <% end %>
+        <%= button_to t("listings.show.add_to_cart"), cart_items_path, params: { listing_id: listing.id, offer_id: offer&.id }, class: "btn-primary w-full" %>
+      <% end %>
+      <div class="grid gap-2 <%= "grid-cols-2" if listing.allow_offers? && feature?(:offers_enabled) %>">
+        <% if feature?(:chat_enabled) && details.can_contact? %>
+          <%= button_to conversations_path, params: { listing_id: listing.id }, class: "btn-outline w-full", form: { data: { turbo: false } } do %><%= icon(:message, css: "size-4") %><%= t("listings.show.message_seller") %><% end %>
+        <% end %>
+        <% if listing.allow_offers? && feature?(:offers_enabled) %>
+          <% if (pending = details.pending_offer) %>
+            <%= link_to conversation_path(pending.conversation), class: "btn-outline w-full" do %><%= icon(:tag, css: "size-4") %><%= t("listings.show.offer_pending", price: money(pending.amount_cents, listing.currency)) %><% end %>
+          <% else %>
+            <%= link_to new_listing_offer_path(listing), class: "btn-outline w-full" do %><%= icon(:tag, css: "size-4") %><%= t("listings.show.make_offer") %><% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="flex gap-2">
+      <%= render "favorites/button", listing: listing, compact: false %>
+      <button type="button" class="btn-outline btn-sm" data-controller="share" data-action="share#share" data-share-url-value="<%= listing_url(listing) %>" data-share-title-value="<%= listing.title %>" data-share-copied-value="<%= t("listings.show.link_copied") %>"><%= icon(:share, css: "size-4") %><%= t("listings.show.share") %></button>
+    </div>
+  </div>
+
+  <%= link_to store_path(seller), class: "panel flex items-center gap-3 p-4 hover:border-brand-500" do %>
+    <%= avatar_for(seller, size: 48) %>
+    <div class="min-w-0 flex-1">
+      <p class="flex items-center gap-1 truncate font-semibold"><%= seller.display_name %><% if seller.verified? %><%= icon(:verified, css: "size-4 text-brand-600", label: t("stores.verified")) %><% end %></p>
+      <p class="flex items-center gap-1.5 text-xs text-ink-500">
+        <% if seller.reviews_count.positive? %><%= stars(seller.rating_avg, css: "size-3.5") %> <%= number_with_precision(seller.rating_avg, precision: 1) %> · <%= t("stores.reviews_count", count: seller.reviews_count) %><% else %><%= t("stores.no_reviews") %><% end %>
+      </p>
+      <p class="text-xs text-ink-500"><%= t("stores.sales", count: seller.sales_count) %> · <%= t(seller.business? ? "stores.seller_types.business" : "stores.seller_types.individual") %></p>
+    </div>
+    <%= icon(:chevron_right, css: "size-5 text-ink-400") %>
+  <% end %>
+
+  <% if seller.business? && seller.trader_certified_at %>
+    <details class="rounded-xl border border-ink-200 p-4 text-xs dark:border-ink-800">
+      <summary class="cursor-pointer font-semibold"><%= t("listings.show.trader_info") %></summary>
+      <dl class="mt-2 space-y-1 text-ink-600 dark:text-ink-300">
+        <div><dt class="inline font-medium"><%= t("account.stores.edit.legal_name") %>:</dt> <dd class="inline"><%= seller.legal_name %></dd></div>
+        <div><dt class="inline font-medium"><%= t("account.stores.edit.business_address") %>:</dt> <dd class="inline"><%= seller.business_address %></dd></div>
+        <div><dt class="inline font-medium"><%= t("account.stores.edit.tax_id") %>:</dt> <dd class="inline"><%= seller.tax_id %></dd></div>
+        <% if seller.trade_register_number.present? %><div><dt class="inline font-medium"><%= t("account.stores.edit.trade_register_number") %>:</dt> <dd class="inline"><%= seller.trade_register_number %></dd></div><% end %>
+      </dl>
+      <p class="mt-2 text-ink-500"><%= t("listings.show.trader_notice") %></p>
+    </details>
+  <% elsif seller.individual? %>
+    <p class="text-xs text-ink-500"><%= t("listings.show.private_seller_notice") %></p>
+  <% end %>
+</div>

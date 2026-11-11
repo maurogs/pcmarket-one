@@ -1,0 +1,46 @@
+<%= render "admin/shared/page_header", title: @listing.title, subtitle: "##{@listing.id} · #{@listing.category.path.map(&:name).join(' › ')}" do %>
+  <%= link_to t("admin.view_public"), listing_path(@listing), class: "btn-outline btn-sm", target: "_blank" %>
+  <%= link_to t("shared.edit"), edit_admin_listing_path(@listing), class: "btn-outline btn-sm" %>
+  <%= button_to t("shared.delete"), admin_listing_path(@listing), method: :delete, class: "btn-danger btn-sm", data: { turbo_confirm: t("shared.confirm") } %>
+<% end %>
+<div class="grid gap-4 lg:grid-cols-[1fr_360px]">
+  <div class="space-y-4">
+    <section class="panel">
+      <div class="grid grid-cols-3 gap-2 sm:grid-cols-6"><% @listing.photos.each do |photo| %><a href="<%= url_for(photo) %>" target="_blank" class="aspect-square overflow-hidden rounded-lg"><%= image_tag photo.variant(:thumb), alt: "", class: "h-full w-full object-cover" if photo.variable? %></a><% end %></div>
+      <dl class="mt-4 grid grid-cols-[160px_1fr] gap-y-1.5 text-sm">
+        <dt class="text-ink-500"><%= t("admin.listings.status") %></dt><dd><%= status_badge(@listing.status, "listings.statuses") %></dd>
+        <dt class="text-ink-500"><%= t("admin.listings.price") %></dt><dd><%= price_tag(@listing, css: "text-sm") %></dd>
+        <dt class="text-ink-500"><%= t("listings.show.condition") %></dt><dd><%= condition_label(@listing.condition) %></dd>
+        <dt class="text-ink-500"><%= t("admin.listings.seller") %></dt><dd><%= link_to @listing.user.username, admin_user_path(@listing.user), class: "link" %> (<%= t("stores.seller_types.#{@listing.user.seller_type}") %>, <%= t("admin.listings.member_since", date: l(@listing.user.created_at.to_date)) %>)</dd>
+        <dt class="text-ink-500"><%= t("listings.show.location") %></dt><dd><%= [@listing.city, @listing.region&.name, @listing.country.name].compact_blank.join(", ") %></dd>
+        <dt class="text-ink-500"><%= t("listings.show.shipping") %></dt><dd><%= @listing.shipping_available? ? money(@listing.shipping_price_cents) : "—" %> <%= "· #{t('listings.show.pickup')}" if @listing.local_pickup? %></dd>
+        <dt class="text-ink-500"><%= t("admin.listings.specs") %></dt><dd><% @listing.specs.each_key do |key| %><span class="chip mb-1"><%= FilterDefinition.cached_by_key[key]&.name || key %>: <%= @listing.spec_label(key) %></span> <% end %></dd>
+        <dt class="text-ink-500"><%= t("admin.listings.stats") %></dt><dd><%= t("admin.listings.stats_value", views: @listing.views_count, favorites: @listing.favorites_count, sold: @listing.sold_count) %></dd>
+      </dl>
+      <h2 class="mt-4 font-semibold"><%= t("listings.show.description") %></h2>
+      <p class="mt-1 whitespace-pre-line text-sm"><%= @listing.description %></p>
+    </section>
+    <% if @reports.any? %>
+      <section class="panel"><h2 class="font-semibold"><%= t("admin.nav.reports") %></h2>
+        <ul class="mt-2 text-sm"><% @reports.each do |report| %><li class="py-1"><%= link_to t("reports.reasons.#{report.reason}"), admin_report_path(report), class: "link" %> · <%= status_badge(report.status, "reports.statuses") %> · <%= report.details.to_s.truncate(80) %></li><% end %></ul></section>
+    <% end %>
+  </div>
+  <aside class="space-y-4">
+    <% if @listing.pending_review? || @listing.rejected? || @listing.draft? %>
+      <section class="panel">
+        <h2 class="font-semibold"><%= t("admin.listings.moderate") %></h2>
+        <%= button_to t("admin.listings.approve"), admin_listing_approval_path(@listing), class: "btn-primary mt-3 w-full" %>
+        <%= form_with url: admin_listing_rejection_path(@listing), class: "mt-4 space-y-2", data: { controller: "copy-value" } do %>
+          <label for="reason" class="label"><%= t("admin.listings.reject_reason") %></label>
+          <select class="input" data-copy-value-target="source" data-action="change->copy-value#copy" aria-label="<%= t("admin.listings.templates") %>"><option value=""><%= t("admin.listings.templates") %></option><% t("admin.listings.reject_templates").each do |_k, template| %><option><%= template %></option><% end %></select>
+          <textarea id="reason" name="reason" rows="3" class="input" required data-copy-value-target="destination"></textarea>
+          <button class="btn-danger btn-sm w-full"><%= t("admin.listings.reject") %></button>
+        <% end %>
+      </section>
+    <% end %>
+    <section class="panel">
+      <h2 class="font-semibold"><%= t("admin.listings.history") %></h2>
+      <ol class="mt-2 space-y-2 text-xs"><% @events.each do |event| %><li><strong><%= t("admin.listings.events.#{event.action}", default: event.action) %></strong> · <%= event.actor&.username || t("admin.system") %> · <%= l(event.created_at, format: :short) %><% if event.note.present? %><br><span class="text-ink-500"><%= event.note %></span><% end %></li><% end %></ol>
+    </section>
+  </aside>
+</div>

@@ -1,0 +1,65 @@
+<% seo title: t(".seo_title", name: @store.display_name), description: @store.store_tagline.presence || t(".seo_description", name: @store.display_name, site: site_name),
+       image: (@store.store_logo.attached? ? url_for(@store.store_logo) : nil), type: "profile" %>
+<div class="container-page py-8">
+  <section class="overflow-hidden rounded-3xl border border-ink-200 dark:border-ink-800">
+    <div class="h-32 bg-gradient-to-r from-brand-700 to-brand-500 sm:h-44">
+      <% if @store.store_banner.attached? && @store.store_banner.variable? %><%= image_tag @store.store_banner.variant(resize_to_fill: [1600, 360], format: :webp), alt: "", class: "h-full w-full object-cover" %><% end %>
+    </div>
+    <div class="flex flex-col gap-5 p-6 sm:flex-row sm:items-end">
+      <div class="-mt-16 rounded-full border-4 border-white sm:-mt-20 dark:border-ink-950"><%= avatar_for(@store, size: 104) %></div>
+      <div class="flex-1">
+        <h1 class="flex items-center gap-2 text-2xl font-bold sm:text-3xl"><%= @store.display_name %><% if @store.verified? %><%= icon(:verified, css: "size-6 text-brand-600", label: t("stores.verified")) %><% end %></h1>
+        <% if @store.store_tagline.present? %><p class="text-ink-600 dark:text-ink-300"><%= @store.store_tagline %></p><% end %>
+        <p class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-600 dark:text-ink-300">
+          <% if @store.reviews_count.positive? %><%= link_to store_reviews_path(@store), class: "inline-flex items-center gap-1 hover:text-brand-700" do %><%= stars(@store.rating_avg) %> <%= number_with_precision(@store.rating_avg, precision: 1) %> (<%= t("stores.reviews_count", count: @store.reviews_count) %>)<% end %><% end %>
+          <span><%= t("stores.followers", count: @store.followers_count) %></span>
+          <span><%= t("stores.for_sale", count: @store.listings_count) %></span>
+          <span><%= t("stores.sales", count: @store.sales_count) %></span>
+          <span><%= t("stores.member_since", date: l(@store.created_at.to_date, format: :month_year)) %></span>
+        </p>
+        <% if @store.vacation_mode? %><p class="mt-2 badge-warning"><%= t("stores.on_vacation") %> <%= @store.vacation_message %></p><% end %>
+      </div>
+      <div class="flex gap-2">
+        <% unless current_user == @store %>
+          <%= render "stores/follow_button", store: @store %>
+          <% if user_signed_in? && feature?(:chat_enabled) %>
+            <%= link_to new_report_path(reportable_type: "User", reportable_id: @store.id), class: "btn-ghost btn-sm", rel: "nofollow", title: t("stores.report") do %><%= icon(:flag, css: "size-4") %><span class="sr-only"><%= t("stores.report") %></span><% end %>
+          <% end %>
+        <% else %>
+          <%= link_to t("stores.edit_store"), edit_account_store_path, class: "btn-outline btn-sm" %>
+        <% end %>
+      </div>
+    </div>
+    <% if @store.bio.present? || @store.store_policies.present? %>
+      <div class="grid gap-6 border-t border-ink-200 p-6 text-sm sm:grid-cols-2 dark:border-ink-800">
+        <% if @store.bio.present? %><div><h2 class="font-semibold"><%= t("stores.about") %></h2><p class="mt-1 whitespace-pre-line text-ink-600 dark:text-ink-300"><%= @store.bio %></p></div><% end %>
+        <% if @store.store_policies.present? %><div><h2 class="font-semibold"><%= t("stores.policies") %></h2><p class="mt-1 whitespace-pre-line text-ink-600 dark:text-ink-300"><%= @store.store_policies %></p></div><% end %>
+      </div>
+    <% end %>
+  </section>
+
+  <section class="mt-8 lg:grid lg:grid-cols-[240px_1fr] lg:gap-8" aria-labelledby="store-listings">
+    <aside class="mb-6 lg:mb-0">
+      <h2 id="store-listings" class="font-display text-xl font-bold"><%= t("stores.listings") %></h2>
+      <%= form_with url: store_path(@store), method: :get, class: "mt-4 space-y-3", data: { controller: "autosubmit", turbo_action: "advance" } do %>
+        <input type="search" name="q" value="<%= @search.query %>" placeholder="<%= t("listings.filters.search") %>" class="input" aria-label="<%= t("listings.filters.search") %>" data-action="input->autosubmit#debounced">
+        <select name="category" class="input" aria-label="<%= t("listings.form.category") %>" data-action="change->autosubmit#submit">
+          <option value=""><%= t("stores.all_categories") %></option>
+          <% @categories.each do |category| %><option value="<%= category.slug %>" <%= "selected" if params[:category] == category.slug %>><%= category.name %></option><% end %>
+        </select>
+        <select name="sort" class="input" aria-label="<%= t("listings.index.sort_label") %>" data-action="change->autosubmit#submit">
+          <% ListingSearch::SORTS.first(4).each do |sort| %><option value="<%= sort %>" <%= "selected" if @search.sort == sort %>><%= t("listings.index.sorts.#{sort}") %></option><% end %>
+        </select>
+      <% end %>
+    </aside>
+    <div>
+      <p class="mb-4 text-sm font-semibold"><%= t("listings.index.results", count: @pagy.count) %></p>
+      <% if @listings.any? %>
+        <div class="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 xl:grid-cols-4"><% @listings.each do |listing| %><%= render "listings/card", listing: listing, show_specs: false %><% end %></div>
+        <%= pagination(@pagy) %>
+      <% else %>
+        <%= render "shared/empty_state", icon_name: :store, title: t("stores.empty") %>
+      <% end %>
+    </div>
+  </section>
+</div>

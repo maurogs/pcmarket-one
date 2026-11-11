@@ -1,0 +1,47 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.dashboard") do %>
+  <% AdminStats::PERIODS.each_key do |period| %><%= link_to t("seller.dashboards.show.periods.#{period}", default: period), admin_root_path(period: period), class: "chip #{'chip-active' if @stats.period == period}" %><% end %>
+<% end %>
+<div class="grid grid-cols-2 gap-3 md:grid-cols-4">
+  <% [[:users_total, @stats.users_total, admin_users_path], [:users_new, @stats.users_new, admin_users_path(sort: "created_at")], [:listings_live, @stats.listings_live, admin_listings_path(status: :published)],
+      [:listings_pending, @stats.listings_pending, admin_listings_path(status: :pending_review)], [:orders, @stats.orders_count, admin_orders_path], [:gmv, money(@stats.gmv_cents), admin_orders_path],
+      [:fees, money(@stats.fees_cents), admin_orders_path(status: :completed)], [:sellers, @stats.sellers_active, admin_users_path(sort: "listings_count")]].each do |key, value, path| %>
+    <%= link_to path, class: "panel p-4 hover:border-brand-500" do %><p class="text-xs text-ink-500"><%= t("admin.dashboard.#{key}") %></p><p class="mt-1 text-2xl font-bold"><%= value %></p><% end %>
+  <% end %>
+</div>
+<div class="mt-4 grid gap-3 md:grid-cols-5">
+  <% [[:open_disputes, @stats.open_disputes, admin_orders_path(status: :disputed)], [:overdue_shipments, @stats.overdue_shipments, admin_orders_path(status: :paid)], [:open_reports, @stats.open_reports, admin_reports_path],
+      [:open_tickets, @stats.open_tickets, admin_support_tickets_path], [:newsletter, @stats.newsletter, admin_newsletter_subscriptions_path]].each do |key, value, path| %>
+    <%= link_to path, class: "panel flex items-center justify-between p-4 hover:border-brand-500" do %><span class="text-sm"><%= t("admin.dashboard.#{key}") %></span><span class="text-xl font-bold <%= 'text-accent-600' if value.positive? %>"><%= value %></span><% end %>
+  <% end %>
+</div>
+<div class="mt-4 grid gap-4 lg:grid-cols-2">
+  <% [[:signups, @stats.signups_by_day], [:orders_chart, @stats.orders_by_day]].each do |key, series| %>
+    <section class="panel">
+      <h2 class="font-semibold"><%= t("admin.dashboard.#{key}") %></h2>
+      <% max = [series.map(&:last).max.to_i, 1].max %>
+      <div class="mt-4 flex h-32 items-end gap-0.5" role="img" aria-label="<%= t("admin.dashboard.#{key}") %>">
+        <% series.each do |day, count| %><div class="flex-1 rounded-t bg-brand-500/80" style="height: <%= [(count * 100.0 / max).round, 2].max %>%" title="<%= l(day, format: :short) %>: <%= count %>"></div><% end %>
+      </div>
+    </section>
+  <% end %>
+  <section class="panel">
+    <h2 class="font-semibold"><%= t("admin.dashboard.moderation_queue") %></h2>
+    <ul class="mt-3 divide-y divide-ink-100 text-sm dark:divide-ink-800">
+      <% @stats.oldest_pending.each do |listing| %><li class="flex justify-between gap-3 py-2"><%= link_to listing.title.truncate(50), admin_listing_path(listing), class: "hover:text-brand-700" %><span class="shrink-0 text-xs text-ink-500"><%= time_ago(listing.submitted_at) %></span></li><% end %>
+    </ul>
+    <% if @stats.listings_pending.zero? %><p class="mt-3 text-sm text-ink-500"><%= t("admin.dashboard.queue_empty") %></p><% end %>
+  </section>
+  <section class="panel">
+    <h2 class="font-semibold"><%= t("admin.dashboard.top_categories") %></h2>
+    <ul class="mt-3 space-y-2 text-sm"><% @stats.top_categories.each do |name, count| %><li class="flex justify-between"><span><%= name %></span><strong><%= count %></strong></li><% end %></ul>
+  </section>
+</div>
+<section class="panel mt-4">
+  <h2 class="font-semibold"><%= t("admin.dashboard.flags") %></h2>
+  <div class="mt-3 flex flex-wrap gap-2">
+    <% %i[listing_approval_required checkout_enabled chat_enabled offers_enabled commissions_enabled promotions_enabled sell_to_us_enabled maintenance_mode registrations_open].each do |flag| %>
+      <span class="<%= feature?(flag) ? 'badge-success' : 'badge-muted' %>"><%= t("admin.settings.keys.#{flag}") %>: <%= feature?(flag) ? t("admin.on") : t("admin.off") %></span>
+    <% end %>
+  </div>
+  <%= link_to t("admin.dashboard.manage_flags"), admin_settings_path, class: "link mt-3 inline-block text-sm" if current_user.admin? %>
+</section>

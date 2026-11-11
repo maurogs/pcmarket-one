@@ -1,0 +1,90 @@
+<% seo title: t(".seo_title"), description: t(".seo_description", site: site_name) %>
+<div class="container-page py-10">
+  <header class="mx-auto max-w-2xl text-center">
+    <span class="text-xs font-bold uppercase tracking-widest text-brand-700 dark:text-brand-300"><%= t("layout.pc_finder") %></span>
+    <h1 class="mt-2 text-4xl font-bold sm:text-5xl"><%= t(".title") %></h1>
+    <p class="mt-3 text-ink-600 dark:text-ink-300"><%= t(".subtitle") %></p>
+  </header>
+
+  <%= form_with url: pc_finder_path, method: :get, class: "mx-auto mt-8 max-w-3xl", data: { controller: "quiz", turbo_action: "advance" } do %>
+    <input type="hidden" name="results" value="1">
+    <div class="panel shadow-lg">
+      <div class="h-1.5 overflow-hidden rounded-full bg-ink-100 dark:bg-ink-800"><div class="h-full rounded-full bg-brand-600 transition-all" data-quiz-target="progress"></div></div>
+
+      <fieldset class="mt-6 text-center" data-quiz-target="step">
+        <legend class="mx-auto font-display text-2xl font-bold"><%= t(".questions.games") %></legend>
+        <p class="mt-1 text-sm text-ink-500"><%= t(".questions.games_hint") %></p>
+        <div class="mt-5 flex flex-wrap justify-center gap-2">
+          <% @games.each do |game| %>
+            <label class="chip cursor-pointer px-4 py-2 text-sm has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50 has-[:checked]:text-brand-800 dark:has-[:checked]:bg-brand-950 dark:has-[:checked]:text-brand-200">
+              <input type="checkbox" name="games[]" value="<%= game.slug %>" class="sr-only" <%= "checked" if Array(@finder.answers["games"]).include?(game.slug) %> data-action="change->quiz#limitGames"><%= game.name %>
+            </label>
+          <% end %>
+        </div>
+      </fieldset>
+
+      <% [["resolution", PcFinder::RESOLUTIONS], ["fps", PcFinder::FPS_TARGETS.map(&:to_s)], ["budget", PcFinder::BUDGETS.keys],
+          ["case_color", PcFinder::CASE_COLORS], ["cooling", PcFinder::COOLING], ["vibe", PcFinder::VIBES]].each do |name, options| %>
+        <fieldset class="mt-6 text-center" data-quiz-target="step" hidden>
+          <legend class="mx-auto font-display text-2xl font-bold"><%= t(".questions.#{name}") %></legend>
+          <div class="mt-5 flex flex-wrap justify-center gap-2">
+            <% options.each do |option| %>
+              <label class="chip cursor-pointer px-4 py-2 text-sm has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50 has-[:checked]:text-brand-800 dark:has-[:checked]:bg-brand-950 dark:has-[:checked]:text-brand-200">
+                <input type="radio" name="<%= name %>" value="<%= option %>" class="sr-only" <%= "checked" if @finder.answers[name].to_s == option %>><%= t(".answers.#{name}.#{option}") %>
+              </label>
+            <% end %>
+            <label class="chip cursor-pointer px-4 py-2 text-sm text-ink-500 has-[:checked]:border-brand-600"><input type="radio" name="<%= name %>" value="" class="sr-only"><%= t(".answers.no_preference") %></label>
+          </div>
+        </fieldset>
+      <% end %>
+    </div>
+    <div class="mt-6 flex justify-center gap-3">
+      <button type="button" class="btn-outline" data-quiz-target="back" data-action="quiz#back"><%= t(".back") %></button>
+      <button type="button" class="btn-primary" data-quiz-target="next" data-action="quiz#next"><%= t(".next") %></button>
+      <button type="submit" class="btn-accent" data-quiz-target="submit" hidden><%= t(".see_results") %></button>
+    </div>
+  <% end %>
+
+  <% if @results %>
+    <section class="mt-14" aria-labelledby="finder-results">
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <h2 id="finder-results" class="section-title"><%= t(".results", count: @results.size) %></h2>
+        <%= link_to t(".reset"), pc_finder_path, class: "link text-sm" %>
+      </div>
+      <% games = @finder.games.to_a %>
+      <% if @results.any? %>
+        <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <% @results.each_with_index do |listing, index| %>
+            <div class="flex flex-col rounded-2xl border border-ink-200 p-3 dark:border-ink-800">
+              <%= render "listings/card", listing: listing, eager: index < 3 %>
+              <% if games.any? %>
+                <dl class="mt-3 space-y-1 border-t border-ink-100 pt-3 text-xs dark:border-ink-800">
+                  <% games.each do |game| %>
+                    <div class="flex justify-between"><dt><%= game.name %> · <%= @finder.resolution %></dt><dd class="font-bold text-brand-700 dark:text-brand-300"><%= t("listings.show.fps", count: listing.estimated_fps(game, @finder.resolution)) %></dd></div>
+                  <% end %>
+                </dl>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <%= render "shared/empty_state", icon_name: :search, title: t(".no_results"), body: t(".no_results_body"), cta: [t(".browse_all"), category_path("gaming-pcs")] %>
+      <% end %>
+    </section>
+  <% end %>
+
+  <% [[@gamer_profiles, t(".by_gamer")], [@game_collections, t(".best_for")]].each do |collections, heading| %>
+    <% next if collections.blank? %>
+    <section class="mt-14">
+      <h2 class="section-title"><%= heading %></h2>
+      <div class="mt-5 grid gap-4 sm:grid-cols-3">
+        <% collections.each do |collection| %>
+          <%= link_to collection_path(collection), class: "group overflow-hidden rounded-2xl border border-ink-200 dark:border-ink-800" do %>
+            <div class="aspect-[16/9] overflow-hidden bg-ink-100 dark:bg-ink-800"><% if collection.image.attached? %><%= image_tag collection.image.variant(:card), alt: "", loading: "lazy", class: "h-full w-full object-cover transition group-hover:scale-105" %><% end %></div>
+            <p class="p-4 font-display text-lg font-bold"><%= collection.title %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+</div>

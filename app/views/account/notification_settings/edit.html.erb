@@ -1,0 +1,15 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page py-8">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <div class="mt-6 flex flex-col gap-6 lg:flex-row">
+    <%= render "shared/account_nav", section: :account %>
+    <%= form_with url: account_notification_settings_path, method: :patch, class: "panel flex-1 space-y-4" do %>
+      <% Account::NotificationSettingsController::KEYS.each do |key| %>
+        <% checked = key == "marketing" ? current_user.marketing_consent : current_user.notify_by_email?(key) %>
+        <label class="flex items-start gap-3"><input type="hidden" name="preferences[<%= key %>]" value="0"><input type="checkbox" name="preferences[<%= key %>]" value="1" class="checkbox mt-1" <%= "checked" if checked %>>
+          <span><strong class="text-sm"><%= t(".#{key}") %></strong><br><span class="text-sm text-ink-500"><%= t(".#{key}_hint") %></span></span></label>
+      <% end %>
+      <div class="flex justify-end"><button class="btn-primary"><%= t("shared.save") %></button></div>
+    <% end %>
+  </div>
+</div>

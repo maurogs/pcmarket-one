@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" data-controller="theme">
+  <head>
+    <title><%= [content_for(:title), t("admin.title"), site_name].compact.join(" · ") %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script>try { if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark") } catch (e) {}</script>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body class="min-h-dvh bg-ink-50 dark:bg-ink-950" data-controller="drawer">
+    <div class="lg:grid lg:grid-cols-[250px_1fr]">
+      <aside id="admin-nav" class="fixed inset-y-0 left-0 z-40 w-[250px] overflow-y-auto border-r border-ink-200 bg-white max-lg:hidden lg:sticky lg:top-0 lg:h-dvh dark:border-ink-800 dark:bg-ink-900">
+        <%= render "admin/shared/nav" %>
+      </aside>
+      <div id="admin-mobile-nav" class="fixed inset-0 z-50 lg:hidden" data-drawer-target="panel" hidden>
+        <div class="absolute inset-0 bg-ink-950/50" data-action="click->drawer#close"></div>
+        <div class="absolute inset-y-0 left-0 w-[260px] overflow-y-auto bg-white dark:bg-ink-900"><%= render "admin/shared/nav" %></div>
+      </div>
+      <div class="min-w-0">
+        <header class="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-ink-200 bg-white/90 px-4 backdrop-blur dark:border-ink-800 dark:bg-ink-900/90">
+          <button type="button" class="btn-ghost px-2 lg:hidden" data-action="drawer#open" aria-label="<%= t("layout.open_menu") %>"><%= icon(:menu) %></button>
+          <%= form_with url: admin_listings_path, method: :get, class: "max-w-md flex-1", role: "search" do %>
+            <input type="search" name="q" class="input min-h-9 py-1.5" placeholder="<%= t("admin.search_placeholder") %>" aria-label="<%= t("admin.search_placeholder") %>">
+          <% end %>
+          <div class="ml-auto flex items-center gap-2">
+            <%= render "shared/theme_toggle" %>
+            <%= link_to t("admin.view_site"), root_path, class: "btn-ghost btn-sm" %>
+            <span class="text-sm text-ink-500 max-sm:hidden"><%= current_user.username %> · <%= t("admin.roles.#{current_user.role}") %></span>
+          </div>
+        </header>
+        <%= render "shared/flash" %>
+        <main class="p-4 sm:p-6"><%= yield %></main>
+      </div>
+    </div>
+  </body>
+</html>

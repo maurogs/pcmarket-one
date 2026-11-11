@@ -1,0 +1,13 @@
+<%# locals: (listing:) %>
+<div class="mb-5 flex flex-wrap items-center gap-3 rounded-2xl border border-ink-200 bg-ink-50 p-4 text-sm dark:border-ink-800 dark:bg-ink-900">
+  <span class="font-semibold"><%= t("listings.owner.status") %></span> <%= status_badge(listing.status, "listings.statuses") %>
+  <% if listing.rejected? && listing.rejection_reason.present? %><p class="w-full text-red-700 dark:text-red-300"><%= t("listings.owner.rejection", reason: listing.rejection_reason) %></p><% end %>
+  <% if listing.pending_review? %><p class="w-full text-ink-600 dark:text-ink-300"><%= t("listings.owner.pending_notice") %></p><% end %>
+  <div class="ml-auto flex flex-wrap gap-2">
+    <% unless listing.sold? %><%= link_to t("listings.owner.edit"), edit_listing_path(listing), class: "btn-outline btn-sm" %><% end %>
+    <% if listing.draft? || listing.rejected? %><%= button_to t("listings.owner.submit"), listing_submission_path(listing), class: "btn-primary btn-sm" %><% end %>
+    <% if listing.published? %><%= button_to t("listings.owner.pause"), listing_pause_path(listing), class: "btn-outline btn-sm" %><% end %>
+    <% if listing.paused? %><%= button_to t("listings.owner.resume"), listing_pause_path(listing), method: :delete, class: "btn-primary btn-sm" %><% end %>
+    <% if listing.published? && feature?(:promotions_enabled) && listing.user == current_user %><%= link_to t("listings.owner.promote"), new_seller_promotion_path(listing_id: listing.id), class: "btn-accent btn-sm" %><% end %>
+  </div>
+</div>

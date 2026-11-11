@@ -1,0 +1,31 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.settings"), subtitle: t("admin.settings.subtitle") %>
+<%= form_with url: admin_settings_path, method: :patch, class: "space-y-6" do %>
+  <% @groups.each do |group, definitions| %>
+    <section class="panel">
+      <h2 class="font-display text-lg font-bold"><%= t("admin.settings.groups.#{group}") %></h2>
+      <div class="mt-4 grid gap-4 md:grid-cols-2">
+        <% definitions.each do |key, (type, _default, _group)| %>
+          <% value = Setting.get(key) %>
+          <div class="rounded-xl border border-ink-100 p-3 dark:border-ink-800">
+            <% case type %>
+            <% when :boolean %>
+              <label class="flex items-start justify-between gap-3">
+                <span><span class="block text-sm font-semibold"><%= t("admin.settings.keys.#{key}") %></span><span class="block text-xs text-ink-500"><%= t("admin.settings.hints.#{key}") %></span></span>
+                <span class="relative inline-flex shrink-0 items-center"><input type="hidden" name="settings[<%= key %>]" value="0"><input type="checkbox" name="settings[<%= key %>]" value="1" class="peer sr-only" <%= "checked" if value %>>
+                  <span class="h-7 w-12 rounded-full bg-ink-300 transition peer-checked:bg-brand-600 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-500 dark:bg-ink-700"></span><span class="absolute left-1 size-5 rounded-full bg-white shadow transition peer-checked:translate-x-5"></span></span>
+              </label>
+            <% when :list %>
+              <p class="text-sm font-semibold"><%= t("admin.settings.keys.#{key}") %></p><p class="text-xs text-ink-500"><%= t("admin.settings.hints.#{key}") %></p>
+              <input type="hidden" name="settings[<%= key %>][]" value="<%= I18n.default_locale %>">
+              <div class="mt-2 flex flex-wrap gap-2"><% I18n.available_locales.each do |locale| %><label class="chip"><input type="checkbox" name="settings[<%= key %>][]" value="<%= locale %>" class="checkbox" <%= "checked" if value.include?(locale.to_s) %> <%= "disabled checked" if locale == I18n.default_locale %>><%= t("locales.#{locale}") %></label><% end %></div>
+            <% else %>
+              <label for="setting_<%= key %>" class="text-sm font-semibold"><%= t("admin.settings.keys.#{key}") %></label><p class="text-xs text-ink-500"><%= t("admin.settings.hints.#{key}") %></p>
+              <input id="setting_<%= key %>" name="settings[<%= key %>]" value="<%= value %>" type="<%= %i[integer decimal].include?(type) ? "number" : "text" %>" step="<%= type == :decimal ? "0.01" : "1" %>" class="input mt-2">
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+  <div class="sticky bottom-0 flex justify-end rounded-2xl border border-ink-200 bg-white/95 p-3 backdrop-blur dark:border-ink-800 dark:bg-ink-900/95"><button class="btn-primary"><%= t("shared.save") %></button></div>
+<% end %>

@@ -1,0 +1,24 @@
+<%# locals: (categories:, path:) %>
+<p class="mt-2 text-ink-600 dark:text-ink-300"><%= t("listings.form.pick_category") %></p>
+<% by_parent = categories.group_by(&:parent_id) %>
+<div class="mt-6 grid gap-4 sm:grid-cols-2">
+  <% Array(by_parent[nil]).each do |root| %>
+    <% leaves = Array(by_parent[root.id]) %>
+    <div class="panel">
+      <h2 class="flex items-center gap-2 font-display text-lg font-bold"><%= icon(root.icon.presence || :package, css: "size-5 text-brand-700") %><%= root.name %></h2>
+      <% if leaves.empty? %>
+        <%= link_to t("listings.form.choose"), path.call(root), class: "btn-outline btn-sm mt-3" %>
+      <% else %>
+        <ul class="mt-3 flex flex-wrap gap-2">
+          <% leaves.each do |leaf| %>
+            <% if by_parent[leaf.id].present? %>
+              <% by_parent[leaf.id].each do |deep| %><li><%= link_to "#{leaf.name} › #{deep.name}", path.call(deep), class: "chip py-2 hover:border-brand-500" %></li><% end %>
+            <% else %>
+              <li><%= link_to leaf.name, path.call(leaf), class: "chip py-2 hover:border-brand-500" %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
+</div>

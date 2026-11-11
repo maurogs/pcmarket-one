@@ -1,0 +1,156 @@
+<%# locals: (listing:) %>
+<% fee_percent = feature?(:commissions_enabled) ? setting(:commission_percent) : 0 %>
+<%= form_with model: listing, class: "mt-6 space-y-6", data: { turbo: false } do |f| %>
+  <% if listing.errors.any? %>
+    <div class="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-900 dark:border-red-900 dark:bg-red-950 dark:text-red-100" role="alert">
+      <p class="font-semibold"><%= t("listings.form.errors", count: listing.errors.count) %></p>
+      <ul class="mt-1 list-disc pl-5"><% listing.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :category_id %>
+
+  <section class="panel space-y-5">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <h2 class="font-display text-lg font-bold"><%= t("listings.form.basics") %></h2>
+      <p class="text-sm"><span class="text-ink-500"><%= t("listings.form.category") %>:</span> <strong><%= listing.category.path.map(&:name).join(" › ") %></strong>
+        <%= link_to t("listings.form.change"), listing.new_record? ? new_listing_path : edit_listing_path(listing, change_category: 1), class: "link ml-1" %></p>
+    </div>
+    <div data-controller="char-counter" data-char-counter-max-value="<%= Listing::MAX_TITLE %>">
+      <div class="flex justify-between"><%= f.label :title, class: "label" %><span class="text-xs text-ink-400" data-char-counter-target="counter"></span></div>
+      <%= f.text_field :title, class: "input #{'input-error' if listing.errors[:title].any?}", maxlength: Listing::MAX_TITLE, required: true, placeholder: t("listings.form.title_placeholder"), data: { char_counter_target: "input", action: "input->char-counter#update" } %>
+      <%= field_errors(listing, :title) %>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div>
+        <%= f.label :condition, class: "label" %>
+        <%= f.select :condition, Listing.conditions.keys.map { |c| [condition_label(c), c] }, {}, class: "input" %>
+        <p class="hint"><%= t("listings.form.condition_hint") %></p>
+      </div>
+      <div>
+        <%= f.label :brand, class: "label" %>
+        <%= f.text_field :brand, class: "input", maxlength: 60 %>
+      </div>
+    </div>
+    <div>
+      <%= f.label :description, class: "label" %>
+      <%= f.text_area :description, rows: 8, class: "input #{'input-error' if listing.errors[:description].any?}", maxlength: 10_000, placeholder: t("listings.form.description_placeholder") %>
+      <%= field_errors(listing, :description) %>
+    </div>
+  </section>
+
+  <section class="panel" data-controller="photo-upload" data-photo-upload-max-value="<%= setting(:max_photos_per_listing) %>" data-photo-upload-existing-value="<%= listing.photos.size %>"
+           data-photo-upload-too-many-value="<%= t("listings.form.too_many_photos", count: setting(:max_photos_per_listing)) %>" data-photo-upload-too-large-value="<%= t("listings.form.photo_too_large") %>">
+    <h2 class="font-display text-lg font-bold"><%= t("listings.form.photos") %></h2>
+    <p class="hint"><%= t("listings.form.photos_hint", count: setting(:max_photos_per_listing)) %> <%= link_to t("listings.form.photo_guide"), page_path("photo-guide"), class: "link", target: "_blank" %></p>
+    <% if listing.persisted? && listing.photos.attached? %>
+      <ul class="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-6">
+        <% listing.photos.each do |photo| %>
+          <li class="relative aspect-square overflow-hidden rounded-xl border border-ink-200 dark:border-ink-700">
+            <%= image_tag photo.variant(:thumb), alt: "", class: "h-full w-full object-cover" if photo.variable? %>
+            <label class="absolute inset-x-0 bottom-0 flex items-center justify-center gap-1 bg-ink-950/70 py-1 text-[11px] text-white">
+              <input type="checkbox" name="listing[remove_photo_ids][]" value="<%= photo.id %>" class="checkbox"> <%= t("listings.form.remove_photo") %>
+            </label>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <label class="mt-4 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-ink-300 p-8 text-center hover:border-brand-500 dark:border-ink-700">
+      <%= icon(:upload, css: "size-8 text-brand-600") %>
+      <span class="font-semibold"><%= t("listings.form.upload") %></span>
+      <span class="text-xs text-ink-500"><%= t("listings.form.upload_formats") %></span>
+      <%= f.file_field :photos, multiple: true, accept: "image/jpeg,image/png,image/webp,image/avif", class: "sr-only", direct_upload: true, data: { photo_upload_target: "input", action: "change->photo-upload#preview" } %>
+    </label>
+    <p class="field-error" data-photo-upload-target="error" aria-live="polite"><%= listing.errors.full_messages_for(:photos).to_sentence %></p>
+    <div class="mt-3 grid grid-cols-3 gap-3 sm:grid-cols-6" data-photo-upload-target="previews"></div>
+  </section>
+
+  <% definitions = listing.category.applicable_filters.select(&:in_listing_form).reject { |d| %w[product_labels seller_tags].include?(d.key) } %>
+  <% if definitions.any? %>
+    <section class="panel">
+      <h2 class="font-display text-lg font-bold"><%= t("listings.form.specs") %></h2>
+      <p class="hint"><%= t("listings.form.specs_hint") %></p>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2">
+        <% definitions.each do |definition| %>
+          <div>
+            <label for="spec_<%= definition.key %>" class="label"><%= definition.name %><%= " *" if definition.required %></label>
+            <select id="spec_<%= definition.key %>" name="listing[specs][<%= definition.key %>]" class="input" <%= "required" if definition.required %>>
+              <option value=""><%= t("listings.form.select") %></option>
+              <% definition.filter_options.each do |option| %><option value="<%= option.value %>" <%= "selected" if listing.spec(definition.key) == option.value %>><%= option.label %></option><% end %>
+            </select>
+          </div>
+        <% end %>
+      </div>
+      <%= field_errors(listing, :specs) %>
+    </section>
+  <% end %>
+
+  <% tag_definition = FilterDefinition.cached_by_key["seller_tags"] %>
+  <% if tag_definition&.filter_options&.any? %>
+    <section class="panel">
+      <h2 class="font-display text-lg font-bold"><%= tag_definition.name %></h2>
+      <p class="hint"><%= t("listings.form.tags_hint") %></p>
+      <input type="hidden" name="listing[tag_list][]" value="">
+      <div class="mt-3 flex flex-wrap gap-2">
+        <% tag_definition.filter_options.each do |option| %>
+          <label class="chip cursor-pointer has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50 has-[:checked]:text-brand-800 dark:has-[:checked]:bg-brand-950 dark:has-[:checked]:text-brand-200">
+            <input type="checkbox" class="sr-only" name="listing[tag_list][]" value="<%= option.value %>" <%= "checked" if listing.tags.include?(option.value) %>><%= option.label %>
+          </label>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+
+  <section class="panel space-y-5" data-controller="price" data-price-fee-percent-value="<%= fee_percent %>" data-price-min-fee-value="<%= setting(:commission_min_cents) %>" data-price-currency-value="<%= current_country.currency %>" data-price-locale-value="<%= I18n.locale %>">
+    <h2 class="font-display text-lg font-bold"><%= t("listings.form.pricing") %></h2>
+    <div class="grid gap-4 sm:grid-cols-3">
+      <div>
+        <%= f.label :price, class: "label" %>
+        <%= f.number_field :price, step: 0.01, min: setting(:min_price_cents) / 100.0, class: "input #{'input-error' if listing.errors[:price].any?}", required: true, inputmode: "decimal", data: { price_target: "price", action: "input->price#update" } %>
+        <%= field_errors(listing, :price) %>
+      </div>
+      <div>
+        <%= f.label :original_price, class: "label" %>
+        <%= f.number_field :original_price, step: 0.01, min: 0, class: "input", inputmode: "decimal" %>
+        <p class="hint"><%= t("listings.form.original_price_hint") %></p>
+        <%= field_errors(listing, :original_price) %>
+      </div>
+      <div>
+        <%= f.label :quantity, class: "label" %>
+        <%= f.number_field :quantity, min: 1, max: 999, class: "input" %>
+        <p class="hint"><%= t("listings.form.quantity_hint") %></p>
+      </div>
+    </div>
+    <p class="rounded-xl bg-ink-50 p-3 text-sm dark:bg-ink-800"><%= t("listings.form.you_receive") %> <strong data-price-target="payout"></strong>
+      <% if fee_percent.zero? %><span class="badge-success ml-1"><%= t("listings.form.no_fees") %></span><% else %><span class="text-xs text-ink-500"><%= t("listings.form.fee_note", percent: fee_percent) %></span><% end %></p>
+    <% if feature?(:offers_enabled) %>
+      <label class="flex items-center gap-2 text-sm"><%= f.check_box :allow_offers, class: "checkbox" %> <%= t("listings.form.allow_offers") %></label>
+    <% end %>
+  </section>
+
+  <section class="panel space-y-5">
+    <h2 class="font-display text-lg font-bold"><%= t("listings.form.delivery") %></h2>
+    <div class="grid gap-4 sm:grid-cols-3">
+      <div>
+        <%= f.label :region_id, class: "label" %>
+        <%= f.collection_select :region_id, current_country.regions, :id, :name, { include_blank: t("listings.form.select") }, class: "input", required: true %>
+      </div>
+      <div><%= f.label :city, class: "label" %><%= f.text_field :city, class: "input", maxlength: 80 %></div>
+      <div><%= f.label :postal_code, class: "label" %><%= f.text_field :postal_code, class: "input", maxlength: 10, autocomplete: "postal-code" %><%= field_errors(listing, :postal_code) %></div>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-3">
+      <label class="flex items-center gap-2 text-sm"><%= f.check_box :shipping_available, class: "checkbox" %> <%= t("listings.form.shipping_available") %></label>
+      <div><%= f.label :shipping_price, class: "label" %><%= f.number_field :shipping_price, step: 0.01, min: 0, class: "input", inputmode: "decimal" %><p class="hint"><%= t("listings.form.shipping_price_hint") %></p></div>
+      <div><%= f.label :handling_days, class: "label" %><%= f.select :handling_days, (1..10).to_a, {}, class: "input" %></div>
+    </div>
+    <% if feature?(:local_pickup_enabled) %>
+      <label class="flex items-center gap-2 text-sm"><%= f.check_box :local_pickup, class: "checkbox" %> <%= t("listings.form.local_pickup") %></label>
+    <% end %>
+    <%= field_errors(listing, :base) %>
+  </section>
+
+  <div class="sticky bottom-0 z-10 -mx-4 flex flex-wrap items-center justify-end gap-3 border-t border-ink-200 bg-white/95 p-4 backdrop-blur sm:mx-0 sm:rounded-2xl sm:border dark:border-ink-800 dark:bg-ink-950/95">
+    <p class="mr-auto text-xs text-ink-500"><%= feature?(:listing_approval_required) ? t("listings.form.review_notice") : t("listings.form.instant_notice") %></p>
+    <button type="submit" name="commit_action" value="draft" class="btn-outline"><%= t("listings.form.save_draft") %></button>
+    <button type="submit" name="commit_action" value="submit" class="btn-primary"><%= listing.published? ? t("listings.form.save_changes") : t("listings.form.publish") %></button>
+  </div>
+<% end %>

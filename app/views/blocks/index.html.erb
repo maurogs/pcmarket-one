@@ -1,0 +1,14 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page max-w-2xl py-8">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <p class="mt-1 text-sm text-ink-600 dark:text-ink-300"><%= t(".subtitle") %></p>
+  <% if @blocks.any? %>
+    <ul class="mt-6 space-y-2">
+      <% @blocks.each do |block| %>
+        <li class="panel flex items-center gap-3 p-3"><%= avatar_for(block.blocked, size: 32) %><span class="flex-1 font-medium"><%= block.blocked.display_name %></span><%= button_to t(".unblock"), block_path(block), method: :delete, class: "btn-outline btn-sm" %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <%= render "shared/empty_state", icon_name: :ban, title: t(".empty") %>
+  <% end %>
+</div>

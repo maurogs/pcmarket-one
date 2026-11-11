@@ -1,0 +1,7 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.newsletter"), subtitle: t("admin.results", count: @pagy.count) do %>
+  <%= link_to t("admin.newsletter.active_only"), admin_newsletter_subscriptions_path(active: 1), class: "chip #{'chip-active' if params[:active] == '1'}" %>
+  <%= link_to t("admin.export_csv"), admin_newsletter_subscriptions_path(format: :csv), class: "btn-outline btn-sm", data: { turbo: false } %>
+<% end %>
+<div class="panel overflow-x-auto p-0"><table class="table"><thead><tr><th>Email</th><th><%= t("layout.language") %></th><th><%= t("admin.newsletter.confirmed") %></th><th><%= t("admin.newsletter.unsubscribed") %></th><th></th></tr></thead>
+  <tbody><% @subscriptions.each do |s| %><tr><td><%= s.email %></td><td><%= s.locale %></td><td><%= s.confirmed_at ? l(s.confirmed_at.to_date) : "—" %></td><td><%= s.unsubscribed_at ? l(s.unsubscribed_at.to_date) : "—" %></td><td class="text-right"><%= button_to t("shared.delete"), admin_newsletter_subscription_path(s), method: :delete, class: "link text-sm text-red-700", data: { turbo_confirm: t("shared.confirm") } %></td></tr><% end %></tbody></table></div>
+<%= pagination(@pagy) %>

@@ -1,0 +1,339 @@
+en:
+  admin:
+    title: Admin
+    search_placeholder: Search listings by title, ID or seller…
+    view_site: View site
+    view_public: View public page
+    roles: { member: Member, moderator: Moderator, admin: Administrator }
+    system: System
+    all: All
+    all_countries: All countries
+    filter: Filter
+    from: From
+    to: To
+    new: New
+    select: Select
+    "on": "On"
+    "off": "Off"
+    "yes": "Yes"
+    "no": "No"
+    export_csv: Export CSV
+    results:
+      zero: No results
+      one: 1 result
+      other: "%{count} results"
+    flash:
+      created: Created successfully.
+      updated: Saved successfully.
+      destroyed: Deleted successfully.
+      invalid_date: Invalid date.
+    nav:
+      groups: { overview: Overview, marketplace: Marketplace, trust: Trust & safety, catalogue: Catalogue, growth: Growth & monetisation, configuration: Configuration }
+      dashboard: Dashboard
+      moderation: Moderation queue
+      listings: Listings
+      users: Users
+      orders: Orders
+      conversations: Conversations
+      reviews: Reviews
+      reports: Reports (DSA)
+      support_tickets: Support tickets
+      categories: Categories
+      filters: Filters
+      collections: Collections
+      games: PC Finder games
+      newsletter: Newsletter
+      promotions: Promotions
+      buyback: Sell to us
+      settings: Settings & features
+      countries: Countries
+      legal_pages: Legal texts
+      audit_logs: Audit log
+    dashboard:
+      users_total: Total users
+      users_new: New users
+      listings_live: Live listings
+      listings_pending: Pending review
+      orders: Orders
+      gmv: Gross merchandise value
+      fees: Commission earned
+      sellers: Active sellers
+      open_disputes: Open disputes
+      overdue_shipments: Overdue shipments
+      open_reports: Open reports
+      open_tickets: Open tickets
+      newsletter: Newsletter subscribers
+      signups: Sign-ups per day
+      orders_chart: Orders per day
+      moderation_queue: Moderation queue (oldest first)
+      queue_empty: Nothing to review. Great job!
+      top_categories: Top categories (live listings)
+      flags: Feature flags
+      manage_flags: Manage settings and feature flags
+    bulk:
+      label: Bulk action
+      apply: Apply to selected
+      invalid: Choose an action and at least one listing.
+      done:
+        one: Action applied to 1 listing.
+        other: "Action applied to %{count} listings."
+      default_reason: Your listing doesn't meet our listing guidelines.
+      actions: { approve: Approve, reject: Reject, pause: Pause, archive: Archive, feature: Mark as featured, unfeature: Remove featured }
+    listings:
+      search: Title, ID or seller
+      featured: Featured
+      listing: Listing
+      seller: Seller
+      status: Status
+      price: Price
+      views: Views
+      date: Date
+      member_since: "member since %{date}"
+      specs: Specifications
+      stats: Stats
+      stats_value: "%{views} views · %{favorites} saves · %{sold} sold"
+      moderate: Moderation
+      approve: Approve and publish
+      reject: Reject
+      reject_reason: Reason (sent to the seller)
+      reason_placeholder: Reason (for rejections)
+      templates: Use a template…
+      reject_templates:
+        photos: The photos are not your own or don't show the actual item. Please upload real photos of the item you're selling.
+        description: The description is incomplete. Please describe the condition, what's included and any defects.
+        prohibited: This item is not allowed on the platform according to our prohibited items policy.
+        price: The price looks incorrect or misleading. Please review it.
+        category: The item is in the wrong category. Please choose the correct one.
+        contact: Listings can't include contact details or links to pay outside the platform.
+      reason_required: Please give a reason for the rejection.
+      approved: Listing approved.
+      rejected: Listing rejected and seller notified.
+      history: History
+      events: { submitted: Submitted for review, published: Published, rejected: Rejected, paused: Paused, resumed: Resumed, archived: Archived, admin_edited: Edited by staff }
+    users:
+      search: Name, username, email or store
+      status: Status
+      statuses: { active: Active, suspended: Suspended, banned: Banned }
+      role: Role
+      unconfirmed: Unconfirmed
+      deleted: Include deleted
+      user: User
+      listings: Listings
+      sales: Sales
+      purchases: Purchases
+      rating: Rating
+      joined: Joined
+      last_login: Last login
+      reason: Suspension reason
+      confirmed: Email confirmed
+      sign_ins: Sign-ins
+      terms: Terms accepted
+      marketing: Marketing consent
+      confirm_email: Mark email as confirmed
+    orders:
+      totals: "%{count} orders · %{total} total · %{fees} fees"
+      search: Order number, email or username
+      number: Order
+      delivery: { shipping: Shipping, pickup: Local pickup }
+      amounts: { subtotal: Subtotal, shipping: Shipping, discount: Discount, platform_fee: Fee, total: Total }
+      reasons: Reasons reported
+      change_status: Change status
+      note: Internal note (visible in the timeline)
+      apply: Apply
+      final: This order is in a final state.
+    categories:
+      name: Name
+      slug: Slug
+      listings: Live listings
+      flags: Flags
+      inactive: Inactive
+      menu: In menu
+      add_child: Add subcategory
+      root: "— Top level —"
+      active: Active
+      show_in_menu: Show in main menu
+      description: Description
+      filters: Filters
+      filters_hint: Filters attached here also apply to every subcategory.
+    filters:
+      subtitle: Filters power the catalogue sidebar, the listing form and the PC Finder. Changes apply instantly.
+      search: Search by key
+      name: Name
+      key: Key
+      key_hint: Lowercase letters, numbers and underscores. Can't be changed later.
+      options: Options
+      options_hint: "Featured options are always visible; the rest appear under “show more”. Score feeds the performance estimates (GPU/CPU). Buyback price (cents) is used by Sell to us."
+      categories: Categories
+      required: Required
+      on_card: On card
+      value: Value
+      position: Pos.
+      featured: Featured
+      score: Score
+      buyback: Buyback (¢)
+      delete_confirm: Deleting this filter removes it from every category. Listing specs are kept but hidden. Continue?
+      kinds: { multi_select: Multiple choice, single_select: Single choice, boolean: Yes / no }
+      flags: { active: Active, collapsed: Collapsed by default, in_listing_form: Show in listing form, required: Required when listing, show_on_card: Show on listing cards }
+    collections:
+      subtitle: Curated groups of listings for the home page, themes and the PC Finder.
+      title_label: Title
+      subtitle_label: Subtitle
+      kind: Type
+      kinds: { theme: Theme, gamer_profile: Gamer profile, home_section: Home page section, game: Best PCs for a game }
+      query: Catalogue query
+      query_hint: "Same parameters as the catalogue URL, e.g. category=gaming-pcs&max_price=1000&tags[]=minimalist"
+      home: Show on home page
+    games:
+      subtitle: Games offered in the PC Finder and used for FPS estimates.
+      name: Game
+      demand: GPU demand
+      demand_hint: Relative GPU load. 100 ≈ a demanding modern game. Lower is lighter.
+    countries:
+      subtitle: Launch the marketplace in a new country with one click. Spain is the launch market.
+      toggle: "Enable or disable %{country}"
+      enable_confirm: "Launch the marketplace in %{country}? Users there will be able to buy, sell and see local legal texts."
+      disable_confirm: "Disable %{country}? Its listings will be hidden."
+      currency: Currency
+      vat: VAT
+      locale: Default language
+      regions: Regions
+      enabled: Enabled
+      edit_legal: Edit legal data
+      preview_legal: Preview legal texts
+      edit_subtitle: Country configuration and legal facts used in the legal texts.
+      legal_facts: Legal facts
+      legal_facts_hint: Leave blank to use the defaults shown as placeholders. Have these reviewed by a lawyer before launching.
+      launch_checklist: "Launch checklist: review the legal texts for the country with your lawyer, check carriers and VAT, translate category descriptions and enable the country here."
+    settings:
+      subtitle: Global options and feature flags. Monetisation features are ready but disabled until you switch them on.
+      groups: { general: General, listings: Listings & moderation, commerce: Orders & payments, monetization: Monetisation, features: Features, i18n: Languages }
+      keys:
+        site_name: Site name
+        support_email: Support email
+        support_phone: Support phone
+        default_country: Default country
+        announcement_enabled: Announcement bar
+        announcement_link: Announcement link
+        maintenance_mode: Maintenance mode
+        registrations_open: Registrations open
+        google_login_enabled: Log in with Google
+        listing_approval_required: Listings require approval
+        max_photos_per_listing: Max photos per listing
+        max_active_listings_individual: Max active listings (private sellers)
+        min_price_cents: Minimum price (cents)
+        max_price_cents: Maximum price (cents)
+        offers_enabled: Offers
+        offer_expiry_hours: Offer expiry (hours)
+        min_offer_percent: Minimum offer (% of price)
+        chat_enabled: Chat between users
+        checkout_enabled: Online checkout
+        local_pickup_enabled: Local pickup
+        buyer_protection_days: Buyer protection window (days after delivery)
+        seller_ship_days: Days the seller has to ship
+        discount_codes_enabled: Seller discount codes
+        commissions_enabled: Charge commission on sales
+        commission_percent: Commission (%)
+        commission_min_cents: Minimum commission (cents)
+        promotions_enabled: Paid listing promotions
+        promotion_price_cents: Promotion price (cents)
+        promotion_days: Promotion length (days)
+        sell_to_us_enabled: Sell to us (buyback)
+        pc_finder_enabled: PC Finder
+        saved_search_alerts_enabled: Saved search alerts
+        newsletter_enabled: Newsletter sign-up
+        reviews_enabled: Reviews
+        dark_mode_enabled: Dark mode toggle
+        locales_enabled: Languages available
+      hints:
+        site_name: Shown in titles, emails and the header.
+        support_email: Public contact address.
+        support_phone: Public phone number.
+        default_country: ISO code of the default country.
+        announcement_enabled: Show the bar at the top of every page.
+        announcement_link: Where the announcement links to.
+        maintenance_mode: Only staff can use the site while enabled.
+        registrations_open: Allow new accounts to be created.
+        google_login_enabled: Requires Google OAuth credentials.
+        listing_approval_required: New and edited listings wait for moderation.
+        max_photos_per_listing: Between 1 and 20 recommended.
+        max_active_listings_individual: Limit for private sellers.
+        min_price_cents: "Example: 100 = €1."
+        max_price_cents: "Example: 5000000 = €50,000."
+        offers_enabled: Buyers can make offers below the listing price.
+        offer_expiry_hours: After this time pending offers expire.
+        min_offer_percent: Offers below this percentage are rejected.
+        chat_enabled: Internal messaging between buyers and sellers.
+        checkout_enabled: Buying through the website with protected payment.
+        local_pickup_enabled: Allow in-person handover.
+        buyer_protection_days: After this window, funds are released automatically.
+        seller_ship_days: Buyers can cancel after this deadline.
+        discount_codes_enabled: Sellers can create discount codes.
+        commissions_enabled: Keep disabled during the growth phase.
+        commission_percent: Percentage of the item subtotal.
+        commission_min_cents: Minimum fee per order.
+        promotions_enabled: Sellers can pay to highlight listings.
+        promotion_price_cents: Price per promotion.
+        promotion_days: How long a promotion lasts.
+        sell_to_us_enabled: Instant offers for GPUs and CPUs.
+        pc_finder_enabled: Quiz that recommends gaming PCs.
+        saved_search_alerts_enabled: Email alerts for new matching listings.
+        newsletter_enabled: Footer newsletter form.
+        reviews_enabled: Buyers can review sellers after completed orders.
+        dark_mode_enabled: Show the light/dark toggle.
+        locales_enabled: Spanish is always available.
+    legal:
+      subtitle: Legal texts are generated per country and language from templates. Create an override to replace one completely.
+      new_override: New override
+      page: Page
+      status: Published
+      empty: No overrides. All countries use the default templates.
+      defaults: Start an override from the default template
+      body_hint: "Plain text. Lines starting with “## ” become headings."
+      published: Published
+    reports:
+      subtitle: Notices received under the Digital Services Act. Decisions must be explained to the affected user.
+      target: Content
+      reason: Reason
+      reporter: Reporter
+      title: "Report #%{id}"
+      message_in: "Message in conversation #%{id}"
+      details: Details
+      resolution: Decision
+      decide: Decision
+      statement_hint: Explain your decision. This statement of reasons is kept for transparency reporting.
+      take_down: Remove the listing (it will be rejected and the seller notified)
+      resolve: Resolve
+      dismiss: Dismiss
+      taken_down: Removed after a report from another user.
+    reviews:
+      hide: Hide
+      show: Show
+    tickets:
+      topic: Topic
+      from: From
+      reply: Reply by email
+      user_profile: View user profile
+      internal_note: Internal note
+    newsletter:
+      active_only: Active only
+      confirmed: Confirmed
+      unsubscribed: Unsubscribed
+    buyback:
+      disabled: The feature is currently disabled in settings.
+      quote: Quote
+    promotions:
+      disabled: Promotions are currently disabled in settings.
+      period: Period
+      activate: Activate
+      statuses: { pending: Pending, active: Active, expired: Expired, cancelled: Cancelled }
+    conversations:
+      privacy_notice: Access only for dispute and fraud investigations. Every view is recorded in the audit log.
+      by_user: Filter by username
+      last: Last message
+      audited: This access has been recorded
+    audit:
+      search: Filter by action (e.g. listing.)
+      action: Action
+      actor: Staff member
+      target: Target
+      details: Details

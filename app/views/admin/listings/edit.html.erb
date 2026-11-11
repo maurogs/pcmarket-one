@@ -1,0 +1,21 @@
+<%= render "admin/shared/page_header", title: t("shared.edit"), subtitle: @listing.title %>
+<%= form_with model: @listing, url: admin_listing_path(@listing), class: "panel max-w-3xl space-y-4" do |f| %>
+  <%= render "admin/shared/errors", record: @listing %>
+  <div><%= f.label :title, class: "label" %><%= f.text_field :title, class: "input" %></div>
+  <div class="grid gap-4 sm:grid-cols-3">
+    <div><%= f.label :category_id, class: "label" %><%= f.collection_select :category_id, @categories.select(&:leaf?), :id, :name, {}, class: "input" %></div>
+    <div><%= f.label :condition, class: "label" %><%= f.select :condition, Listing.conditions.keys.map { |c| [condition_label(c), c] }, {}, class: "input" %></div>
+    <div><%= f.label :status, class: "label" %><%= f.select :status, Listing.statuses.keys.map { |s| [t("listings.statuses.#{s}"), s] }, {}, class: "input" %></div>
+    <div><%= f.label :price, class: "label" %><%= f.number_field :price, step: 0.01, class: "input" %></div>
+    <div><%= f.label :original_price, class: "label" %><%= f.number_field :original_price, step: 0.01, class: "input" %></div>
+    <div><%= f.label :quantity, class: "label" %><%= f.number_field :quantity, class: "input" %></div>
+  </div>
+  <div><%= f.label :description, class: "label" %><%= f.text_area :description, rows: 6, class: "input" %></div>
+  <% labels = FilterDefinition.cached_by_key["product_labels"] %>
+  <% if labels %>
+    <fieldset><legend class="label"><%= labels.name %></legend><input type="hidden" name="listing[labels][]" value="">
+      <div class="flex flex-wrap gap-2"><% labels.filter_options.each do |option| %><label class="chip"><input type="checkbox" name="listing[labels][]" value="<%= option.value %>" class="checkbox" <%= "checked" if @listing.labels.include?(option.value) %>><%= option.label %></label><% end %></div></fieldset>
+  <% end %>
+  <label class="flex items-center gap-2 text-sm"><%= f.check_box :featured, class: "checkbox" %><%= t("admin.listings.featured") %></label>
+  <div class="flex justify-end gap-2"><%= link_to t("shared.cancel"), admin_listing_path(@listing), class: "btn-ghost" %><button class="btn-primary"><%= t("shared.save") %></button></div>
+<% end %>

@@ -1,0 +1,6 @@
+<%= render "admin/shared/page_header", title: @conversation.listing&.title || t("admin.nav.conversations"), subtitle: "#{@conversation.buyer.username} ↔ #{@conversation.seller.username} · #{t("admin.conversations.audited")}" %>
+<div class="panel space-y-3">
+  <% @messages.each do |message| %>
+    <div class="text-sm"><p class="text-xs text-ink-500"><strong><%= message.sender.username %></strong> · <%= l(message.created_at, format: :short) %> · <%= message.kind %></p><p class="whitespace-pre-line"><%= message.system? ? t("messages.system.#{message.body}", default: message.body) : message.body %></p></div>
+  <% end %>
+</div>

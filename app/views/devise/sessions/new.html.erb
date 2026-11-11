@@ -1,0 +1,10 @@
+<%= render "devise/shared/auth_layout", title: t("devise.sessions.new.sign_in") do %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-4" }) do |f| %>
+    <div><%= f.label :email, class: "label" %><%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "input" %></div>
+    <div><%= f.label :password, class: "label" %><%= f.password_field :password, autocomplete: "current-password", required: true, class: "input" %></div>
+    <% if devise_mapping.rememberable? %><label class="flex items-center gap-2 text-sm"><%= f.check_box :remember_me, class: "checkbox" %><%= t("activerecord.attributes.user.remember_me") %></label><% end %>
+    <%= f.submit t("devise.sessions.new.sign_in"), class: "btn-primary w-full" %>
+  <% end %>
+  <%= render "devise/shared/oauth" %>
+  <%= render "devise/shared/links" %>
+<% end %>

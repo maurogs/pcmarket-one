@@ -1,0 +1,113 @@
+en:
+  legal:
+    updated_on: 11 November 2026
+    applies_to: "Applies to users in %{country}"
+    last_updated: "Last updated: %{date}"
+    meta_description: "%{title} of %{site} for %{country}."
+    contact_footer: "Questions about this document? Write to %{email}. These texts are provided for information and must be reviewed by a qualified lawyer before production use."
+
+    terms:
+      title: Terms of service
+      sections:
+        intro: { heading: 1. Who we are, body: ["These terms govern the use of %{site}, an online marketplace operated by %{company_name}, with registered office at %{company_address} and tax ID %{company_tax_id} (“we”, “us”). By creating an account or using the platform you accept these terms."] }
+        role: { heading: 2. Our role, body: ["%{site} is an intermediary platform that allows private individuals and professional sellers to sell new and second-hand technology products to other users. Unless expressly stated otherwise, we are not the seller of the items listed. The sales contract is concluded directly between buyer and seller.", "Each listing shows whether the seller is a private individual or a professional trader. Consumer protection law applies only to purchases from professional sellers."] }
+        accounts: { heading: 3. Accounts, body: ["You must be at least 18 years old and provide accurate information. You are responsible for keeping your password secure and for all activity on your account. One person or business may not hold several accounts to evade restrictions."] }
+        listings: { heading: 4. Listings and moderation, body: ["Sellers must describe items honestly, use their own photos, disclose any defect and only list items they own and are legally allowed to sell. All listings are reviewed before publication. We may refuse, edit the category of, or remove listings that breach these terms, our seller terms or the prohibited items policy."] }
+        buying: { heading: 5. Buying, body: ["Prices are shown in %{country_name}'s currency and, for professional sellers, include VAT. Shipping costs are shown before you pay. Placing an order implies an obligation to pay.", "Payments are processed by our payment provider and held by %{site} until the order is completed. Payments made outside the platform are not covered by buyer protection."] }
+        protection: { heading: 6. Buyer protection, body: ["Orders paid through the platform are covered by our buyer protection policy for %{protection_days} days after delivery, in addition to any statutory rights you may have."] }
+        offers: { heading: 7. Offers and chat, body: ["Buyers may make offers that sellers can accept or decline. An accepted offer reserves the price for a limited time but not the item. The chat must be used only for transactions on the platform. Sharing contact details to avoid the platform, spam or harassment is prohibited."] }
+        fees: { heading: 8. Fees, body: ["Using the platform is currently free. We may introduce commissions on sales or paid features in the future. We will notify you at least 30 days in advance and changes will never apply to orders already placed."] }
+        conduct: { heading: 9. Prohibited conduct, body: ["You must not commit fraud, manipulate reviews, infringe intellectual property rights, list prohibited items, scrape the service without permission or interfere with its security. We may suspend or close accounts that breach these terms, with a statement of reasons."] }
+        liability: { heading: 10. Liability, body: ["We are responsible for providing the intermediation service with reasonable skill and care. We are not liable for the items sold by users, but we will help resolve disputes through buyer protection. Nothing in these terms limits liability that cannot be limited by law."] }
+        changes: { heading: 11. Changes and termination, body: ["We may update these terms. We will notify you of material changes at least 15 days in advance. You may close your account at any time from your account settings."] }
+        law: { heading: 12. Applicable law and disputes, body: ["These terms are governed by the law of %{country_name}, without depriving consumers of the protection of the mandatory rules of their country of residence. Disputes may be brought before %{courts}. Consumer complaints: %{complaints}."] }
+
+    privacy:
+      title: Privacy policy
+      sections:
+        controller: { heading: 1. Data controller, body: ["The controller of your personal data is %{company_name}, %{company_address}. Contact for privacy matters: %{privacy_email}."] }
+        data: { heading: 2. Data we process, body: ["Account data (name, username, email, phone), profile and store information, listings and photos, messages exchanged in the chat, order and shipping data, payment confirmations (we never store card details), device and usage data (IP address, log-ins), and for professional sellers the trader information required by law."] }
+        purposes: { heading: 3. Purposes and legal bases, body: ["To provide the marketplace and process orders (performance of a contract, art. 6.1.b %{gdpr}).", "To prevent fraud, moderate content and keep the platform secure (legitimate interest, art. 6.1.f).", "To comply with legal obligations such as tax rules, %{dac7} reporting and the %{dsa_regulation} (art. 6.1.c).", "To send newsletters and marketing, only with your consent (art. 6.1.a), which you can withdraw at any time."] }
+        recipients: { heading: 4. Recipients, body: ["We share data with the other party of each transaction (for example the shipping address with the seller), with service providers acting on our behalf (hosting, email, payment processing, customer support) and with public authorities when required by law. We do not sell your personal data."] }
+        transfers: { heading: 5. International transfers, body: ["If a provider processes data outside the European Economic Area, we rely on adequacy decisions or standard contractual clauses."] }
+        retention: { heading: 6. Retention, body: ["We keep account data while your account is active. After deletion we anonymise your profile but keep order and invoicing records for the periods required by tax and commercial law (generally up to 6 years) and DSA records for the required time."] }
+        rights: { heading: 7. Your rights, body: ["You can access, rectify, erase, restrict or object to the processing of your data, request portability and withdraw consent. You can download your data and delete your account from Account settings, or write to %{privacy_email}. You also have the right to lodge a complaint with the %{data_authority}."] }
+        security: { heading: 8. Security, body: ["We apply technical and organisational measures such as encryption in transit, hashed passwords, access controls and audit logs."] }
+        law: { heading: 9. Applicable law, body: ["This policy complies with the %{gdpr} and %{data_law}."] }
+
+    cookies:
+      title: Cookie policy
+      sections:
+        what: { heading: 1. What are cookies?, body: ["Cookies are small files stored on your device. We also use similar technologies such as local storage."] }
+        necessary: { heading: 2. Strictly necessary cookies, body: ["Session and security cookies (log-in, CSRF protection), your cart, your language and country choice and your cookie preferences. They don't require consent because the service can't work without them."] }
+        optional: { heading: 3. Optional cookies, body: ["Analytics and marketing cookies are only set if you accept them in the banner. Currently the platform does not load third-party analytics or advertising cookies."] }
+        manage: { heading: 4. Managing your choice, body: ["You can change your choice at any time with “Cookie preferences” in the footer or delete cookies from your browser settings. Consent is stored for 6 months."] }
+        law: { heading: 5. Legal basis, body: ["This policy complies with %{cookie_law} and the guidelines of the %{data_authority}."] }
+
+    legal_notice:
+      title: Legal notice
+      sections:
+        owner: { heading: Website owner, body: ["Company name: %{company_name}", "Registered office: %{company_address}", "Tax ID: %{company_tax_id}", "Registry details: %{company_registry}", "Email: %{legal_email}"] }
+        purpose: { heading: Purpose, body: ["This website operates an online marketplace for technology products between users, in accordance with %{ecommerce_law}."] }
+        ip: { heading: Intellectual property, body: ["The design, code, brand and content created by %{site} are protected by intellectual property laws. Content published by users belongs to them; they grant us a licence to display it on the platform."] }
+        liability: { heading: Liability, body: ["We act as a hosting service for content provided by users and will remove illegal content promptly once we have actual knowledge of it."] }
+      country_sections:
+        es: { lssi: { heading: Información LSSI-CE, body: ["In accordance with article 10 of Ley 34/2002 de Servicios de la Sociedad de la Información y de Comercio Electrónico, the identification details of the service provider are shown above."] } }
+        de: { impressum: { heading: Impressum, body: ["Information pursuant to %{ecommerce_law}: %{company_name}, %{company_address}. Represented by the management board. Contact: %{legal_email}. VAT ID: %{company_tax_id}. Register: %{company_registry}.", "Consumer dispute resolution: %{complaints}"] } }
+        fr: { mediation: { heading: Médiation de la consommation, body: ["In accordance with the Code de la consommation, consumers may refer disputes to a consumer mediator free of charge. %{complaints}."] } }
+        pt: { complaints_book: { heading: Livro de Reclamações, body: ["In accordance with Portuguese law, consumers can submit complaints through the electronic complaints book: %{complaints}."] } }
+        it: { info: { heading: Informazioni societarie, body: ["Company details are provided in accordance with %{ecommerce_law} and the Codice Civile."] } }
+        gb: { info: { heading: Company information, body: ["Information provided in accordance with the %{ecommerce_law}."] } }
+
+    returns:
+      title: Returns and right of withdrawal
+      sections:
+        professional: { heading: 1. Purchases from professional sellers, body: ["If you buy from a professional seller as a consumer, you have the right to withdraw from the contract within %{withdrawal_days} days of receiving the item without giving any reason, under %{consumer_law}.", "To exercise it, contact the seller from your order or write to %{support_email}. You must return the item within 14 days of notifying your withdrawal. The seller must refund the price and the standard shipping cost within 14 days of receiving the item back or proof of shipment."] }
+        exceptions: { heading: 2. Exceptions, body: ["The right of withdrawal does not apply to sealed software or video games once unsealed, items made to the buyer's specifications, or other exceptions provided by law."] }
+        private: { heading: 3. Purchases from private individuals, body: ["Statutory withdrawal and warranty rights do not apply between private individuals. Your purchase is covered by our buyer protection: if the item doesn't arrive or isn't as described, you get your money back."] }
+        warranty: { heading: 4. Legal guarantee, body: ["Professional sellers are responsible for any lack of conformity of the goods. In %{country_name} the legal guarantee period for new goods is %{warranty_years} years; for second-hand goods it may be shorter where the law allows it, and this must be stated in the listing."] }
+        store: { heading: 5. Voluntary return policies, body: ["Sellers may offer an additional voluntary return window shown on their store and listings."] }
+        model: { heading: 6. Model withdrawal form, body: ["To: [seller name and address]. I hereby give notice that I withdraw from my contract for the sale of the following goods: [item], ordered on [date] / received on [date]. Name, address, signature (if on paper), date."] }
+
+    buyer_protection:
+      title: Buyer protection
+      sections:
+        what: { heading: 1. What is covered, body: ["Every order paid through %{site} is covered if the item doesn't arrive, arrives damaged, defective or counterfeit, is materially different from its description, or isn't shipped within %{ship_days} business days."] }
+        how: { heading: 2. How it works, body: ["We hold your payment until the order is completed. After delivery you have %{protection_days} days to check the item. If everything is correct, accept the order. If not, open a dispute from the order page during that period."] }
+        dispute: { heading: 3. Disputes, body: ["When you open a dispute we pause the payment to the seller and ask both parties for evidence (photos, tracking, messages). We aim to decide within 7 days. If the claim is valid you will get a full refund, usually after returning the item at the seller's expense."] }
+        excluded: { heading: 4. What isn't covered, body: ["Payments made outside the platform, buyer's remorse when buying from private sellers, damage caused after delivery, and claims made after the protection period."] }
+        rights: { heading: 5. Your statutory rights, body: ["Buyer protection is additional to and does not limit your legal rights as a consumer under %{consumer_law}."] }
+
+    seller_terms:
+      title: Seller terms
+      sections:
+        eligibility: { heading: 1. Who can sell, body: ["Any user over 18 with a confirmed email can sell. If you sell regularly or as part of a business, you must register as a professional seller and provide your legal name, address, contact details, registration and tax numbers, and self-certify that you only offer compliant products (art. 30 %{dsa_regulation})."] }
+        obligations: { heading: 2. Your obligations, body: ["Describe items accurately, use your own photos, respect our prohibited items policy, keep stock up to date, reply to buyers in a reasonable time and ship within %{ship_days} business days with tracking.", "Professional sellers must respect consumer rights, including the %{withdrawal_days}-day right of withdrawal and the legal guarantee, and issue invoices where required."] }
+        payments: { heading: 3. Payments and payouts, body: ["Buyers pay through the platform. Funds are released to you when the buyer accepts the order or when the protection window ends without a dispute. Any commission in force at the time of the sale is deducted from the payout."] }
+        taxes: { heading: 4. Taxes and reporting, body: ["You are responsible for your own taxes. Under %{dac7}, we must collect identification data and report to the tax authorities sellers who exceed 30 sales or €2,000 in a calendar year."] }
+        moderation: { heading: 5. Moderation and sanctions, body: ["We may reject or remove listings, limit features or suspend accounts that breach our rules. We'll always give you a statement of reasons and you can appeal through our internal complaint system."] }
+
+    prohibited_items:
+      title: Prohibited items
+      sections:
+        list: { heading: 1. Items you can't sell, body: ["Stolen goods or items you don't own. Counterfeits, replicas and items that infringe trademarks. Hacked, modded or region-unlocked devices that violate the law, piracy tools and pirated software. Devices locked to an account (iCloud, Google FRP) or reported lost or stolen. Weapons, drugs, adult content, personal data or accounts and in-game currency where the publisher forbids it.", "Products subject to recall or that don't meet EU safety requirements, and batteries that are swollen or damaged."] }
+        restricted: { heading: 2. Restricted items, body: ["Digital licences and keys only if transferable and legitimately acquired. Mining rigs and used GPUs must state their usage history."] }
+        enforcement: { heading: 3. Enforcement, body: ["Listings that break this policy are rejected or removed and repeated violations can lead to account suspension."] }
+
+    dsa:
+      title: Digital Services Act
+      sections:
+        contact: { heading: 1. Points of contact, body: ["Single point of contact for authorities, the European Commission and users (arts. 11 and 12 %{dsa_regulation}): %{dsa_contact_email}. Languages: Spanish and English, plus the language of each country where we operate."] }
+        notice: { heading: 2. Notice and action, body: ["Anyone can report content they consider illegal using the “Report” link on every listing and profile, explaining the reasons and identifying the content. We confirm receipt and inform you of our decision."] }
+        reasons: { heading: 3. Statement of reasons, body: ["When we remove or restrict content or accounts, we inform the user affected with a clear statement of reasons, including the facts, the legal or contractual basis and the available redress options."] }
+        complaints: { heading: 4. Internal complaints and out-of-court settlement, body: ["You can appeal our moderation decisions within 6 months by contacting support. Decisions are reviewed by a person. You can also turn to a certified out-of-court dispute settlement body."] }
+        traders: { heading: 5. Trader traceability, body: ["We collect and verify information about professional sellers before they can offer products and display it on their listings."] }
+        transparency: { heading: 6. Transparency, body: ["We publish yearly reports with the number of notices, moderation decisions and complaints. Listings are ordered by relevance, recency and, where enabled, paid promotion, which is clearly labelled."] }
+
+    accessibility:
+      title: Accessibility statement
+      sections:
+        commitment: { heading: 1. Our commitment, body: ["We want everyone to be able to use %{site}. We follow the Web Content Accessibility Guidelines (WCAG) 2.2 level AA and the European Accessibility Act."] }
+        measures: { heading: 2. Measures, body: ["Semantic HTML, keyboard navigation, visible focus, alternative text for images, sufficient colour contrast in light and dark modes, respect for reduced-motion preferences and forms with clear labels and errors."] }
+        limitations: { heading: 3. Known limitations, body: ["Photos uploaded by sellers may lack detailed descriptions. We're working to improve this."] }
+        feedback: { heading: 4. Feedback, body: ["If you find an accessibility barrier, contact us at %{support_email}. We will reply within 10 business days."] }

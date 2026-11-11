@@ -1,0 +1,10 @@
+<div id="flash" class="container-page" aria-live="polite">
+  <% flash.each do |type, message| %>
+    <% next unless message.is_a?(String) && %w[notice alert].include?(type.to_s) %>
+    <div class="mt-4 flex items-start gap-3 rounded-xl border px-4 py-3 text-sm <%= flash_classes(type) %>" data-controller="dismiss" role="<%= type.to_s == "alert" ? "alert" : "status" %>">
+      <%= icon(type.to_s == "alert" ? :alert : :check, css: "mt-0.5 size-4 shrink-0") %>
+      <p class="flex-1"><%= message %></p>
+      <button type="button" data-action="dismiss#close" class="opacity-60 hover:opacity-100" aria-label="<%= t("layout.close") %>"><%= icon(:x, css: "size-4") %></button>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page max-w-3xl py-8">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <p class="mt-1 text-sm text-ink-600 dark:text-ink-300"><%= t(".subtitle") %></p>
+  <% if @saved_searches.any? %>
+    <ul class="mt-6 space-y-3">
+      <% @saved_searches.each do |saved_search| %>
+        <li class="panel flex flex-wrap items-center gap-3 p-4">
+          <div class="min-w-0 flex-1">
+            <%= link_to saved_search.name, listings_path(saved_search.path_params), class: "font-semibold hover:text-brand-700" %>
+            <p class="text-xs text-ink-500"><%= saved_search.last_notified_at ? t(".last_alert", time: time_ago_in_words(saved_search.last_notified_at)) : t(".no_alerts_yet") %></p>
+          </div>
+          <%= form_with model: saved_search, class: "flex items-center gap-2", data: { controller: "autosubmit" } do |f| %>
+            <label class="flex items-center gap-1.5 text-sm"><%= f.check_box :notify, class: "checkbox", data: { action: "change->autosubmit#submit" } %><%= t(".email_alerts") %></label>
+            <%= f.select :frequency, SavedSearch.frequencies.keys.map { |k| [t(".frequencies.#{k}"), k] }, {}, class: "input min-h-9 py-1 text-xs", data: { action: "change->autosubmit#submit" }, aria: { label: t(".frequency") } %>
+          <% end %>
+          <%= button_to t(".delete"), saved_search_path(saved_search), method: :delete, class: "btn-ghost btn-sm text-red-700" %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <%= render "shared/empty_state", icon_name: :bell, title: t(".empty_title"), body: t(".empty_body"), cta: [t("favorites.index.browse"), listings_path] %>
+  <% end %>
+</div>

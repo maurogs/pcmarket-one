@@ -1,0 +1,19 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page max-w-lg py-10">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <p class="mt-1 text-sm text-ink-500"><%= t(".subtitle", name: @order.seller.display_name) %></p>
+  <%= form_with model: @review, url: order_review_path(@order), class: "panel mt-6 space-y-4" do |f| %>
+    <% if @review.errors.any? %><p class="field-error"><%= @review.errors.full_messages.to_sentence %></p><% end %>
+    <fieldset>
+      <legend class="label"><%= t(".rating") %></legend>
+      <div class="flex flex-row-reverse justify-end gap-1">
+        <% 5.downto(1) do |value| %>
+          <input type="radio" name="review[rating]" id="rating-<%= value %>" value="<%= value %>" class="peer sr-only" <%= "checked" if @review.rating == value %> required>
+          <label for="rating-<%= value %>" class="cursor-pointer text-ink-300 peer-checked:text-accent-500 hover:text-accent-400 [&:hover~label]:text-accent-400 peer-checked:[&~label]:text-accent-500" title="<%= value %>"><%= icon(:star, css: "size-8", filled: true, stroke: 1) %><span class="sr-only"><%= t("reviews.rating_label", rating: value) %></span></label>
+        <% end %>
+      </div>
+    </fieldset>
+    <div><%= f.label :body, t(".body"), class: "label" %><%= f.text_area :body, rows: 4, maxlength: 2000, class: "input" %></div>
+    <button class="btn-primary w-full"><%= t(".submit") %></button>
+  <% end %>
+</div>

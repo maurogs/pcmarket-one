@@ -1,0 +1,15 @@
+<%= form_with model: [:admin, @page], class: "panel max-w-4xl space-y-4" do |f| %>
+  <%= render "admin/shared/errors", record: @page %>
+  <div class="grid gap-4 sm:grid-cols-3">
+    <div><%= f.label :slug, t("admin.legal.page"), class: "label" %><%= f.select :slug, LegalPage::SLUGS.map { |s| [t("legal.#{s}.title"), s] }, {}, class: "input" %></div>
+    <div><%= f.label :country_code, t("layout.country"), class: "label" %><%= f.select :country_code, Country::SUPPORTED, {}, class: "input" %></div>
+    <div><%= f.label :locale, t("layout.language"), class: "label" %><%= f.select :locale, I18n.available_locales.map { |l| [t("locales.#{l}"), l] }, {}, class: "input" %></div>
+  </div>
+  <div><%= f.label :title, class: "label" %><%= f.text_field :title, class: "input", required: true %></div>
+  <div><%= f.label :body, class: "label" %><%= f.text_area :body, rows: 24, class: "input font-mono text-xs", required: true %><p class="hint"><%= t("admin.legal.body_hint") %></p></div>
+  <label class="flex items-center gap-2 text-sm"><%= f.check_box :published, class: "checkbox" %><%= t("admin.legal.published") %></label>
+  <div class="flex justify-between gap-2">
+    <% if @page.persisted? %><%= link_to t("shared.delete"), admin_legal_page_path(@page), class: "btn-ghost text-red-700", data: { turbo_method: :delete, turbo_confirm: t("shared.confirm") } %><% else %><span></span><% end %>
+    <div class="flex gap-2"><%= link_to t("shared.cancel"), admin_legal_pages_path, class: "btn-ghost" %><button class="btn-primary"><%= t("shared.save") %></button></div>
+  </div>
+<% end %>

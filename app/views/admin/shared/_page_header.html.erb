@@ -1,0 +1,6 @@
+<%# locals: (title:, subtitle: nil) %>
+<% content_for :title, title %>
+<div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+  <div><h1 class="font-display text-2xl font-bold"><%= title %></h1><% if subtitle %><p class="text-sm text-ink-500"><%= subtitle %></p><% end %></div>
+  <div class="flex flex-wrap gap-2"><%= yield %></div>
+</div>

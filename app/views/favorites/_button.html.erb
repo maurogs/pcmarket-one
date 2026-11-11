@@ -1,0 +1,16 @@
+<%# locals: (listing:, compact: false) %>
+<% favorited = user_signed_in? && current_user.favorited?(listing) %>
+<div id="<%= dom_id(listing, compact ? :favorite_compact : :favorite) %>" class="<%= compact ? "absolute right-2 top-2 z-10" : "" %>">
+  <% if user_signed_in? %>
+    <%= button_to listing_favorite_path(listing), method: favorited ? :delete : :post, form_class: "contents",
+          class: compact ? "grid size-10 place-items-center rounded-full bg-white/90 shadow-sm backdrop-blur hover:bg-white dark:bg-ink-900/90" : "btn-outline btn-sm",
+          aria: { pressed: favorited, label: favorited ? t("favorites.remove") : t("favorites.add") }, params: { compact: compact } do %>
+      <%= icon(:heart, css: "size-5 #{favorited ? 'text-red-500' : 'text-ink-700 dark:text-ink-200'}", filled: favorited) %>
+      <% unless compact %><span><%= favorited ? t("favorites.saved") : t("favorites.save") %></span><% end %>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_session_path, class: compact ? "grid size-10 place-items-center rounded-full bg-white/90 shadow-sm dark:bg-ink-900/90" : "btn-outline btn-sm", aria: { label: t("favorites.add") } do %>
+      <%= icon(:heart, css: "size-5 text-ink-700 dark:text-ink-200") %><% unless compact %><span><%= t("favorites.save") %></span><% end %>
+    <% end %>
+  <% end %>
+</div>

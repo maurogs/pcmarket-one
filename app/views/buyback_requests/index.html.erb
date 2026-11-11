@@ -1,0 +1,10 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page max-w-3xl py-8">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <ul class="mt-6 space-y-3">
+    <% @requests.each do |request_record| %>
+      <li class="panel flex items-center justify-between p-4 text-sm"><span><%= request_record.filter_option.label %> · <%= money(request_record.quoted_cents) %></span><%= status_badge(request_record.status, "buyback_requests.statuses") %></li>
+    <% end %>
+  </ul>
+  <%= link_to t(".new"), new_buyback_request_path, class: "btn-primary mt-6" %>
+</div>

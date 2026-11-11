@@ -1,0 +1,9 @@
+<%= render "admin/shared/page_header", title: @ticket.subject, subtitle: "#{@ticket.name} <#{@ticket.email}> · #{t("support_tickets.topics.#{@ticket.topic}")}" do %><a href="mailto:<%= @ticket.email %>?subject=Re: <%= ERB::Util.url_encode(@ticket.subject) %>" class="btn-primary btn-sm"><%= t("admin.tickets.reply") %></a><% end %>
+<div class="grid gap-4 lg:grid-cols-[1fr_320px]">
+  <section class="panel whitespace-pre-line text-sm"><%= @ticket.body %><% if @ticket.user %><p class="mt-4 text-xs"><%= link_to t("admin.tickets.user_profile"), admin_user_path(@ticket.user), class: "link" %></p><% end %></section>
+  <%= form_with model: @ticket, url: admin_support_ticket_path(@ticket), class: "panel space-y-3" do |f| %>
+    <div><%= f.label :status, class: "label" %><%= f.select :status, SupportTicket.statuses.keys.map { |s| [t("support_tickets.statuses.#{s}"), s] }, {}, class: "input" %></div>
+    <div><%= f.label :internal_note, t("admin.tickets.internal_note"), class: "label" %><%= f.text_area :internal_note, rows: 5, class: "input" %></div>
+    <button class="btn-primary btn-sm w-full"><%= t("shared.save") %></button>
+  <% end %>
+</div>

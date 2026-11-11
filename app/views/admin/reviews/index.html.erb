@@ -1,0 +1,11 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.reviews") %>
+<nav class="mb-4 flex flex-wrap gap-2"><%= link_to t("admin.all"), admin_reviews_path, class: "chip #{'chip-active' if params[:status].blank? && params[:rating].blank?}" %><% Review.statuses.each_key do |s| %><%= link_to t("reviews.statuses.#{s}"), admin_reviews_path(status: s), class: "chip #{'chip-active' if params[:status] == s}" %><% end %><% (1..5).each do |r| %><%= link_to "#{r}★", admin_reviews_path(rating: r), class: "chip #{'chip-active' if params[:rating] == r.to_s}" %><% end %></nav>
+<div class="space-y-3">
+  <% @reviews.each do |review| %>
+    <div class="panel flex flex-col gap-3 text-sm sm:flex-row">
+      <div class="flex-1"><p><%= stars(review.rating) %> <strong><%= review.reviewer.username %></strong> → <%= link_to review.seller.username, admin_user_path(review.seller), class: "link" %> · <%= l(review.created_at.to_date) %> · <%= status_badge(review.status, "reviews.statuses") %></p><p class="mt-1"><%= review.body %></p></div>
+      <%= button_to (review.visible? ? t("admin.reviews.hide") : t("admin.reviews.show")), admin_review_path(review), method: :patch, params: { status: review.visible? ? "hidden" : "visible" }, class: "btn-outline btn-sm" %>
+    </div>
+  <% end %>
+</div>
+<%= pagination(@pagy) %>

@@ -1,0 +1,5 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.conversations"), subtitle: t("admin.conversations.privacy_notice") %>
+<%= form_with url: admin_conversations_path, method: :get, class: "mb-4 max-w-sm" do %><input type="search" name="user" value="<%= params[:user] %>" class="input" placeholder="<%= t("admin.conversations.by_user") %>" aria-label="<%= t("admin.conversations.by_user") %>"><% end %>
+<div class="panel overflow-x-auto p-0"><table class="table"><thead><tr><th><%= t("admin.listings.listing") %></th><th><%= t("orders.show.buyer") %></th><th><%= t("orders.show.seller") %></th><th><%= t("admin.conversations.last") %></th></tr></thead>
+  <tbody><% @conversations.each do |c| %><tr><td><%= link_to (c.listing&.title || "—").truncate(50), admin_conversation_path(c), class: "link" %></td><td><%= c.buyer.username %></td><td><%= c.seller.username %></td><td class="text-xs"><%= c.last_message_at && l(c.last_message_at, format: :short) %></td></tr><% end %></tbody></table></div>
+<%= pagination(@pagy) %>

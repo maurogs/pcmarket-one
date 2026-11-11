@@ -1,0 +1,23 @@
+<% title = @override&.title || @document.title %>
+<% seo title: title, description: t("legal.meta_description", title: title, site: site_name, country: @country.name) %>
+<div class="container-page py-10 lg:grid lg:grid-cols-[220px_1fr] lg:gap-10">
+  <nav class="mb-8 lg:mb-0" aria-label="<%= t("layout.footer.legal_nav") %>">
+    <ul class="flex gap-1 overflow-x-auto text-sm lg:sticky lg:top-24 lg:flex-col">
+      <% LegalPage::SLUGS.each do |slug| %>
+        <li class="shrink-0"><%= link_to t("legal.#{slug}.title"), legal_page_path(slug.tr("_", "-")), class: "block whitespace-nowrap rounded-lg px-3 py-2 #{slug == @slug ? 'bg-brand-50 font-semibold text-brand-800 dark:bg-brand-950 dark:text-brand-200' : 'hover:bg-ink-100 dark:hover:bg-ink-800'}" %></li>
+      <% end %>
+    </ul>
+  </nav>
+  <article class="prose-legal">
+    <h1 class="text-4xl font-bold text-ink-900 dark:text-white"><%= title %></h1>
+    <p class="text-sm text-ink-500"><%= t("legal.applies_to", country: @country.name) %> · <%= t("legal.last_updated", date: @override ? l(@override.updated_at.to_date, format: :long) : @document.updated_on) %></p>
+    <% if @override %>
+      <%= simple_format(@override.body.gsub(/^## (.+)$/) { "<h2>#{ERB::Util.html_escape(Regexp.last_match(1))}</h2>" }, {}, sanitize: true) %>
+    <% else %>
+      <% @document.sections.each do |section| %>
+        <section id="<%= section[:key] %>"><h2><%= section[:heading] %></h2><% section[:paragraphs].each do |paragraph| %><p><%= paragraph %></p><% end %></section>
+      <% end %>
+    <% end %>
+    <p class="mt-10 rounded-xl bg-ink-50 p-4 text-xs text-ink-500 dark:bg-ink-900"><%= t("legal.contact_footer", email: LegalFacts.for(@country.code).merge(@country.legal)["legal_email"]) %></p>
+  </article>
+</div>

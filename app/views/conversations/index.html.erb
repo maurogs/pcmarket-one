@@ -1,0 +1,36 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page max-w-4xl py-8">
+  <div class="flex items-center justify-between gap-3">
+    <h1 class="section-title"><%= t(".title") %></h1>
+    <%= link_to t(".blocked_users"), blocks_path, class: "btn-ghost btn-sm" %>
+  </div>
+  <nav class="mt-5 flex gap-1 border-b border-ink-200 dark:border-ink-800" aria-label="<%= t(".tabs") %>">
+    <% %w[chats offers].each do |tab| %>
+      <%= link_to t(".tab_#{tab}"), conversations_path(tab: tab), class: "border-b-2 px-4 py-2.5 text-sm font-semibold #{@tab == tab ? 'border-brand-600 text-brand-700 dark:text-brand-300' : 'border-transparent text-ink-500'}", "aria-current": (@tab == tab ? "page" : nil) %>
+    <% end %>
+  </nav>
+  <% if @conversations.any? %>
+    <ul class="mt-4 divide-y divide-ink-100 dark:divide-ink-800">
+      <% @conversations.each do |conversation| %>
+        <% other = conversation.other_participant(current_user) %>
+        <% unread = conversation.unread_count_for(current_user) %>
+        <li>
+          <%= link_to conversation_path(conversation), class: "flex items-center gap-3 rounded-xl px-2 py-3 hover:bg-ink-50 dark:hover:bg-ink-900" do %>
+            <div class="relative size-14 shrink-0 overflow-hidden rounded-xl bg-ink-100 dark:bg-ink-800"><%= conversation.listing ? listing_image(conversation.listing, variant: :thumb) : avatar_for(other, size: 56) %></div>
+            <div class="min-w-0 flex-1">
+              <p class="flex items-center gap-2"><span class="truncate font-semibold"><%= other.display_name %></span><span class="badge-muted"><%= t(".role_#{conversation.role_of(current_user)}") %></span></p>
+              <p class="truncate text-sm text-ink-500"><%= conversation.listing&.title || t(".no_listing") %></p>
+            </div>
+            <div class="flex flex-col items-end gap-1 text-xs text-ink-500">
+              <%= time_ago(conversation.last_message_at) %>
+              <% if unread.positive? %><span class="grid min-w-5 place-items-center rounded-full bg-brand-700 px-1.5 text-[11px] font-bold text-white"><%= unread %></span><% end %>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <%= pagination(@pagy) %>
+  <% else %>
+    <%= render "shared/empty_state", icon_name: :message, title: t(".empty_title"), body: t(".empty_body") %>
+  <% end %>
+</div>

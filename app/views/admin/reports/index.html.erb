@@ -1,0 +1,12 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.reports"), subtitle: t("admin.reports.subtitle") %>
+<nav class="mb-4 flex flex-wrap gap-2">
+  <% (Report.statuses.keys + ["all"]).each do |status| %><%= link_to (status == "all" ? t("admin.all") : t("reports.statuses.#{status}")), admin_reports_path(status: status), class: "chip #{'chip-active' if (params[:status].presence || 'open') == status}" %><% end %>
+</nav>
+<div class="panel overflow-x-auto p-0">
+  <table class="table"><thead><tr><th><%= t("admin.reports.target") %></th><th><%= t("admin.reports.reason") %></th><th><%= t("admin.reports.reporter") %></th><th><%= t("admin.listings.status") %></th><th><%= t("admin.listings.date") %></th></tr></thead>
+    <tbody><% @reports.each do |report| %>
+      <tr><td><%= link_to "#{report.reportable_type} ##{report.reportable_id}", admin_report_path(report), class: "link" %><p class="text-xs text-ink-500"><%= (report.reportable.try(:title) || report.reportable.try(:username) || report.reportable.try(:body)).to_s.truncate(60) %></p></td>
+        <td><%= t("reports.reasons.#{report.reason}") %></td><td class="text-sm"><%= report.reporter&.username || report.reporter_email %></td><td><%= status_badge(report.status, "reports.statuses") %></td><td class="text-xs text-ink-500"><%= l(report.created_at, format: :short) %></td></tr>
+    <% end %></tbody></table>
+</div>
+<%= pagination(@pagy) %>

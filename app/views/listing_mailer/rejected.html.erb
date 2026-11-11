@@ -1,0 +1,4 @@
+<h1 style="font-size:20px;margin:0 0 12px"><%= t("mailers.listing.rejected.title") %></h1>
+<p><%= t("mailers.listing.rejected.body", title: @listing.title) %></p>
+<p style="background:#fef2f2;padding:12px;border-radius:8px"><%= @listing.rejection_reason %></p>
+<p><a href="<%= edit_listing_url(@listing) %>" style="display:inline-block;background:#067d74;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600"><%= t("mailers.listing.rejected.cta") %></a></p>

@@ -1,0 +1,16 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page max-w-xl py-10">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <p class="mt-2 text-sm text-ink-600 dark:text-ink-300"><%= t(".subtitle_html", dsa: link_to(t("legal.dsa.title"), legal_page_path("dsa"), class: "link")) %></p>
+  <%= form_with model: @report, url: reports_path, class: "panel mt-6 space-y-4" do |f| %>
+    <%= hidden_field_tag "report[reportable_type]", @report.reportable_type %>
+    <%= hidden_field_tag "report[reportable_id]", @report.reportable_id %>
+    <% if @report.errors.any? %><p class="field-error" role="alert"><%= @report.errors.full_messages.to_sentence %></p><% end %>
+    <p class="rounded-xl bg-ink-50 p-3 text-sm dark:bg-ink-800"><%= t(".reporting", name: @report.reportable.try(:title) || @report.reportable.try(:display_name) || "##{@report.reportable_id}") %></p>
+    <div><%= f.label :reason, class: "label" %><%= f.select :reason, Report.reasons.keys.map { |r| [t("reports.reasons.#{r}"), r] }, {}, class: "input" %></div>
+    <div><%= f.label :details, class: "label" %><%= f.text_area :details, rows: 5, maxlength: 3000, class: "input" %><p class="hint"><%= t(".details_hint") %></p></div>
+    <% unless user_signed_in? %><div><%= f.label :reporter_email, class: "label" %><%= f.email_field :reporter_email, class: "input", required: true, autocomplete: "email" %></div><% end %>
+    <label class="flex items-start gap-2 text-xs text-ink-600 dark:text-ink-300"><input type="checkbox" required class="checkbox mt-0.5"> <%= t(".good_faith") %></label>
+    <button class="btn-primary w-full"><%= t(".submit") %></button>
+  <% end %>
+</div>

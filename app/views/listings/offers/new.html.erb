@@ -1,0 +1,21 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page max-w-lg py-10">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <div class="panel mt-6 flex items-center gap-3">
+    <div class="size-16 shrink-0 overflow-hidden rounded-xl"><%= listing_image(@listing, variant: :thumb) %></div>
+    <div><p class="font-semibold"><%= @listing.title %></p><p class="text-sm"><%= price_tag(@listing, css: "text-sm") %></p></div>
+  </div>
+  <%= form_with url: listing_offers_path(@listing), scope: :offer, class: "panel mt-4 space-y-4" do |f| %>
+    <% if @offer.errors.any? %><p class="field-error" role="alert"><%= @offer.errors.full_messages.to_sentence %></p><% end %>
+    <div>
+      <%= f.label :amount, t(".amount"), class: "label" %>
+      <%= f.number_field :amount, value: @offer.amount, step: 0.01, min: 1, required: true, class: "input text-lg", inputmode: "decimal" %>
+      <p class="hint"><%= t(".hint", percent: setting(:min_offer_percent), hours: setting(:offer_expiry_hours)) %></p>
+    </div>
+    <div>
+      <%= f.label :message, t(".message"), class: "label" %>
+      <%= f.text_area :message, rows: 3, maxlength: 500, class: "input" %>
+    </div>
+    <button class="btn-primary w-full"><%= t(".submit") %></button>
+  <% end %>
+</div>

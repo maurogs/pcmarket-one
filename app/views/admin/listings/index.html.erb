@@ -1,0 +1,40 @@
+<%= render "admin/shared/page_header", title: params[:status] == "pending_review" ? t("admin.nav.moderation") : t("admin.nav.listings"), subtitle: t("admin.results", count: @pagy.count) %>
+<nav class="mb-4 flex flex-wrap gap-2">
+  <%= link_to t("admin.all"), admin_listings_path, class: "chip #{'chip-active' if params[:status].blank?}" %>
+  <% Listing.statuses.each_key do |status| %><%= link_to "#{t("listings.statuses.#{status}")} (#{@status_counts[status].to_i})", admin_listings_path(request.query_parameters.merge(status: status, page: nil)), class: "chip #{'chip-active' if params[:status] == status}" %><% end %>
+</nav>
+<%= form_with url: admin_listings_path, method: :get, class: "panel mb-4 grid gap-3 p-4 sm:grid-cols-3 lg:grid-cols-7" do %>
+  <input type="hidden" name="status" value="<%= params[:status] %>">
+  <input type="search" name="q" value="<%= params[:q] %>" class="input lg:col-span-2" placeholder="<%= t("admin.listings.search") %>" aria-label="<%= t("admin.listings.search") %>">
+  <select name="category_id" class="input" aria-label="<%= t("listings.form.category") %>"><option value=""><%= t("stores.all_categories") %></option><% Category.ordered.each do |c| %><option value="<%= c.id %>" <%= "selected" if params[:category_id].to_s == c.id.to_s %>><%= c.parent_id ? "— " : "" %><%= c.name %></option><% end %></select>
+  <select name="country_id" class="input" aria-label="<%= t("layout.country") %>"><option value=""><%= t("admin.all_countries") %></option><% Country.ordered.each do |c| %><option value="<%= c.id %>" <%= "selected" if params[:country_id].to_s == c.id.to_s %>><%= c.name %></option><% end %></select>
+  <select name="condition" class="input" aria-label="<%= t("listings.filters.condition") %>"><option value=""><%= t("listings.filters.condition") %></option><% Listing.conditions.each_key do |c| %><option value="<%= c %>" <%= "selected" if params[:condition] == c %>><%= condition_label(c) %></option><% end %></select>
+  <div class="flex gap-2"><input type="number" name="min_price" value="<%= params[:min_price] %>" class="input" placeholder="<%= t("listings.filters.min") %>" aria-label="<%= t("listings.filters.min_price") %>"><input type="number" name="max_price" value="<%= params[:max_price] %>" class="input" placeholder="<%= t("listings.filters.max") %>" aria-label="<%= t("listings.filters.max_price") %>"></div>
+  <div class="flex items-center gap-3"><label class="flex items-center gap-1.5 text-sm"><input type="checkbox" name="featured" value="1" class="checkbox" <%= "checked" if params[:featured] == "1" %>><%= t("admin.listings.featured") %></label><button class="btn-primary btn-sm"><%= t("admin.filter") %></button></div>
+<% end %>
+<%= form_with url: admin_listing_bulk_actions_path, class: "panel overflow-x-auto p-0", data: { turbo_confirm: t("shared.confirm") } do %>
+  <div class="flex flex-wrap items-center gap-2 border-b border-ink-200 p-3 dark:border-ink-800">
+    <select name="bulk_action" class="input min-h-9 w-auto py-1 text-sm" aria-label="<%= t("admin.bulk.label") %>"><% Admin::ListingBulkActionsController::ACTIONS.each do |action| %><option value="<%= action %>"><%= t("admin.bulk.actions.#{action}") %></option><% end %></select>
+    <input name="reason" class="input min-h-9 w-64 py-1 text-sm" placeholder="<%= t("admin.listings.reason_placeholder") %>" aria-label="<%= t("admin.listings.reason_placeholder") %>">
+    <button class="btn-outline btn-sm"><%= t("admin.bulk.apply") %></button>
+  </div>
+  <table class="table">
+    <thead><tr><th class="w-8"><span class="sr-only"><%= t("admin.select") %></span></th><th><%= t("admin.listings.listing") %></th><th><%= t("admin.listings.seller") %></th><th><%= t("admin.listings.status") %></th>
+      <th class="text-right"><%= render "admin/shared/sort_link", column: "price_cents", label: t("admin.listings.price") %></th><th class="text-right"><%= render "admin/shared/sort_link", column: "views_count", label: t("admin.listings.views") %></th>
+      <th><%= render "admin/shared/sort_link", column: params[:status] == "pending_review" ? "submitted_at" : "created_at", label: t("admin.listings.date") %></th></tr></thead>
+    <tbody>
+      <% @listings.each do |listing| %>
+        <tr>
+          <td><input type="checkbox" name="listing_ids[]" value="<%= listing.id %>" class="checkbox" aria-label="<%= listing.title %>"></td>
+          <td><div class="flex items-center gap-3"><div class="size-12 shrink-0 overflow-hidden rounded-lg"><%= listing_image(listing, variant: :thumb) %></div><div class="min-w-0"><%= link_to listing.title.truncate(60), admin_listing_path(listing), class: "font-medium hover:text-brand-700" %><p class="text-xs text-ink-500"><%= listing.category.name %> · <%= listing.country.code %><%= " · ★" if listing.featured %></p></div></div></td>
+          <td><%= link_to listing.user.username, admin_user_path(listing.user), class: "link text-sm" %></td>
+          <td><%= status_badge(listing.status, "listings.statuses") %></td>
+          <td class="text-right"><%= money(listing.price_cents, listing.currency) %></td>
+          <td class="text-right"><%= listing.views_count %></td>
+          <td class="text-xs text-ink-500"><%= l((listing.submitted_at || listing.created_at), format: :short) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<%= pagination(@pagy) %>
