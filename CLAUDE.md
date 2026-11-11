@@ -6,7 +6,7 @@
 - If a task requires more than one file change, outline the plan first, then implement.
 
 ## Communication
-- All documentation (README and any other docs) must be written in English. Conversation with the user stays in Spanish.
+- All documentation (README and any other docs) must be written in English.
 - Be concise: prioritize working code and test output over prose.
 
 ## Project Rules (Rails)
