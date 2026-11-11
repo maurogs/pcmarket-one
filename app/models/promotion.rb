@@ -11,7 +11,7 @@ class Promotion < ApplicationRecord
   def activate!
     transaction do
       update!(status: :active)
-      listing.update_columns(promoted_until: [listing.promoted_until, ends_at].compact.max)
+      listing.update_columns(promoted_until: [ listing.promoted_until, ends_at ].compact.max)
     end
   end
 end

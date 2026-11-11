@@ -18,7 +18,7 @@ module ListingSerializer
   def full(listing, viewer: nil)
     card(listing, viewer: viewer).merge(
       description: listing.description, brand: listing.brand, quantity: listing.quantity, tags: listing.tags, labels: listing.labels,
-      specs: listing.specs.to_h { |key, _| [key, { value: listing.spec(key), label: listing.spec_label(key) }] },
+      specs: listing.specs.to_h { |key, _| [ key, { value: listing.spec(key), label: listing.spec_label(key) } ] },
       photos: listing.photos.map { |photo| { thumb: image_url(photo, :thumb), large: image_url(photo, :large) } },
       shipping: { available: listing.shipping_available, price: money(listing.shipping_price_cents, listing.currency), handling_days: listing.handling_days },
       location: { region: listing.region&.name, city: listing.city, country: listing.country.code },

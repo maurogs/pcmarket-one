@@ -5,21 +5,21 @@ class CreateSocialTables < ActiveRecord::Migration[8.1]
       t.references :listing, null: false, foreign_key: true
       t.timestamps
     end
-    add_index :favorites, [:user_id, :listing_id], unique: true
+    add_index :favorites, [ :user_id, :listing_id ], unique: true
 
     create_table :follows do |t|
       t.references :follower, null: false, foreign_key: { to_table: :users }
       t.references :seller, null: false, foreign_key: { to_table: :users }
       t.timestamps
     end
-    add_index :follows, [:follower_id, :seller_id], unique: true
+    add_index :follows, [ :follower_id, :seller_id ], unique: true
 
     create_table :blocks do |t|
       t.references :blocker, null: false, foreign_key: { to_table: :users }
       t.references :blocked, null: false, foreign_key: { to_table: :users }
       t.timestamps
     end
-    add_index :blocks, [:blocker_id, :blocked_id], unique: true
+    add_index :blocks, [ :blocker_id, :blocked_id ], unique: true
 
     create_table :saved_searches do |t|
       t.references :user, null: false, foreign_key: true
@@ -40,7 +40,7 @@ class CreateSocialTables < ActiveRecord::Migration[8.1]
       t.datetime :read_at
       t.timestamps
     end
-    add_index :notifications, [:user_id, :read_at]
+    add_index :notifications, [ :user_id, :read_at ]
 
     create_table :reviews do |t|
       t.references :order, null: false, foreign_key: false, index: { unique: true }
@@ -52,6 +52,6 @@ class CreateSocialTables < ActiveRecord::Migration[8.1]
       t.integer :status, null: false, default: 0
       t.timestamps
     end
-    add_index :reviews, [:seller_id, :status, :created_at]
+    add_index :reviews, [ :seller_id, :status, :created_at ]
   end
 end

@@ -4,51 +4,51 @@ en:
       title: About us
       intro: We're gamers and PC builders who wanted a safer, fairer place to buy and sell hardware in Europe.
       sections:
-        mission: { heading: Our mission, body: ["Great hardware deserves a second life. We make it easy and safe to buy and sell gaming PCs, components and gear between people and specialist shops.", "We started in Spain and are building, step by step, the reference marketplace for PC hardware in Europe."] }
-        different: { heading: What makes us different, body: ["Every listing is reviewed by our team before it goes live. Payments are held until the buyer confirms the item arrived as described. And our catalogue understands hardware: filter by GPU, CPU, memory, socket and dozens of other specs."] }
-        community: { heading: Built with the community, body: ["We listen to buyers and sellers to decide what to build next. Write to us any time from the contact form."] }
+        mission: { heading: "Our mission", body: ["Great hardware deserves a second life. We make it easy and safe to buy and sell gaming PCs, components and gear between people and specialist shops.", "We started in Spain and are building, step by step, the reference marketplace for PC hardware in Europe."] }
+        different: { heading: "What makes us different", body: ["Every listing is reviewed by our team before it goes live. Payments are held until the buyer confirms the item arrived as described. And our catalogue understands hardware: filter by GPU, CPU, memory, socket and dozens of other specs."] }
+        community: { heading: "Built with the community", body: ["We listen to buyers and sellers to decide what to build next. Write to us any time from the contact form."] }
     how_it_works:
       title: How it works
       intro: Buying and selling on PCMarket in four steps.
       sections:
-        find: { heading: 1. Find or list, body: ["Search with hardware-aware filters or use the PC Finder. To sell, create a listing with your own photos and detailed specs. Our team reviews it before publishing."] }
-        talk: { heading: 2. Talk and negotiate, body: ["Ask the seller questions through the built-in chat or make an offer. Keep the conversation and the payment on the platform so you stay protected."] }
-        pay: { heading: 3. Pay safely, body: ["Pay at checkout. We hold the money while the seller ships the item with tracking, or while you arrange a local pickup."] }
-        receive: { heading: 4. Receive and confirm, body: ["Check the item when it arrives. If it's as described, accept the order and the seller gets paid. If not, report a problem within the protection window and we'll help."] }
+        find: { heading: "1. Find or list", body: ["Search with hardware-aware filters or use the PC Finder. To sell, create a listing with your own photos and detailed specs. Our team reviews it before publishing."] }
+        talk: { heading: "2. Talk and negotiate", body: ["Ask the seller questions through the built-in chat or make an offer. Keep the conversation and the payment on the platform so you stay protected."] }
+        pay: { heading: "3. Pay safely", body: ["Pay at checkout. We hold the money while the seller ships the item with tracking, or while you arrange a local pickup."] }
+        receive: { heading: "4. Receive and confirm", body: ["Check the item when it arrives. If it's as described, accept the order and the seller gets paid. If not, report a problem within the protection window and we'll help."] }
     fees:
       title: Fees
       intro: Selling on PCMarket is currently free. No listing fees, no selling fees.
       sections:
-        now: { heading: Today, body: ["Listing is free and there's no commission on sales during our launch phase. Buyers pay the item price plus the shipping cost set by the seller."] }
-        later: { heading: In the future, body: ["We may introduce a small commission on completed sales and optional paid promotions to highlight listings. We'll announce any change at least 30 days in advance and it will never apply to orders already placed."] }
+        now: { heading: "Today", body: ["Listing is free and there's no commission on sales during our launch phase. Buyers pay the item price plus the shipping cost set by the seller."] }
+        later: { heading: "In the future", body: ["We may introduce a small commission on completed sales and optional paid promotions to highlight listings. We'll announce any change at least 30 days in advance and it will never apply to orders already placed."] }
     shipping_guide:
       title: How to ship your hardware safely
       intro: A well-packed item avoids damage, disputes and unhappy buyers.
       sections:
-        pc: { heading: Shipping a full PC, body: ["Remove or secure the graphics card and large air coolers, or fill the case with foam or air pillows. Use the original box or a double-walled box with at least 5 cm of padding on every side.", "Take photos of the packing process. They help resolve any dispute."] }
-        parts: { heading: Shipping components, body: ["Use anti-static bags for GPUs, motherboards and memory. Protect CPU pins and sockets with their original covers."] }
-        carrier: { heading: Tracking and insurance, body: ["Always ship with a tracked service and add the tracking number to the order within the shipping deadline. For high-value items choose a service with insurance."] }
+        pc: { heading: "Shipping a full PC", body: ["Remove or secure the graphics card and large air coolers, or fill the case with foam or air pillows. Use the original box or a double-walled box with at least 5 cm of padding on every side.", "Take photos of the packing process. They help resolve any dispute."] }
+        parts: { heading: "Shipping components", body: ["Use anti-static bags for GPUs, motherboards and memory. Protect CPU pins and sockets with their original covers."] }
+        carrier: { heading: "Tracking and insurance", body: ["Always ship with a tracked service and add the tracking number to the order within the shipping deadline. For high-value items choose a service with insurance."] }
     photo_guide:
       title: How to take great photos
       intro: Good photos sell faster and at better prices.
       sections:
-        light: { heading: Use natural light, body: ["Shoot near a window during the day. Avoid flash and strong shadows."] }
-        angles: { heading: Show every angle, body: ["Include front, back, sides, connectors and serial numbers. For PCs, show the inside with the side panel removed and the components powered on."] }
-        honest: { heading: Be honest, body: ["Photograph any scratch, dent or defect. Photos must be your own: listings with stock or stolen photos are rejected."] }
+        light: { heading: "Use natural light", body: ["Shoot near a window during the day. Avoid flash and strong shadows."] }
+        angles: { heading: "Show every angle", body: ["Include front, back, sides, connectors and serial numbers. For PCs, show the inside with the side panel removed and the components powered on."] }
+        honest: { heading: "Be honest", body: ["Photograph any scratch, dent or defect. Photos must be your own: listings with stock or stolen photos are rejected."] }
     help:
       title: Help centre
       intro: Answers to the most common questions about buying and selling.
       still_need_help: "Can't find what you're looking for?"
       faqs:
-        buy: { q: How do I buy an item?, a: "Click “Buy now” or add the item to your cart and go to checkout. Choose shipping or local pickup and pay. The seller is notified immediately." }
-        protection: { q: What is buyer protection?, a: "We hold your payment until you confirm the item arrived as described. If it doesn't arrive, arrives damaged or isn't as described, report a problem and you'll get a full refund." }
-        offer: { q: Can I negotiate the price?, a: "Yes, if the seller accepts offers. Click “Make an offer”. The seller has a limited time to accept or decline. If they accept, you can buy at your offer price." }
-        sell: { q: How do I sell?, a: "Click “List an item”, choose a category, add photos, specs and a price. Our team reviews every listing before it goes live, usually within 24 hours." }
-        paid: { q: When do I get paid as a seller?, a: "When the buyer accepts the order, or automatically when the protection window closes after delivery without a reported problem." }
-        shipping: { q: Who pays for shipping?, a: The seller sets the shipping price in the listing. Free shipping listings are marked with a badge. }
-        cancel: { q: Can I cancel an order?, a: "Before payment, yes. After payment, if the seller hasn't shipped within the deadline, you can cancel and get a full refund. Sellers can also cancel paid orders they can't fulfil." }
-        withdrawal: { q: Do I have a right of withdrawal?, a: "When you buy from a professional seller you have the legal right to withdraw within 14 days of delivery. Purchases from private individuals are covered by our buyer protection instead." }
-        account: { q: How do I delete my account or download my data?, a: "Go to Account settings › Privacy & data. You can download a copy of your data or permanently delete your account." }
+        buy: { q: "How do I buy an item?", a: "Click “Buy now” or add the item to your cart and go to checkout. Choose shipping or local pickup and pay. The seller is notified immediately." }
+        protection: { q: "What is buyer protection?", a: "We hold your payment until you confirm the item arrived as described. If it doesn't arrive, arrives damaged or isn't as described, report a problem and you'll get a full refund." }
+        offer: { q: "Can I negotiate the price?", a: "Yes, if the seller accepts offers. Click “Make an offer”. The seller has a limited time to accept or decline. If they accept, you can buy at your offer price." }
+        sell: { q: "How do I sell?", a: "Click “List an item”, choose a category, add photos, specs and a price. Our team reviews every listing before it goes live, usually within 24 hours." }
+        paid: { q: "When do I get paid as a seller?", a: "When the buyer accepts the order, or automatically when the protection window closes after delivery without a reported problem." }
+        shipping: { q: "Who pays for shipping?", a: "The seller sets the shipping price in the listing. Free shipping listings are marked with a badge." }
+        cancel: { q: "Can I cancel an order?", a: "Before payment, yes. After payment, if the seller hasn't shipped within the deadline, you can cancel and get a full refund. Sellers can also cancel paid orders they can't fulfil." }
+        withdrawal: { q: "Do I have a right of withdrawal?", a: "When you buy from a professional seller you have the legal right to withdraw within 14 days of delivery. Purchases from private individuals are covered by our buyer protection instead." }
+        account: { q: "How do I delete my account or download my data?", a: "Go to Account settings › Privacy & data. You can download a copy of your data or permanently delete your account." }
     trust:
       title: Trust & Safety
       hero_title: "Is %{site} safe? Yes."
@@ -58,9 +58,9 @@ en:
       protection_title: Buyer protection on every order
       protection_intro: The biggest difference between us and classifieds sites is that your money is protected until you have your item in hand.
       steps:
-        hold: { title: We hold the payment, body: When you pay, we keep the funds. The seller is only paid after the item is delivered and you've had time to check it. }
-        ship: { title: Your item ships with tracking, body: "The seller must ship within %{ship_days} business days with a tracked service, so you can follow your parcel to your door." }
-        release: { title: You check, then we release, body: "You have %{days} days after delivery to inspect your item. Receive it as described or get your money back." }
+        hold: { title: "We hold the payment", body: "When you pay, we keep the funds. The seller is only paid after the item is delivered and you've had time to check it." }
+        ship: { title: "Your item ships with tracking", body: "The seller must ship within %{ship_days} business days with a tracked service, so you can follow your parcel to your door." }
+        release: { title: "You check, then we release", body: "You have %{days} days after delivery to inspect your item. Receive it as described or get your money back." }
       covered_title: "You're covered for"
       covered:
         - Orders that never arrive
@@ -70,10 +70,10 @@ en:
       covered_footer_html: "For the full policy, see %{protection} and our %{terms}."
       pillars_title: Built by experts, backed by a real community
       pillars:
-        moderation: { title: Human moderation, body: Our team reviews every listing before it goes live and removes anything suspicious. }
-        reviews: { title: Verified reviews, body: Only buyers who completed an order can review a seller. Ratings are public on every store. }
-        payments: { title: Secure payments, body: Payments are processed by a regulated payment provider. We never see your card details. }
-        reports: { title: Report anything, body: Report a listing or user in two clicks. We act quickly and explain our decisions. }
+        moderation: { title: "Human moderation", body: "Our team reviews every listing before it goes live and removes anything suspicious." }
+        reviews: { title: "Verified reviews", body: "Only buyers who completed an order can review a seller. Ratings are public on every store." }
+        payments: { title: "Secure payments", body: "Payments are processed by a regulated payment provider. We never see your card details." }
+        reports: { title: "Report anything", body: "Report a listing or user in two clicks. We act quickly and explain our decisions." }
       tips_title: Stay safe
       tips:
         - "Keep conversations and payments on %{site}. Off-platform payments (bank transfer, Bizum, PayPal Friends) are not protected."
@@ -89,32 +89,32 @@ en:
       faqs:
         scam: { q: "Is %{site} a scam?", a: "No. %{site} exists precisely to prevent scams. Your payment is held until your item arrives and you confirm it matches the listing. If it never arrives or isn't as described, you get a full refund." }
         not_arrived: { q: "What if my item doesn't arrive or isn't as described?", a: "Open a dispute from your order within %{days} days of delivery. We pause the payment to the seller, review the evidence from both sides and refund you if the claim is valid." }
-        refund: { q: How do refunds work?, a: Refunds go back to your original payment method. Most banks show them within 5–10 business days. }
-        payments: { q: How are my payments protected?, a: "Payments are processed by our payment provider. %{site} holds the funds and only releases them to the seller once the order is complete." }
-        inspect: { q: How long do I have to inspect my order?, a: "You have %{days} days after delivery. If you don't report a problem in that time, the order completes automatically." }
+        refund: { q: "How do refunds work?", a: "Refunds go back to your original payment method. Most banks show them within 5–10 business days." }
+        payments: { q: "How are my payments protected?", a: "Payments are processed by our payment provider. %{site} holds the funds and only releases them to the seller once the order is complete." }
+        inspect: { q: "How long do I have to inspect my order?", a: "You have %{days} days after delivery. If you don't report a problem in that time, the order completes automatically." }
     sell:
       title: Sell on PCMarket
       hero_title: "Start selling on %{site}"
       intro: "Reach thousands of gamers looking for hardware. Listing is free and you get paid safely."
       cta: List your gear
       perks:
-        fees: { title: No fees, body: Selling is free during our launch phase. }
-        protection: { title: Seller protection, body: Payments are confirmed before you ship. No chargeback surprises. }
-        chat: { title: Built-in chat, body: Answer questions and negotiate offers without sharing your phone number. }
-        stores: { title: Pro stores, body: "Shops get a branded store page, discount codes and multi-unit listings." }
+        fees: { title: "No fees", body: "Selling is free during our launch phase." }
+        protection: { title: "Seller protection", body: "Payments are confirmed before you ship. No chargeback surprises." }
+        chat: { title: "Built-in chat", body: "Answer questions and negotiate offers without sharing your phone number." }
+        stores: { title: "Pro stores", body: "Shops get a branded store page, discount codes and multi-unit listings." }
       how_title: How selling works
       steps:
-        list: { title: List it, body: Upload your own photos and specs. Our database of options makes it quick. }
-        review: { title: We review it, body: Our team checks every listing to keep the marketplace trustworthy. }
-        sell: { title: Ship it, body: "When it sells we email you. Ship within %{ship_days} business days and add the tracking." }
-        paid: { title: Get paid, body: "You're paid when the buyer accepts the order or %{days} days after delivery." }
+        list: { title: "List it", body: "Upload your own photos and specs. Our database of options makes it quick." }
+        review: { title: "We review it", body: "Our team checks every listing to keep the marketplace trustworthy." }
+        sell: { title: "Ship it", body: "When it sells we email you. Ship within %{ship_days} business days and add the tracking." }
+        paid: { title: "Get paid", body: "You're paid when the buyer accepts the order or %{days} days after delivery." }
       faq_title: Seller FAQ
       faqs:
-        why: { q: Why sell here and not on a general classifieds site?, a: Our buyers are looking specifically for PC hardware, and our filters understand specs. Protected payments mean fewer time-wasters and no scams. }
-        business: { q: I'm a shop. Can I sell?, a: "Yes. Register as a professional seller in Store settings, add your company details and you'll get a branded store, multi-unit listings and discount codes." }
-        protection: { q: How am I protected as a seller?, a: Buyers pay upfront and the funds are confirmed before you ship. Disputes are reviewed by our team with evidence from both sides. }
-        elsewhere: { q: Can I list my items on other sites too?, a: "Yes, but keep your stock up to date. If an item sells elsewhere, pause or remove the listing immediately." }
-        paid: { q: When do I get paid?, a: "Payouts are released when the buyer accepts the order or automatically when the buyer protection window closes." }
+        why: { q: "Why sell here and not on a general classifieds site?", a: "Our buyers are looking specifically for PC hardware, and our filters understand specs. Protected payments mean fewer time-wasters and no scams." }
+        business: { q: "I'm a shop. Can I sell?", a: "Yes. Register as a professional seller in Store settings, add your company details and you'll get a branded store, multi-unit listings and discount codes." }
+        protection: { q: "How am I protected as a seller?", a: "Buyers pay upfront and the funds are confirmed before you ship. Disputes are reviewed by our team with evidence from both sides." }
+        elsewhere: { q: "Can I list my items on other sites too?", a: "Yes, but keep your stock up to date. If an item sells elsewhere, pause or remove the listing immediately." }
+        paid: { q: "When do I get paid?", a: "Payouts are released when the buyer accepts the order or automatically when the buyer protection window closes." }
       recently_sold: Recently sold
       final_title: Start your journey as a seller
     credits:

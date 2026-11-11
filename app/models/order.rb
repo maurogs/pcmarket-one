@@ -71,7 +71,7 @@ class Order < ApplicationRecord
   end
 
   def confirm_delivery!(actor)
-    raise NotAllowed unless [buyer, seller].include?(actor) || actor&.staff?
+    raise NotAllowed unless [ buyer, seller ].include?(actor) || actor&.staff?
 
     transition!(:delivered, actor: actor)
   end
@@ -111,7 +111,7 @@ class Order < ApplicationRecord
     Setting.enabled?(:reviews_enabled) && completed? && user == buyer && (review.nil? || review.new_record?)
   end
 
-  def participant?(user) = user && [buyer_id, seller_id].include?(user.id)
+  def participant?(user) = user && [ buyer_id, seller_id ].include?(user.id)
 
   def title
     items.first&.title.to_s + (items.size > 1 ? " +#{items.size - 1}" : "")

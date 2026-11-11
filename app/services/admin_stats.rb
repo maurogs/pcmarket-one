@@ -29,7 +29,7 @@ class AdminStats
 
   def top_categories
     Listing.visible.joins(:category).group(:category_id).order(count_all: :desc).limit(6).count
-      .map { |id, count| [Category.cached_find(id)&.name || id, count] }
+      .map { |id, count| [ Category.cached_find(id)&.name || id, count ] }
   end
 
   def oldest_pending = Listing.pending_review.includes(:user).order(:submitted_at).limit(8)
@@ -38,6 +38,6 @@ class AdminStats
 
   def daily(scope, column)
     data = scope.group("DATE(#{scope.table_name}.#{column})").count
-    (since.to_date..Date.current).map { |day| [day, data[day].to_i] }
+    (since.to_date..Date.current).map { |day| [ day, data[day].to_i ] }
   end
 end

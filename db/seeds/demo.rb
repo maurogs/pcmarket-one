@@ -21,7 +21,7 @@ OPTIONS = FilterDefinition.includes(:filter_options).index_by(&:key).transform_v
 
 def opt(key, value) = OPTIONS.dig(key, value)
 def pick_region = (rand < 0.8 ? POPULAR_REGIONS : SPAIN_REGIONS).sample
-def price_between(min, max) = (rand(min.to_f..max.to_f) / 5).round * 5 - [0, 0.01, 0.1].sample
+def price_between(min, max) = (rand(min.to_f..max.to_f) / 5).round * 5 - [ 0, 0.01, 0.1 ].sample
 
 # --- reset previous demo data --------------------------------------------------
 demo_users = User.where("email LIKE ?", "%@demo.pcmarket.example")
@@ -31,15 +31,23 @@ demo_users.find_each(&:destroy)
 ImageCredit.delete_all
 
 # --- photos --------------------------------------------------------------------
-queries = (DEMO_CATALOG.values.map(&:first) + DEMO_IMAGES.values.flatten + ["store logo technology"]).uniq
+queries = (DEMO_CATALOG.values.map(&:first) + DEMO_IMAGES.values.flatten + [ "store logo technology" ]).uniq
 puts "\n  downloading photos for #{queries.size} queries (cached in tmp/seed_images)"
 SeedImages.prefetch(queries)
 PHOTOS = queries.index_with { |q| SeedImages.blobs_for(q) }
 def photos_for(category_slug)
-  queries = DEMO_IMAGES[category_slug] || [DEMO_CATALOG.dig(category_slug, 0)]
+  queries = DEMO_IMAGES[category_slug] || [ DEMO_CATALOG.dig(category_slug, 0) ]
   pool = queries.compact.flat_map { |q| PHOTOS[q] }.compact
   pool = PHOTOS.values.flatten if pool.empty?
   pool.sample(rand(2..4))
+end
+
+# Collection cover images (themes, gamer profiles, games).
+COLLECTION_PHOTOS = (PHOTOS["computer case rgb"] + PHOTOS["custom pc build"] + PHOTOS["gaming computer"]).compact
+Collection.find_each.with_index do |collection, index|
+  next if collection.image.attached? || COLLECTION_PHOTOS.empty?
+
+  collection.image.attach(COLLECTION_PHOTOS[index % COLLECTION_PHOTOS.size])
 end
 
 # --- users ---------------------------------------------------------------------
@@ -74,11 +82,11 @@ admin.update!(role: :admin)
 User.find_by(email: "moderator@pcmarket.example") || create_user(email: "moderator@pcmarket.example", username: "moderador", role: :moderator, first_name: "Marta", last_name: "Moderadora")
 
 STORES = [
-  ["Tormenta PCs", "Gaming PCs montados y testeados en Madrid", "#4f46e5"], ["Byte Barcelona", "Componentes revisados con garantía", "#0891b2"],
-  ["Silicio Sevilla", "Hardware de segunda vida", "#ea580c"], ["RGB Factory", "Builds con mucha luz y personalidad", "#db2777"],
-  ["Retro Rincón", "Consolas y videojuegos retro", "#65a30d"], ["Valencia Hardware", "Tienda de informática desde 2009", "#0f766e"],
-  ["NeoBuilds", "Workstations para creadores e IA local", "#7c3aed"], ["Píxel Norte", "Periféricos y monitores gaming", "#2563eb"],
-  ["Overclock Bilbao", "Rendimiento máximo, precios justos", "#dc2626"], ["Málaga Gaming Lab", "PCs a medida en la Costa del Sol", "#d97706"]
+  [ "Tormenta PCs", "Gaming PCs montados y testeados en Madrid", "#4f46e5" ], [ "Byte Barcelona", "Componentes revisados con garantía", "#0891b2" ],
+  [ "Silicio Sevilla", "Hardware de segunda vida", "#ea580c" ], [ "RGB Factory", "Builds con mucha luz y personalidad", "#db2777" ],
+  [ "Retro Rincón", "Consolas y videojuegos retro", "#65a30d" ], [ "Valencia Hardware", "Tienda de informática desde 2009", "#0f766e" ],
+  [ "NeoBuilds", "Workstations para creadores e IA local", "#7c3aed" ], [ "Píxel Norte", "Periféricos y monitores gaming", "#2563eb" ],
+  [ "Overclock Bilbao", "Rendimiento máximo, precios justos", "#dc2626" ], [ "Málaga Gaming Lab", "PCs a medida en la Costa del Sol", "#d97706" ]
 ].freeze
 
 stores = STORES.each_with_index.map do |(name, tagline, color), index|
@@ -87,7 +95,7 @@ stores = STORES.each_with_index.map do |(name, tagline, color), index|
                      seller_type: :business, legal_name: "#{name} S.L.", tax_id: "B#{rand(10_000_000..99_999_999)}", business_address: "#{Faker::Address.street_address}, #{CITY_BY_REGION[region.name]}",
                      trader_certified_at: 50.days.ago, verified_at: (index < 7 ? 40.days.ago : nil), region: region, city: CITY_BY_REGION[region.name],
                      bio: "#{tagline}. Envíos en 24/48 h a toda España. Todos los equipos se prueban con benchmarks antes de enviarse.",
-                     return_window_days: [14, 30].sample, store_policies: "Garantía de 6 meses en equipos completos. Embalaje reforzado con espuma.", created_at: rand(200..900).days.ago)
+                     return_window_days: [ 14, 30 ].sample, store_policies: "Garantía de 6 meses en equipos completos. Embalaje reforzado con espuma.", created_at: rand(200..900).days.ago)
   if (logo = logo_png(name.split.map(&:first).join.first(3), color))
     user.store_logo.attach(io: File.open(logo), filename: "logo.png", content_type: "image/png")
   end
@@ -137,7 +145,7 @@ def build_listing(seller, category, title:, price:, specs:, brand:, index:, cond
     price: price, original_price: on_sale ? (price * rand(1.08..1.25)).round : nil,
     condition: condition || (seller.business? ? %i[brand_new open_box like_new good].sample : Listing.conditions.keys.sample(random: Random.new(index))),
     status: status, specs: specs, quantity: seller.business? && rand < 0.3 ? rand(2..8) : 1,
-    shipping_available: true, shipping_price: [0, 0, 4.95, 6.99, 9.95, 14.95].sample, local_pickup: rand < 0.4, handling_days: [1, 2, 3].sample,
+    shipping_available: true, shipping_price: [ 0, 0, 4.95, 6.99, 9.95, 14.95 ].sample, local_pickup: rand < 0.4, handling_days: [ 1, 2, 3 ].sample,
     allow_offers: rand < 0.75, featured: rand < 0.06, tags: [],
     submitted_at: published_at - 2.hours, published_at: %i[published sold paused].include?(status) ? published_at : nil,
     rejection_reason: status == :rejected ? "Las fotos no muestran el producto real. Sube fotos propias, por favor." : nil,
@@ -166,8 +174,8 @@ TAGS = OPTIONS["seller_tags"].keys
   cooler = gpu.score > 20_000 ? %w[aio aio custom_loop air].sample : %w[air air aio].sample
   base = 250 + gpu.score * 0.042 + cpu.score * 0.018 + (ram == "64gb" ? 120 : 0) + (storage == "4tb" ? 150 : 0)
   price = price_between(base * 0.88, base * 1.12)
-  name = ["Gaming PC", "PC Gaming", "PC Gamer", "Torre gaming", "Equipo gaming"].sample
-  prefix = ["", "", "\"#{%w[Nébula Tormenta Glaciar Fénix Aurora Vortex Sakura Titán Eclipse Cobalto].sample}\" "].sample
+  name = [ "Gaming PC", "PC Gaming", "PC Gamer", "Torre gaming", "Equipo gaming" ].sample
+  prefix = [ "", "", "\"#{%w[Nébula Tormenta Glaciar Fénix Aurora Vortex Sakura Titán Eclipse Cobalto].sample}\" " ].sample
   title = "#{prefix}#{name} #{cpu.label('es').sub(/^(Intel Core |AMD )/, '')} | #{gpu.label('es').sub(/^(GeForce |Radeon )/, '')} | #{ram.upcase} #{ram_type.upcase} | #{storage.upcase} NVMe"
   specs = { "cpu_brand" => cpu.value.start_with?("r", "tr") ? "amd" : "intel", "cpu_model" => cpu.value, "cpu_cores" => %w[c6 c8 c8 c12 c16].sample,
             "cpu_cooler_type" => cooler, "gpu_chipset" => gpu.value.start_with?("rx") ? "amd" : (gpu.value.start_with?("arc") ? "intel" : "nvidia"),
@@ -178,35 +186,35 @@ TAGS = OPTIONS["seller_tags"].keys
             "warranty" => %w[seller none manufacturer].sample }
   seller = (stores * 2 + individuals.first(15)).sample
   listing = build_listing(seller, gaming, title: title, price: price, specs: specs, brand: nil, index: index)
-  listing.tags = (TAGS.sample(rand(1..3)) + (color == "white" ? ["whiteout"] : []) + (specs["lighting"] == "argb" ? ["rgb"] : [])).uniq
-  listing.labels = [price < 800 ? "value_pc" : (price < 1600 ? "midrange_pc" : "pro_pc")] + (rand < 0.05 ? ["rare"] : [])
+  listing.tags = (TAGS.sample(rand(1..3)) + (color == "white" ? [ "whiteout" ] : []) + (specs["lighting"] == "argb" ? [ "rgb" ] : [])).uniq
+  listing.labels = [ price < 800 ? "value_pc" : (price < 1600 ? "midrange_pc" : "pro_pc") ] + (rand < 0.05 ? [ "rare" ] : [])
   listings << listing
   index += 1
 end
 
 gpus = Category.find_by!(slug: "gpus")
-GPU_BRANDS = ["ASUS TUF Gaming", "ASUS ROG Strix", "MSI Gaming X Trio", "MSI Ventus 2X", "Gigabyte Gaming OC", "Gigabyte Eagle", "Zotac Twin Edge", "Sapphire Pulse", "Sapphire Nitro+", "PowerColor Hellhound", "XFX Speedster", "Founders Edition"].freeze
+GPU_BRANDS = [ "ASUS TUF Gaming", "ASUS ROG Strix", "MSI Gaming X Trio", "MSI Ventus 2X", "Gigabyte Gaming OC", "Gigabyte Eagle", "Zotac Twin Edge", "Sapphire Pulse", "Sapphire Nitro+", "PowerColor Hellhound", "XFX Speedster", "Founders Edition" ].freeze
 90.times do
   gpu = gpu_options.sample
   maker = gpu.value.start_with?("rx") ? GPU_BRANDS.grep(/Sapphire|PowerColor|XFX|ASUS|Gigabyte/).sample : GPU_BRANDS.reject { |b| b =~ /Sapphire|PowerColor|XFX/ }.sample
-  memory = gpu.label("es")[/(\d+)GB/, 1] || { "rtx_3060" => 12, "rtx_4060" => 8, "rtx_4070" => 12, "rtx_4090" => 24, "rtx_5090" => 32, "rx_7900xtx" => 24, "rx_9070xt" => 16 }.fetch(gpu.value, [8, 12, 16].sample)
+  memory = gpu.label("es")[/(\d+)GB/, 1] || { "rtx_3060" => 12, "rtx_4060" => 8, "rtx_4070" => 12, "rtx_4090" => 24, "rtx_5090" => 32, "rx_7900xtx" => 24, "rx_9070xt" => 16 }.fetch(gpu.value, [ 8, 12, 16 ].sample)
   price = price_between(gpu.score * 0.026 + 30, gpu.score * 0.034 + 40)
   title = "#{gpu.label('es')} #{maker} #{memory}GB"
   specs = { "gpu_chipset" => gpu.value.start_with?("rx") ? "amd" : (gpu.value.start_with?("arc") ? "intel" : "nvidia"), "gpu_model" => gpu.value,
             "gpu_memory" => "#{memory}gb", "lighting" => %w[argb none static].sample, "includes_box" => %w[yes no].sample, "warranty" => %w[manufacturer seller none].sample }
   specs.delete("gpu_memory") unless opt("gpu_memory", specs["gpu_memory"])
   listing = build_listing(sellers.sample, gpus, title: title, price: price, specs: specs, brand: maker.split.first, index: index)
-  listing.labels = [price < 300 ? "value_gpu" : (price < 700 ? "midrange_gpu" : "pro_gpu")]
+  listing.labels = [ price < 300 ? "value_gpu" : (price < 700 ? "midrange_gpu" : "pro_gpu") ]
   listings << listing
   index += 1
 end
 
 LAPTOPS = [
-  ["gaming-laptops", "ASUS ROG Strix G16 i7-13650HX RTX 4060", 950, 1250, "i7_13700k", "rtx_4060", "asus", "16"], ["gaming-laptops", "Lenovo Legion Pro 5 Ryzen 7 RTX 4070", 1150, 1450, "r7_7700x", "rtx_4070", "lenovo", "16"],
-  ["gaming-laptops", "MSI Katana 15 i5 RTX 3050", 550, 700, "i5_12400f", "other", "msi", "15"], ["gaming-laptops", "Razer Blade 14 RTX 4070", 1500, 1900, "r9_7950x", "rtx_4070", "razer", "14"],
-  ["everyday-laptops", "Dell XPS 13 Plus i7 16GB", 750, 950, "i7_12700k", "other", "dell", "13"], ["everyday-laptops", "Lenovo ThinkPad X1 Carbon Gen 11", 900, 1150, "i7_13700k", "other", "lenovo", "14"],
-  ["everyday-laptops", "HP Pavilion 15 Ryzen 5 16GB", 380, 500, "r5_5600", "other", "hp", "15"], ["macbooks", "MacBook Air M2 13\" 8/256", 680, 820, "apple_m2", "other", "apple", "13"],
-  ["macbooks", "MacBook Pro 14\" M3 18/512", 1400, 1700, "apple_m3", "other", "apple", "14"], ["macbooks", "MacBook Pro 16\" M4 Pro 24/1TB", 2300, 2700, "apple_m4_pro", "other", "apple", "16"]
+  [ "gaming-laptops", "ASUS ROG Strix G16 i7-13650HX RTX 4060", 950, 1250, "i7_13700k", "rtx_4060", "asus", "16" ], [ "gaming-laptops", "Lenovo Legion Pro 5 Ryzen 7 RTX 4070", 1150, 1450, "r7_7700x", "rtx_4070", "lenovo", "16" ],
+  [ "gaming-laptops", "MSI Katana 15 i5 RTX 3050", 550, 700, "i5_12400f", "other", "msi", "15" ], [ "gaming-laptops", "Razer Blade 14 RTX 4070", 1500, 1900, "r9_7950x", "rtx_4070", "razer", "14" ],
+  [ "everyday-laptops", "Dell XPS 13 Plus i7 16GB", 750, 950, "i7_12700k", "other", "dell", "13" ], [ "everyday-laptops", "Lenovo ThinkPad X1 Carbon Gen 11", 900, 1150, "i7_13700k", "other", "lenovo", "14" ],
+  [ "everyday-laptops", "HP Pavilion 15 Ryzen 5 16GB", 380, 500, "r5_5600", "other", "hp", "15" ], [ "macbooks", "MacBook Air M2 13\" 8/256", 680, 820, "apple_m2", "other", "apple", "13" ],
+  [ "macbooks", "MacBook Pro 14\" M3 18/512", 1400, 1700, "apple_m3", "other", "apple", "14" ], [ "macbooks", "MacBook Pro 16\" M4 Pro 24/1TB", 2300, 2700, "apple_m4_pro", "other", "apple", "16" ]
 ].freeze
 35.times do
   slug, title, min, max, cpu, gpu, brand, screen = LAPTOPS.sample
@@ -216,9 +224,9 @@ LAPTOPS = [
   index += 1
 end
 
-WORKSTATIONS = [["creator-pcs", "Workstation Ryzen 9 7950X | RTX 4080 Super | 128GB | 4TB", 3200, 3800, "r9_7950x", "rtx_4080s"],
-                ["ai-rigs", "Rig IA local 2x RTX 3090 24GB | Threadripper | 256GB", 4200, 5200, "tr_7970x", "rtx_3090"],
-                ["creator-pcs", "Estación de edición i9-14900K | RTX 4070 Ti Super | 64GB", 2300, 2800, "i9_14900k", "rtx_4070tis"]].freeze
+WORKSTATIONS = [ [ "creator-pcs", "Workstation Ryzen 9 7950X | RTX 4080 Super | 128GB | 4TB", 3200, 3800, "r9_7950x", "rtx_4080s" ],
+                [ "ai-rigs", "Rig IA local 2x RTX 3090 24GB | Threadripper | 256GB", 4200, 5200, "tr_7970x", "rtx_3090" ],
+                [ "creator-pcs", "Estación de edición i9-14900K | RTX 4070 Ti Super | 64GB", 2300, 2800, "i9_14900k", "rtx_4070tis" ] ].freeze
 12.times do
   slug, title, min, max, cpu, gpu = WORKSTATIONS.sample
   specs = { "cpu_model" => cpu, "gpu_model" => gpu, "memory_capacity" => "128gb", "storage_capacity" => "4tb", "storage_interface" => "nvme_ssd" }
@@ -258,7 +266,7 @@ end
 
 saved_listings = Listing.where(user: User.where("email LIKE ?", "%@demo.pcmarket.example"))
 saved_listings.sold.includes(:user).find_each do |listing|
-  buyer = (buyers - [listing.user]).sample
+  buyer = (buyers - [ listing.user ]).sample
   created = listing.published_at + rand(1..5).days
   order = Order.create!(buyer: buyer, seller: listing.user, checkout_reference: SecureRandom.uuid, email: buyer.email, status: :completed,
                         subtotal_cents: listing.price_cents, shipping_cents: listing.shipping_price_cents, total_cents: listing.price_cents + listing.shipping_price_cents,
@@ -270,13 +278,13 @@ saved_listings.sold.includes(:user).find_each do |listing|
   listing.update_columns(quantity: 0, sold_count: 1, updated_at: order.completed_at)
   next if rand < 0.2
 
-  review = Review.new(order: order, reviewer: buyer, seller: listing.user, rating: [5, 5, 5, 4, 4, 3].sample, body: REVIEW_TEXTS.sample, created_at: order.completed_at + 1.day)
+  review = Review.new(order: order, reviewer: buyer, seller: listing.user, rating: [ 5, 5, 5, 4, 4, 3 ].sample, body: REVIEW_TEXTS.sample, created_at: order.completed_at + 1.day)
   review.save!
 end
 
 # A few orders in progress so dashboards show every state.
 saved_listings.published.where(quantity: 2..).limit(8).each_with_index do |listing, i|
-  buyer = (buyers - [listing.user]).sample
+  buyer = (buyers - [ listing.user ]).sample
   status = %i[paid shipped delivered disputed paid shipped delivered paid][i]
   order = Order.create!(buyer: buyer, seller: listing.user, checkout_reference: SecureRandom.uuid, email: buyer.email, status: status,
                         subtotal_cents: listing.price_cents, shipping_cents: listing.shipping_price_cents, total_cents: listing.price_cents + listing.shipping_price_cents,
@@ -301,10 +309,10 @@ buyers.first(10).each do |buyer|
   SavedSearch.create!(user: buyer, name: "RTX 4070 por menos de 600 €", query: { "category" => "gpus", "f" => { "gpu_model" => %w[rtx_4070 rtx_4070s] }, "max_price" => "600" })
 end
 
-QUESTIONS = ["¡Hola! ¿Sigue disponible?", "¿Tiene algún defecto que no se vea en las fotos?", "¿Harías envío a Canarias?", "¿Puedo pasar a verlo este fin de semana?"].freeze
-ANSWERS = ["¡Hola! Sí, sigue disponible.", "Ninguno, está como nuevo. Te puedo mandar un vídeo funcionando.", "Sí, sin problema. El envío sale unos euros más caro.", "Claro, escríbeme y quedamos."].freeze
+QUESTIONS = [ "¡Hola! ¿Sigue disponible?", "¿Tiene algún defecto que no se vea en las fotos?", "¿Harías envío a Canarias?", "¿Puedo pasar a verlo este fin de semana?" ].freeze
+ANSWERS = [ "¡Hola! Sí, sigue disponible.", "Ninguno, está como nuevo. Te puedo mandar un vídeo funcionando.", "Sí, sin problema. El envío sale unos euros más caro.", "Claro, escríbeme y quedamos." ].freeze
 visible.sample(25).each do |listing|
-  buyer = (buyers - [listing.user]).sample
+  buyer = (buyers - [ listing.user ]).sample
   conversation = Conversation.create!(listing: listing, buyer: buyer, seller: listing.user)
   q = rand(QUESTIONS.size)
   conversation.post!(sender: buyer, body: QUESTIONS[q])

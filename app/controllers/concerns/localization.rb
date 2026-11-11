@@ -26,7 +26,7 @@ module Localization
   end
 
   def enabled_locales
-    @enabled_locales ||= (Setting.get(:locales_enabled) & I18n.available_locales.map(&:to_s)).presence || [I18n.default_locale.to_s]
+    @enabled_locales ||= (Setting.get(:locales_enabled) & I18n.available_locales.map(&:to_s)).presence || [ I18n.default_locale.to_s ]
   end
 
   def current_country
@@ -34,7 +34,8 @@ module Localization
       code = cookies[COUNTRY_COOKIE].to_s.upcase
       enabled = Country.enabled_codes
       code = Setting.get(:default_country) unless enabled.include?(code)
-      Country.find_by(code: code) || Country.default
+      # Unsaved fallback keeps pages working before the reference seeds run.
+      Country.find_by(code: code) || Country.default || Country.new(code: "ES", currency: "EUR", default_locale: "es")
     end
   end
 end

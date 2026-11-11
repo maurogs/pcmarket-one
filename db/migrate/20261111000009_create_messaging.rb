@@ -9,9 +9,9 @@ class CreateMessaging < ActiveRecord::Migration[8.1]
       t.integer :seller_unread_count, null: false, default: 0
       t.timestamps
     end
-    add_index :conversations, [:listing_id, :buyer_id, :seller_id], unique: true, name: "index_conversations_uniqueness"
-    add_index :conversations, [:buyer_id, :last_message_at]
-    add_index :conversations, [:seller_id, :last_message_at]
+    add_index :conversations, [ :listing_id, :buyer_id, :seller_id ], unique: true, name: "index_conversations_uniqueness"
+    add_index :conversations, [ :buyer_id, :last_message_at ]
+    add_index :conversations, [ :seller_id, :last_message_at ]
 
     create_table :offers do |t|
       t.references :listing, null: false, foreign_key: true
@@ -24,7 +24,7 @@ class CreateMessaging < ActiveRecord::Migration[8.1]
       t.datetime :responded_at
       t.timestamps
     end
-    add_index :offers, [:status, :expires_at]
+    add_index :offers, [ :status, :expires_at ]
 
     create_table :messages do |t|
       t.references :conversation, null: false, foreign_key: true
@@ -34,6 +34,6 @@ class CreateMessaging < ActiveRecord::Migration[8.1]
       t.integer :kind, null: false, default: 0
       t.timestamps
     end
-    add_index :messages, [:conversation_id, :created_at]
+    add_index :messages, [ :conversation_id, :created_at ]
   end
 end

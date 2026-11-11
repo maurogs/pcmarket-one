@@ -14,11 +14,18 @@
     </ol>
   </nav>
 
-  <div class="mt-4 grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
-    <div class="min-w-0">
+  <div class="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:grid-rows-[auto_1fr] lg:gap-x-8">
+    <div class="min-w-0 lg:col-start-1">
       <%= render "listings/gallery", listing: @listing %>
+    </div>
 
-      <section class="panel mt-6" aria-labelledby="overview-heading">
+    <%# On phones the buy box follows the gallery; on desktop it is a sticky right column. %>
+    <aside class="lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">
+      <%= render "listings/buy_box", listing: @listing, details: @details %>
+    </aside>
+
+    <div class="min-w-0 lg:col-start-1">
+      <section class="panel" aria-labelledby="overview-heading">
         <h2 id="overview-heading" class="font-display text-xl font-bold"><%= t(".overview") %></h2>
         <dl class="mt-4 grid grid-cols-[140px_1fr] gap-y-2 text-sm">
           <dt class="text-ink-500"><%= t(".condition") %></dt><dd class="font-medium"><%= condition_label(@listing.condition) %></dd>
@@ -86,10 +93,6 @@
         </div>
       </section>
     </div>
-
-    <aside class="lg:sticky lg:top-24 lg:self-start">
-      <%= render "listings/buy_box", listing: @listing, details: @details %>
-    </aside>
   </div>
 
   <%= render "shared/listing_row", title: t(".similar"), listings: @details.similar, link: category_path(@listing.category) %>

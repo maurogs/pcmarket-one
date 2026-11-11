@@ -19,6 +19,6 @@ class CreateCountriesAndRegions < ActiveRecord::Migration[8.1]
       t.integer :position, null: false, default: 0
       t.timestamps
     end
-    add_index :regions, [:country_id, :code], unique: true
+    add_index :regions, [ :country_id, :code ], unique: true
   end
 end

@@ -11,7 +11,7 @@ class Cart < ApplicationRecord
     raise ArgumentError, "own_listing" if user && listing.user_id == user.id
 
     item = items.find_or_initialize_by(listing: listing)
-    item.quantity = offer ? 1 : [item.quantity.to_i + quantity, listing.quantity].min.clamp(1, listing.quantity)
+    item.quantity = offer ? 1 : [ item.quantity.to_i + quantity, listing.quantity ].min.clamp(1, listing.quantity)
     item.offer = offer if offer
     item.save!
     item
@@ -47,7 +47,7 @@ class Cart < ApplicationRecord
   end
 
   def groups_by_seller
-    items.includes(:offer, listing: [:user, { photos_attachments: :blob }]).group_by { |item| item.listing.user }
+    items.includes(:offer, listing: [ :user, { photos_attachments: :blob } ]).group_by { |item| item.listing.user }
   end
 
   def subtotal_cents = items.includes(:listing, :offer).sum(&:total_cents)

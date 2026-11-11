@@ -40,7 +40,7 @@ class Admin::LegalPagesController < Admin::BaseController
     I18n.with_locale(page.locale) do
       document = LegalDocument.new(page.slug, country)
       page.title = document.title
-      page.body = document.sections.map { |s| (["## #{s[:heading]}"] + s[:paragraphs]).join("\n\n") }.join("\n\n")
+      page.body = document.sections.map { |s| ([ "## #{s[:heading]}" ] + s[:paragraphs]).join("\n\n") }.join("\n\n")
     end
   end
 end

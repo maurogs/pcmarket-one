@@ -50,7 +50,7 @@ class Category < ApplicationRecord
   end
 
   def path
-    ancestors + [self]
+    ancestors + [ self ]
   end
 
   def root
@@ -58,8 +58,8 @@ class Category < ApplicationRecord
   end
 
   def descendant_ids
-    ids = [id]
-    frontier = [id]
+    ids = [ id ]
+    frontier = [ id ]
     while frontier.any?
       frontier = frontier.flat_map { |parent_id| Category.tree[:index].fetch(parent_id, []) }
       ids.concat(frontier)
@@ -76,7 +76,7 @@ class Category < ApplicationRecord
     @applicable_filters ||= begin
       category_ids = path.map(&:id)
       CategoryFilter.where(category_id: category_ids).includes(filter_definition: :filter_options).to_a
-        .sort_by { |link| [category_ids.index(link.category_id), link.position, link.filter_definition.position] }
+        .sort_by { |link| [ category_ids.index(link.category_id), link.position, link.filter_definition.position ] }
         .map(&:filter_definition).select(&:active).uniq
     end
   end

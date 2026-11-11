@@ -12,7 +12,7 @@ class CreatePlatformTables < ActiveRecord::Migration[8.1]
       t.datetime :resolved_at
       t.timestamps
     end
-    add_index :reports, [:status, :created_at]
+    add_index :reports, [ :status, :created_at ]
 
     create_table :support_tickets do |t|
       t.references :user, foreign_key: true
@@ -25,7 +25,7 @@ class CreatePlatformTables < ActiveRecord::Migration[8.1]
       t.text :internal_note
       t.timestamps
     end
-    add_index :support_tickets, [:status, :created_at]
+    add_index :support_tickets, [ :status, :created_at ]
 
     create_table :newsletter_subscriptions do |t|
       t.string :email, null: false
@@ -51,7 +51,7 @@ class CreatePlatformTables < ActiveRecord::Migration[8.1]
       t.timestamps
     end
     add_index :collections, :slug, unique: true
-    add_index :collections, [:kind, :active, :position]
+    add_index :collections, [ :kind, :active, :position ]
 
     create_table :games do |t|
       t.string :slug, null: false
@@ -84,7 +84,7 @@ class CreatePlatformTables < ActiveRecord::Migration[8.1]
       t.integer :status, null: false, default: 0
       t.timestamps
     end
-    add_index :promotions, [:status, :ends_at]
+    add_index :promotions, [ :status, :ends_at ]
 
     create_table :legal_pages do |t|
       t.string :slug, null: false
@@ -95,7 +95,7 @@ class CreatePlatformTables < ActiveRecord::Migration[8.1]
       t.boolean :published, null: false, default: true
       t.timestamps
     end
-    add_index :legal_pages, [:slug, :country_code, :locale], unique: true
+    add_index :legal_pages, [ :slug, :country_code, :locale ], unique: true
 
     create_table :audit_logs do |t|
       t.references :actor, foreign_key: { to_table: :users }

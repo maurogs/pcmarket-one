@@ -58,7 +58,7 @@ class Admin::FilterDefinitionsController < Admin::BaseController
     permitted = params.require(:filter_definition).permit(
       :key, :kind, :unit, :position, :active, :collapsed, :in_listing_form, :required, :show_on_card,
       *translated_attributes(:name), category_ids: [],
-      filter_options_attributes: [:id, :value, :position, :featured, :score, :buyback_cents, :_destroy, *translated_attributes(:label)]
+      filter_options_attributes: [ :id, :value, :position, :featured, :score, :buyback_cents, :_destroy, *translated_attributes(:label) ]
     )
     Array(permitted[:filter_options_attributes]&.values).each do |option|
       metadata = { "score" => option.delete(:score).presence&.to_i, "buyback_cents" => option.delete(:buyback_cents).presence&.to_i }.compact

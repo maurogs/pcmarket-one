@@ -1,16 +1,16 @@
 <% cache ["mega_menu/v1", I18n.locale, Category.maximum(:updated_at), feature?(:pc_finder_enabled), feature?(:sell_to_us_enabled)] do %>
   <nav class="relative hidden border-t border-ink-100 lg:block dark:border-ink-800" aria-label="<%= t("layout.main_nav") %>" data-controller="mega-menu" data-action="keydown.esc->mega-menu#close mouseleave->mega-menu#close">
-    <ul class="container-page flex items-center gap-1">
-      <li><%= link_to t("layout.new"), listings_path(sort: "newest"), class: "block px-3 py-3 text-[13px] font-semibold uppercase tracking-wider hover:text-brand-700 dark:hover:text-brand-300" %></li>
+    <ul class="container-page flex items-center gap-0.5 overflow-x-auto whitespace-nowrap [scrollbar-width:none]">
+      <li><%= link_to t("layout.new"), listings_path(sort: "newest"), class: "block px-2.5 py-3 text-[12px] font-semibold uppercase tracking-wide hover:text-brand-700 dark:hover:text-brand-300" %></li>
       <% Category.menu.each do |root| %>
         <% children = Category.cached_children_of(root.id) %>
         <li data-mega-menu-target="item">
-          <%= link_to category_path(root), class: "flex items-center gap-1 border-b-2 border-transparent px-3 py-3 text-[13px] font-semibold uppercase tracking-wider hover:border-brand-600 hover:text-brand-700 aria-expanded:border-brand-600 dark:hover:text-brand-300",
+          <%= link_to category_path(root), class: "flex items-center gap-1 border-b-2 border-transparent px-2.5 py-3 text-[12px] font-semibold uppercase tracking-wide hover:border-brand-600 hover:text-brand-700 aria-expanded:border-brand-600 dark:hover:text-brand-300",
                 aria: { expanded: false, haspopup: children.any? }, data: { action: "mouseenter->mega-menu#open focus->mega-menu#open", mega_menu_target: "trigger" } do %>
             <%= root.name %>
           <% end %>
           <% if children.any? %>
-            <div class="absolute inset-x-0 top-full border-y border-ink-200 bg-white shadow-xl dark:border-ink-800 dark:bg-ink-900" data-mega-menu-target="panel" hidden>
+            <div class="absolute inset-x-0 top-full whitespace-normal border-y border-ink-200 bg-white shadow-xl dark:border-ink-800 dark:bg-ink-900" data-mega-menu-target="panel" hidden>
               <div class="container-page grid gap-8 py-8 lg:grid-cols-[1fr_320px]">
                 <div>
                   <%= link_to category_path(root), class: "group mb-5 inline-flex items-center gap-2 font-display text-2xl font-bold" do %>
@@ -38,7 +38,7 @@
           <% end %>
         </li>
       <% end %>
-      <li><%= link_to t("layout.deals"), deals_path, class: "block px-3 py-3 text-[13px] font-semibold uppercase tracking-wider text-accent-600 hover:text-accent-500" %></li>
+      <li><%= link_to t("layout.deals"), deals_path, class: "block px-2.5 py-3 text-[12px] font-semibold uppercase tracking-wide text-accent-600 hover:text-accent-500" %></li>
     </ul>
   </nav>
 <% end %>

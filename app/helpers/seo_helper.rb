@@ -10,7 +10,7 @@ module SeoHelper
   def seo_data
     @seo ||= {}
     {
-      title: [@seo[:title].presence, site_name].compact.join(" · "),
+      title: [ @seo[:title].presence, site_name ].compact.join(" · "),
       description: (@seo[:description].presence || t("seo.default_description", site: site_name)).to_s.squish.truncate(160),
       image: @seo[:image].presence || image_url("og-default.png"),
       canonical: @seo[:canonical].presence || canonical_url,

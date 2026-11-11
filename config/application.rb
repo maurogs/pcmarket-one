@@ -26,7 +26,7 @@ module AppTestOne
     # Six UI languages; Spanish is the default market language.
     config.i18n.available_locales = %i[es en fr de it pt]
     config.i18n.default_locale = :es
-    config.i18n.fallbacks = { en: [:es], fr: [:en, :es], de: [:en, :es], it: [:en, :es], pt: [:en, :es] }
+    config.i18n.fallbacks = { en: [ :es ], fr: [ :en, :es ], de: [ :en, :es ], it: [ :en, :es ], pt: [ :en, :es ] }
     config.i18n.load_path += Dir[Rails.root.join("config/locales/**/*.yml")]
     config.i18n.raise_on_missing_translations = false
 

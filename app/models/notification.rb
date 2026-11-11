@@ -11,7 +11,7 @@ class Notification < ApplicationRecord
   scope :recent, -> { order(created_at: :desc) }
 
   after_create_commit -> {
-    broadcast_replace_to [user, :notifications], target: "notification_badge",
+    broadcast_replace_to [ user, :notifications ], target: "notification_badge",
       partial: "notifications/badge", locals: { count: user.unread_notifications_count }
   }
 

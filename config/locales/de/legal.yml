@@ -1,0 +1,113 @@
+de:
+  legal:
+    updated_on: 11. November 2026
+    applies_to: "Gilt für Nutzer in %{country}"
+    last_updated: "Zuletzt aktualisiert: %{date}"
+    meta_description: "%{title} von %{site} für %{country}."
+    contact_footer: "Fragen zu diesem Dokument? Schreib an %{email}. Diese Texte dienen der Information und müssen vor dem Produktiveinsatz von einem Anwalt geprüft werden."
+
+    terms:
+      title: Nutzungsbedingungen
+      sections:
+        intro: { heading: "1. Wer wir sind", body: ["Diese Bedingungen regeln die Nutzung von %{site}, einem Online-Marktplatz, betrieben von %{company_name}, Sitz %{company_address}, Steuernummer %{company_tax_id} („wir“). Mit der Erstellung eines Kontos oder der Nutzung der Plattform akzeptierst du diese Bedingungen."] }
+        role: { heading: "2. Unsere Rolle", body: ["%{site} ist eine Vermittlungsplattform, über die Privatpersonen und gewerbliche Verkäufer neue und gebrauchte Technikprodukte an andere Nutzer verkaufen. Sofern nicht ausdrücklich angegeben, sind wir nicht Verkäufer der angebotenen Artikel. Der Kaufvertrag kommt direkt zwischen Käufer und Verkäufer zustande.", "Jedes Angebot zeigt, ob der Verkäufer privat oder gewerblich handelt. Verbraucherschutzrecht gilt nur bei Käufen von gewerblichen Verkäufern."] }
+        accounts: { heading: "3. Konten", body: ["Du musst mindestens 18 Jahre alt sein und wahrheitsgemäße Angaben machen. Du bist für die Sicherheit deines Passworts und alle Aktivitäten in deinem Konto verantwortlich. Eine Person oder Firma darf nicht mehrere Konten nutzen, um Beschränkungen zu umgehen."] }
+        listings: { heading: "4. Angebote und Moderation", body: ["Verkäufer müssen Artikel ehrlich beschreiben, eigene Fotos verwenden, Mängel angeben und nur Artikel anbieten, die ihnen gehören und die sie rechtmäßig verkaufen dürfen. Alle Angebote werden vor der Veröffentlichung geprüft. Wir können Angebote ablehnen, umkategorisieren oder entfernen, die gegen diese Bedingungen, die Verkäuferbedingungen oder die Richtlinie zu verbotenen Artikeln verstoßen."] }
+        buying: { heading: "5. Kaufen", body: ["Preise werden in der Währung von %{country_name} angezeigt und enthalten bei gewerblichen Verkäufern die MwSt. Versandkosten werden vor der Zahlung angezeigt. Eine Bestellung ist zahlungspflichtig.", "Zahlungen werden von unserem Zahlungsdienstleister abgewickelt und von %{site} bis zum Abschluss der Bestellung verwahrt. Zahlungen außerhalb der Plattform sind nicht vom Käuferschutz gedeckt."] }
+        protection: { heading: "6. Käuferschutz", body: ["Über die Plattform bezahlte Bestellungen sind für %{protection_days} Tage nach Zustellung durch unseren Käuferschutz abgedeckt – zusätzlich zu deinen gesetzlichen Rechten."] }
+        offers: { heading: "7. Preisvorschläge und Chat", body: ["Käufer können Preisvorschläge machen, die der Verkäufer annimmt oder ablehnt. Ein angenommener Vorschlag sichert den Preis für begrenzte Zeit, nicht aber den Artikel. Der Chat darf nur für Transaktionen auf der Plattform genutzt werden. Das Teilen von Kontaktdaten zur Umgehung der Plattform, Spam und Belästigung sind verboten."] }
+        fees: { heading: "8. Gebühren", body: ["Die Nutzung der Plattform ist derzeit kostenlos. Wir könnten künftig Provisionen oder kostenpflichtige Funktionen einführen. Wir informieren dich mindestens 30 Tage vorher; Änderungen gelten nie für bereits aufgegebene Bestellungen."] }
+        conduct: { heading: "9. Verbotenes Verhalten", body: ["Betrug, Manipulation von Bewertungen, Verletzung geistigen Eigentums, das Anbieten verbotener Artikel, unerlaubtes Auslesen von Daten und Angriffe auf die Sicherheit sind verboten. Wir können Konten bei Verstößen mit Begründung sperren oder schließen."] }
+        liability: { heading: "10. Haftung", body: ["Wir erbringen den Vermittlungsdienst mit der gebotenen Sorgfalt. Für von Nutzern verkaufte Artikel haften wir nicht, helfen aber über den Käuferschutz bei Streitfällen. Gesetzlich nicht beschränkbare Haftung bleibt unberührt."] }
+        changes: { heading: "11. Änderungen und Kündigung", body: ["Wir können diese Bedingungen ändern und informieren über wesentliche Änderungen mindestens 15 Tage im Voraus. Du kannst dein Konto jederzeit in den Einstellungen schließen."] }
+        law: { heading: "12. Anwendbares Recht und Streitigkeiten", body: ["Es gilt das Recht von %{country_name}, ohne Verbrauchern den Schutz zwingender Vorschriften ihres Wohnsitzstaates zu entziehen. Zuständig sind %{courts}. Verbraucherbeschwerden: %{complaints}"] }
+
+    privacy:
+      title: Datenschutzerklärung
+      sections:
+        controller: { heading: "1. Verantwortlicher", body: ["Verantwortlich für die Verarbeitung deiner Daten ist %{company_name}, %{company_address}. Kontakt für Datenschutzfragen: %{privacy_email}."] }
+        data: { heading: "2. Verarbeitete Daten", body: ["Kontodaten (Name, Nutzername, E-Mail, Telefon), Profil- und Shopangaben, Angebote und Fotos, Chatnachrichten, Bestell- und Versanddaten, Zahlungsbestätigungen (Kartendaten speichern wir nie), Geräte- und Nutzungsdaten (IP-Adresse, Anmeldungen) sowie bei gewerblichen Verkäufern die gesetzlich vorgeschriebenen Angaben."] }
+        purposes: { heading: "3. Zwecke und Rechtsgrundlagen", body: ["Bereitstellung des Marktplatzes und Abwicklung von Bestellungen (Vertragserfüllung, Art. 6 Abs. 1 lit. b %{gdpr}).", "Betrugsprävention, Moderation und Sicherheit der Plattform (berechtigtes Interesse, Art. 6 Abs. 1 lit. f).", "Erfüllung rechtlicher Pflichten wie Steuerrecht, Meldungen nach %{dac7} und dem %{dsa_regulation} (Art. 6 Abs. 1 lit. c).", "Newsletter und Marketing nur mit deiner Einwilligung (Art. 6 Abs. 1 lit. a), die du jederzeit widerrufen kannst."] }
+        recipients: { heading: "4. Empfänger", body: ["Wir geben Daten an die jeweilige Gegenpartei einer Transaktion weiter (z. B. die Lieferadresse an den Verkäufer), an Auftragsverarbeiter (Hosting, E-Mail, Zahlungsabwicklung, Kundenservice) und an Behörden, wenn das Gesetz es verlangt. Wir verkaufen deine personenbezogenen Daten nicht."] }
+        transfers: { heading: "5. Drittlandübermittlung", body: ["Verarbeitet ein Dienstleister Daten außerhalb des EWR, stützen wir uns auf Angemessenheitsbeschlüsse oder Standardvertragsklauseln."] }
+        retention: { heading: "6. Speicherdauer", body: ["Kontodaten speichern wir, solange dein Konto aktiv ist. Nach der Löschung anonymisieren wir dein Profil, bewahren Bestell- und Rechnungsdaten aber für die handels- und steuerrechtlichen Fristen (bis zu 10 Jahre) sowie DSA-Aufzeichnungen für die vorgeschriebene Zeit auf."] }
+        rights: { heading: "7. Deine Rechte", body: ["Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch, Datenübertragbarkeit und Widerruf deiner Einwilligung. Du kannst deine Daten in den Einstellungen herunterladen und dein Konto löschen oder an %{privacy_email} schreiben. Außerdem kannst du dich bei der %{data_authority} beschweren."] }
+        security: { heading: "8. Sicherheit", body: ["Wir setzen technische und organisatorische Maßnahmen ein, z. B. Transportverschlüsselung, gehashte Passwörter, Zugriffskontrollen und Audit-Logs."] }
+        law: { heading: "9. Rechtsgrundlage", body: ["Diese Erklärung entspricht der %{gdpr} und dem %{data_law}."] }
+
+    cookies:
+      title: Cookie-Richtlinie
+      sections:
+        what: { heading: "1. Was sind Cookies?", body: ["Cookies sind kleine Dateien, die auf deinem Gerät gespeichert werden. Wir nutzen auch ähnliche Technologien wie den lokalen Speicher."] }
+        necessary: { heading: "2. Technisch notwendige Cookies", body: ["Sitzungs- und Sicherheitscookies (Anmeldung, CSRF-Schutz), dein Warenkorb, deine Sprach- und Landeswahl sowie deine Cookie-Einstellungen. Sie benötigen keine Einwilligung, da der Dienst ohne sie nicht funktioniert."] }
+        optional: { heading: "3. Optionale Cookies", body: ["Analyse- und Marketing-Cookies werden nur gesetzt, wenn du im Banner zustimmst. Derzeit lädt die Plattform keine Analyse- oder Werbe-Cookies von Drittanbietern."] }
+        manage: { heading: "4. Deine Wahl verwalten", body: ["Du kannst deine Wahl jederzeit über „Cookie-Einstellungen“ im Footer ändern oder Cookies in deinem Browser löschen. Die Einwilligung wird 6 Monate gespeichert."] }
+        law: { heading: "5. Rechtsgrundlage", body: ["Diese Richtlinie entspricht dem %{cookie_law} und den Vorgaben der %{data_authority}."] }
+
+    legal_notice:
+      title: Impressum
+      sections:
+        owner: { heading: "Anbieter", body: ["Firma: %{company_name}", "Sitz: %{company_address}", "Steuernummer: %{company_tax_id}", "Registereintrag: %{company_registry}", "E-Mail: %{legal_email}"] }
+        purpose: { heading: "Gegenstand", body: ["Diese Website betreibt einen Online-Marktplatz für Technikprodukte zwischen Nutzern gemäß %{ecommerce_law}."] }
+        ip: { heading: "Urheberrecht", body: ["Design, Code, Marke und von %{site} erstellte Inhalte sind urheberrechtlich geschützt. Von Nutzern veröffentlichte Inhalte gehören ihnen; sie räumen uns eine Lizenz zur Anzeige auf der Plattform ein."] }
+        liability: { heading: "Haftung", body: ["Wir handeln als Hosting-Anbieter für Nutzerinhalte und entfernen rechtswidrige Inhalte unverzüglich, sobald wir tatsächlich Kenntnis davon erlangen."] }
+      country_sections:
+        es: { lssi: { heading: "Información LSSI-CE", body: ["Gemäß Artikel 10 der Ley 34/2002 de Servicios de la Sociedad de la Información y de Comercio Electrónico sind die Angaben zum Anbieter oben aufgeführt."] } }
+        de: { impressum: { heading: "Angaben gemäß DDG", body: ["Angaben gemäß %{ecommerce_law}: %{company_name}, %{company_address}. Vertreten durch die Geschäftsführung. Kontakt: %{legal_email}. USt-IdNr.: %{company_tax_id}. Register: %{company_registry}.", "Verbraucherstreitbeilegung: %{complaints}"] } }
+        fr: { mediation: { heading: "Médiation de la consommation", body: ["Gemäß dem Code de la consommation können Verbraucher kostenlos einen Verbraucherschlichter anrufen. %{complaints}."] } }
+        pt: { complaints_book: { heading: "Livro de Reclamações", body: ["Nach portugiesischem Recht können Verbraucher Beschwerden über das elektronische Beschwerdebuch einreichen: %{complaints}."] } }
+        it: { info: { heading: "Informazioni societarie", body: ["Die Unternehmensangaben erfolgen gemäß %{ecommerce_law} und dem Codice Civile."] } }
+        gb: { info: { heading: "Company information", body: ["Angaben gemäß den %{ecommerce_law}."] } }
+
+    returns:
+      title: Rückgabe und Widerrufsrecht
+      sections:
+        professional: { heading: "1. Käufe bei gewerblichen Verkäufern", body: ["Kaufst du als Verbraucher bei einem gewerblichen Verkäufer, hast du das Recht, binnen %{withdrawal_days} Tagen ab Erhalt des Artikels ohne Angabe von Gründen zu widerrufen (%{consumer_law}).", "Kontaktiere dazu den Verkäufer über deine Bestellung oder schreibe an %{support_email}. Sende den Artikel innerhalb von 14 Tagen nach dem Widerruf zurück. Der Verkäufer erstattet Kaufpreis und Standardversand innerhalb von 14 Tagen nach Erhalt der Ware oder des Rücksendenachweises."] }
+        exceptions: { heading: "2. Ausnahmen", body: ["Kein Widerrufsrecht besteht u. a. für versiegelte Software oder Videospiele nach Entsiegelung, für nach Kundenspezifikation angefertigte Artikel und in weiteren gesetzlich vorgesehenen Fällen."] }
+        private: { heading: "3. Käufe von Privatpersonen", body: ["Zwischen Privatpersonen gelten kein gesetzliches Widerrufsrecht und keine Gewährleistung nach Verbraucherrecht. Dein Kauf ist durch unseren Käuferschutz abgedeckt: Kommt der Artikel nicht an oder entspricht nicht der Beschreibung, erhältst du dein Geld zurück."] }
+        warranty: { heading: "4. Gesetzliche Gewährleistung", body: ["Gewerbliche Verkäufer haften für Sachmängel. In %{country_name} beträgt die gesetzliche Gewährleistung für neue Waren %{warranty_years} Jahre; bei gebrauchten Waren kann sie, soweit gesetzlich zulässig, verkürzt werden, was im Angebot anzugeben ist."] }
+        store: { heading: "5. Freiwillige Rückgaberegeln", body: ["Verkäufer können eine zusätzliche freiwillige Rückgabefrist anbieten, die in ihrem Shop und ihren Angeboten angezeigt wird."] }
+        model: { heading: "6. Muster-Widerrufsformular", body: ["An: [Name und Anschrift des Verkäufers]. Hiermit widerrufe ich den von mir abgeschlossenen Vertrag über den Kauf der folgenden Waren: [Artikel], bestellt am [Datum] / erhalten am [Datum]. Name, Anschrift, Unterschrift (nur bei Mitteilung auf Papier), Datum."] }
+
+    buyer_protection:
+      title: Käuferschutz
+      sections:
+        what: { heading: "1. Was abgedeckt ist", body: ["Jede über %{site} bezahlte Bestellung ist abgedeckt, wenn der Artikel nicht ankommt, beschädigt, defekt oder gefälscht ankommt, wesentlich von der Beschreibung abweicht oder nicht innerhalb von %{ship_days} Werktagen versendet wird."] }
+        how: { heading: "2. So funktioniert es", body: ["Wir halten deine Zahlung bis zum Abschluss der Bestellung zurück. Nach Zustellung hast du %{protection_days} Tage zur Prüfung. Ist alles in Ordnung, schließe die Bestellung ab. Falls nicht, eröffne in dieser Frist einen Streitfall auf der Bestellseite."] }
+        dispute: { heading: "3. Streitfälle", body: ["Bei einem Streitfall stoppen wir die Auszahlung an den Verkäufer und bitten beide Seiten um Belege (Fotos, Sendungsverfolgung, Nachrichten). Wir entscheiden in der Regel innerhalb von 7 Tagen. Ist die Reklamation berechtigt, erhältst du den vollen Betrag zurück, meist nach Rücksendung auf Kosten des Verkäufers."] }
+        excluded: { heading: "4. Nicht abgedeckt", body: ["Zahlungen außerhalb der Plattform, reine Meinungsänderung bei Käufen von Privatpersonen, Schäden nach der Zustellung und Reklamationen nach Ablauf der Schutzfrist."] }
+        rights: { heading: "5. Deine gesetzlichen Rechte", body: ["Der Käuferschutz gilt zusätzlich zu deinen gesetzlichen Verbraucherrechten nach %{consumer_law} und schränkt diese nicht ein."] }
+
+    seller_terms:
+      title: Verkäuferbedingungen
+      sections:
+        eligibility: { heading: "1. Wer verkaufen darf", body: ["Jeder Nutzer ab 18 Jahren mit bestätigter E-Mail darf verkaufen. Wer regelmäßig oder gewerblich verkauft, muss sich als gewerblicher Verkäufer registrieren, Firmenname, Anschrift, Kontaktdaten, Register- und Steuernummern angeben und versichern, nur konforme Produkte anzubieten (Art. 30 %{dsa_regulation})."] }
+        obligations: { heading: "2. Deine Pflichten", body: ["Beschreibe Artikel korrekt, nutze eigene Fotos, beachte die Richtlinie zu verbotenen Artikeln, halte den Bestand aktuell, antworte Käufern zeitnah und versende innerhalb von %{ship_days} Werktagen mit Sendungsverfolgung.", "Gewerbliche Verkäufer müssen Verbraucherrechte einhalten, einschließlich des %{withdrawal_days}-tägigen Widerrufsrechts und der Gewährleistung, und bei Bedarf Rechnungen ausstellen."] }
+        payments: { heading: "3. Zahlungen und Auszahlungen", body: ["Käufer zahlen über die Plattform. Das Geld wird ausgezahlt, wenn der Käufer die Bestellung abschließt oder die Schutzfrist ohne Streitfall endet. Zum Verkaufszeitpunkt geltende Provisionen werden von der Auszahlung abgezogen."] }
+        taxes: { heading: "4. Steuern und Meldungen", body: ["Du bist für deine Steuern selbst verantwortlich. Nach %{dac7} müssen wir Identifikationsdaten erheben und Verkäufer mit mehr als 30 Verkäufen oder 2.000 € pro Kalenderjahr an die Steuerbehörden melden."] }
+        moderation: { heading: "5. Moderation und Sanktionen", body: ["Wir können Angebote ablehnen oder entfernen, Funktionen einschränken oder Konten bei Verstößen sperren. Du erhältst immer eine Begründung und kannst über unser internes Beschwerdesystem widersprechen."] }
+
+    prohibited_items:
+      title: Verbotene Artikel
+      sections:
+        list: { heading: "1. Artikel, die du nicht verkaufen darfst", body: ["Gestohlene Waren oder Artikel, die dir nicht gehören. Fälschungen, Repliken und markenrechtsverletzende Artikel. Rechtswidrig modifizierte oder entsperrte Geräte, Raubkopie-Tools und raubkopierte Software. An ein Konto gebundene Geräte (iCloud, Google FRP) oder als verloren bzw. gestohlen gemeldete Geräte. Waffen, Drogen, Inhalte für Erwachsene, personenbezogene Daten, Konten oder Spielwährung, wenn der Publisher dies verbietet.", "Zurückgerufene Produkte oder Produkte, die die EU-Sicherheitsanforderungen nicht erfüllen, sowie aufgeblähte oder beschädigte Akkus."] }
+        restricted: { heading: "2. Eingeschränkte Artikel", body: ["Digitale Lizenzen und Keys nur, wenn sie übertragbar und rechtmäßig erworben sind. Mining-Rigs und gebrauchte GPUs müssen ihre Nutzungshistorie angeben."] }
+        enforcement: { heading: "3. Durchsetzung", body: ["Angebote, die gegen diese Richtlinie verstoßen, werden abgelehnt oder entfernt; wiederholte Verstöße können zur Kontosperrung führen."] }
+
+    dsa:
+      title: Digital Services Act
+      sections:
+        contact: { heading: "1. Kontaktstellen", body: ["Zentrale Kontaktstelle für Behörden, die Europäische Kommission und Nutzer (Art. 11 und 12 %{dsa_regulation}): %{dsa_contact_email}. Sprachen: Spanisch und Englisch sowie die Sprache jedes Landes, in dem wir tätig sind."] }
+        notice: { heading: "2. Melde- und Abhilfeverfahren", body: ["Jede Person kann Inhalte, die sie für rechtswidrig hält, über den Link „Melden“ an jedem Angebot und Profil melden, mit Begründung und genauer Bezeichnung des Inhalts. Wir bestätigen den Eingang und informieren über unsere Entscheidung."] }
+        reasons: { heading: "3. Begründung", body: ["Wenn wir Inhalte oder Konten entfernen oder einschränken, informieren wir den betroffenen Nutzer mit einer klaren Begründung inklusive Sachverhalt, rechtlicher oder vertraglicher Grundlage und Rechtsbehelfen."] }
+        complaints: { heading: "4. Interne Beschwerden und außergerichtliche Streitbeilegung", body: ["Gegen Moderationsentscheidungen kannst du innerhalb von 6 Monaten über den Support Beschwerde einlegen. Entscheidungen werden von einem Menschen überprüft. Du kannst dich auch an eine zertifizierte außergerichtliche Streitbeilegungsstelle wenden."] }
+        traders: { heading: "5. Nachverfolgbarkeit von Unternehmern", body: ["Wir erheben und prüfen Angaben gewerblicher Verkäufer, bevor sie Produkte anbieten dürfen, und zeigen sie in ihren Angeboten an."] }
+        transparency: { heading: "6. Transparenz", body: ["Wir veröffentlichen jährliche Berichte zur Anzahl von Meldungen, Moderationsentscheidungen und Beschwerden. Angebote werden nach Relevanz, Aktualität und – falls aktiviert – bezahlter, klar gekennzeichneter Hervorhebung sortiert."] }
+
+    accessibility:
+      title: Erklärung zur Barrierefreiheit
+      sections:
+        commitment: { heading: "1. Unser Anspruch", body: ["Jede Person soll %{site} nutzen können. Wir orientieren uns an den WCAG 2.2 Stufe AA und dem European Accessibility Act bzw. dem Barrierefreiheitsstärkungsgesetz."] }
+        measures: { heading: "2. Maßnahmen", body: ["Semantisches HTML, Tastaturbedienung, sichtbarer Fokus, Alternativtexte, ausreichende Kontraste im hellen und dunklen Modus, Berücksichtigung reduzierter Bewegung und Formulare mit klaren Beschriftungen und Fehlermeldungen."] }
+        limitations: { heading: "3. Bekannte Einschränkungen", body: ["Von Verkäufern hochgeladene Fotos haben teils keine ausführlichen Beschreibungen. Wir arbeiten daran."] }
+        feedback: { heading: "4. Feedback", body: ["Wenn du auf eine Barriere stößt, schreib uns an %{support_email}. Wir antworten innerhalb von 10 Werktagen."] }

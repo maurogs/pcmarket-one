@@ -3,7 +3,7 @@ class HomePage
   SECTION_SIZE = 10
 
   def cache_key
-    [Listing.maximum(:updated_at)&.to_i, Collection.maximum(:updated_at)&.to_i, Setting.maximum(:updated_at)&.to_i]
+    [ Listing.maximum(:updated_at)&.to_i, Collection.maximum(:updated_at)&.to_i, Setting.maximum(:updated_at)&.to_i ]
   end
 
   def hero_deals = base.on_sale.order(Arel.sql("(original_price_cents - price_cents) DESC")).limit(5)
@@ -14,7 +14,7 @@ class HomePage
   def themes = Collection.active.theme.ordered.with_attached_image.limit(6)
   def home_sections = Collection.active.home_section.where(show_on_home: true).ordered
   def recently_sold = Listing.sold.joins(:user).merge(User.active).for_card.order(updated_at: :desc).limit(SECTION_SIZE)
-  def recent_reviews = Review.visible.where(rating: 5).where.not(body: [nil, ""]).includes(:seller, :reviewer).recent.limit(3)
+  def recent_reviews = Review.visible.where(rating: 5).where.not(body: [ nil, "" ]).includes(:seller, :reviewer).recent.limit(3)
 
   def gpus
     category = Category.find_by(slug: "gpus")

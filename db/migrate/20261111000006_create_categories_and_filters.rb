@@ -14,7 +14,7 @@ class CreateCategoriesAndFilters < ActiveRecord::Migration[8.1]
       t.timestamps
     end
     add_index :categories, :slug, unique: true
-    add_index :categories, [:parent_id, :position]
+    add_index :categories, [ :parent_id, :position ]
 
     create_table :filter_definitions do |t|
       t.string :key, null: false
@@ -40,7 +40,7 @@ class CreateCategoriesAndFilters < ActiveRecord::Migration[8.1]
       t.jsonb :metadata, null: false, default: {}
       t.timestamps
     end
-    add_index :filter_options, [:filter_definition_id, :value], unique: true
+    add_index :filter_options, [ :filter_definition_id, :value ], unique: true
 
     create_table :category_filters do |t|
       t.references :category, null: false, foreign_key: true
@@ -48,6 +48,6 @@ class CreateCategoriesAndFilters < ActiveRecord::Migration[8.1]
       t.integer :position, null: false, default: 0
       t.timestamps
     end
-    add_index :category_filters, [:category_id, :filter_definition_id], unique: true
+    add_index :category_filters, [ :category_id, :filter_definition_id ], unique: true
   end
 end

@@ -4,7 +4,7 @@ en:
     search_placeholder: Search listings by title, ID or seller…
     view_site: View site
     view_public: View public page
-    roles: { member: Member, moderator: Moderator, admin: Administrator }
+    roles: { member: "Member", moderator: "Moderator", admin: "Administrator" }
     system: System
     all: All
     all_countries: All countries
@@ -28,7 +28,7 @@ en:
       destroyed: Deleted successfully.
       invalid_date: Invalid date.
     nav:
-      groups: { overview: Overview, marketplace: Marketplace, trust: Trust & safety, catalogue: Catalogue, growth: Growth & monetisation, configuration: Configuration }
+      groups: { overview: "Overview", marketplace: "Marketplace", trust: "Trust & safety", catalogue: "Catalogue", growth: "Growth & monetisation", configuration: "Configuration" }
       dashboard: Dashboard
       moderation: Moderation queue
       listings: Listings
@@ -78,7 +78,7 @@ en:
         one: Action applied to 1 listing.
         other: "Action applied to %{count} listings."
       default_reason: Your listing doesn't meet our listing guidelines.
-      actions: { approve: Approve, reject: Reject, pause: Pause, archive: Archive, feature: Mark as featured, unfeature: Remove featured }
+      actions: { approve: "Approve", reject: "Reject", pause: "Pause", archive: "Archive", feature: "Mark as featured", unfeature: "Remove featured" }
     listings:
       search: Title, ID or seller
       featured: Featured
@@ -109,11 +109,11 @@ en:
       approved: Listing approved.
       rejected: Listing rejected and seller notified.
       history: History
-      events: { submitted: Submitted for review, published: Published, rejected: Rejected, paused: Paused, resumed: Resumed, archived: Archived, admin_edited: Edited by staff }
+      events: { submitted: "Submitted for review", published: "Published", rejected: "Rejected", paused: "Paused", resumed: "Resumed", archived: "Archived", admin_edited: "Edited by staff" }
     users:
       search: Name, username, email or store
       status: Status
-      statuses: { active: Active, suspended: Suspended, banned: Banned }
+      statuses: { active: "Active", suspended: "Suspended", banned: "Banned" }
       role: Role
       unconfirmed: Unconfirmed
       deleted: Include deleted
@@ -134,8 +134,8 @@ en:
       totals: "%{count} orders · %{total} total · %{fees} fees"
       search: Order number, email or username
       number: Order
-      delivery: { shipping: Shipping, pickup: Local pickup }
-      amounts: { subtotal: Subtotal, shipping: Shipping, discount: Discount, platform_fee: Fee, total: Total }
+      delivery: { shipping: "Shipping", pickup: "Local pickup" }
+      amounts: { subtotal: "Subtotal", shipping: "Shipping", discount: "Discount", platform_fee: "Fee", total: "Total" }
       reasons: Reasons reported
       change_status: Change status
       note: Internal note (visible in the timeline)
@@ -172,14 +172,14 @@ en:
       score: Score
       buyback: Buyback (¢)
       delete_confirm: Deleting this filter removes it from every category. Listing specs are kept but hidden. Continue?
-      kinds: { multi_select: Multiple choice, single_select: Single choice, boolean: Yes / no }
-      flags: { active: Active, collapsed: Collapsed by default, in_listing_form: Show in listing form, required: Required when listing, show_on_card: Show on listing cards }
+      kinds: { multi_select: "Multiple choice", single_select: "Single choice", boolean: "Yes / no" }
+      flags: { active: "Active", collapsed: "Collapsed by default", in_listing_form: "Show in listing form", required: "Required when listing", show_on_card: "Show on listing cards" }
     collections:
       subtitle: Curated groups of listings for the home page, themes and the PC Finder.
       title_label: Title
       subtitle_label: Subtitle
       kind: Type
-      kinds: { theme: Theme, gamer_profile: Gamer profile, home_section: Home page section, game: Best PCs for a game }
+      kinds: { theme: "Theme", gamer_profile: "Gamer profile", home_section: "Home page section", game: "Best PCs for a game" }
       query: Catalogue query
       query_hint: "Same parameters as the catalogue URL, e.g. category=gaming-pcs&max_price=1000&tags[]=minimalist"
       home: Show on home page
@@ -206,7 +206,7 @@ en:
       launch_checklist: "Launch checklist: review the legal texts for the country with your lawyer, check carriers and VAT, translate category descriptions and enable the country here."
     settings:
       subtitle: Global options and feature flags. Monetisation features are ready but disabled until you switch them on.
-      groups: { general: General, listings: Listings & moderation, commerce: Orders & payments, monetization: Monetisation, features: Features, i18n: Languages }
+      groups: { general: "General", listings: "Listings & moderation", commerce: "Orders & payments", monetization: "Monetisation", features: "Features", i18n: "Languages" }
       keys:
         site_name: Site name
         support_email: Support email
@@ -325,7 +325,7 @@ en:
       disabled: Promotions are currently disabled in settings.
       period: Period
       activate: Activate
-      statuses: { pending: Pending, active: Active, expired: Expired, cancelled: Cancelled }
+      statuses: { pending: "Pending", active: "Active", expired: "Expired", cancelled: "Cancelled" }
     conversations:
       privacy_notice: Access only for dispute and fraud investigations. Every view is recorded in the audit log.
       by_user: Filter by username

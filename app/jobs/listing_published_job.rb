@@ -22,7 +22,7 @@ class ListingPublishedJob < ApplicationJob
 
       Notification.deliver(saved_search.user, :saved_search_match, path: path, name: saved_search.name, title: listing.title)
       if saved_search.user.notify_by_email?(:saved_searches)
-        SavedSearchMailer.with(saved_search: saved_search, listing_ids: [listing.id]).matches.deliver_later
+        SavedSearchMailer.with(saved_search: saved_search, listing_ids: [ listing.id ]).matches.deliver_later
       end
       saved_search.update_column(:last_notified_at, Time.current)
     end

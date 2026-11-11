@@ -22,9 +22,9 @@ class Listing < ApplicationRecord
   belongs_to :reviewer, class_name: "User", optional: true
 
   has_many_attached :photos do |attachable|
-    attachable.variant :thumb, resize_to_fill: [160, 160], format: :webp, quality: 75, preprocessed: true
-    attachable.variant :card, resize_to_fill: [480, 400], format: :webp, quality: 78, preprocessed: true
-    attachable.variant :large, resize_to_limit: [1400, 1400], format: :webp, quality: 82
+    attachable.variant :thumb, resize_to_fill: [ 160, 160 ], format: :webp, quality: 75, preprocessed: true
+    attachable.variant :card, resize_to_fill: [ 480, 400 ], format: :webp, quality: 78, preprocessed: true
+    attachable.variant :large, resize_to_limit: [ 1400, 1400 ], format: :webp, quality: 82
   end
 
   has_many :favorites, dependent: :delete_all
@@ -135,7 +135,7 @@ class Listing < ApplicationRecord
 
     gpu_fps = gpu_score / game.demand.to_f * 100 * RESOLUTION_FACTORS.fetch(resolution, 1.0)
     cpu_cap = cpu_score.positive? ? cpu_score / 60.0 : gpu_fps
-    [gpu_fps, cpu_cap].min.round
+    [ gpu_fps, cpu_cap ].min.round
   end
 
   def price_to_performance
@@ -201,7 +201,7 @@ class Listing < ApplicationRecord
   end
 
   def release_stock!(amount)
-    attributes = { quantity: quantity + amount, sold_count: [sold_count - amount, 0].max, updated_at: Time.current }
+    attributes = { quantity: quantity + amount, sold_count: [ sold_count - amount, 0 ].max, updated_at: Time.current }
     attributes[:status] = Listing.statuses[:published] if sold?
     update_columns(attributes)
   end

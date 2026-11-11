@@ -50,11 +50,11 @@ class CreateListings < ActiveRecord::Migration[8.1]
     add_index :listings, :specs, using: :gin, opclass: :jsonb_path_ops
     add_index :listings, :labels, using: :gin
     add_index :listings, :tags, using: :gin
-    add_index :listings, [:status, :published_at]
-    add_index :listings, [:status, :category_id, :published_at]
-    add_index :listings, [:status, :price_cents]
-    add_index :listings, [:user_id, :status]
-    add_index :listings, [:country_id, :status]
+    add_index :listings, [ :status, :published_at ]
+    add_index :listings, [ :status, :category_id, :published_at ]
+    add_index :listings, [ :status, :price_cents ]
+    add_index :listings, [ :user_id, :status ]
+    add_index :listings, [ :country_id, :status ]
     add_index :listings, :promoted_until, where: "promoted_until IS NOT NULL"
 
     create_table :listing_events do |t|

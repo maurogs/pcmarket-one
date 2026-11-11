@@ -61,7 +61,7 @@ class User < ApplicationRecord
   validates :store_tagline, length: { maximum: 140 }
   validates :bio, length: { maximum: 1_000 }
   validates :legal_name, :tax_id, :business_address, presence: true, if: -> { business? && trader_certified_at.present? }
-  validates :return_window_days, inclusion: { in: [0, 14, 30, 60] }
+  validates :return_window_days, inclusion: { in: [ 0, 14, 30, 60 ] }
   validates_images :avatar, :store_logo, :store_banner
 
   before_validation :assign_username, on: :create
@@ -90,7 +90,7 @@ class User < ApplicationRecord
   end
 
   def full_name
-    [first_name, last_name].compact_blank.join(" ").presence || username
+    [ first_name, last_name ].compact_blank.join(" ").presence || username
   end
 
   def staff? = moderator? || admin?
@@ -156,7 +156,7 @@ class User < ApplicationRecord
         phone: nil, bio: nil, store_name: nil, store_tagline: nil, provider: nil, uid: nil,
         city: nil, deleted_at: Time.current, encrypted_password: ""
       )
-      [avatar, store_logo, store_banner].each(&:purge_later)
+      [ avatar, store_logo, store_banner ].each(&:purge_later)
       api_tokens.delete_all
     end
   end

@@ -14,7 +14,7 @@ class CreateCommerce < ActiveRecord::Migration[8.1]
       t.integer :quantity, null: false, default: 1
       t.timestamps
     end
-    add_index :cart_items, [:cart_id, :listing_id], unique: true
+    add_index :cart_items, [ :cart_id, :listing_id ], unique: true
 
     create_table :addresses do |t|
       t.references :user, null: false, foreign_key: true
@@ -41,7 +41,7 @@ class CreateCommerce < ActiveRecord::Migration[8.1]
       t.boolean :active, null: false, default: true
       t.timestamps
     end
-    add_index :discount_codes, [:seller_id, :code], unique: true
+    add_index :discount_codes, [ :seller_id, :code ], unique: true
 
     create_table :orders do |t|
       t.string :number, null: false
@@ -76,9 +76,9 @@ class CreateCommerce < ActiveRecord::Migration[8.1]
     end
     add_index :orders, :number, unique: true
     add_index :orders, :checkout_reference
-    add_index :orders, [:buyer_id, :created_at]
-    add_index :orders, [:seller_id, :created_at]
-    add_index :orders, [:status, :protection_ends_at]
+    add_index :orders, [ :buyer_id, :created_at ]
+    add_index :orders, [ :seller_id, :created_at ]
+    add_index :orders, [ :status, :protection_ends_at ]
 
     create_table :order_items do |t|
       t.references :order, null: false, foreign_key: true

@@ -31,7 +31,7 @@
     <% end %>
   </header>
 
-  <turbo-frame id="catalogue" data-turbo-action="advance" class="mt-6 block lg:grid lg:grid-cols-[260px_1fr] lg:gap-8" data-controller="toggle" data-toggle-lock-scroll-value="true">
+  <turbo-frame id="catalogue" data-turbo-action="advance" class="mt-6 block lg:grid lg:grid-cols-[260px_1fr] lg:gap-8" data-controller="toggle" data-toggle-lock-scroll-value="true" data-toggle-class-value="max-lg:hidden">
     <%= render "listings/filters", base_path: base_path %>
 
     <section aria-labelledby="results-heading" class="min-w-0">

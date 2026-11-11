@@ -4,8 +4,8 @@ en:
       month_year: "%B %Y"
   time:
     ago: "%{time} ago"
-  locales: { es: Español, en: English (UK), fr: Français, de: Deutsch, it: Italiano, pt: Português }
-  countries: { es: Spain, fr: France, gb: United Kingdom, de: Germany, it: Italy, pt: Portugal }
+  locales: { es: "Español", en: "English (UK)", fr: "Français", de: "Deutsch", it: "Italiano", pt: "Português" }
+  countries: { es: "Spain", fr: "France", gb: "United Kingdom", de: "Germany", it: "Italy", pt: "Portugal" }
 
   seo:
     default_description: "%{site} is the marketplace to buy and sell new and second-hand gaming PCs, graphics cards, components, peripherals, laptops, phones and consoles with buyer protection."
@@ -73,10 +73,10 @@ en:
       log_out: Log out
     promo:
       cta: Discover
-      pc_finder: { title: Find the perfect PC, body: Answer a few questions and we'll match you with PCs that hit your FPS target. }
-      sell_to_us: { title: Turn your gear into cash, body: Get an instant offer for your GPU or CPU. }
-      sell: { title: Sell your gear, body: Listing is free and buyers are protected. }
-      deals: { title: Deals of the week, body: Discounted listings from verified sellers. }
+      pc_finder: { title: "Find the perfect PC", body: "Answer a few questions and we'll match you with PCs that hit your FPS target." }
+      sell_to_us: { title: "Turn your gear into cash", body: "Get an instant offer for your GPU or CPU." }
+      sell: { title: "Sell your gear", body: "Listing is free and buyers are protected." }
+      deals: { title: "Deals of the week", body: "Discounted listings from verified sellers." }
     footer:
       tagline: The marketplace for gamers and PC builders. Buy and sell new and second-hand hardware with protected payments.
       newsletter_title: Get the good drops
@@ -132,9 +132,8 @@ en:
     registrations_closed: New registrations are temporarily closed.
     too_many_attempts: Too many attempts. Please wait a few minutes and try again.
     oauth_failed: We couldn't sign you in with that provider.
-    not_found: { title: Page not found, body: "The page you're looking for doesn't exist or is no longer available.", cta: Back to home }
+    not_found: { title: "Page not found", body: "The page you're looking for doesn't exist or is no longer available.", cta: "Back to home" }
     maintenance: { title: "We'll be right back", body: "We're doing some maintenance. Please try again in a few minutes." }
-    unsupported_browser: { title: Your browser is not supported, body: Please update your browser to use this site. }
 
   api:
     errors:
@@ -183,13 +182,13 @@ en:
       verified_purchase: Verified purchase from
       recently_sold: Recently sold
       values:
-        protection: { title: Your money is protected, body: We hold the payment until you confirm your item arrived as described. }
-        moderation: { title: Humans review every listing, body: Our team checks listings before they go live to keep scams out. }
-        chat: { title: Talk before you buy, body: Ask questions, request more photos and negotiate with built-in chat and offers. }
+        protection: { title: "Your money is protected", body: "We hold the payment until you confirm your item arrived as described." }
+        moderation: { title: "Humans review every listing", body: "Our team checks listings before they go live to keep scams out." }
+        chat: { title: "Talk before you buy", body: "Ask questions, request more photos and negotiate with built-in chat and offers." }
 
   listings:
-    conditions: { brand_new: Brand new in box, open_box: New – open box, like_new: Used – like new, good: Used – good, fair: Used – fair, for_parts: As-is / for parts }
-    statuses: { draft: Draft, pending_review: Pending review, published: Published, rejected: Rejected, paused: Paused, sold: Sold, archived: Archived }
+    conditions: { brand_new: "Brand new in box", open_box: "New – open box", like_new: "Used – like new", good: "Used – good", fair: "Used – fair", for_parts: "As-is / for parts" }
+    statuses: { draft: "Draft", pending_review: "Pending review", published: "Published", rejected: "Rejected", paused: "Paused", sold: "Sold", archived: "Archived" }
     badges:
       sold: Sold out
       save: "Save %{percent}%"
@@ -206,8 +205,8 @@ en:
     destroy:
       success: Listing removed.
     pauses:
-      create: { success: Listing paused. It's hidden from buyers. }
-      destroy: { success: Listing is live again. }
+      create: { success: "Listing paused. It's hidden from buyers." }
+      destroy: { success: "Listing is live again." }
     owner:
       status: "Listing status:"
       rejection: "Rejected: %{reason}"
@@ -229,7 +228,7 @@ en:
       filters: Filters
       save_search: Save search & alert me
       sort_label: Sort by
-      sorts: { best_match: Best match, newest: Newest, price_asc: "Price: low to high", price_desc: "Price: high to low", most_watched: Most watched, performance: Best performance, value: Best value }
+      sorts: { best_match: "Best match", newest: "Newest", price_asc: "Price: low to high", price_desc: "Price: high to low", most_watched: "Most watched", performance: "Best performance", value: "Best value" }
       empty_title: No listings match your filters
       empty_body: Try removing some filters or save the search to be alerted when something new appears.
       clear_filters: Clear filters
@@ -409,7 +408,7 @@ en:
   stores:
     verified: Verified seller
     business: Professional seller
-    seller_types: { individual: Private seller, business: Professional seller }
+    seller_types: { individual: "Private seller", business: "Professional seller" }
     reviews_count:
       zero: No reviews
       one: 1 review
@@ -452,7 +451,7 @@ en:
     seller_reply: Seller reply
     reply_placeholder: Reply publicly to this review
     reply: Reply
-    statuses: { visible: Visible, hidden: Hidden }
+    statuses: { visible: "Visible", hidden: "Hidden" }
 
   pc_finders:
     show:
@@ -471,12 +470,12 @@ en:
         vibe: "What's your vibe?"
       answers:
         no_preference: No preference
-        resolution: { 1080p: 1080p (Full HD), 1440p: 1440p (QHD), 2160p: 2160p (4K) }
-        fps: { "60": 60 FPS, "144": 144 FPS, "240": 240+ FPS }
-        budget: { under_800: Under €800, 800_1200: €800 – €1,200, 1200_2000: €1,200 – €2,000, over_2000: Over €2,000 }
-        case_color: { black: Black, white: White, multicolor: Colourful }
-        cooling: { air: Air, aio: AIO liquid, custom_loop: Custom loop }
-        vibe: { minimalist: Minimalist, rgb: RGB everything, anime: Anime, competitive: Competitive, retro: Retro }
+        resolution: { 1080p: "1080p (Full HD)", 1440p: "1440p (QHD)", 2160p: "2160p (4K)" }
+        fps: { "60": "60 FPS", "144": "144 FPS", "240": "240+ FPS" }
+        budget: { under_800: "Under €800", "800_1200": "€800 – €1,200", "1200_2000": "€1,200 – €2,000", over_2000: "Over €2,000" }
+        case_color: { black: "Black", white: "White", multicolor: "Colourful" }
+        cooling: { air: "Air", aio: "AIO liquid", custom_loop: "Custom loop" }
+        vibe: { minimalist: "Minimalist", rgb: "RGB everything", anime: "Anime", competitive: "Competitive", retro: "Retro" }
       back: Back
       next: Next question
       see_results: See results
@@ -494,8 +493,8 @@ en:
   saved_searches:
     default_name: My search
     create: { success: "Search saved. We'll email you when new listings match." }
-    update: { success: Saved search updated. }
-    destroy: { success: Saved search deleted. }
+    update: { success: "Saved search updated." }
+    destroy: { success: "Saved search deleted." }
     index:
       title: Saved searches
       subtitle: "We'll notify you when new listings match your searches."
@@ -503,7 +502,7 @@ en:
       no_alerts_yet: No alerts yet
       email_alerts: Email alerts
       frequency: Frequency
-      frequencies: { instant: Instant, daily: Daily digest }
+      frequencies: { instant: "Instant", daily: "Daily digest" }
       delete: Delete
       empty_title: No saved searches
       empty_body: Use “Save search” on any results page to get alerts for new listings.
@@ -533,7 +532,7 @@ en:
       new_follower: "%{follower} started following your store."
       followed_seller_listing: "%{seller} just listed “%{title}”."
   notification_readings:
-    create: { success: All notifications marked as read. }
+    create: { success: "All notifications marked as read." }
 
   conversations:
     index:
@@ -579,11 +578,11 @@ en:
     declined: Offer declined.
     withdrawed: Offer withdrawn.
     not_actionable: This offer can no longer be changed.
-    statuses: { pending: Pending, accepted: Accepted, declined: Declined, withdrawn: Withdrawn, expired: Expired, purchased: Purchased }
+    statuses: { pending: "Pending", accepted: "Accepted", declined: "Declined", withdrawn: "Withdrawn", expired: "Expired", purchased: "Purchased" }
 
   blocks:
     create: { success: "%{name} has been blocked." }
-    destroy: { success: User unblocked. }
+    destroy: { success: "User unblocked." }
     index:
       title: Blocked users
       subtitle: Blocked users can't message you or buy from you.
@@ -591,8 +590,8 @@ en:
       empty: "You haven't blocked anyone."
 
   reports:
-    reasons: { prohibited_item: Prohibited item, counterfeit: Counterfeit or replica, scam: Suspected scam or fraud, misleading: Misleading description or photos, offensive: Offensive content, intellectual_property: Intellectual property infringement, illegal_content: Illegal content, spam: Spam, other: Other }
-    statuses: { open: Open, reviewing: Under review, resolved: Resolved, dismissed: Dismissed }
+    reasons: { prohibited_item: "Prohibited item", counterfeit: "Counterfeit or replica", scam: "Suspected scam or fraud", misleading: "Misleading description or photos", offensive: "Offensive content", intellectual_property: "Intellectual property infringement", illegal_content: "Illegal content", spam: "Spam", other: "Other" }
+    statuses: { open: "Open", reviewing: "Under review", resolved: "Resolved", dismissed: "Dismissed" }
     new:
       title: Report content
       subtitle_html: "Reports are reviewed by our trust & safety team. Read how we handle notices in our %{dsa}."
@@ -604,8 +603,8 @@ en:
       success: "Thanks. We've received your report and will review it shortly."
 
   cart_items:
-    create: { success: Added to your cart. }
-    destroy: { success: Removed from your cart. }
+    create: { success: "Added to your cart." }
+    destroy: { success: "Removed from your cart." }
     errors:
       unavailable: This item is no longer available.
       own_listing: "You can't buy your own listing."
@@ -673,7 +672,7 @@ en:
       continue: Continue shopping
 
   orders:
-    statuses: { pending_payment: Awaiting payment, paid: Paid – to ship, shipped: Shipped, delivered: Delivered, completed: Completed, cancelled: Cancelled, refunded: Refunded, disputed: Problem reported }
+    statuses: { pending_payment: "Awaiting payment", paid: "Paid – to ship", shipped: "Shipped", delivered: "Delivered", completed: "Completed", cancelled: "Cancelled", refunded: "Refunded", disputed: "Problem reported" }
     default_cancel_reason: Cancelled by user
     index:
       title: My orders
@@ -759,7 +758,7 @@ en:
         title: Account settings
         username_hint: Your public username.
         email_html: "Your email is %{email}. You can change it in %{link}."
-      update: { success: Profile updated. }
+      update: { success: "Profile updated." }
     stores:
       edit:
         title: Store settings
@@ -785,7 +784,7 @@ en:
         trade_register_number: Trade register number
         trader_certification: I certify that my business only offers products that comply with applicable EU law (DSA art. 30).
         dac7_notice: Under EU directive DAC7 we must report sellers who exceed 30 sales or €2,000 per year to the tax authorities. We'll ask for any missing data before that happens.
-      update: { success: Store updated. }
+      update: { success: "Store updated." }
     notification_settings:
       edit:
         title: Notification preferences
@@ -797,18 +796,18 @@ en:
         saved_searches_hint: Email me when new listings match my saved searches.
         marketing: News and promotions
         marketing_hint: Occasional emails about new features, deals and giveaways.
-      update: { success: Preferences saved. }
+      update: { success: "Preferences saved." }
     addresses:
       index:
         title: Addresses
         default: Default
         add: Add address
         make_default: Use as default address
-      new: { title: New address }
-      edit: { title: Edit address }
-      create: { success: Address saved. }
-      update: { success: Address updated. }
-      destroy: { success: Address deleted. }
+      new: { title: "New address" }
+      edit: { title: "Edit address" }
+      create: { success: "Address saved." }
+      update: { success: "Address updated." }
+      destroy: { success: "Address deleted." }
     deletions:
       new:
         title: Privacy & data
@@ -830,7 +829,7 @@ en:
       show:
         title: Seller dashboard
         period: Period
-        periods: { 7d: 7 days, 30d: 30 days, 90d: 90 days, 365d: 12 months }
+        periods: { 7d: "7 days", 30d: "30 days", 90d: "90 days", 365d: "12 months" }
         revenue: Revenue
         orders: Orders
         views: Views
@@ -874,9 +873,9 @@ en:
         expires: Expires
         activate: Activate
         deactivate: Deactivate
-      create: { success: Discount code created. }
-      update: { success: Discount code updated. }
-      destroy: { success: Discount code deleted. }
+      create: { success: "Discount code created." }
+      update: { success: "Discount code updated." }
+      destroy: { success: "Discount code deleted." }
     vacations:
       update:
         enabled: Holiday mode on. Your listings are hidden.
@@ -886,19 +885,19 @@ en:
         title: Promote listing
         body: "Your listing will be highlighted at the top of search results for %{days} days for %{price}."
         submit: Promote now
-      create: { success: Your listing is now promoted. }
+      create: { success: "Your listing is now promoted." }
     review_replies:
-      update: { success: Reply published. }
+      update: { success: "Reply published." }
 
   buyback_requests:
-    statuses: { submitted: Submitted, accepted: Accepted, label_sent: Label sent, received: Received, paid: Paid, rejected: Rejected, cancelled: Cancelled }
+    statuses: { submitted: "Submitted", accepted: "Accepted", label_sent: "Label sent", received: "Received", paid: "Paid", rejected: "Rejected", cancelled: "Cancelled" }
     new:
       title: The simplest way to sell your parts
       subtitle: Sell your working GPU or CPU directly to us for an instant price.
       get_offer: Get an instant offer
       model: Model
       condition: Condition
-      conditions: { working: Fully working, minor_issues: Works with minor cosmetic issues }
+      conditions: { working: "Fully working", minor_issues: "Works with minor cosmetic issues" }
       payout_email: PayPal email for payment
       notes: Notes
       submit: Request offer
@@ -906,10 +905,10 @@ en:
       how_it_works: How it works
       price_list: Current prices
       steps:
-        s1: { title: Get an offer, body: Choose your part and get an instant price. }
-        s2: { title: Ship it, body: "We'll email you a prepaid shipping label." }
-        s3: { title: Inspection, body: "We'll test your part to make sure it works." }
-        s4: { title: Get paid, body: We pay you within 5 business days. }
+        s1: { title: "Get an offer", body: "Choose your part and get an instant price." }
+        s2: { title: "Ship it", body: "We'll email you a prepaid shipping label." }
+        s3: { title: "Inspection", body: "We'll test your part to make sure it works." }
+        s4: { title: "Get paid", body: "We pay you within 5 business days." }
     index:
       title: My sell-to-us requests
       new: New request
@@ -917,8 +916,8 @@ en:
       success: "Request received. We'll email you the shipping label within one business day."
 
   support_tickets:
-    topics: { general: General question, order_issue: Problem with an order, payment: Payments and refunds, account: My account, selling: Selling, legal: Legal notice, privacy_request: Data protection request }
-    statuses: { open: Open, pending: Waiting for reply, closed: Closed }
+    topics: { general: "General question", order_issue: "Problem with an order", payment: "Payments and refunds", account: "My account", selling: "Selling", legal: "Legal notice", privacy_request: "Data protection request" }
+    statuses: { open: "Open", pending: "Waiting for reply", closed: "Closed" }
     new:
       title: Contact support
       subtitle: "Our team replies within one business day. For order problems, include the order number."
@@ -1010,11 +1009,11 @@ en:
 
   activerecord:
     models:
-      listing: { one: Listing, other: Listings }
-      user: { one: User, other: Users }
-      order: { one: Order, other: Orders }
-      review: { one: Review, other: Reviews }
-      offer: { one: Offer, other: Offers }
+      listing: { one: "Listing", other: "Listings" }
+      user: { one: "User", other: "Users" }
+      order: { one: "Order", other: "Orders" }
+      review: { one: "Review", other: "Reviews" }
+      offer: { one: "Offer", other: "Offers" }
     attributes:
       user:
         email: Email
@@ -1146,5 +1145,9 @@ en:
         terms_required: You must accept the terms of service and privacy policy
 
   devise:
+    shared:
+      minimum_password_length:
+        one: "(%{count} character minimum)"
+        other: "(%{count} characters minimum)"
     failure:
       banned: Your account has been closed. Contact support for more information.

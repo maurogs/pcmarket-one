@@ -1,0 +1,126 @@
+de:
+  pages:
+    about:
+      title: Über uns
+      intro: Wir sind Gamer und PC-Bastler, die einen sichereren und faireren Ort zum Kaufen und Verkaufen von Hardware in Europa wollten.
+      sections:
+        mission: { heading: "Unsere Mission", body: ["Gute Hardware verdient ein zweites Leben. Wir machen den Kauf und Verkauf von Gaming-PCs, Komponenten und Zubehör zwischen Privatpersonen und Fachhändlern einfach und sicher.", "Wir haben in Spanien begonnen und bauen Schritt für Schritt den führenden Marktplatz für PC-Hardware in Europa auf."] }
+        different: { heading: "Was uns unterscheidet", body: ["Jedes Angebot wird vor der Veröffentlichung von unserem Team geprüft. Zahlungen werden zurückgehalten, bis der Käufer bestätigt, dass der Artikel wie beschrieben angekommen ist. Und unser Katalog versteht Hardware: Filtere nach GPU, CPU, Speicher, Sockel und Dutzenden weiterer Merkmale."] }
+        community: { heading: "Mit der Community gebaut", body: ["Wir hören Käufern und Verkäufern zu, um zu entscheiden, was wir als Nächstes bauen. Schreib uns jederzeit über das Kontaktformular."] }
+    how_it_works:
+      title: So funktioniert's
+      intro: Kaufen und Verkaufen auf PCMarket in vier Schritten.
+      sections:
+        find: { heading: "1. Finden oder einstellen", body: ["Suche mit hardware-spezifischen Filtern oder nutze den PC-Finder. Zum Verkaufen erstellst du ein Angebot mit eigenen Fotos und detaillierten Spezifikationen. Unser Team prüft es vor der Veröffentlichung."] }
+        talk: { heading: "2. Reden und verhandeln", body: ["Stelle dem Verkäufer im integrierten Chat Fragen oder mache einen Preisvorschlag. Bleib mit Gespräch und Zahlung auf der Plattform, um geschützt zu sein."] }
+        pay: { heading: "3. Sicher bezahlen", body: ["Bezahle an der Kasse. Wir halten das Geld zurück, während der Verkäufer mit Sendungsverfolgung versendet oder ihr eine Abholung vereinbart."] }
+        receive: { heading: "4. Erhalten und bestätigen", body: ["Prüfe den Artikel bei Ankunft. Ist er wie beschrieben, schließe die Bestellung ab und der Verkäufer wird bezahlt. Falls nicht, melde innerhalb der Schutzfrist ein Problem und wir helfen."] }
+    fees:
+      title: Gebühren
+      intro: Verkaufen auf PCMarket ist derzeit kostenlos. Keine Einstellgebühren, keine Verkaufsgebühren.
+      sections:
+        now: { heading: "Heute", body: ["Einstellen ist kostenlos und in unserer Startphase fällt keine Provision auf Verkäufe an. Käufer zahlen den Artikelpreis plus die vom Verkäufer festgelegten Versandkosten."] }
+        later: { heading: "In Zukunft", body: ["Wir könnten eine kleine Provision auf abgeschlossene Verkäufe und optionale bezahlte Hervorhebungen einführen. Änderungen kündigen wir mindestens 30 Tage vorher an; sie gelten nie für bereits aufgegebene Bestellungen."] }
+    shipping_guide:
+      title: Hardware sicher versenden
+      intro: Gute Verpackung vermeidet Schäden, Streitfälle und unzufriedene Käufer.
+      sections:
+        pc: { heading: "Einen kompletten PC versenden", body: ["Baue die Grafikkarte und große Luftkühler aus oder sichere sie, oder fülle das Gehäuse mit Schaumstoff oder Luftpolstern. Nutze den Originalkarton oder einen doppelwelligen Karton mit mindestens 5 cm Polsterung auf jeder Seite.", "Fotografiere das Verpacken. Das hilft bei Streitfällen."] }
+        parts: { heading: "Komponenten versenden", body: ["Verwende antistatische Beutel für GPUs, Mainboards und Arbeitsspeicher. Schütze CPU-Pins und Sockel mit den Originalabdeckungen."] }
+        carrier: { heading: "Sendungsverfolgung und Versicherung", body: ["Versende immer mit Sendungsverfolgung und trage die Nummer fristgerecht in der Bestellung ein. Für wertvolle Artikel wähle einen versicherten Versand."] }
+    photo_guide:
+      title: Gute Fotos machen
+      intro: Gute Fotos verkaufen schneller und zu besseren Preisen.
+      sections:
+        light: { heading: "Natürliches Licht nutzen", body: ["Fotografiere tagsüber in Fensternähe. Vermeide Blitz und harte Schatten."] }
+        angles: { heading: "Alle Seiten zeigen", body: ["Zeige Vorder- und Rückseite, Seiten, Anschlüsse und Seriennummern. Bei PCs das Innere ohne Seitenteil und mit eingeschalteten Komponenten."] }
+        honest: { heading: "Ehrlich sein", body: ["Fotografiere jeden Kratzer, jede Delle und jeden Mangel. Fotos müssen deine eigenen sein: Angebote mit Katalog- oder fremden Fotos werden abgelehnt."] }
+    help:
+      title: Hilfe-Center
+      intro: Antworten auf die häufigsten Fragen zum Kaufen und Verkaufen.
+      still_need_help: Nicht gefunden, was du suchst?
+      faqs:
+        buy: { q: "Wie kaufe ich einen Artikel?", a: "Klicke auf „Sofort kaufen“ oder lege den Artikel in den Warenkorb und gehe zur Kasse. Wähle Versand oder Abholung und bezahle. Der Verkäufer wird sofort benachrichtigt." }
+        protection: { q: "Was ist der Käuferschutz?", a: "Wir halten deine Zahlung zurück, bis du bestätigst, dass der Artikel wie beschrieben angekommen ist. Kommt er nicht an, ist beschädigt oder nicht wie beschrieben, melde ein Problem und du erhältst dein Geld vollständig zurück." }
+        offer: { q: "Kann ich den Preis verhandeln?", a: "Ja, wenn der Verkäufer Preisvorschläge annimmt. Klicke auf „Preisvorschlag“. Der Verkäufer hat begrenzt Zeit zu antworten. Nimmt er an, kannst du zu deinem Preis kaufen." }
+        sell: { q: "Wie verkaufe ich?", a: "Klicke auf „Artikel einstellen“, wähle eine Kategorie und füge Fotos, Spezifikationen und Preis hinzu. Unser Team prüft jedes Angebot vor der Veröffentlichung, meist innerhalb von 24 Stunden." }
+        paid: { q: "Wann werde ich als Verkäufer bezahlt?", a: "Wenn der Käufer die Bestellung abschließt, oder automatisch nach Ablauf der Schutzfrist ohne gemeldetes Problem." }
+        shipping: { q: "Wer zahlt den Versand?", a: "Der Verkäufer legt die Versandkosten im Angebot fest. Angebote mit kostenlosem Versand sind gekennzeichnet." }
+        cancel: { q: "Kann ich eine Bestellung stornieren?", a: "Vor der Zahlung ja. Danach kannst du stornieren und erhältst dein Geld vollständig zurück, wenn der Verkäufer nicht fristgerecht versendet hat. Verkäufer können bezahlte Bestellungen stornieren, die sie nicht erfüllen können." }
+        withdrawal: { q: "Habe ich ein Widerrufsrecht?", a: "Beim Kauf von gewerblichen Verkäufern hast du ein gesetzliches Widerrufsrecht von 14 Tagen ab Zustellung. Käufe von Privatpersonen sind durch unseren Käuferschutz abgedeckt." }
+        account: { q: "Wie lösche ich mein Konto oder lade meine Daten herunter?", a: "Gehe zu Kontoeinstellungen › Datenschutz & Daten. Dort kannst du eine Kopie deiner Daten herunterladen oder dein Konto endgültig löschen." }
+    trust:
+      title: Vertrauen & Sicherheit
+      hero_title: "Ist %{site} seriös? Ja."
+      intro: "Jede Bestellung auf %{site} ist geschützt: Wir halten deine Zahlung zurück, bis du bestätigst, dass der Artikel wie beschrieben angekommen ist – sonst bekommst du dein Geld zurück."
+      browse: Marktplatz entdecken
+      contact: Support kontaktieren
+      protection_title: Käuferschutz bei jeder Bestellung
+      protection_intro: Der größte Unterschied zu Kleinanzeigenportalen ist, dass dein Geld geschützt ist, bis du den Artikel in den Händen hältst.
+      steps:
+        hold: { title: "Wir halten die Zahlung zurück", body: "Wenn du bezahlst, verwahren wir das Geld. Der Verkäufer wird erst bezahlt, wenn der Artikel zugestellt ist und du ihn prüfen konntest." }
+        ship: { title: "Versand mit Sendungsverfolgung", body: "Der Verkäufer muss innerhalb von %{ship_days} Werktagen mit Sendungsverfolgung versenden, damit du dein Paket bis zur Haustür verfolgen kannst." }
+        release: { title: "Du prüfst, dann geben wir frei", body: "Du hast %{days} Tage nach Zustellung, um den Artikel zu prüfen. Wie beschrieben – oder Geld zurück." }
+      covered_title: Du bist abgesichert bei
+      covered:
+        - Bestellungen, die nie ankommen
+        - Artikeln, die beschädigt, defekt oder gefälscht ankommen
+        - Artikeln, die nicht der Beschreibung entsprechen
+        - "Bestellungen, die nicht innerhalb von %{ship_days} Werktagen versendet werden"
+      covered_footer_html: "Die vollständigen Regeln findest du unter %{protection} und in unseren %{terms}."
+      pillars_title: Von Experten gebaut, von einer echten Community getragen
+      pillars:
+        moderation: { title: "Menschliche Moderation", body: "Unser Team prüft jedes Angebot vor der Veröffentlichung und entfernt Verdächtiges." }
+        reviews: { title: "Verifizierte Bewertungen", body: "Nur Käufer mit abgeschlossener Bestellung können Verkäufer bewerten. Bewertungen sind in jedem Shop öffentlich." }
+        payments: { title: "Sichere Zahlungen", body: "Zahlungen werden von einem regulierten Zahlungsdienstleister abgewickelt. Wir sehen deine Kartendaten nie." }
+        reports: { title: "Alles melden", body: "Melde ein Angebot oder einen Nutzer mit zwei Klicks. Wir handeln schnell und begründen unsere Entscheidungen." }
+      tips_title: Bleib sicher
+      tips:
+        - "Bleib mit Gesprächen und Zahlungen auf %{site}. Zahlungen außerhalb der Plattform (Überweisung, PayPal Freunde) sind nicht geschützt."
+        - Sei vorsichtig bei Preisen, die zu gut klingen, um wahr zu sein.
+        - "Teile niemals Passwörter oder Einmalcodes. Das %{site}-Team wird nie danach fragen."
+        - Triff dich bei Abholung an einem öffentlichen Ort und teste den Artikel vor der Bestätigung.
+      support_title: Sprich mit einem echten Team
+      faq_short: Anleitungen und FAQ
+      ticket_short: Antwort innerhalb eines Werktages
+      email: Schreib uns
+      reviews_title: Glaub nicht nur uns
+      faq_title: Häufige Fragen
+      faqs:
+        scam: { q: "Ist %{site} Betrug?", a: "Nein. %{site} gibt es genau, um Betrug zu verhindern. Deine Zahlung wird zurückgehalten, bis dein Artikel ankommt und du bestätigst, dass er dem Angebot entspricht. Kommt er nie an oder ist nicht wie beschrieben, bekommst du dein Geld vollständig zurück." }
+        not_arrived: { q: "Was passiert, wenn mein Artikel nicht ankommt oder nicht wie beschrieben ist?", a: "Eröffne innerhalb von %{days} Tagen nach Zustellung einen Streitfall in deiner Bestellung. Wir stoppen die Auszahlung an den Verkäufer, prüfen die Belege beider Seiten und erstatten dir den Betrag, wenn die Reklamation berechtigt ist." }
+        refund: { q: "Wie funktionieren Erstattungen?", a: "Erstattungen gehen auf dein ursprüngliches Zahlungsmittel zurück. Die meisten Banken zeigen sie innerhalb von 5–10 Werktagen an." }
+        payments: { q: "Wie sind meine Zahlungen geschützt?", a: "Zahlungen werden von unserem Zahlungsdienstleister abgewickelt. %{site} hält das Geld zurück und gibt es erst frei, wenn die Bestellung abgeschlossen ist." }
+        inspect: { q: "Wie lange habe ich Zeit, meine Bestellung zu prüfen?", a: "Du hast %{days} Tage ab Zustellung. Meldest du in dieser Zeit kein Problem, wird die Bestellung automatisch abgeschlossen." }
+    sell:
+      title: Auf PCMarket verkaufen
+      hero_title: "Starte mit dem Verkaufen auf %{site}"
+      intro: Erreiche Tausende Gamer auf der Suche nach Hardware. Einstellen ist kostenlos und du wirst sicher bezahlt.
+      cta: Hardware einstellen
+      perks:
+        fees: { title: "Keine Gebühren", body: "Verkaufen ist in unserer Startphase kostenlos." }
+        protection: { title: "Verkäuferschutz", body: "Die Zahlung ist bestätigt, bevor du versendest. Keine Rückbuchungs-Überraschungen." }
+        chat: { title: "Integrierter Chat", body: "Beantworte Fragen und verhandle, ohne deine Telefonnummer zu teilen." }
+        stores: { title: "Profi-Shops", body: "Händler erhalten eine eigene Shop-Seite, Rabattcodes und Angebote mit mehreren Einheiten." }
+      how_title: So funktioniert das Verkaufen
+      steps:
+        list: { title: "Einstellen", body: "Lade eigene Fotos und Spezifikationen hoch. Unsere Optionslisten machen es schnell." }
+        review: { title: "Wir prüfen", body: "Unser Team prüft jedes Angebot, damit der Marktplatz vertrauenswürdig bleibt." }
+        sell: { title: "Versenden", body: "Bei einem Verkauf benachrichtigen wir dich. Versende innerhalb von %{ship_days} Werktagen und trage die Sendungsnummer ein." }
+        paid: { title: "Bezahlt werden", body: "Du wirst bezahlt, wenn der Käufer abschließt oder %{days} Tage nach Zustellung." }
+      faq_title: FAQ für Verkäufer
+      faqs:
+        why: { q: "Warum hier statt auf einem allgemeinen Kleinanzeigenportal verkaufen?", a: "Unsere Käufer suchen gezielt PC-Hardware und unsere Filter verstehen Spezifikationen. Geschützte Zahlungen bedeuten weniger Zeitverschwender und keinen Betrug." }
+        business: { q: "Ich bin Händler. Kann ich verkaufen?", a: "Ja. Registriere dich in den Shop-Einstellungen als gewerblicher Verkäufer, gib deine Firmendaten an und erhalte einen eigenen Shop, Angebote mit mehreren Einheiten und Rabattcodes." }
+        protection: { q: "Wie bin ich als Verkäufer geschützt?", a: "Käufer zahlen im Voraus und die Zahlung ist vor dem Versand bestätigt. Streitfälle prüft unser Team anhand der Belege beider Seiten." }
+        elsewhere: { q: "Darf ich meine Artikel auch anderswo anbieten?", a: "Ja, aber halte deinen Bestand aktuell. Wird ein Artikel anderswo verkauft, pausiere oder entferne das Angebot sofort." }
+        paid: { q: "Wann werde ich bezahlt?", a: "Auszahlungen erfolgen, wenn der Käufer die Bestellung abschließt, oder automatisch nach Ablauf der Käuferschutzfrist." }
+      recently_sold: Kürzlich verkauft
+      final_title: Starte deine Reise als Verkäufer
+    credits:
+      title: Bildnachweise
+      intro: Die Demo-Angebote verwenden frei lizenzierte Fotos. Danke an die Urheber.
+      image: Bild
+      author: Urheber
+      source: Quelle
+      license: Lizenz

@@ -18,7 +18,7 @@ module SeedImages
     dir = CACHE.join(query.parameterize)
     FileUtils.mkdir_p(dir)
     cached = Dir[dir.join("*.jpg")].sort
-    return cached.map { |file| [file, read_meta(file)] } if cached.size >= PER_QUERY / 2 && cached.any?
+    return cached.map { |file| [ file, read_meta(file) ] } if cached.size >= PER_QUERY / 2 && cached.any?
 
     candidates(query).first(PER_QUERY * 2).each_with_index do |candidate, index|
       break if Dir[dir.join("*.jpg")].size >= PER_QUERY
@@ -28,7 +28,7 @@ module SeedImages
 
       File.write("#{path}.json", candidate.except(:url, :fallback).to_json)
     end
-    Dir[dir.join("*.jpg")].sort.map { |file| [file, read_meta(file)] }
+    Dir[dir.join("*.jpg")].sort.map { |file| [ file, read_meta(file) ] }
   end
 
   def candidates(query)

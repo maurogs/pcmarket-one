@@ -27,7 +27,7 @@ class ListingDetails
       next if %w[product_labels seller_tags].include?(definition.key)
 
       label = listing.spec_label(definition.key)
-      [definition.name, label] if label
+      [ definition.name, label ] if label
     end
   end
 

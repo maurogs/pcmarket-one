@@ -6,6 +6,6 @@ module PlatformFee
     return 0 unless Setting.enabled?(:commissions_enabled) && amount_cents.positive?
 
     fee = (amount_cents * Setting.get(:commission_percent) / 100.0).round
-    [fee, Setting.get(:commission_min_cents)].max.clamp(0, amount_cents)
+    [ fee, Setting.get(:commission_min_cents) ].max.clamp(0, amount_cents)
   end
 end

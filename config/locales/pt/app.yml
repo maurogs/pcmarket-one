@@ -1,0 +1,1153 @@
+pt:
+  date:
+    formats:
+      month_year: "%B de %Y"
+  time:
+    ago: "há %{time}"
+  locales: { es: "Español", en: "English (UK)", fr: "Français", de: "Deutsch", it: "Italiano", pt: "Português" }
+  countries: { es: "Espanha", fr: "França", gb: "Reino Unido", de: "Alemanha", it: "Itália", pt: "Portugal" }
+
+  seo:
+    default_description: "%{site} é o marketplace para comprar e vender PCs gaming, placas gráficas, componentes, periféricos, portáteis, telemóveis e consolas novos e usados com proteção do comprador."
+    og_locale: pt_PT
+
+  shared:
+    save: Guardar
+    cancel: Cancelar
+    delete: Eliminar
+    edit: Editar
+    confirm: Tem a certeza?
+
+  layout:
+    skip_to_content: Saltar para o conteúdo
+    back_to_top: Voltar ao topo
+    announcement: "Chegou a época dos upgrades: descobre os anúncios com desconto."
+    announcement_cta: Ver promoções
+    secondary_nav: Navegação secundária
+    main_nav: Navegação principal
+    help: Ajuda
+    trust: Confiança e segurança
+    sell_info: Vender na PCMarket
+    pc_finder: PC Finder
+    open_menu: Abrir menu
+    close: Fechar
+    home: Início
+    home_label: "Início da %{site}"
+    search_label: Pesquisar anúncios e vendedores
+    search_placeholder: Pesquisar anúncios e vendedores
+    list_item: Publicar anúncio
+    sell_to_us: Vende-nos
+    wishlist: Favoritos
+    notifications: Notificações
+    cart: Carrinho
+    cart_label:
+      one: Carrinho, 1 artigo
+      other: "Carrinho, %{count} artigos"
+    account_menu: Menu da conta
+    log_in: Iniciar sessão
+    new: Novidades
+    deals: Promoções
+    all_in: "Tudo em %{name}"
+    breadcrumbs: Navegação estrutural
+    pagination: Paginação
+    previous_page: Página anterior
+    next_page: Página seguinte
+    language: Idioma
+    country: País
+    toggle_theme: Alternar modo escuro
+    light: Claro
+    dark: Escuro
+    menu:
+      orders: As minhas compras
+      inbox: Mensagens e ofertas
+      wishlist: Favoritos
+      saved_searches: Pesquisas guardadas
+      account: Definições da conta
+      my_store: A minha loja
+      public_profile: Perfil público
+      dashboard: Painel de vendedor
+      my_listings: Os meus anúncios
+      my_sales: As minhas vendas
+      store_settings: Definições da loja
+      admin: Painel de administração
+      log_out: Terminar sessão
+    promo:
+      cta: Descobrir
+      pc_finder: { title: "Encontra o PC perfeito", body: "Responde a algumas perguntas e mostramos-te PCs que atingem os FPS que procuras." }
+      sell_to_us: { title: "Transforma o teu hardware em dinheiro", body: "Recebe já uma oferta pela tua GPU ou CPU." }
+      sell: { title: "Vende o teu equipamento", body: "Publicar é grátis e os compradores estão protegidos." }
+      deals: { title: "Promoções da semana", body: "Anúncios com desconto de vendedores verificados." }
+    footer:
+      tagline: O marketplace para gamers e montadores de PCs. Compra e vende hardware novo e usado com pagamentos protegidos.
+      newsletter_title: Não percas nada
+      newsletter_body: Sê o primeiro a saber de novidades, promoções e passatempos.
+      email: Endereço de email
+      subscribe: Subscrever
+      newsletter_legal_html: "Vamos pedir-te que confirmes o email. Podes cancelar a qualquer momento. Consulta a nossa %{privacy}."
+      about: Sobre nós
+      about_us: Quem somos
+      how_it_works: Como funciona
+      credits: Créditos das imagens
+      buy_sell: Comprar e vender
+      fees: Comissões
+      shipping_guide: Como enviar com segurança
+      photo_guide: Como tirar boas fotos
+      help: Ajuda
+      contact: Contactar o apoio
+      legal_nav: Legal
+      cookie_preferences: Preferências de cookies
+      copyright: "© %{year} %{company}. Todos os direitos reservados."
+
+  cookies:
+    title: Respeitamos a tua privacidade
+    body_html: "Usamos cookies estritamente necessários para o site funcionar. Com o teu consentimento usaríamos também cookies de análise e marketing. Podes alterar a escolha a qualquer momento. Lê a nossa %{link}."
+    necessary: Estritamente necessários (sempre ativos)
+    analytics: Análise
+    marketing: Marketing
+    accept_all: Aceitar todos
+    reject_all: Rejeitar todos
+    customize: Personalizar
+    save: Guardar escolhas
+
+  auth:
+    side_title: Compra e vende hardware gaming sem stress.
+    side_footer: O pagamento fica retido até receberes o artigo.
+    points:
+      protection: Proteção do comprador em cada encomenda
+      reviewed: Todos os anúncios revistos pela nossa equipa
+      chat: Chat integrado com os vendedores
+    sign_up_title: Cria a tua conta
+    no_account: Não tens conta?
+    or: ou
+    username_placeholder: ex. pixel_builder
+    username_hint: Entre 3 e 30 caracteres. Letras, números, pontos, hífens e underscores. É público.
+    terms_html: "Aceito os %{terms} e li a %{privacy}."
+    marketing_consent: Quero receber novidades e ofertas por email (opcional).
+    age_notice: Tens de ter pelo menos 18 anos para comprar ou vender na plataforma.
+
+  errors:
+    forbidden: Não tens permissão para fazer isso.
+    account_suspended: A tua conta está suspensa. Contacta o apoio se achas que é um erro.
+    confirm_email_first: Confirma o teu email antes de comprar ou vender.
+    registrations_closed: O registo de novas contas está temporariamente fechado.
+    too_many_attempts: Demasiadas tentativas. Aguarda alguns minutos e tenta de novo.
+    oauth_failed: Não foi possível iniciar sessão com esse fornecedor.
+    not_found: { title: "Página não encontrada", body: "A página que procuras não existe ou já não está disponível.", cta: "Voltar ao início" }
+    maintenance: { title: "Voltamos já", body: "Estamos em manutenção. Tenta novamente dentro de alguns minutos." }
+
+  api:
+    errors:
+      not_found: Recurso não encontrado.
+      unauthorized: Autenticação necessária.
+      forbidden: Não tens permissão para realizar esta ação.
+      parameter_missing: Falta um parâmetro obrigatório.
+      maintenance: O serviço está em manutenção.
+      invalid_credentials: Email ou palavra-passe inválidos.
+      rate_limited: Demasiados pedidos. Abranda.
+      registrations_closed: Os registos estão fechados.
+      terms_required: Tens de aceitar os termos de utilização.
+      not_actionable: Esta ação já não está disponível.
+
+  home:
+    see_all: Ver tudo
+    show:
+      seo_title: Compra e vende PCs gaming, placas gráficas e componentes
+      seo_description: "PCs gaming, placas gráficas, componentes e periféricos novos e usados de particulares e lojas. Pagamentos protegidos pela %{site}."
+      hero:
+        kicker: Época de upgrades
+        title: Hardware com história. Preços que fazem sentido.
+        body: Compra e vende PCs gaming, placas gráficas e componentes com pagamentos protegidos e anúncios revistos por pessoas.
+        browse: Ver anúncios
+        sell: Começar a vender
+        point_protection: Proteção do comprador
+        point_reviewed: Anúncios revistos
+        point_fees: Sem comissões de venda
+        deals_title: Promoções do dia
+      categories_label: Categorias
+      finder:
+        title: Encontra exatamente o que procuras
+        body: Diz-nos o que jogas, o teu monitor e o teu orçamento. Mostramos-te PCs que atingem os teus FPS.
+        cta: Encontrar o PC ideal
+      themes_title: PCs pelo teu estilo
+      most_watched: Os mais seguidos esta semana
+      gpus: Placas gráficas
+      sell_banner:
+        title: Transforma o hardware antigo em dinheiro extra
+        body: Publicar é grátis. Fala com compradores, envia com seguimento e recebe quando chegar.
+        cta: Publicar anúncio
+      on_sale: Em promoção
+      on_sale_subtitle: Voam depressa.
+      newest: Acabados de publicar
+      reviews_title: O que dizem os compradores
+      verified_purchase: Compra verificada a
+      recently_sold: Vendidos recentemente
+      values:
+        protection: { title: "O teu dinheiro está protegido", body: "Retemos o pagamento até confirmares que o artigo chegou como descrito." }
+        moderation: { title: "Pessoas reveem cada anúncio", body: "A nossa equipa verifica os anúncios antes de os publicar para afastar burlas." }
+        chat: { title: "Fala antes de comprar", body: "Faz perguntas, pede mais fotos e negoceia com o chat e as ofertas integradas." }
+
+  listings:
+    conditions: { brand_new: "Novo selado", open_box: "Novo – caixa aberta", like_new: "Usado – como novo", good: "Usado – bom estado", fair: "Usado – estado razoável", for_parts: "Para peças / avariado" }
+    statuses: { draft: "Rascunho", pending_review: "Em revisão", published: "Publicado", rejected: "Rejeitado", paused: "Em pausa", sold: "Vendido", archived: "Arquivado" }
+    badges:
+      sold: Vendido
+      save: "Poupa %{percent}%"
+      free_shipping: Envio grátis
+      promoted: Patrocinado
+    card:
+      sold_for: Vendido por
+      performance: Desempenho total
+      value: Relação qualidade-preço
+    submitted:
+      published: O teu anúncio já está publicado!
+      pending: Obrigado! A nossa equipa vai rever o teu anúncio em breve.
+    saved_draft: Rascunho guardado.
+    destroy:
+      success: Anúncio removido.
+    pauses:
+      create: { success: "Anúncio em pausa. Está oculto para os compradores." }
+      destroy: { success: "O anúncio voltou a estar publicado." }
+    owner:
+      status: "Estado do anúncio:"
+      rejection: "Rejeitado: %{reason}"
+      pending_notice: A nossa equipa está a rever o teu anúncio. Normalmente demora menos de 24 horas.
+      edit: Editar
+      submit: Enviar para revisão
+      pause: Pausar
+      resume: Reativar
+      promote: Patrocinar
+    index:
+      title: Todos os anúncios
+      deals_title: Promoções
+      search_title: "Resultados para «%{query}»"
+      seo_description: "%{title}: anúncios novos e usados de vendedores verificados na %{site}."
+      results:
+        zero: Sem anúncios
+        one: 1 anúncio
+        other: "%{count} anúncios"
+      filters: Filtros
+      save_search: Guardar pesquisa e avisar-me
+      sort_label: Ordenar por
+      sorts: { best_match: "Mais relevantes", newest: "Mais recentes", price_asc: "Preço: crescente", price_desc: "Preço: decrescente", most_watched: "Mais seguidos", performance: "Melhor desempenho", value: "Melhor relação qualidade-preço" }
+      empty_title: Nenhum anúncio corresponde aos filtros
+      empty_body: Remove alguns filtros ou guarda a pesquisa para seres avisado quando surgir algo novo.
+      clear_filters: Limpar filtros
+      seo_footer: "Procuras %{name}? Na %{site} encontras %{name} novos e usados de particulares e lojas especializadas, com o pagamento retido até receberes o artigo, chat com o vendedor e anúncios revistos pela nossa equipa."
+    filters:
+      title: Filtros
+      search: Filtrar anúncios
+      active: A filtrar por
+      clear_all: Limpar tudo
+      remove: "Remover filtro %{name}"
+      price: Preço
+      price_range: "Preço: %{min} – %{max}"
+      min_price: Preço mínimo
+      max_price: Preço máximo
+      min: Mín.
+      max: Máx.
+      condition: Estado
+      show_more:
+        one: Ver mais 1
+        other: "Ver mais %{count}"
+      show_less: Ver menos
+      location: Localização
+      region: Distrito
+      any_region: "Todo o país (%{country})"
+      other: Outros
+      free_shipping: Envio grátis
+      local_pickup: Entrega em mão disponível
+      on_sale: Em promoção
+      seller_type: Tipo de vendedor
+      any_seller: Qualquer vendedor
+      apply: Aplicar filtros
+      show_results:
+        zero: Sem resultados
+        one: Ver 1 resultado
+        other: "Ver %{count} resultados"
+      flags:
+        region: "Distrito: %{value}"
+        free_shipping: Envio grátis
+        on_sale: Em promoção
+        local_pickup: Entrega em mão
+        seller_type: "Vendedor: %{value}"
+    gallery:
+      label: Galeria de fotos
+      thumbnails: Miniaturas
+      photo: "Foto %{number}"
+      alt: "%{title} – foto %{number}"
+      previous: Foto anterior
+      next: Foto seguinte
+    show:
+      seo_description: "%{title} por %{price} (%{condition}). Compra com proteção do comprador."
+      overview: Resumo e especificações
+      condition: Estado
+      brand: Marca
+      category: Categoria
+      available_units: Unidades disponíveis
+      location: Localização
+      description: Descrição do vendedor
+      specifications: Especificações
+      performance: Desempenho estimado em jogos
+      performance_note: Estimativas baseadas em benchmarks de GPU e CPU com definições altas. Os resultados reais podem variar.
+      game: Jogo
+      fps:
+        one: 1 FPS
+        other: "%{count} FPS"
+      shipping_returns: Envio e devoluções
+      shipping: Envio
+      free_shipping: Envio grátis
+      no_shipping: Apenas entrega em mão
+      pickup: Entrega em mão
+      pickup_yes: "Disponível em %{city}"
+      pickup_no: Não disponível
+      returns: Devoluções
+      returns_window: "Aceita devoluções durante %{days} dias"
+      returns_protection_only: Coberto pela proteção do comprador
+      eta:
+        ordered: Encomenda feita
+        ships: "Enviado em %{days} dias"
+        arrives: Entregue
+      protection_title: "Proteção do comprador %{site}"
+      protection_body: "Recebe o artigo como descrito ou devolvemos-te o dinheiro. Tens %{days} dias após a entrega para comunicar um problema."
+      learn_more: Saber mais
+      similar: Anúncios semelhantes
+      more_from: "Mais de %{name}"
+      reviews: Avaliações do vendedor
+      published_on: "Publicado a %{date}"
+      views:
+        one: 1 visualização
+        other: "%{count} visualizações"
+      report: Denunciar anúncio
+      sell_similar: Tens algo parecido? Vende-o
+      plus_shipping: "+ %{price} de envio"
+      pickup_only: Apenas entrega em mão
+      watchers:
+        zero: Sê o primeiro a guardar
+        one: 1 pessoa está a seguir
+        other: "%{count} pessoas estão a seguir"
+      sold_out: Este artigo já foi vendido.
+      not_available: Este anúncio não está disponível de momento.
+      seller_on_vacation: "O vendedor está de férias. %{message}"
+      your_listing: Este anúncio é teu.
+      buy_now: Comprar já
+      buy_at_offer: "Comprar ao preço da tua oferta: %{price}"
+      add_to_cart: Adicionar ao carrinho
+      message_seller: Mensagem
+      make_offer: Fazer oferta
+      offer_pending: "Oferta enviada: %{price}"
+      share: Partilhar
+      link_copied: Link copiado!
+      trader_info: Informação do vendedor profissional
+      trader_notice: Este vendedor é uma empresa. A tua compra está abrangida pela lei do consumidor, incluindo o direito de livre resolução.
+      private_seller_notice: Este vendedor é um particular. Os direitos do consumidor perante profissionais não se aplicam, mas a tua compra está coberta pela proteção do comprador.
+    new:
+      title: Publicar um anúncio
+    edit:
+      title: Editar anúncio
+    form:
+      pick_category: Escolhe a categoria que melhor descreve o teu artigo.
+      choose: Escolher
+      errors:
+        one: "1 erro impediu guardar o anúncio:"
+        other: "%{count} erros impediram guardar o anúncio:"
+      basics: O essencial
+      category: Categoria
+      change: Alterar
+      title_placeholder: ex. PC Gaming Ryzen 7 7800X3D | RTX 4070 Super | 32GB DDR5
+      condition_hint: Sê honesto. Anúncios precisos vendem mais depressa e evitam disputas.
+      description_placeholder: Descreve o estado, a utilização, o que inclui, defeitos, benchmarks…
+      photos: Fotos
+      photos_hint: "Até %{count} fotos. Usa fotos tuas com boa luz. Mostra os defeitos."
+      photo_guide: Dicas para fotos
+      remove_photo: Remover
+      upload: Clica para carregar ou arrasta as fotos para aqui
+      upload_formats: JPG, PNG, WebP ou AVIF · máx. 10 MB cada
+      too_many_photos: "Podes carregar até %{count} fotos."
+      photo_too_large: Cada foto deve ter menos de 10 MB.
+      specs: Especificações
+      specs_hint: As especificações ajudam os compradores a encontrar o teu artigo com os filtros. Preenche o máximo possível.
+      select: Seleciona…
+      tags_hint: Opcional. Escolhe até 10 etiquetas de estilo para o teu setup.
+      pricing: Preço
+      original_price_hint: Opcional. Mostra uma etiqueta de desconto.
+      quantity_hint: Para lojas que vendem várias unidades idênticas.
+      you_receive: "Vais receber:"
+      no_fees: Sem comissões de venda
+      fee_note: "Inclui uma comissão da plataforma de %{percent}%."
+      allow_offers: Aceitar ofertas dos compradores
+      delivery: Localização e entrega
+      shipping_available: Posso enviar este artigo
+      shipping_price_hint: Deixa 0 para envio grátis.
+      local_pickup: Entrega em mão disponível
+      review_notice: Os anúncios são revistos pela nossa equipa antes de serem publicados.
+      instant_notice: O teu anúncio será publicado de imediato.
+      save_draft: Guardar rascunho
+      publish: Publicar
+      save_changes: Guardar alterações
+    offers:
+      new:
+        title: Fazer uma oferta
+        amount: A tua oferta
+        hint: "A oferta deve ser pelo menos %{percent}% do preço. O vendedor tem %{hours} horas para responder."
+        message: Mensagem para o vendedor (opcional)
+        submit: Enviar oferta
+      create:
+        success: Oferta enviada! Avisamos-te quando o vendedor responder.
+
+  favorites:
+    add: Adicionar aos favoritos
+    remove: Remover dos favoritos
+    save: Guardar
+    saved: Guardado
+    index:
+      title: Favoritos
+      empty_title: Ainda não tens favoritos
+      empty_body: Toca no coração de qualquer anúncio para o guardar aqui.
+      browse: Ver anúncios
+
+  stores:
+    verified: Vendedor verificado
+    business: Vendedor profissional
+    seller_types: { individual: "Particular", business: "Profissional" }
+    reviews_count:
+      zero: Sem avaliações
+      one: 1 avaliação
+      other: "%{count} avaliações"
+    no_reviews: Ainda sem avaliações
+    sales:
+      zero: Ainda sem vendas
+      one: 1 venda
+      other: "%{count} vendas"
+    followers:
+      one: 1 seguidor
+      other: "%{count} seguidores"
+    for_sale:
+      one: 1 à venda
+      other: "%{count} à venda"
+    member_since: "Membro desde %{date}"
+    on_vacation: "De férias."
+    follow: Seguir
+    unfollow: A seguir
+    report: Denunciar utilizador
+    edit_store: Editar loja
+    about: Sobre a loja
+    policies: Políticas da loja
+    listings: Anúncios
+    all_categories: Todas as categorias
+    empty: Esta loja ainda não tem anúncios.
+    show:
+      seo_title: "%{name} – loja"
+      seo_description: "Compra os anúncios de %{name} na %{site}."
+    reviews:
+      index:
+        title: "Avaliações de %{name}"
+        order: Ordem
+        newest: Mais recentes primeiro
+        oldest: Mais antigas primeiro
+
+  reviews:
+    rating_label: "%{rating} de 5 estrelas"
+    purchased: "Comprou: %{title}"
+    seller_reply: Resposta do vendedor
+    reply_placeholder: Responder publicamente a esta avaliação
+    reply: Responder
+    statuses: { visible: "Visível", hidden: "Oculta" }
+
+  pc_finders:
+    show:
+      seo_title: PC Finder – encontra o PC gaming certo
+      seo_description: "Responde a algumas perguntas e a %{site} recomenda PCs gaming que atingem os teus FPS nos teus jogos favoritos."
+      title: Um PC para cada gamer
+      subtitle: Responde a algumas perguntas e recebe recomendações personalizadas.
+      questions:
+        games: A que jogos vais jogar?
+        games_hint: Escolhe até três jogos
+        resolution: Qual é a resolução do teu monitor?
+        fps: Quantos FPS queres?
+        budget: Qual é o teu orçamento?
+        case_color: De que cor preferes a caixa?
+        cooling: Que refrigeração preferes?
+        vibe: Qual é o teu estilo?
+      answers:
+        no_preference: Tanto faz
+        resolution: { 1080p: "1080p (Full HD)", 1440p: "1440p (QHD)", 2160p: "2160p (4K)" }
+        fps: { "60": "60 FPS", "144": "144 FPS", "240": "240+ FPS" }
+        budget: { under_800: "Menos de 800 €", "800_1200": "800 € – 1200 €", "1200_2000": "1200 € – 2000 €", over_2000: "Mais de 2000 €" }
+        case_color: { black: "Preta", white: "Branca", multicolor: "Colorida" }
+        cooling: { air: "Ar", aio: "Líquida AIO", custom_loop: "Custom loop" }
+        vibe: { minimalist: "Minimalista", rgb: "Tudo RGB", anime: "Anime", competitive: "Competitivo", retro: "Retro" }
+      back: Voltar
+      next: Pergunta seguinte
+      see_results: Ver resultados
+      results:
+        zero: Ainda sem correspondências
+        one: 1 PC corresponde às tuas respostas
+        other: "%{count} PCs correspondem às tuas respostas"
+      reset: Recomeçar
+      no_results: Nenhum PC cumpre todas as tuas respostas
+      no_results_body: Experimenta menos FPS, mais orçamento ou menos jogos.
+      browse_all: Ver todos os PCs gaming
+      by_gamer: PCs por tipo de jogador
+      best_for: Os melhores PCs para
+
+  saved_searches:
+    default_name: A minha pesquisa
+    create: { success: "Pesquisa guardada. Avisamos-te por email quando houver anúncios novos." }
+    update: { success: "Pesquisa atualizada." }
+    destroy: { success: "Pesquisa eliminada." }
+    index:
+      title: Pesquisas guardadas
+      subtitle: Avisamos-te quando surgirem anúncios novos que correspondam às tuas pesquisas.
+      last_alert: "Último aviso há %{time}"
+      no_alerts_yet: Ainda sem avisos
+      email_alerts: Avisos por email
+      frequency: Frequência
+      frequencies: { instant: "Imediato", daily: "Resumo diário" }
+      delete: Eliminar
+      empty_title: Não tens pesquisas guardadas
+      empty_body: Usa «Guardar pesquisa» em qualquer página de resultados para receberes avisos de anúncios novos.
+
+  notifications:
+    index:
+      title: Notificações
+      mark_all: Marcar tudo como lido
+      empty: Está tudo em dia.
+    kinds:
+      listing_approved: "O teu anúncio «%{title}» foi aprovado e já está publicado."
+      listing_rejected: "O teu anúncio «%{title}» precisa de alterações antes de ser publicado."
+      new_message: "Nova mensagem de %{sender}."
+      new_offer: "%{sender} enviou-te uma oferta."
+      offer_accepted: "A tua oferta por «%{title}» foi aceite. Conclui a compra agora."
+      offer_declined: "A tua oferta por «%{title}» foi recusada."
+      order_placed: "Nova encomenda %{number}."
+      order_paid: "A encomenda %{number} foi paga."
+      order_shipped: "A encomenda %{number} foi enviada."
+      order_delivered: "A encomenda %{number} foi entregue."
+      order_completed: "A encomenda %{number} foi concluída."
+      order_cancelled: "A encomenda %{number} foi cancelada."
+      order_refunded: "A encomenda %{number} foi reembolsada."
+      order_disputed: "Foi comunicado um problema com a encomenda %{number}."
+      new_review: "Recebeste uma nova avaliação de %{rating} estrelas."
+      saved_search_match: "Novo anúncio para a pesquisa «%{name}»: %{title}"
+      new_follower: "%{follower} começou a seguir a tua loja."
+      followed_seller_listing: "%{seller} acabou de publicar «%{title}»."
+  notification_readings:
+    create: { success: "Todas as notificações marcadas como lidas." }
+
+  conversations:
+    index:
+      title: Mensagens
+      blocked_users: Utilizadores bloqueados
+      tabs: Secções das mensagens
+      tab_chats: Conversas
+      tab_offers: Ofertas
+      role_buyer: A comprar
+      role_seller: A vender
+      no_listing: Conversa geral
+      empty_title: Ainda não tens mensagens
+      empty_body: Escreve a um vendedor a partir de qualquer anúncio para começar uma conversa.
+    show:
+      title: Conversa
+      make_offer: Fazer oferta
+      more: Mais opções
+      block: Bloquear utilizador
+      block_confirm: Bloquear este utilizador? Nenhum dos dois poderá escrever ao outro.
+      report: Denunciar utilizador
+      safety_notice: "Paga sempre através da %{site}. Nunca te pediremos para pagar por transferência, MB WAY ou PayPal amigos. Os pagamentos fora da plataforma não estão protegidos."
+      blocked: Esta conversa está fechada porque um de vocês bloqueou o outro.
+      placeholder: Escreve uma mensagem…
+      send: Enviar
+  messages:
+    create:
+      blocked: Não podes escrever a este utilizador.
+      invalid: Não foi possível enviar a mensagem.
+    off_platform_warning: Atenção – os pagamentos fora da plataforma não estão protegidos.
+    system:
+      offer_accepted: O vendedor aceitou a oferta.
+      offer_declined: O vendedor recusou a oferta.
+    offer:
+      title: Oferta
+      listed_at: "Preço anunciado: %{price}"
+      expires: "Expira a %{time}"
+      accept: Aceitar
+      decline: Recusar
+      withdraw: Retirar oferta
+      buy: Comprar a este preço
+  offers:
+    accepted: Oferta aceite. O comprador foi avisado.
+    declined: Oferta recusada.
+    withdrawed: Oferta retirada.
+    not_actionable: Esta oferta já não pode ser alterada.
+    statuses: { pending: "Pendente", accepted: "Aceite", declined: "Recusada", withdrawn: "Retirada", expired: "Expirada", purchased: "Comprada" }
+
+  blocks:
+    create: { success: "Bloqueaste %{name}." }
+    destroy: { success: "Utilizador desbloqueado." }
+    index:
+      title: Utilizadores bloqueados
+      subtitle: Os utilizadores bloqueados não te podem escrever nem comprar-te.
+      unblock: Desbloquear
+      empty: Não bloqueaste ninguém.
+
+  reports:
+    reasons: { prohibited_item: "Artigo proibido", counterfeit: "Contrafação ou réplica", scam: "Suspeita de burla ou fraude", misleading: "Descrição ou fotos enganosas", offensive: "Conteúdo ofensivo", intellectual_property: "Violação de propriedade intelectual", illegal_content: "Conteúdo ilegal", spam: "Spam", other: "Outro" }
+    statuses: { open: "Aberta", reviewing: "Em análise", resolved: "Resolvida", dismissed: "Arquivada" }
+    new:
+      title: Denunciar conteúdo
+      subtitle_html: "As denúncias são analisadas pela nossa equipa de confiança e segurança. Vê como as tratamos na nossa página sobre o %{dsa}."
+      reporting: "Estás a denunciar: %{name}"
+      details_hint: Explica porque este conteúdo é ilegal ou viola as nossas regras. Inclui links ou provas se possível.
+      good_faith: Confirmo que a informação desta denúncia é exata e completa, tanto quanto sei.
+      submit: Enviar denúncia
+    create:
+      success: Obrigado. Recebemos a tua denúncia e vamos analisá-la em breve.
+
+  cart_items:
+    create: { success: "Adicionado ao carrinho." }
+    destroy: { success: "Removido do carrinho." }
+    errors:
+      unavailable: Este artigo já não está disponível.
+      own_listing: Não podes comprar o teu próprio anúncio.
+  carts:
+    show:
+      title: Carrinho
+      title_count:
+        zero: O teu carrinho
+        one: Carrinho (1 artigo)
+        other: "Carrinho (%{count} artigos)"
+      removed: "Alguns artigos já não estão disponíveis e foram removidos: %{titles}."
+      offer_applied: "Preço da oferta aplicado: %{price}"
+      quantity: Quantidade
+      remove: Remover
+      save_for_later: Guardar nos favoritos
+      summary: Resumo da encomenda
+      subtotal: Subtotal
+      shipping: Envio
+      calculated_at_checkout: Calculado no pagamento
+      vat_note: Os preços de vendedores profissionais incluem IVA.
+      checkout: Finalizar compra
+      login_to_checkout: Inicia sessão para comprar
+      create_account: Criar conta
+      empty_title: O teu carrinho está vazio
+      empty_body: Encontra algo de que gostes e adiciona-o ao carrinho.
+      browse: Ver anúncios
+      recommended: Recomendado para ti
+  checkout:
+    shipping_line: "Envio da encomenda %{number}"
+    stripe_line: "Encomenda %{number}: %{title}"
+    errors:
+      disabled: O pagamento está temporariamente indisponível.
+      empty: O teu carrinho está vazio.
+      own_listing: Não podes comprar o teu próprio anúncio.
+      blocked: Não podes comprar a este vendedor.
+      address_required: Adiciona uma morada de envio.
+      unavailable: "«%{title}» já não está disponível na quantidade pedida."
+      no_shipping: "«%{title}» não pode ser enviado. Escolhe entrega em mão."
+      no_pickup: "«%{title}» não está disponível para entrega em mão."
+      invalid_discount: Esse código de desconto não é válido.
+  checkouts:
+    show:
+      title: Finalizar compra
+      address: Morada de envio
+      add_address: Adicionar morada
+      no_address: Adiciona uma morada de envio para receberes a encomenda, ou escolhe entrega em mão.
+      sold_by: "Vendido por %{name}"
+      delivery_method: Entrega
+      ship_for: "Envio (%{price})"
+      free: grátis
+      pickup_in: "Entrega em mão em %{city}"
+      discount_code: Código de desconto
+      note: Nota para o vendedor (opcional)
+      shipping_per_seller: Por vendedor, indicado acima
+      legal_notice_html: "Ao fazer a encomenda aceitas os nossos %{terms} e confirmas que leste a %{privacy} e a informação sobre %{withdrawal}. A encomenda implica obrigação de pagamento."
+      pay: Encomendar e pagar
+      simulated_payments: "Modo demo: os pagamentos são simulados."
+      secure_payments: Pagamento seguro processado pela Stripe.
+  checkout_confirmations:
+    show:
+      title: Obrigado pela tua encomenda!
+      body: Enviámos-te uma confirmação por email. O vendedor já foi avisado e deve enviar dentro do prazo acordado.
+      sold_by: "Vendido por %{name}"
+      view: Ver encomenda
+      continue: Continuar a comprar
+
+  orders:
+    statuses: { pending_payment: "Pagamento pendente", paid: "Paga – por enviar", shipped: "Enviada", delivered: "Entregue", completed: "Concluída", cancelled: "Cancelada", refunded: "Reembolsada", disputed: "Problema comunicado" }
+    default_cancel_reason: Cancelada pelo utilizador
+    index:
+      title: As minhas compras
+      empty_title: Ainda não tens encomendas
+      empty_body: As tuas compras vão aparecer aqui.
+    show:
+      title: "Encomenda %{number}"
+      placed_on: "Feita a %{date}"
+      next_step: Próximo passo
+      items: Artigos
+      discount: Desconto
+      total: Total
+      platform_fee: Comissão da plataforma
+      payout: Vais receber
+      timeline: Histórico
+      buyer: Comprador
+      seller: Vendedor
+      message: Escrever ao vendedor
+      delivery: Entrega
+      pickup: Entrega em mão. Combina a entrega com o vendedor pelo chat.
+      tracking: Seguimento
+      guidance:
+        buyer:
+          pending_payment: Estamos à espera da confirmação do teu pagamento.
+          paid: "O vendedor já foi avisado e deve enviar em %{days} dias úteis (até %{deadline})."
+          shipped: A tua encomenda está a caminho. Confirma a entrega quando chegar.
+          delivered: "Verifica o artigo. Se estiver tudo bem, conclui a encomenda. Podes comunicar um problema até %{until}."
+          completed: Encomenda concluída. Obrigado pela compra! Não te esqueças de deixar uma avaliação.
+          cancelled: Esta encomenda foi cancelada. Qualquer pagamento foi reembolsado.
+          refunded: Esta encomenda foi reembolsada.
+          disputed: Comunicaste um problema. A nossa equipa vai analisar o caso e contactar ambas as partes.
+        seller:
+          pending_payment: O comprador ainda não pagou. Não envies nada.
+          paid: "Envia o artigo em %{days} dias úteis (até %{deadline}) e adiciona o número de seguimento."
+          shipped: À espera que o comprador receba o artigo.
+          delivered: "O comprador recebeu o artigo. O dinheiro será libertado a %{until}, salvo se for comunicado um problema."
+          completed: Encomenda concluída. O teu pagamento está a caminho.
+          cancelled: Esta encomenda foi cancelada. O artigo volta a estar disponível.
+          refunded: Esta encomenda foi reembolsada ao comprador.
+          disputed: O comprador comunicou um problema. Responde pelo chat; a nossa equipa fará a mediação.
+    actions:
+      carrier: Transportadora
+      tracking: Número de seguimento
+      mark_shipped: Marcar como enviada
+      mark_picked_up: Marcar como entregue em mão
+      cancel: Cancelar encomenda
+      cancel_reason: Motivo do cancelamento
+      confirm: Tens a certeza?
+      confirm_delivery: Recebi a minha encomenda
+      accept: Está tudo bem – concluir encomenda
+      accept_confirm: Ao concluir a encomenda o pagamento é libertado ao vendedor. Continuar?
+      report_problem: Comunicar um problema
+      dispute_placeholder: Descreve o problema (não chegou, não corresponde à descrição, chegou danificado…)
+      open_dispute: Abrir uma disputa
+      leave_review: Deixar uma avaliação
+      shipped: Encomenda marcada como enviada.
+      delivered: Entrega confirmada.
+      accepted: Encomenda concluída. Obrigado!
+      cancelled: Encomenda cancelada.
+      disputed: Recebemos o teu aviso. A nossa equipa vai entrar em contacto.
+      reviewed: Obrigado pela tua avaliação!
+    errors:
+      invalid_transition: Essa ação não está disponível para esta encomenda.
+      tracking_required: Adiciona um número de seguimento.
+      reason_required: Descreve o problema (pelo menos 10 caracteres).
+    reviews:
+      new:
+        title: Deixar uma avaliação
+        subtitle: "Como foi a tua experiência com %{name}?"
+        rating: Classificação
+        body: A tua opinião (opcional)
+        submit: Publicar avaliação
+
+  account:
+    nav:
+      profile: Perfil
+      security: Acesso e segurança
+      addresses: Moradas
+      notifications: Notificações
+      privacy: Privacidade e dados
+    profiles:
+      edit:
+        title: Definições da conta
+        username_hint: O teu nome de utilizador público.
+        email_html: "O teu email é %{email}. Podes alterá-lo em %{link}."
+      update: { success: "Perfil atualizado." }
+    stores:
+      edit:
+        title: Definições da loja
+        branding: Imagem da marca
+        logo_hint: Imagem quadrada de pelo menos 256×256 px.
+        banner_hint: Imagem larga de cerca de 1600×360 px.
+        about: Sobre a tua loja
+        policies: Políticas
+        no_returns: Sem devoluções (apenas proteção do comprador)
+        days:
+          one: 1 dia
+          other: "%{count} dias"
+        returns_hint: Os vendedores profissionais devem aceitar um prazo de livre resolução de 14 dias para consumidores.
+        allow_offers_default: Aceitar ofertas por defeito nos novos anúncios
+        seller_status: Tipo de vendedor
+        seller_status_hint: "Se vendes com regularidade ou no âmbito de uma atividade, tens de te registar como vendedor profissional. É uma obrigação legal na UE (Regulamento dos Serviços Digitais)."
+        seller_type_hint:
+          individual: Vendes ocasionalmente artigos usados teus.
+          business: Empresa ou trabalhador independente que vende com regularidade.
+        legal_name: Denominação social
+        tax_id: NIF / NIPC
+        business_address: Sede
+        trade_register_number: Número de registo comercial
+        trader_certification: Certifico que a minha empresa só oferece produtos conformes com o direito da UE aplicável (art. 30.º do DSA).
+        dac7_notice: Ao abrigo da diretiva europeia DAC7, temos de comunicar à Autoridade Tributária os vendedores que ultrapassem 30 vendas ou 2000 € por ano. Pediremos os dados em falta antes disso.
+      update: { success: "Loja atualizada." }
+    notification_settings:
+      edit:
+        title: Preferências de notificações
+        messages: Mensagens e ofertas
+        messages_hint: Avisar-me por email quando me escreverem ou enviarem uma oferta.
+        orders: Encomendas
+        orders_hint: Emails sobre compras e vendas. Recomendado.
+        saved_searches: Avisos de pesquisas guardadas
+        saved_searches_hint: Avisar-me por email quando houver anúncios novos para as minhas pesquisas.
+        marketing: Novidades e promoções
+        marketing_hint: Emails ocasionais sobre novas funcionalidades, promoções e passatempos.
+      update: { success: "Preferências guardadas." }
+    addresses:
+      index:
+        title: Moradas
+        default: Predefinida
+        add: Adicionar morada
+        make_default: Usar como morada predefinida
+      new: { title: "Nova morada" }
+      edit: { title: "Editar morada" }
+      create: { success: "Morada guardada." }
+      update: { success: "Morada atualizada." }
+      destroy: { success: "Morada eliminada." }
+    deletions:
+      new:
+        title: Privacidade e dados
+        export_title: Descarregar os teus dados
+        export_body: Obtém uma cópia dos dados pessoais que temos sobre ti num formato legível por máquina (JSON).
+        export: Descarregar os meus dados
+        delete_title: Eliminar conta
+        delete_body: Os teus anúncios serão removidos e os teus dados pessoais anonimizados. Conservamos os registos de encomendas pelo prazo exigido pela lei fiscal. Não é possível anular.
+        password: Palavra-passe atual
+        confirm: Eliminar a tua conta definitivamente?
+        delete: Eliminar a minha conta
+      create:
+        wrong_password: Palavra-passe incorreta.
+        open_orders: Tens encomendas em curso. Conclui-as ou cancela-as antes de eliminar a conta.
+        success: A tua conta foi eliminada. Temos pena de te ver partir.
+
+  seller:
+    dashboards:
+      show:
+        title: Painel de vendedor
+        period: Período
+        periods: { 7d: "7 dias", 30d: "30 dias", 90d: "90 dias", 365d: "12 meses" }
+        revenue: Receita
+        orders: Encomendas
+        views: Visualizações
+        favorites: Favoritos
+        revenue_chart: Receita por dia
+        to_ship: Por enviar
+        disputes: Disputas
+        pending_review: Em revisão
+        offers: Ofertas por responder
+        vacation: Modo férias
+        vacation_toggle: Ocultar os meus anúncios enquanto estou fora
+        vacation_message: Mensagem para os compradores (opcional)
+        top_listings: Anúncios mais vistos
+        listing: Anúncio
+        payouts: Pagamentos
+        payouts_body: "Os pagamentos são libertados quando o comprador conclui a encomenda ou %{days} dias após a entrega se não for comunicado nenhum problema."
+    listings:
+      index:
+        title: Os meus anúncios
+        filter: Filtrar por estado
+        all: "Todos (%{count})"
+        listing: Anúncio
+        status: Estado
+        price: Preço
+        stock: Stock
+        stats: Estatísticas
+        empty: Ainda não há anúncios aqui.
+    sales:
+      index:
+        title: As minhas vendas
+        filter: Filtrar por estado
+        all: Todas
+        empty: Ainda não vendeste nada.
+    discount_codes:
+      index:
+        title: Códigos de desconto
+        create: Criar código
+        code: Código
+        discount: Desconto
+        uses: Utilizações
+        expires: Expira
+        activate: Ativar
+        deactivate: Desativar
+      create: { success: "Código de desconto criado." }
+      update: { success: "Código de desconto atualizado." }
+      destroy: { success: "Código de desconto eliminado." }
+    vacations:
+      update:
+        enabled: Modo férias ativado. Os teus anúncios estão ocultos.
+        disabled: Modo férias desativado. Os teus anúncios voltaram a estar visíveis.
+    promotions:
+      new:
+        title: Patrocinar anúncio
+        body: "O teu anúncio vai aparecer em destaque no topo dos resultados durante %{days} dias por %{price}."
+        submit: Patrocinar agora
+      create: { success: "O teu anúncio está agora patrocinado." }
+    review_replies:
+      update: { success: "Resposta publicada." }
+
+  buyback_requests:
+    statuses: { submitted: "Enviado", accepted: "Aceite", label_sent: "Etiqueta enviada", received: "Recebido", paid: "Pago", rejected: "Rejeitado", cancelled: "Cancelado" }
+    new:
+      title: A forma mais simples de vender as tuas peças
+      subtitle: Vende-nos diretamente a tua GPU ou CPU a funcionar por um preço imediato.
+      get_offer: Obtém uma oferta imediata
+      model: Modelo
+      condition: Estado
+      conditions: { working: "A funcionar perfeitamente", minor_issues: "A funcionar com pequenos defeitos estéticos" }
+      payout_email: Email do PayPal para o pagamento
+      notes: Notas
+      submit: Pedir oferta
+      login_required: Inicia sessão para pedir uma oferta.
+      how_it_works: Como funciona
+      price_list: Preços atuais
+      steps:
+        s1: { title: "Recebe uma oferta", body: "Escolhe a peça e obtém um preço imediato." }
+        s2: { title: "Envia-a", body: "Enviamos-te por email uma etiqueta de envio pré-paga." }
+        s3: { title: "Inspeção", body: "Testamos a peça para garantir que funciona." }
+        s4: { title: "Recebe", body: "Pagamos-te em até 5 dias úteis." }
+    index:
+      title: Os meus pedidos de venda
+      new: Novo pedido
+    create:
+      success: Pedido recebido. Vamos enviar-te a etiqueta de envio num dia útil.
+
+  support_tickets:
+    topics: { general: "Questão geral", order_issue: "Problema com uma encomenda", payment: "Pagamentos e reembolsos", account: "A minha conta", selling: "Vender", legal: "Aviso legal", privacy_request: "Pedido sobre dados pessoais" }
+    statuses: { open: "Aberto", pending: "À espera de resposta", closed: "Fechado" }
+    new:
+      title: Contactar o apoio
+      subtitle: A nossa equipa responde num dia útil. Se for sobre uma encomenda, indica o número.
+      subject: Assunto
+      privacy_html: "Usaremos os teus dados apenas para responder ao teu pedido. Consulta a nossa %{link}."
+      submit: Enviar mensagem
+    create:
+      success: Mensagem recebida. Enviámos-te uma confirmação por email.
+
+  newsletter_subscriptions:
+    create:
+      success: Quase lá! Verifica o teu email para confirmar a subscrição.
+      invalid: Introduz um email válido.
+    show:
+      title: Subscrição da newsletter
+      confirm: Confirmar subscrição
+      unsubscribe: Cancelar subscrição
+    update: { success: "Subscrição confirmada. Bem-vindo!" }
+    destroy: { success: "A tua subscrição foi cancelada." }
+
+  mailers:
+    footer: "Recebes este email porque tens uma conta na %{site}."
+    manage_notifications: Gerir preferências de email
+    listing:
+      approved:
+        subject: "O teu anúncio já está publicado: %{title}"
+        title: O teu anúncio foi aprovado
+        body: "Boas notícias! Revimos «%{title}» e já está visível para os compradores."
+        cta: Ver anúncio
+      rejected:
+        subject: "O teu anúncio precisa de alterações: %{title}"
+        title: O teu anúncio precisa de algumas alterações
+        body: "Ainda não conseguimos publicar «%{title}». Eis o que é preciso corrigir:"
+        cta: Editar anúncio
+    order:
+      status_changed:
+        cta: Ver encomenda
+        subject:
+          pending_payment: "Encomenda %{number} criada"
+          paid: "Encomenda %{number} confirmada"
+          shipped: "A encomenda %{number} foi enviada"
+          delivered: "Encomenda %{number} entregue"
+          completed: "Encomenda %{number} concluída"
+          cancelled: "Encomenda %{number} cancelada"
+          refunded: "Encomenda %{number} reembolsada"
+          disputed: "Problema comunicado na encomenda %{number}"
+        body:
+          buyer:
+            pending_payment: "Criámos a encomenda %{number}. Conclui o pagamento para a confirmar."
+            paid: "Obrigado pela compra! O vendedor deve enviar a encomenda %{number} em %{days} dias úteis."
+            shipped: "A encomenda %{number} está a caminho."
+            delivered: "A encomenda %{number} foi entregue. Verifica o artigo e conclui a encomenda se estiver tudo bem."
+            completed: "A encomenda %{number} foi concluída. Deixa uma avaliação ao vendedor."
+            cancelled: "A encomenda %{number} foi cancelada. Qualquer pagamento foi reembolsado."
+            refunded: "A encomenda %{number} foi reembolsada."
+            disputed: "Recebemos o teu aviso sobre a encomenda %{number}."
+          seller:
+            pending_payment: "Um comprador iniciou a encomenda %{number}."
+            paid: "Vendeste algo! Envia a encomenda %{number} em %{days} dias úteis e adiciona o número de seguimento."
+            shipped: "A encomenda %{number} está marcada como enviada."
+            delivered: "A encomenda %{number} foi entregue ao comprador."
+            completed: "A encomenda %{number} foi concluída. O teu pagamento está a caminho."
+            cancelled: "A encomenda %{number} foi cancelada."
+            refunded: "A encomenda %{number} foi reembolsada ao comprador."
+            disputed: "O comprador comunicou um problema com a encomenda %{number}. Responde pelo chat."
+    message:
+      new_message:
+        subject: "Nova mensagem de %{sender}"
+        cta: Responder
+        safety: "Para tua segurança, paga sempre através da %{site}."
+    saved_search:
+      matches:
+        subject:
+          one: "1 anúncio novo para «%{name}»"
+          other: "%{count} anúncios novos para «%{name}»"
+        title: "Anúncios novos para «%{name}»"
+        cta: Ver todos os resultados
+        manage: Gerir pesquisas guardadas
+    newsletter:
+      confirmation:
+        subject: "Confirma a tua subscrição da newsletter da %{site}"
+        title: Só mais um passo
+        body: Clica no botão para confirmar que queres receber a nossa newsletter.
+        cta: Confirmar subscrição
+    support:
+      received:
+        subject: "Recebemos o teu pedido n.º %{id}"
+        body: "Olá, %{name}. Obrigado pelo contacto. A nossa equipa responde-te num dia útil."
+
+  activerecord:
+    models:
+      listing: { one: "Anúncio", other: "Anúncios" }
+      user: { one: "Utilizador", other: "Utilizadores" }
+      order: { one: "Encomenda", other: "Encomendas" }
+      review: { one: "Avaliação", other: "Avaliações" }
+      offer: { one: "Oferta", other: "Ofertas" }
+    attributes:
+      user:
+        email: Email
+        password: Palavra-passe
+        password_confirmation: Confirmar palavra-passe
+        current_password: Palavra-passe atual
+        remember_me: Lembrar-me
+        username: Nome de utilizador
+        first_name: Nome
+        last_name: Apelido
+        phone: Telefone
+        bio: Sobre ti
+        locale: Idioma
+        region_id: Distrito
+        region: Distrito
+        city: Cidade
+        avatar: Foto de perfil
+        store_name: Nome da loja
+        store_tagline: Slogan
+        store_logo: Logótipo
+        store_banner: Capa
+        store_policies: Políticas da loja
+        return_window_days: Prazo de devolução
+        seller_type: Tipo de vendedor
+        legal_name: Denominação social
+        tax_id: NIF / NIPC
+        business_address: Sede
+        trade_register_number: Número de registo comercial
+      listing:
+        title: Título
+        description: Descrição
+        brand: Marca
+        category: Categoria
+        category_id: Categoria
+        condition: Estado
+        price: Preço
+        original_price: Preço original
+        quantity: Quantidade
+        photos: Fotos
+        specs: Especificações
+        region_id: Distrito
+        city: Cidade
+        postal_code: Código postal
+        shipping_price: Preço do envio
+        handling_days: Enviado em (dias)
+        status: Estado
+        featured: Destaque
+      address:
+        full_name: Nome completo
+        company: Empresa (opcional)
+        line1: Morada
+        line2: Andar, porta, etc. (opcional)
+        city: Localidade
+        region: Distrito / região
+        postal_code: Código postal
+        country_code: País
+        phone: Telefone
+        default: Predefinida
+      review:
+        rating: Classificação
+        body: Opinião
+      report:
+        reason: Motivo
+        details: Detalhes
+        reporter_email: O teu email
+      offer:
+        amount: Valor
+      discount_code:
+        code: Código
+        percent_off: Desconto (%)
+        max_uses: Utilizações máximas
+        expires_at: Expira a
+      support_ticket:
+        name: Nome
+        email: Email
+        topic: Tema
+        subject: Assunto
+        body: Mensagem
+      message:
+        body: Mensagem
+      category:
+        slug: Slug
+        parent_id: Categoria superior
+        icon: Ícone
+        position: Posição
+      collection:
+        slug: Slug
+        accent_color: Cor de destaque
+        position: Posição
+        image: Imagem
+      game:
+        name: Nome
+        slug: Slug
+        position: Posição
+        cover: Capa
+      legal_page:
+        title: Título
+        body: Conteúdo
+      filter_definition:
+        kind: Tipo
+        unit: Unidade
+        position: Posição
+      order:
+        carrier: Transportadora
+        tracking_number: Número de seguimento
+      country:
+        currency: Moeda
+        vat_rate: Taxa de IVA
+    errors:
+      messages:
+        too_many_images: "pode ter no máximo %{count} fotos"
+        invalid_image_type: deve ser uma imagem JPG, PNG, WebP, GIF ou AVIF
+        image_too_large: "deve ter menos de %{size} MB"
+        delivery_method_required: Escolhe pelo menos um método de entrega (envio ou entrega em mão)
+        unknown_spec: "contém um campo desconhecido (%{key})"
+        invalid_spec: "tem um valor inválido para %{name}"
+        missing_spec: "requer %{name}"
+        must_be_leaf: deve ser uma subcategoria concreta
+        too_many_saved_searches: "Podes guardar até %{count} pesquisas"
+        cannot_message_yourself: Não podes escrever a ti próprio
+        offer_too_low: "deve ser pelo menos %{minimum}"
+        offer_too_high: deve ser inferior ao preço do anúncio
+        offers_not_allowed: Este anúncio não aceita ofertas
+        cannot_offer_own_listing: Não podes fazer uma oferta no teu próprio anúncio
+        offer_already_pending: Já tens uma oferta pendente para este anúncio
+        blocked: Não podes interagir com este utilizador
+        not_shipping_there: Ainda não enviamos para este país
+        not_reviewable: Esta encomenda não pode ser avaliada
+        terms_required: Tens de aceitar os termos de utilização e a política de privacidade
+
+  devise:
+    shared:
+      minimum_password_length:
+        one: "(mínimo de %{count} caractere)"
+        other: "(mínimo de %{count} caracteres)"
+    failure:
+      banned: A tua conta foi encerrada. Contacta o apoio para mais informações.

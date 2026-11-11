@@ -24,7 +24,7 @@ class SellerStats
   # Daily revenue series for the chart.
   def revenue_by_day
     completed_sales.group("DATE(orders.completed_at)").sum(:total_cents)
-      .then { |data| (since.to_date..Date.current).map { |day| [day, data[day].to_i] } }
+      .then { |data| (since.to_date..Date.current).map { |day| [ day, data[day].to_i ] } }
   end
 
   def top_listings = seller.listings.published.order(views_count: :desc).limit(5)

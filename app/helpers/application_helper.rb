@@ -22,7 +22,7 @@ module ApplicationHelper
     initials = user.display_name.to_s.first(2).upcase
     image = user.store_logo.attached? ? user.store_logo : user.avatar
     if image.attached? && image.variable?
-      image_tag image.variant(resize_to_fill: [size * 2, size * 2], format: :webp), alt: user.display_name,
+      image_tag image.variant(resize_to_fill: [ size * 2, size * 2 ], format: :webp), alt: user.display_name,
                 width: size, height: size, loading: "lazy", class: "rounded-full object-cover #{css}", style: "width:#{size}px;height:#{size}px"
     else
       tag.span initials, class: "inline-grid shrink-0 place-items-center rounded-full bg-brand-100 font-bold text-brand-800 dark:bg-brand-900 dark:text-brand-100 #{css}",
@@ -68,17 +68,17 @@ module ApplicationHelper
 
   # [1, :gap, 4, 5, 6, :gap, 20] around the current page.
   def pagination_series(pagy, window: 2)
-    pages = ([1, pagy.last] + ((pagy.page - window)..(pagy.page + window)).to_a).select { |p| p.between?(1, pagy.last) }.uniq.sort
-    pages.each_with_index.flat_map { |page, i| i.positive? && page - pages[i - 1] > 1 ? [:gap, page] : [page] }
+    pages = ([ 1, pagy.last ] + ((pagy.page - window)..(pagy.page + window)).to_a).select { |p| p.between?(1, pagy.last) }.uniq.sort
+    pages.each_with_index.flat_map { |page, i| i.positive? && page - pages[i - 1] > 1 ? [ :gap, page ] : [ page ] }
   end
 
   def status_badge(status, scope)
     css = case status.to_s
-          when "published", "paid", "completed", "active", "resolved", "visible", "accepted" then "badge-success"
-          when "pending_review", "pending_payment", "pending", "open", "reviewing", "disputed", "submitted" then "badge-warning"
-          when "rejected", "cancelled", "refunded", "banned", "declined", "hidden" then "badge-danger"
-          else "badge-muted"
-          end
+    when "published", "paid", "completed", "active", "resolved", "visible", "accepted" then "badge-success"
+    when "pending_review", "pending_payment", "pending", "open", "reviewing", "disputed", "submitted" then "badge-warning"
+    when "rejected", "cancelled", "refunded", "banned", "declined", "hidden" then "badge-danger"
+    else "badge-muted"
+    end
     tag.span t("#{scope}.#{status}"), class: css
   end
 end

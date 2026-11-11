@@ -15,7 +15,11 @@ module Api
         offer = Offer.find(params[:id])
         decision = params[:decision].to_s
         authorize!(%w[accept decline withdraw].include?(decision))
-        offer.public_send("#{decision}!", current_user)
+        case decision
+        when "accept" then offer.accept!(current_user)
+        when "decline" then offer.decline!(current_user)
+        when "withdraw" then offer.withdraw!(current_user)
+        end
         render json: { data: { id: offer.id, status: offer.status } }
       rescue ArgumentError
         render_error(:unprocessable_entity, :not_actionable)

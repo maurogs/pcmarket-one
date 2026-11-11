@@ -15,7 +15,7 @@ class Address < ApplicationRecord
   end
 
   def one_line
-    [line1, line2, "#{postal_code} #{city}", region, country_code].compact_blank.join(", ")
+    [ line1, line2, "#{postal_code} #{city}", region, country_code ].compact_blank.join(", ")
   end
 
   private

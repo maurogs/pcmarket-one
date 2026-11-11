@@ -31,6 +31,6 @@ class SavedSearchesController < ApplicationController
   private
 
   def default_name(query)
-    [query[:q], Category.find_by(slug: query[:category])&.name].compact_blank.join(" · ").presence || t("saved_searches.default_name")
+    [ query[:q], Category.find_by(slug: query[:category])&.name ].compact_blank.join(" · ").presence || t("saved_searches.default_name")
   end
 end

@@ -4,9 +4,9 @@
 class ListingSearch
   SORTS = %w[best_match newest price_asc price_desc most_watched performance value].freeze
   ARRAY_PARAMS = %i[condition labels tags].freeze
-  PERMITTED = [:q, :category, :min_price, :max_price, :region, :seller, :seller_type, :free_shipping,
+  PERMITTED = [ :q, :category, :min_price, :max_price, :region, :seller, :seller_type, :free_shipping,
                :on_sale, :local_pickup, :sort, :country, :include_sold,
-               { condition: [], labels: [], tags: [], f: {} }].freeze
+               { condition: [], labels: [], tags: [], f: {} } ].freeze
 
   attr_reader :params
 
@@ -40,8 +40,8 @@ class ListingSearch
   end
 
   def active_filter_count
-    [query.presence, params[:min_price].presence, params[:max_price].presence, params[:region].presence,
-     params[:free_shipping].presence, params[:on_sale].presence, params[:seller_type].presence].compact.size +
+    [ query.presence, params[:min_price].presence, params[:max_price].presence, params[:region].presence,
+     params[:free_shipping].presence, params[:on_sale].presence, params[:seller_type].presence ].compact.size +
       list(:condition).size + list(:labels).size + list(:tags).size + spec_filters.values.sum(&:size)
   end
 
@@ -54,7 +54,7 @@ class ListingSearch
   def base_scope
     scope = params[:include_sold].present? ? Listing.publicly_listed.joins(:user).where(users: { status: User.statuses[:active] }) : Listing.visible
     country_codes = Country.enabled_codes
-    country_codes &= [params[:country].to_s.upcase] if params[:country].present?
+    country_codes &= [ params[:country].to_s.upcase ] if params[:country].present?
     scope.where(country_id: Country.where(code: country_codes).select(:id))
   end
 
@@ -81,7 +81,7 @@ class ListingSearch
     spec_filters.each do |key, values|
       next unless known.key?(key)
 
-      clauses = values.first(30).map { |value| Listing.sanitize_sql_array(["listings.specs @> ?::jsonb", { key => value }.to_json]) }
+      clauses = values.first(30).map { |value| Listing.sanitize_sql_array([ "listings.specs @> ?::jsonb", { key => value }.to_json ]) }
       scope = scope.where(clauses.join(" OR "))
     end
     scope

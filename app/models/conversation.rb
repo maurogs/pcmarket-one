@@ -11,7 +11,7 @@ class Conversation < ApplicationRecord
   scope :for_user, ->(user) { where(buyer_id: user.id).or(where(seller_id: user.id)) }
   scope :recent, -> { order(Arel.sql("last_message_at DESC NULLS LAST")) }
 
-  def participant?(user) = user && [buyer_id, seller_id].include?(user.id)
+  def participant?(user) = user && [ buyer_id, seller_id ].include?(user.id)
   def other_participant(user) = user.id == buyer_id ? seller : buyer
   def role_of(user) = user.id == buyer_id ? :buyer : :seller
 
@@ -31,7 +31,7 @@ class Conversation < ApplicationRecord
 
     message = messages.create!(sender: sender, body: body, kind: kind, offer: offer)
     unread_column = sender.id == buyer_id ? :seller_unread_count : :buyer_unread_count
-    self.class.where(id: id).update_all(["last_message_at = ?, #{unread_column} = #{unread_column} + 1, updated_at = ?", message.created_at, message.created_at])
+    self.class.where(id: id).update_all([ "last_message_at = ?, #{unread_column} = #{unread_column} + 1, updated_at = ?", message.created_at, message.created_at ])
     message
   end
 end

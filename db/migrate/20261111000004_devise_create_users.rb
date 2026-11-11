@@ -86,7 +86,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[8.1]
     add_index :users, :confirmation_token, unique: true
     add_index :users, :unlock_token, unique: true
     add_index :users, "lower(username)", unique: true, name: "index_users_on_lower_username"
-    add_index :users, [:provider, :uid], unique: true, where: "provider IS NOT NULL"
+    add_index :users, [ :provider, :uid ], unique: true, where: "provider IS NOT NULL"
     add_index :users, :role
     add_index :users, :status
     add_index :users, :seller_type

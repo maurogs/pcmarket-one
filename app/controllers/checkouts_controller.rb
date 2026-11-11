@@ -10,8 +10,8 @@ class CheckoutsController < ApplicationController
   def create
     address = current_user.addresses.find_by(id: params[:address_id])
     result = Checkout.new(cart: current_cart, buyer: current_user, address: address,
-                          delivery_methods: params.fetch(:delivery, {}).permit!.to_h,
-                          discount_codes: params.fetch(:discount, {}).permit!.to_h, note: params[:note]).call
+                          delivery_methods: per_seller_params(:delivery), discount_codes: per_seller_params(:discount),
+                          note: params[:note]).call
     current_cart.items.destroy_all
     gateway = Payments::Gateway.current
     redirect_to gateway.start(result.orders,
@@ -23,6 +23,12 @@ class CheckoutsController < ApplicationController
   end
 
   private
+
+  # { seller_id => value } restricted to the sellers present in the cart.
+  def per_seller_params(key)
+    seller_ids = current_cart.items.reorder(nil).joins(:listing).distinct.pluck("listings.user_id").map(&:to_s)
+    params.fetch(key, {}).permit(*seller_ids).to_h
+  end
 
   def prepare
     removed = current_cart.prune!

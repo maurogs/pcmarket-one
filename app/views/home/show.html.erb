@@ -1,4 +1,6 @@
 <% seo title: t(".seo_title"), description: t(".seo_description", site: site_name) %>
+<%# Guests share one cached render; signed-in users see personalised favourite buttons. %>
+<% cache_if !user_signed_in?, ["home/v1", I18n.locale, current_country.code, *@page.cache_key] do %>
 
 <section class="relative overflow-hidden bg-ink-950 text-white">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(6,196,176,0.35),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(245,158,11,0.18),transparent_50%)]" aria-hidden="true"></div>
@@ -41,7 +43,7 @@
 </section>
 
 <section class="container-page mt-10" aria-label="<%= t(".categories_label") %>">
-  <ul class="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
+  <ul class="grid grid-cols-3 gap-3 sm:grid-cols-5 lg:grid-cols-9">
     <% Category.menu.each do |category| %>
       <li>
         <%= link_to category_path(category), class: "flex h-full flex-col items-center gap-2 rounded-2xl border border-ink-200 p-4 text-center text-sm font-semibold transition hover:border-brand-500 hover:bg-brand-50 dark:border-ink-800 dark:hover:bg-ink-900" do %>
@@ -142,3 +144,4 @@
     <% end %>
   </div>
 </section>
+<% end %>

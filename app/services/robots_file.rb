@@ -8,15 +8,15 @@ class RobotsFile
   end
 
   def to_s
-    lines = ["User-agent: *"]
+    lines = [ "User-agent: *" ]
     if @allow
-      prefixes = [""] + (I18n.available_locales - [I18n.default_locale]).map { |locale| "/#{locale}" }
+      prefixes = [ "" ] + (I18n.available_locales - [ I18n.default_locale ]).map { |locale| "/#{locale}" }
       lines += prefixes.flat_map { |prefix| PRIVATE_PATHS.map { |path| "Disallow: #{prefix}#{path}" } }
       lines << "Disallow: /*?*sort="
       lines << "Allow: /"
     else
       lines << "Disallow: /"
     end
-    (lines + ["", "Sitemap: #{@sitemap_url}"]).join("\n") + "\n"
+    (lines + [ "", "Sitemap: #{@sitemap_url}" ]).join("\n") + "\n"
   end
 end

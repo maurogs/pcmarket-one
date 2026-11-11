@@ -4,8 +4,8 @@ es:
       month_year: "%B de %Y"
   time:
     ago: "hace %{time}"
-  locales: { es: Español, en: English (UK), fr: Français, de: Deutsch, it: Italiano, pt: Português }
-  countries: { es: España, fr: Francia, gb: Reino Unido, de: Alemania, it: Italia, pt: Portugal }
+  locales: { es: "Español", en: "English (UK)", fr: "Français", de: "Deutsch", it: "Italiano", pt: "Português" }
+  countries: { es: "España", fr: "Francia", gb: "Reino Unido", de: "Alemania", it: "Italia", pt: "Portugal" }
 
   seo:
     default_description: "%{site} es el marketplace para comprar y vender PCs gaming, tarjetas gráficas, componentes, periféricos, portátiles, móviles y consolas nuevos y de segunda mano con protección al comprador."
@@ -73,10 +73,10 @@ es:
       log_out: Cerrar sesión
     promo:
       cta: Descubrir
-      pc_finder: { title: Encuentra el PC perfecto, body: Responde unas preguntas y te mostramos PCs que alcanzan los FPS que buscas. }
-      sell_to_us: { title: Convierte tu hardware en dinero, body: Recibe una oferta al instante por tu GPU o CPU. }
-      sell: { title: Vende tu equipo, body: Publicar es gratis y los compradores están protegidos. }
-      deals: { title: Ofertas de la semana, body: Anuncios rebajados de vendedores verificados. }
+      pc_finder: { title: "Encuentra el PC perfecto", body: "Responde unas preguntas y te mostramos PCs que alcanzan los FPS que buscas." }
+      sell_to_us: { title: "Convierte tu hardware en dinero", body: "Recibe una oferta al instante por tu GPU o CPU." }
+      sell: { title: "Vende tu equipo", body: "Publicar es gratis y los compradores están protegidos." }
+      deals: { title: "Ofertas de la semana", body: "Anuncios rebajados de vendedores verificados." }
     footer:
       tagline: El marketplace para gamers y montadores de PCs. Compra y vende hardware nuevo y de segunda mano con pagos protegidos.
       newsletter_title: No te pierdas nada
@@ -132,9 +132,8 @@ es:
     registrations_closed: El registro de nuevas cuentas está cerrado temporalmente.
     too_many_attempts: Demasiados intentos. Espera unos minutos y vuelve a intentarlo.
     oauth_failed: No hemos podido iniciar sesión con ese proveedor.
-    not_found: { title: Página no encontrada, body: La página que buscas no existe o ya no está disponible., cta: Volver al inicio }
-    maintenance: { title: Volvemos enseguida, body: Estamos haciendo tareas de mantenimiento. Inténtalo de nuevo en unos minutos. }
-    unsupported_browser: { title: Tu navegador no es compatible, body: Actualiza tu navegador para usar esta web. }
+    not_found: { title: "Página no encontrada", body: "La página que buscas no existe o ya no está disponible.", cta: "Volver al inicio" }
+    maintenance: { title: "Volvemos enseguida", body: "Estamos haciendo tareas de mantenimiento. Inténtalo de nuevo en unos minutos." }
 
   api:
     errors:
@@ -183,13 +182,13 @@ es:
       verified_purchase: Compra verificada a
       recently_sold: Vendidos recientemente
       values:
-        protection: { title: Tu dinero está protegido, body: Retenemos el pago hasta que confirmas que el artículo ha llegado como se describía. }
-        moderation: { title: Personas revisan cada anuncio, body: Nuestro equipo revisa los anuncios antes de publicarlos para mantener fuera las estafas. }
-        chat: { title: Habla antes de comprar, body: Pregunta, pide más fotos y negocia con el chat y las ofertas integradas. }
+        protection: { title: "Tu dinero está protegido", body: "Retenemos el pago hasta que confirmas que el artículo ha llegado como se describía." }
+        moderation: { title: "Personas revisan cada anuncio", body: "Nuestro equipo revisa los anuncios antes de publicarlos para mantener fuera las estafas." }
+        chat: { title: "Habla antes de comprar", body: "Pregunta, pide más fotos y negocia con el chat y las ofertas integradas." }
 
   listings:
-    conditions: { brand_new: Nuevo precintado, open_box: Nuevo – caja abierta, like_new: Usado – como nuevo, good: Usado – buen estado, fair: Usado – aceptable, for_parts: Para piezas / no funciona }
-    statuses: { draft: Borrador, pending_review: Pendiente de revisión, published: Publicado, rejected: Rechazado, paused: Pausado, sold: Vendido, archived: Archivado }
+    conditions: { brand_new: "Nuevo precintado", open_box: "Nuevo – caja abierta", like_new: "Usado – como nuevo", good: "Usado – buen estado", fair: "Usado – aceptable", for_parts: "Para piezas / no funciona" }
+    statuses: { draft: "Borrador", pending_review: "Pendiente de revisión", published: "Publicado", rejected: "Rechazado", paused: "Pausado", sold: "Vendido", archived: "Archivado" }
     badges:
       sold: Vendido
       save: "Ahorra un %{percent}%"
@@ -206,8 +205,8 @@ es:
     destroy:
       success: Anuncio eliminado.
     pauses:
-      create: { success: Anuncio pausado. Está oculto para los compradores. }
-      destroy: { success: El anuncio vuelve a estar publicado. }
+      create: { success: "Anuncio pausado. Está oculto para los compradores." }
+      destroy: { success: "El anuncio vuelve a estar publicado." }
     owner:
       status: "Estado del anuncio:"
       rejection: "Rechazado: %{reason}"
@@ -229,7 +228,7 @@ es:
       filters: Filtros
       save_search: Guardar búsqueda y avisarme
       sort_label: Ordenar por
-      sorts: { best_match: Más relevantes, newest: Más recientes, price_asc: "Precio: menor a mayor", price_desc: "Precio: mayor a menor", most_watched: Más vistos, performance: Mayor rendimiento, value: Mejor calidad-precio }
+      sorts: { best_match: "Más relevantes", newest: "Más recientes", price_asc: "Precio: menor a mayor", price_desc: "Precio: mayor a menor", most_watched: "Más vistos", performance: "Mayor rendimiento", value: "Mejor calidad-precio" }
       empty_title: Ningún anuncio coincide con tus filtros
       empty_body: Prueba a quitar algunos filtros o guarda la búsqueda para recibir un aviso cuando aparezca algo nuevo.
       clear_filters: Quitar filtros
@@ -409,7 +408,7 @@ es:
   stores:
     verified: Vendedor verificado
     business: Vendedor profesional
-    seller_types: { individual: Particular, business: Profesional }
+    seller_types: { individual: "Particular", business: "Profesional" }
     reviews_count:
       zero: Sin valoraciones
       one: 1 valoración
@@ -452,7 +451,7 @@ es:
     seller_reply: Respuesta del vendedor
     reply_placeholder: Responde públicamente a esta valoración
     reply: Responder
-    statuses: { visible: Visible, hidden: Oculta }
+    statuses: { visible: "Visible", hidden: "Oculta" }
 
   pc_finders:
     show:
@@ -471,12 +470,12 @@ es:
         vibe: "¿Cuál es tu estilo?"
       answers:
         no_preference: Me da igual
-        resolution: { 1080p: 1080p (Full HD), 1440p: 1440p (QHD), 2160p: 2160p (4K) }
-        fps: { "60": 60 FPS, "144": 144 FPS, "240": 240+ FPS }
-        budget: { under_800: Menos de 800 €, 800_1200: 800 € – 1.200 €, 1200_2000: 1.200 € – 2.000 €, over_2000: Más de 2.000 € }
-        case_color: { black: Negra, white: Blanca, multicolor: Colorida }
-        cooling: { air: Por aire, aio: Líquida AIO, custom_loop: Custom loop }
-        vibe: { minimalist: Minimalista, rgb: Todo RGB, anime: Anime, competitive: Competitivo, retro: Retro }
+        resolution: { 1080p: "1080p (Full HD)", 1440p: "1440p (QHD)", 2160p: "2160p (4K)" }
+        fps: { "60": "60 FPS", "144": "144 FPS", "240": "240+ FPS" }
+        budget: { under_800: "Menos de 800 €", "800_1200": "800 € – 1.200 €", "1200_2000": "1.200 € – 2.000 €", over_2000: "Más de 2.000 €" }
+        case_color: { black: "Negra", white: "Blanca", multicolor: "Colorida" }
+        cooling: { air: "Por aire", aio: "Líquida AIO", custom_loop: "Custom loop" }
+        vibe: { minimalist: "Minimalista", rgb: "Todo RGB", anime: "Anime", competitive: "Competitivo", retro: "Retro" }
       back: Atrás
       next: Siguiente pregunta
       see_results: Ver resultados
@@ -493,9 +492,9 @@ es:
 
   saved_searches:
     default_name: Mi búsqueda
-    create: { success: Búsqueda guardada. Te avisaremos por correo cuando haya anuncios nuevos. }
-    update: { success: Búsqueda actualizada. }
-    destroy: { success: Búsqueda eliminada. }
+    create: { success: "Búsqueda guardada. Te avisaremos por correo cuando haya anuncios nuevos." }
+    update: { success: "Búsqueda actualizada." }
+    destroy: { success: "Búsqueda eliminada." }
     index:
       title: Búsquedas guardadas
       subtitle: Te avisamos cuando se publiquen anuncios que coincidan con tus búsquedas.
@@ -503,7 +502,7 @@ es:
       no_alerts_yet: Aún sin avisos
       email_alerts: Avisos por correo
       frequency: Frecuencia
-      frequencies: { instant: Al momento, daily: Resumen diario }
+      frequencies: { instant: "Al momento", daily: "Resumen diario" }
       delete: Eliminar
       empty_title: No tienes búsquedas guardadas
       empty_body: Usa «Guardar búsqueda» en cualquier página de resultados para recibir avisos de anuncios nuevos.
@@ -533,7 +532,7 @@ es:
       new_follower: "%{follower} empezó a seguir tu tienda."
       followed_seller_listing: "%{seller} acaba de publicar «%{title}»."
   notification_readings:
-    create: { success: Todas las notificaciones marcadas como leídas. }
+    create: { success: "Todas las notificaciones marcadas como leídas." }
 
   conversations:
     index:
@@ -579,11 +578,11 @@ es:
     declined: Oferta rechazada.
     withdrawed: Oferta retirada.
     not_actionable: Esta oferta ya no se puede modificar.
-    statuses: { pending: Pendiente, accepted: Aceptada, declined: Rechazada, withdrawn: Retirada, expired: Caducada, purchased: Comprada }
+    statuses: { pending: "Pendiente", accepted: "Aceptada", declined: "Rechazada", withdrawn: "Retirada", expired: "Caducada", purchased: "Comprada" }
 
   blocks:
     create: { success: "Has bloqueado a %{name}." }
-    destroy: { success: Usuario desbloqueado. }
+    destroy: { success: "Usuario desbloqueado." }
     index:
       title: Usuarios bloqueados
       subtitle: Los usuarios bloqueados no pueden escribirte ni comprarte.
@@ -591,8 +590,8 @@ es:
       empty: No has bloqueado a nadie.
 
   reports:
-    reasons: { prohibited_item: Artículo prohibido, counterfeit: Falsificación o réplica, scam: Posible estafa o fraude, misleading: Descripción o fotos engañosas, offensive: Contenido ofensivo, intellectual_property: Infracción de propiedad intelectual, illegal_content: Contenido ilegal, spam: Spam, other: Otro motivo }
-    statuses: { open: Abierta, reviewing: En revisión, resolved: Resuelta, dismissed: Desestimada }
+    reasons: { prohibited_item: "Artículo prohibido", counterfeit: "Falsificación o réplica", scam: "Posible estafa o fraude", misleading: "Descripción o fotos engañosas", offensive: "Contenido ofensivo", intellectual_property: "Infracción de propiedad intelectual", illegal_content: "Contenido ilegal", spam: "Spam", other: "Otro motivo" }
+    statuses: { open: "Abierta", reviewing: "En revisión", resolved: "Resuelta", dismissed: "Desestimada" }
     new:
       title: Denunciar contenido
       subtitle_html: "Nuestro equipo de confianza y seguridad revisa las denuncias. Consulta cómo las gestionamos en nuestra página sobre la %{dsa}."
@@ -604,8 +603,8 @@ es:
       success: Gracias. Hemos recibido tu denuncia y la revisaremos en breve.
 
   cart_items:
-    create: { success: Añadido a tu carrito. }
-    destroy: { success: Eliminado de tu carrito. }
+    create: { success: "Añadido a tu carrito." }
+    destroy: { success: "Eliminado de tu carrito." }
     errors:
       unavailable: Este artículo ya no está disponible.
       own_listing: No puedes comprar tu propio anuncio.
@@ -673,7 +672,7 @@ es:
       continue: Seguir comprando
 
   orders:
-    statuses: { pending_payment: Pendiente de pago, paid: Pagado – por enviar, shipped: Enviado, delivered: Entregado, completed: Completado, cancelled: Cancelado, refunded: Reembolsado, disputed: Problema comunicado }
+    statuses: { pending_payment: "Pendiente de pago", paid: "Pagado – por enviar", shipped: "Enviado", delivered: "Entregado", completed: "Completado", cancelled: "Cancelado", refunded: "Reembolsado", disputed: "Problema comunicado" }
     default_cancel_reason: Cancelado por el usuario
     index:
       title: Mis compras
@@ -759,7 +758,7 @@ es:
         title: Ajustes de la cuenta
         username_hint: Tu nombre de usuario público.
         email_html: "Tu correo es %{email}. Puedes cambiarlo en %{link}."
-      update: { success: Perfil actualizado. }
+      update: { success: "Perfil actualizado." }
     stores:
       edit:
         title: Ajustes de la tienda
@@ -785,7 +784,7 @@ es:
         trade_register_number: Número de registro mercantil
         trader_certification: Certifico que mi empresa solo ofrece productos que cumplen la normativa aplicable de la UE (art. 30 del Reglamento de Servicios Digitales).
         dac7_notice: Según la directiva europea DAC7, debemos informar a Hacienda de los vendedores que superen 30 ventas o 2.000 € al año. Te pediremos los datos que falten antes de que eso ocurra.
-      update: { success: Tienda actualizada. }
+      update: { success: "Tienda actualizada." }
     notification_settings:
       edit:
         title: Preferencias de notificaciones
@@ -797,18 +796,18 @@ es:
         saved_searches_hint: Avisarme por correo cuando haya anuncios nuevos para mis búsquedas.
         marketing: Novedades y promociones
         marketing_hint: Correos ocasionales sobre nuevas funciones, ofertas y sorteos.
-      update: { success: Preferencias guardadas. }
+      update: { success: "Preferencias guardadas." }
     addresses:
       index:
         title: Direcciones
         default: Predeterminada
         add: Añadir dirección
         make_default: Usar como dirección predeterminada
-      new: { title: Nueva dirección }
-      edit: { title: Editar dirección }
-      create: { success: Dirección guardada. }
-      update: { success: Dirección actualizada. }
-      destroy: { success: Dirección eliminada. }
+      new: { title: "Nueva dirección" }
+      edit: { title: "Editar dirección" }
+      create: { success: "Dirección guardada." }
+      update: { success: "Dirección actualizada." }
+      destroy: { success: "Dirección eliminada." }
     deletions:
       new:
         title: Privacidad y datos
@@ -830,7 +829,7 @@ es:
       show:
         title: Panel de vendedor
         period: Periodo
-        periods: { 7d: 7 días, 30d: 30 días, 90d: 90 días, 365d: 12 meses }
+        periods: { 7d: "7 días", 30d: "30 días", 90d: "90 días", 365d: "12 meses" }
         revenue: Ingresos
         orders: Pedidos
         views: Visitas
@@ -874,9 +873,9 @@ es:
         expires: Caduca
         activate: Activar
         deactivate: Desactivar
-      create: { success: Código de descuento creado. }
-      update: { success: Código de descuento actualizado. }
-      destroy: { success: Código de descuento eliminado. }
+      create: { success: "Código de descuento creado." }
+      update: { success: "Código de descuento actualizado." }
+      destroy: { success: "Código de descuento eliminado." }
     vacations:
       update:
         enabled: Modo vacaciones activado. Tus anuncios están ocultos.
@@ -886,19 +885,19 @@ es:
         title: Promocionar anuncio
         body: "Tu anuncio aparecerá destacado en los primeros resultados durante %{days} días por %{price}."
         submit: Promocionar ahora
-      create: { success: Tu anuncio ya está promocionado. }
+      create: { success: "Tu anuncio ya está promocionado." }
     review_replies:
-      update: { success: Respuesta publicada. }
+      update: { success: "Respuesta publicada." }
 
   buyback_requests:
-    statuses: { submitted: Enviada, accepted: Aceptada, label_sent: Etiqueta enviada, received: Recibida, paid: Pagada, rejected: Rechazada, cancelled: Cancelada }
+    statuses: { submitted: "Enviada", accepted: "Aceptada", label_sent: "Etiqueta enviada", received: "Recibida", paid: "Pagada", rejected: "Rechazada", cancelled: "Cancelada" }
     new:
       title: La forma más sencilla de vender tus piezas
       subtitle: Véndenos directamente tu GPU o CPU en funcionamiento por un precio al instante.
       get_offer: Obtén una oferta al instante
       model: Modelo
       condition: Estado
-      conditions: { working: Funciona perfectamente, minor_issues: Funciona con pequeños defectos estéticos }
+      conditions: { working: "Funciona perfectamente", minor_issues: "Funciona con pequeños defectos estéticos" }
       payout_email: Correo de PayPal para el pago
       notes: Notas
       submit: Solicitar oferta
@@ -906,10 +905,10 @@ es:
       how_it_works: Cómo funciona
       price_list: Precios actuales
       steps:
-        s1: { title: Recibe una oferta, body: Elige tu pieza y obtén un precio al instante. }
-        s2: { title: Envíala, body: Te mandamos por correo una etiqueta de envío prepagada. }
-        s3: { title: Inspección, body: Probamos la pieza para comprobar que funciona. }
-        s4: { title: Cobra, body: Te pagamos en un máximo de 5 días hábiles. }
+        s1: { title: "Recibe una oferta", body: "Elige tu pieza y obtén un precio al instante." }
+        s2: { title: "Envíala", body: "Te mandamos por correo una etiqueta de envío prepagada." }
+        s3: { title: "Inspección", body: "Probamos la pieza para comprobar que funciona." }
+        s4: { title: "Cobra", body: "Te pagamos en un máximo de 5 días hábiles." }
     index:
       title: Mis solicitudes de venta
       new: Nueva solicitud
@@ -917,8 +916,8 @@ es:
       success: Solicitud recibida. Te enviaremos la etiqueta de envío en un día hábil.
 
   support_tickets:
-    topics: { general: Consulta general, order_issue: Problema con un pedido, payment: Pagos y reembolsos, account: Mi cuenta, selling: Vender, legal: Aviso legal, privacy_request: Ejercicio de derechos de protección de datos }
-    statuses: { open: Abierta, pending: Esperando respuesta, closed: Cerrada }
+    topics: { general: "Consulta general", order_issue: "Problema con un pedido", payment: "Pagos y reembolsos", account: "Mi cuenta", selling: "Vender", legal: "Aviso legal", privacy_request: "Ejercicio de derechos de protección de datos" }
+    statuses: { open: "Abierta", pending: "Esperando respuesta", closed: "Cerrada" }
     new:
       title: Contactar con soporte
       subtitle: Nuestro equipo responde en un día hábil. Si es sobre un pedido, incluye el número de pedido.
@@ -937,7 +936,7 @@ es:
       confirm: Confirmar suscripción
       unsubscribe: Darme de baja
     update: { success: "Suscripción confirmada. ¡Bienvenido!" }
-    destroy: { success: Te has dado de baja. }
+    destroy: { success: "Te has dado de baja." }
 
   mailers:
     footer: "Recibes este correo porque tienes una cuenta en %{site}."
@@ -1010,11 +1009,11 @@ es:
 
   activerecord:
     models:
-      listing: { one: Anuncio, other: Anuncios }
-      user: { one: Usuario, other: Usuarios }
-      order: { one: Pedido, other: Pedidos }
-      review: { one: Valoración, other: Valoraciones }
-      offer: { one: Oferta, other: Ofertas }
+      listing: { one: "Anuncio", other: "Anuncios" }
+      user: { one: "Usuario", other: "Usuarios" }
+      order: { one: "Pedido", other: "Pedidos" }
+      review: { one: "Valoración", other: "Valoraciones" }
+      offer: { one: "Oferta", other: "Ofertas" }
     attributes:
       user:
         email: Correo electrónico
@@ -1146,5 +1145,9 @@ es:
         terms_required: Debes aceptar las condiciones de uso y la política de privacidad
 
   devise:
+    shared:
+      minimum_password_length:
+        one: "(mínimo %{count} carácter)"
+        other: "(mínimo %{count} caracteres)"
     failure:
       banned: Tu cuenta ha sido cerrada. Contacta con soporte para más información.

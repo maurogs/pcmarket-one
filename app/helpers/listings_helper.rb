@@ -41,10 +41,10 @@ module ListingsHelper
     if key == :f
       field, option = value
       query[:f] = (query[:f] || {}).to_h.transform_keys(&:to_s)
-      query[:f][field] = Array(query[:f][field]).map(&:to_s) - [option.to_s]
+      query[:f][field] = Array(query[:f][field]).map(&:to_s) - [ option.to_s ]
       query[:f] = query[:f].compact_blank
     elsif value
-      query[key] = Array(query[key]).map(&:to_s) - [value.to_s]
+      query[key] = Array(query[key]).map(&:to_s) - [ value.to_s ]
     else
       query.delete(key)
     end

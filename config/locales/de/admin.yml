@@ -1,0 +1,339 @@
+de:
+  admin:
+    title: Administration
+    search_placeholder: Angebote nach Titel, ID oder Verkäufer suchen…
+    view_site: Website ansehen
+    view_public: Öffentliche Seite ansehen
+    roles: { member: "Mitglied", moderator: "Moderator", admin: "Administrator" }
+    system: System
+    all: Alle
+    all_countries: Alle Länder
+    filter: Filtern
+    from: Von
+    to: Bis
+    new: Neu
+    select: Auswählen
+    "on": An
+    "off": Aus
+    "yes": Ja
+    "no": Nein
+    export_csv: CSV exportieren
+    results:
+      zero: Keine Ergebnisse
+      one: 1 Ergebnis
+      other: "%{count} Ergebnisse"
+    flash:
+      created: Erfolgreich erstellt.
+      updated: Erfolgreich gespeichert.
+      destroyed: Erfolgreich gelöscht.
+      invalid_date: Ungültiges Datum.
+    nav:
+      groups: { overview: "Übersicht", marketplace: "Marktplatz", trust: "Vertrauen & Sicherheit", catalogue: "Katalog", growth: "Wachstum & Monetarisierung", configuration: "Konfiguration" }
+      dashboard: Dashboard
+      moderation: Moderationswarteschlange
+      listings: Angebote
+      users: Nutzer
+      orders: Bestellungen
+      conversations: Unterhaltungen
+      reviews: Bewertungen
+      reports: Meldungen (DSA)
+      support_tickets: Support-Tickets
+      categories: Kategorien
+      filters: Filter
+      collections: Kollektionen
+      games: PC-Finder-Spiele
+      newsletter: Newsletter
+      promotions: Hervorhebungen
+      buyback: Ankauf
+      settings: Einstellungen & Funktionen
+      countries: Länder
+      legal_pages: Rechtstexte
+      audit_logs: Audit-Log
+    dashboard:
+      users_total: Nutzer gesamt
+      users_new: Neue Nutzer
+      listings_live: Aktive Angebote
+      listings_pending: In Prüfung
+      orders: Bestellungen
+      gmv: Handelsvolumen (GMV)
+      fees: Eingenommene Provisionen
+      sellers: Aktive Verkäufer
+      open_disputes: Offene Streitfälle
+      overdue_shipments: Überfällige Versendungen
+      open_reports: Offene Meldungen
+      open_tickets: Offene Tickets
+      newsletter: Newsletter-Abonnenten
+      signups: Registrierungen pro Tag
+      orders_chart: Bestellungen pro Tag
+      moderation_queue: Moderationswarteschlange (älteste zuerst)
+      queue_empty: Nichts zu prüfen. Gute Arbeit!
+      top_categories: Top-Kategorien (aktive Angebote)
+      flags: Feature-Flags
+      manage_flags: Einstellungen und Feature-Flags verwalten
+    bulk:
+      label: Massenaktion
+      apply: Auf Auswahl anwenden
+      invalid: Wähle eine Aktion und mindestens ein Angebot.
+      done:
+        one: Aktion auf 1 Angebot angewendet.
+        other: "Aktion auf %{count} Angebote angewendet."
+      default_reason: Dein Angebot entspricht nicht unseren Richtlinien.
+      actions: { approve: "Freigeben", reject: "Ablehnen", pause: "Pausieren", archive: "Archivieren", feature: "Als empfohlen markieren", unfeature: "Empfehlung entfernen" }
+    listings:
+      search: Titel, ID oder Verkäufer
+      featured: Empfohlen
+      listing: Angebot
+      seller: Verkäufer
+      status: Status
+      price: Preis
+      views: Aufrufe
+      date: Datum
+      member_since: "Mitglied seit %{date}"
+      specs: Spezifikationen
+      stats: Statistik
+      stats_value: "%{views} Aufrufe · %{favorites} gemerkt · %{sold} verkauft"
+      moderate: Moderation
+      approve: Freigeben und veröffentlichen
+      reject: Ablehnen
+      reject_reason: Grund (wird an den Verkäufer gesendet)
+      reason_placeholder: Grund (bei Ablehnung)
+      templates: Vorlage verwenden…
+      reject_templates:
+        photos: Die Fotos sind nicht deine eigenen oder zeigen nicht den echten Artikel. Bitte lade echte Fotos hoch.
+        description: Die Beschreibung ist unvollständig. Beschreibe Zustand, Lieferumfang und Mängel.
+        prohibited: Dieser Artikel ist laut unserer Richtlinie zu verbotenen Artikeln nicht erlaubt.
+        price: Der Preis wirkt falsch oder irreführend. Bitte prüfe ihn.
+        category: Der Artikel ist in der falschen Kategorie. Bitte wähle die richtige.
+        contact: Angebote dürfen keine Kontaktdaten oder Links zur Zahlung außerhalb der Plattform enthalten.
+      reason_required: Bitte gib einen Ablehnungsgrund an.
+      approved: Angebot freigegeben.
+      rejected: Angebot abgelehnt und Verkäufer benachrichtigt.
+      history: Verlauf
+      events: { submitted: "Zur Prüfung eingereicht", published: "Veröffentlicht", rejected: "Abgelehnt", paused: "Pausiert", resumed: "Fortgesetzt", archived: "Archiviert", admin_edited: "Vom Team bearbeitet" }
+    users:
+      search: Name, Nutzername, E-Mail oder Shop
+      status: Status
+      statuses: { active: "Aktiv", suspended: "Gesperrt", banned: "Verbannt" }
+      role: Rolle
+      unconfirmed: Unbestätigt
+      deleted: Gelöschte einbeziehen
+      user: Nutzer
+      listings: Angebote
+      sales: Verkäufe
+      purchases: Käufe
+      rating: Bewertung
+      joined: Registriert
+      last_login: Letzte Anmeldung
+      reason: Sperrgrund
+      confirmed: E-Mail bestätigt
+      sign_ins: Anmeldungen
+      terms: AGB akzeptiert
+      marketing: Marketing-Einwilligung
+      confirm_email: E-Mail als bestätigt markieren
+    orders:
+      totals: "%{count} Bestellungen · %{total} gesamt · %{fees} Provision"
+      search: Bestellnummer, E-Mail oder Nutzername
+      number: Bestellung
+      delivery: { shipping: "Versand", pickup: "Abholung" }
+      amounts: { subtotal: "Zwischensumme", shipping: "Versand", discount: "Rabatt", platform_fee: "Gebühr", total: "Gesamt" }
+      reasons: Gemeldete Gründe
+      change_status: Status ändern
+      note: Interne Notiz (im Verlauf sichtbar)
+      apply: Anwenden
+      final: Diese Bestellung ist in einem Endzustand.
+    categories:
+      name: Name
+      slug: Slug
+      listings: Aktive Angebote
+      flags: Merkmale
+      inactive: Inaktiv
+      menu: Im Menü
+      add_child: Unterkategorie hinzufügen
+      root: "— Oberste Ebene —"
+      active: Aktiv
+      show_in_menu: Im Hauptmenü anzeigen
+      description: Beschreibung
+      filters: Filter
+      filters_hint: Hier zugeordnete Filter gelten auch für alle Unterkategorien.
+    filters:
+      subtitle: Filter steuern die Katalog-Seitenleiste, das Angebotsformular und den PC-Finder. Änderungen gelten sofort.
+      search: Nach Schlüssel suchen
+      name: Name
+      key: Schlüssel
+      key_hint: Kleinbuchstaben, Zahlen und Unterstriche. Später nicht änderbar.
+      options: Optionen
+      options_hint: "Hervorgehobene Optionen sind immer sichtbar, der Rest unter „mehr anzeigen“. Der Score fließt in die Leistungsschätzung (GPU/CPU) ein. Der Ankaufspreis (Cent) wird beim Ankauf genutzt."
+      categories: Kategorien
+      required: Pflicht
+      on_card: Auf Karte
+      value: Wert
+      position: Pos.
+      featured: Hervorgehoben
+      score: Score
+      buyback: Ankauf (¢)
+      delete_confirm: Das Löschen entfernt den Filter aus allen Kategorien. Spezifikationen bleiben erhalten, werden aber ausgeblendet. Fortfahren?
+      kinds: { multi_select: "Mehrfachauswahl", single_select: "Einfachauswahl", boolean: "Ja / Nein" }
+      flags: { active: "Aktiv", collapsed: "Standardmäßig eingeklappt", in_listing_form: "Im Angebotsformular zeigen", required: "Pflicht beim Einstellen", show_on_card: "Auf Angebotskarten zeigen" }
+    collections:
+      subtitle: Kuratierte Angebotsgruppen für Startseite, Stile und PC-Finder.
+      title_label: Titel
+      subtitle_label: Untertitel
+      kind: Typ
+      kinds: { theme: "Stil", gamer_profile: "Gamer-Profil", home_section: "Startseiten-Bereich", game: "Beste PCs für ein Spiel" }
+      query: Katalogabfrage
+      query_hint: "Gleiche Parameter wie die Katalog-URL, z. B. category=gaming-pcs&max_price=1000&tags[]=minimalist"
+      home: Auf der Startseite zeigen
+    games:
+      subtitle: Spiele im PC-Finder, die für FPS-Schätzungen genutzt werden.
+      name: Spiel
+      demand: GPU-Anspruch
+      demand_hint: Relative GPU-Last. 100 ≈ anspruchsvolles modernes Spiel. Weniger = leichter.
+    countries:
+      subtitle: Starte den Marktplatz mit einem Klick in einem neuen Land. Spanien ist der Startmarkt.
+      toggle: "%{country} aktivieren oder deaktivieren"
+      enable_confirm: "Marktplatz in %{country} starten? Nutzer dort können kaufen, verkaufen und die lokalen Rechtstexte sehen."
+      disable_confirm: "%{country} deaktivieren? Die Angebote werden ausgeblendet."
+      currency: Währung
+      vat: MwSt.
+      locale: Standardsprache
+      regions: Regionen
+      enabled: Aktiviert
+      edit_legal: Rechtsdaten bearbeiten
+      preview_legal: Rechtstexte ansehen
+      edit_subtitle: Landeskonfiguration und Rechtsdaten für die Rechtstexte.
+      legal_facts: Rechtsdaten
+      legal_facts_hint: Leer lassen, um die angezeigten Standardwerte zu nutzen. Vor dem Start anwaltlich prüfen lassen.
+      launch_checklist: "Vor dem Start: Rechtstexte des Landes anwaltlich prüfen lassen, Versanddienste und MwSt. prüfen, Kategoriebeschreibungen übersetzen und das Land hier aktivieren."
+    settings:
+      subtitle: Globale Optionen und Feature-Flags. Monetarisierung ist vorbereitet, aber deaktiviert, bis du sie einschaltest.
+      groups: { general: "Allgemein", listings: "Angebote & Moderation", commerce: "Bestellungen & Zahlungen", monetization: "Monetarisierung", features: "Funktionen", i18n: "Sprachen" }
+      keys:
+        site_name: Seitenname
+        support_email: Support-E-Mail
+        support_phone: Support-Telefon
+        default_country: Standardland
+        announcement_enabled: Ankündigungsleiste
+        announcement_link: Link der Ankündigung
+        maintenance_mode: Wartungsmodus
+        registrations_open: Registrierung offen
+        google_login_enabled: Anmeldung mit Google
+        listing_approval_required: Angebote benötigen Freigabe
+        max_photos_per_listing: Max. Fotos pro Angebot
+        max_active_listings_individual: Max. aktive Angebote (privat)
+        min_price_cents: Mindestpreis (Cent)
+        max_price_cents: Höchstpreis (Cent)
+        offers_enabled: Preisvorschläge
+        offer_expiry_hours: Ablauf von Vorschlägen (Stunden)
+        min_offer_percent: Mindestvorschlag (% des Preises)
+        chat_enabled: Chat zwischen Nutzern
+        checkout_enabled: Online-Kauf
+        local_pickup_enabled: Abholung
+        buyer_protection_days: Käuferschutzfrist (Tage nach Zustellung)
+        seller_ship_days: Versandfrist des Verkäufers (Tage)
+        discount_codes_enabled: Rabattcodes für Verkäufer
+        commissions_enabled: Provision auf Verkäufe erheben
+        commission_percent: Provision (%)
+        commission_min_cents: Mindestprovision (Cent)
+        promotions_enabled: Bezahlte Hervorhebung
+        promotion_price_cents: Preis der Hervorhebung (Cent)
+        promotion_days: Dauer der Hervorhebung (Tage)
+        sell_to_us_enabled: Direktankauf
+        pc_finder_enabled: PC-Finder
+        saved_search_alerts_enabled: Benachrichtigungen für Suchen
+        newsletter_enabled: Newsletter-Anmeldung
+        reviews_enabled: Bewertungen
+        dark_mode_enabled: Dunkelmodus-Schalter
+        locales_enabled: Verfügbare Sprachen
+      hints:
+        site_name: Erscheint in Titeln, E-Mails und im Header.
+        support_email: Öffentliche Kontaktadresse.
+        support_phone: Öffentliche Telefonnummer.
+        default_country: ISO-Code des Standardlandes.
+        announcement_enabled: Zeigt die Leiste oben auf jeder Seite.
+        announcement_link: Ziel des Ankündigungslinks.
+        maintenance_mode: Nur das Team kann die Seite nutzen, solange aktiv.
+        registrations_open: Neue Konten erlauben.
+        google_login_enabled: Erfordert Google-OAuth-Zugangsdaten.
+        listing_approval_required: Neue und bearbeitete Angebote warten auf Moderation.
+        max_photos_per_listing: Empfohlen zwischen 1 und 20.
+        max_active_listings_individual: Limit für Privatverkäufer.
+        min_price_cents: "Beispiel: 100 = 1 €."
+        max_price_cents: "Beispiel: 5000000 = 50.000 €."
+        offers_enabled: Käufer können unter dem Angebotspreis bieten.
+        offer_expiry_hours: Danach verfallen offene Vorschläge.
+        min_offer_percent: Vorschläge unter diesem Prozentsatz werden abgelehnt.
+        chat_enabled: Interne Nachrichten zwischen Käufern und Verkäufern.
+        checkout_enabled: Kauf über die Website mit geschützter Zahlung.
+        local_pickup_enabled: Persönliche Übergabe erlauben.
+        buyer_protection_days: Danach wird das Geld automatisch freigegeben.
+        seller_ship_days: Danach kann der Käufer stornieren.
+        discount_codes_enabled: Verkäufer können Rabattcodes erstellen.
+        commissions_enabled: In der Wachstumsphase deaktiviert lassen.
+        commission_percent: Prozent der Artikel-Zwischensumme.
+        commission_min_cents: Mindestgebühr pro Bestellung.
+        promotions_enabled: Verkäufer können für Hervorhebungen bezahlen.
+        promotion_price_cents: Preis pro Hervorhebung.
+        promotion_days: Wie lange eine Hervorhebung dauert.
+        sell_to_us_enabled: Sofortangebote für GPUs und CPUs.
+        pc_finder_enabled: Quiz, das Gaming-PCs empfiehlt.
+        saved_search_alerts_enabled: E-Mail-Benachrichtigung bei neuen passenden Angeboten.
+        newsletter_enabled: Newsletter-Formular im Footer.
+        reviews_enabled: Käufer können Verkäufer nach abgeschlossenen Bestellungen bewerten.
+        dark_mode_enabled: Zeigt den Hell/Dunkel-Schalter.
+        locales_enabled: Spanisch ist immer verfügbar.
+    legal:
+      subtitle: Rechtstexte werden pro Land und Sprache aus Vorlagen erzeugt. Erstelle eine eigene Fassung, um einen Text vollständig zu ersetzen.
+      new_override: Neue eigene Fassung
+      page: Seite
+      status: Veröffentlicht
+      empty: Keine eigenen Fassungen. Alle Länder nutzen die Standardvorlagen.
+      defaults: Eigene Fassung aus der Vorlage starten
+      body_hint: "Reiner Text. Zeilen, die mit „## “ beginnen, werden zu Überschriften."
+      published: Veröffentlicht
+    reports:
+      subtitle: Meldungen nach dem Digital Services Act. Entscheidungen müssen dem betroffenen Nutzer begründet werden.
+      target: Inhalt
+      reason: Grund
+      reporter: Meldende Person
+      title: "Meldung #%{id}"
+      message_in: "Nachricht in Unterhaltung #%{id}"
+      details: Details
+      resolution: Entscheidung
+      decide: Entscheidung
+      statement_hint: Begründe deine Entscheidung. Die Begründung wird für Transparenzberichte gespeichert.
+      take_down: Angebot entfernen (wird abgelehnt, Verkäufer wird benachrichtigt)
+      resolve: Erledigen
+      dismiss: Abweisen
+      taken_down: Nach einer Meldung eines anderen Nutzers entfernt.
+    reviews:
+      hide: Ausblenden
+      show: Einblenden
+    tickets:
+      topic: Thema
+      from: Von
+      reply: Per E-Mail antworten
+      user_profile: Nutzerprofil ansehen
+      internal_note: Interne Notiz
+    newsletter:
+      active_only: Nur aktive
+      confirmed: Bestätigt
+      unsubscribed: Abgemeldet
+    buyback:
+      disabled: Die Funktion ist in den Einstellungen deaktiviert.
+      quote: Angebot
+    promotions:
+      disabled: Hervorhebungen sind in den Einstellungen deaktiviert.
+      period: Zeitraum
+      activate: Aktivieren
+      statuses: { pending: "Ausstehend", active: "Aktiv", expired: "Abgelaufen", cancelled: "Storniert" }
+    conversations:
+      privacy_notice: Zugriff nur zur Untersuchung von Streitfällen und Betrug. Jeder Aufruf wird im Audit-Log protokolliert.
+      by_user: Nach Nutzername filtern
+      last: Letzte Nachricht
+      audited: Dieser Zugriff wurde protokolliert
+    audit:
+      search: Nach Aktion filtern (z. B. listing.)
+      action: Aktion
+      actor: Teammitglied
+      target: Ziel
+      details: Details
