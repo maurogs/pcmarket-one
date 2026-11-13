@@ -26,7 +26,8 @@ class Admin::UsersController < Admin::BaseController
   def update
     attributes = params.require(:user).permit(:username, :email, :first_name, :last_name, :phone, :status, :suspension_reason,
                                               :store_name, :seller_type, :vacation_mode, :locale)
-    attributes.merge!(params.require(:user).permit(:role)) if current_user.admin? && @user != current_user
+    role = params.dig(:user, :role)
+    attributes[:role] = role if current_user.admin? && @user != current_user && User.roles.key?(role)
     @user.skip_reconfirmation! if attributes.key?(:email)
     @user.assign_attributes(attributes)
     @user.verified_at = params.dig(:user, :verified) == "1" ? (@user.verified_at || Time.current) : nil if params.dig(:user, :verified)

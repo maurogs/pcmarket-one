@@ -15,7 +15,7 @@
 - Services: `app/services` (ListingSearch, Checkout, PcFinder, HomePage, ListingDetails, LegalDocument, stats, payments)
 - Controllers: public, `account/`, `seller/`, `orders/`, `admin/`, `api/v1/`
 - Seeds: `db/seeds/*.rb` (reference data) + `db/seeds/demo.rb` (demo marketplace, photos cached in tmp/seed_images)
-- Tests: `test/` (models, services, integration, API, i18n key sync)
+- Tests: `test/` (models, services, integration, API, i18n key sync); `test/system` runs headless Chrome (`bin/rails test:system`). CI also requires Brakeman to report 0 warnings.
 
 ## Open items
 - Legal texts must be reviewed by a lawyer; company data in `LegalFacts::COMMON` are placeholders.

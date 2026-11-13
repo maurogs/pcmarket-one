@@ -24,8 +24,8 @@ class AdminStats
   def newsletter = NewsletterSubscription.active.count
   def overdue_shipments = Order.paid.where(paid_at: ..Setting.get(:seller_ship_days).days.ago).count
 
-  def signups_by_day = daily(User.where(created_at: since..), :created_at)
-  def orders_by_day = daily(Order.where(created_at: since..).where.not(status: :cancelled), :created_at)
+  def signups_by_day = daily(User.where(created_at: since..))
+  def orders_by_day = daily(Order.where(created_at: since..).where.not(status: :cancelled))
 
   def top_categories
     Listing.visible.joins(:category).group(:category_id).order(count_all: :desc).limit(6).count
@@ -36,8 +36,8 @@ class AdminStats
 
   private
 
-  def daily(scope, column)
-    data = scope.group("DATE(#{scope.table_name}.#{column})").count
+  def daily(scope)
+    data = scope.group(Arel::Nodes::NamedFunction.new("DATE", [ scope.arel_table[:created_at] ])).count
     (since.to_date..Date.current).map { |day| [ day, data[day].to_i ] }
   end
 end
