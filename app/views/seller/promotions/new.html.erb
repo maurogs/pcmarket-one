@@ -1,0 +1,6 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page max-w-lg py-10">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <div class="panel mt-6"><p class="font-semibold"><%= @listing.title %></p><p class="mt-2 text-sm text-ink-600 dark:text-ink-300"><%= t(".body", days: setting(:promotion_days), price: money(setting(:promotion_price_cents))) %></p>
+    <%= button_to t(".submit"), seller_promotions_path, params: { listing_id: @listing.id }, class: "btn-accent mt-5 w-full" %></div>
+</div>

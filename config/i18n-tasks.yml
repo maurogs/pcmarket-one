@@ -1,0 +1,33 @@
+base_locale: en
+locales: [es, en, fr, de, it, pt]
+data:
+  read:
+    - config/locales/%{locale}/*.yml
+  write:
+    - config/locales/%{locale}/app.yml
+search:
+  paths:
+    - app/
+    - lib/
+  exclude:
+    - app/assets
+  relative_roots:
+    - app/controllers
+    - app/helpers
+    - app/mailers
+    - app/views
+ignore_missing:
+  - "{devise,activerecord.attributes.user.remember_me,errors.messages,date,time,number,helpers,support}.*"
+ignore_unused:
+  - "{activerecord,devise,errors,date,time,number,helpers,pagy}.*"
+  - "legal.*"
+  - "pages.*"
+  - "admin.settings.*"
+  - "countries.*"
+  - "locales.*"
+  - "notifications.kinds.*"
+  - "listings.statuses.*"
+  - "orders.statuses.*"
+  - "offers.statuses.*"
+  - "reports.*"
+  - "mailers.*"

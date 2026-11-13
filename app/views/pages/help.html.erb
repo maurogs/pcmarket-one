@@ -1,0 +1,15 @@
+<% seo title: t("pages.help.title"), description: t("pages.help.intro") %>
+<% json_ld({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: t("pages.help.faqs").map { |_k, faq| { "@type": "Question", name: faq[:q], acceptedAnswer: { "@type": "Answer", text: faq[:a] } } } }) %>
+<div class="container-page max-w-3xl py-10">
+  <h1 class="text-4xl font-bold"><%= t("pages.help.title") %></h1>
+  <p class="mt-3 text-lg text-ink-600 dark:text-ink-300"><%= t("pages.help.intro") %></p>
+  <div class="mt-8 divide-y divide-ink-200 border-y border-ink-200 dark:divide-ink-800 dark:border-ink-800">
+    <% t("pages.help.faqs").each do |_key, faq| %>
+      <details class="group py-4"><summary class="flex cursor-pointer items-center justify-between gap-4 font-display text-lg font-semibold"><%= faq[:q] %><%= icon(:plus, css: "size-5 shrink-0 group-open:rotate-45 transition") %></summary><p class="mt-3 leading-relaxed text-ink-700 dark:text-ink-300"><%= faq[:a] %></p></details>
+    <% end %>
+  </div>
+  <div class="panel mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <p class="font-semibold"><%= t("pages.help.still_need_help") %></p>
+    <%= link_to t("layout.footer.contact"), new_support_ticket_path, class: "btn-primary" %>
+  </div>
+</div>

@@ -64,3 +64,20 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "tailwindcss-rails", "~> 4.7"
+gem "devise", "~> 5.0"
+gem "omniauth-google-oauth2", "~> 1.2"
+gem "omniauth-rails_csrf_protection", "~> 2.0"
+gem "pagy", "~> 43.8"
+gem "pg_search", "~> 2.4"
+gem "rails-i18n", "~> 8.1"
+gem "bcrypt", "~> 3.1"
+gem "stripe", "~> 20.1"
+
+gem "faker", "~> 3.8", groups: [ :development, :test ]
+gem "i18n-tasks", "~> 1.2", groups: [ :development, :test ]
+
+gem "devise-i18n", "~> 1.16"
+
+gem "csv", "~> 3.3"

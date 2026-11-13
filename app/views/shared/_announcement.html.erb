@@ -1,0 +1,16 @@
+<% if feature?(:announcement_enabled) %>
+  <div class="bg-brand-950 text-brand-50">
+    <div class="container-page flex min-h-9 items-center justify-between gap-4 py-1.5 text-xs">
+      <p class="min-w-0 truncate font-medium">
+        <%= t("layout.announcement") %>
+        <%= link_to t("layout.announcement_cta"), setting(:announcement_link), class: "ml-1 font-bold text-accent-400 underline underline-offset-2" %>
+      </p>
+      <nav class="hidden items-center gap-4 md:flex" aria-label="<%= t("layout.secondary_nav") %>">
+        <%= link_to t("layout.help"), page_path("help"), class: "hover:text-white" %>
+        <%= link_to t("layout.trust"), trust_path, class: "hover:text-white" %>
+        <%= link_to t("layout.sell_info"), sell_info_path, class: "hover:text-white" %>
+        <% if feature?(:pc_finder_enabled) %><%= link_to t("layout.pc_finder"), pc_finder_path, class: "font-semibold text-brand-300 hover:text-white" %><% end %>
+      </nav>
+    </div>
+  </div>
+<% end %>

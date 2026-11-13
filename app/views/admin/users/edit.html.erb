@@ -1,0 +1,25 @@
+<%= render "admin/shared/page_header", title: t("shared.edit"), subtitle: @user.username %>
+<%= form_with model: @user, url: admin_user_path(@user), class: "panel max-w-3xl space-y-4" do |f| %>
+  <%= render "admin/shared/errors", record: @user %>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div><%= f.label :username, class: "label" %><%= f.text_field :username, class: "input" %></div>
+    <div><%= f.label :email, class: "label" %><%= f.email_field :email, class: "input" %></div>
+    <div><%= f.label :first_name, class: "label" %><%= f.text_field :first_name, class: "input" %></div>
+    <div><%= f.label :last_name, class: "label" %><%= f.text_field :last_name, class: "input" %></div>
+    <div><%= f.label :phone, class: "label" %><%= f.text_field :phone, class: "input" %></div>
+    <div><%= f.label :store_name, class: "label" %><%= f.text_field :store_name, class: "input" %></div>
+    <div><%= f.label :status, t("admin.users.status"), class: "label" %><%= f.select :status, User.statuses.keys.map { |s| [t("admin.users.statuses.#{s}"), s] }, {}, class: "input" %></div>
+    <div><%= f.label :suspension_reason, t("admin.users.reason"), class: "label" %><%= f.text_field :suspension_reason, class: "input" %></div>
+    <div><%= f.label :seller_type, t("listings.filters.seller_type"), class: "label" %><%= f.select :seller_type, User.seller_types.keys.map { |s| [t("stores.seller_types.#{s}"), s] }, {}, class: "input" %></div>
+    <div><%= f.label :locale, class: "label" %><%= f.select :locale, I18n.available_locales.map { |l| [t("locales.#{l}"), l] }, {}, class: "input" %></div>
+    <% if current_user.admin? && @user != current_user %>
+      <div><%= f.label :role, t("admin.users.role"), class: "label" %><%= f.select :role, User.roles.keys.map { |r| [t("admin.roles.#{r}"), r] }, {}, class: "input" %></div>
+    <% end %>
+  </div>
+  <div class="flex flex-wrap gap-4 text-sm">
+    <label class="flex items-center gap-2"><input type="hidden" name="user[verified]" value="0"><input type="checkbox" name="user[verified]" value="1" class="checkbox" <%= "checked" if @user.verified? %>><%= t("stores.verified") %></label>
+    <% unless @user.confirmed? %><label class="flex items-center gap-2"><input type="checkbox" name="user[confirm]" value="1" class="checkbox"><%= t("admin.users.confirm_email") %></label><% end %>
+    <label class="flex items-center gap-2"><%= f.check_box :vacation_mode, class: "checkbox" %><%= t("seller.dashboards.show.vacation") %></label>
+  </div>
+  <div class="flex justify-end gap-2"><%= link_to t("shared.cancel"), admin_user_path(@user), class: "btn-ghost" %><button class="btn-primary"><%= t("shared.save") %></button></div>
+<% end %>

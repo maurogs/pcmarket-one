@@ -1,0 +1,33 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.orders"), subtitle: t("admin.orders.totals", count: @pagy.count, total: money(@totals[0]), fees: money(@totals[1])) do %>
+  <%= link_to t("admin.export_csv"), admin_orders_path(request.query_parameters.merge(format: :csv)), class: "btn-outline btn-sm", data: { turbo: false } %>
+<% end %>
+<nav class="mb-4 flex flex-wrap gap-2">
+  <%= link_to t("admin.all"), admin_orders_path, class: "chip #{'chip-active' if params[:status].blank?}" %>
+  <% Order.statuses.each_key do |status| %><%= link_to "#{t("orders.statuses.#{status}")} (#{@status_counts[status].to_i})", admin_orders_path(request.query_parameters.merge(status: status, page: nil)), class: "chip #{'chip-active' if params[:status] == status}" %><% end %>
+</nav>
+<%= form_with url: admin_orders_path, method: :get, class: "panel mb-4 grid gap-3 p-4 sm:grid-cols-4" do %>
+  <input type="hidden" name="status" value="<%= params[:status] %>">
+  <input type="search" name="q" value="<%= params[:q] %>" class="input" placeholder="<%= t("admin.orders.search") %>" aria-label="<%= t("admin.orders.search") %>">
+  <input type="date" name="from" value="<%= params[:from] %>" class="input" aria-label="<%= t("admin.from") %>">
+  <input type="date" name="to" value="<%= params[:to] %>" class="input" aria-label="<%= t("admin.to") %>">
+  <button class="btn-primary btn-sm"><%= t("admin.filter") %></button>
+<% end %>
+<div class="panel overflow-x-auto p-0">
+  <table class="table">
+    <thead><tr><th><%= t("admin.orders.number") %></th><th><%= t("orders.show.buyer") %></th><th><%= t("orders.show.seller") %></th><th><%= t("admin.listings.status") %></th>
+      <th class="text-right"><%= render "admin/shared/sort_link", column: "total_cents", label: t("orders.show.total") %></th><th class="text-right"><%= t("orders.show.platform_fee") %></th><th><%= render "admin/shared/sort_link", column: "created_at", label: t("admin.listings.date") %></th></tr></thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr class="<%= 'bg-amber-50 dark:bg-amber-950/30' if order.disputed? || order.ship_deadline_passed? %>">
+          <td><%= link_to order.number, admin_order_path(order), class: "font-mono text-sm font-semibold hover:text-brand-700" %></td>
+          <td><%= link_to order.buyer.username, admin_user_path(order.buyer), class: "link text-sm" %></td>
+          <td><%= link_to order.seller.username, admin_user_path(order.seller), class: "link text-sm" %></td>
+          <td><%= status_badge(order.status, "orders.statuses") %></td>
+          <td class="text-right"><%= money(order.total_cents, order.currency) %></td><td class="text-right"><%= money(order.platform_fee_cents, order.currency) %></td>
+          <td class="text-xs text-ink-500"><%= l(order.created_at, format: :short) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= pagination(@pagy) %>

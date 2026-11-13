@@ -1,0 +1,7 @@
+<%# locals: (icon_name:, title:, body: nil, cta: nil) %>
+<div class="mx-auto flex max-w-md flex-col items-center py-16 text-center">
+  <span class="grid size-16 place-items-center rounded-2xl bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300"><%= icon(icon_name, css: "size-8") %></span>
+  <h2 class="mt-5 font-display text-xl font-bold"><%= title %></h2>
+  <% if body %><p class="mt-2 text-sm text-ink-600 dark:text-ink-300"><%= body %></p><% end %>
+  <% if cta %><%= link_to cta[0], cta[1], class: "btn-primary mt-6" %><% end %>
+</div>

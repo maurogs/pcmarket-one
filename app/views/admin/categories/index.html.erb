@@ -1,0 +1,21 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.categories") do %><%= link_to t("admin.new"), new_admin_category_path, class: "btn-primary btn-sm" if current_user.admin? %><% end %>
+<% children = @categories.group_by(&:parent_id) %>
+<div class="panel overflow-x-auto p-0">
+  <table class="table">
+    <thead><tr><th><%= t("admin.categories.name") %></th><th><%= t("admin.categories.slug") %></th><th class="text-right"><%= t("admin.categories.listings") %></th><th><%= t("admin.categories.flags") %></th><th></th></tr></thead>
+    <tbody>
+      <% render_rows = lambda do |nodes, depth| %>
+        <% nodes.each do |category| %>
+          <tr>
+            <td style="padding-left: <%= 12 + depth * 24 %>px"><%= icon(category.icon.presence || :package, css: "mr-1 inline size-4 text-ink-400") %><%= category.name %></td>
+            <td class="font-mono text-xs"><%= category.slug %></td><td class="text-right"><%= category.listings_count %></td>
+            <td class="space-x-1"><%= tag.span(t("admin.categories.inactive"), class: "badge-danger") unless category.active %><%= tag.span(t("admin.categories.menu"), class: "badge-muted") if category.show_in_menu && category.parent_id.nil? %><%= tag.span(t("layout.pc_finder"), class: "badge-brand") if category.pc_finder %></td>
+            <td class="whitespace-nowrap text-right"><% if current_user.admin? %><%= link_to t("admin.categories.add_child"), new_admin_category_path(parent_id: category.id), class: "link text-sm" %> <%= link_to t("shared.edit"), edit_admin_category_path(category), class: "link ml-2 text-sm" %><% end %></td>
+          </tr>
+          <% render_rows.call(children[category.id] || [], depth + 1) %>
+        <% end %>
+      <% end %>
+      <% render_rows.call(children[nil] || [], 0) %>
+    </tbody>
+  </table>
+</div>

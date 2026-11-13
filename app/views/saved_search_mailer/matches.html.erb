@@ -1,0 +1,6 @@
+<h1 style="font-size:20px;margin:0 0 12px"><%= t("mailers.saved_search.matches.title", name: @saved_search.name) %></h1>
+<% @listings.each do |listing| %>
+  <p style="margin:0 0 12px"><a href="<%= listing_url(listing) %>" style="color:#067d74;font-weight:600"><%= listing.title %></a><br><%= money(listing.price_cents, listing.currency) %> · <%= listing.user.display_name %></p>
+<% end %>
+<p><a href="<%= listings_url(@saved_search.path_params) %>" style="display:inline-block;background:#067d74;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600"><%= t("mailers.saved_search.matches.cta") %></a></p>
+<p style="font-size:12px"><a href="<%= saved_searches_url %>" style="color:#667491"><%= t("mailers.saved_search.matches.manage") %></a></p>

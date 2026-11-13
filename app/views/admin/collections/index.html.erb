@@ -1,0 +1,9 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.collections"), subtitle: t("admin.collections.subtitle") do %><%= link_to t("admin.new"), new_admin_collection_path, class: "btn-primary btn-sm" %><% end %>
+<div class="panel overflow-x-auto p-0">
+  <table class="table"><thead><tr><th><%= t("admin.collections.title_label") %></th><th><%= t("admin.collections.kind") %></th><th><%= t("admin.collections.query") %></th><th><%= t("admin.categories.flags") %></th><th></th></tr></thead>
+    <tbody><% @collections.each do |collection| %>
+      <tr><td class="font-medium"><%= collection.title %><p class="font-mono text-xs text-ink-500"><%= collection.slug %></p></td><td><%= t("admin.collections.kinds.#{collection.kind}") %></td><td class="max-w-xs truncate font-mono text-xs"><%= collection.query.to_query %></td>
+        <td class="space-x-1"><%= tag.span(t("admin.categories.inactive"), class: "badge-danger") unless collection.active %><%= tag.span(t("admin.collections.home"), class: "badge-brand") if collection.show_on_home %></td>
+        <td class="whitespace-nowrap text-right"><%= link_to t("admin.view_public"), collection_path(collection), class: "link text-sm", target: "_blank" %> <%= link_to t("shared.edit"), edit_admin_collection_path(collection), class: "link ml-2 text-sm" %></td></tr>
+    <% end %></tbody></table>
+</div>

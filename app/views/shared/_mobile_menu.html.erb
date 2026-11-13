@@ -1,0 +1,43 @@
+<div id="mobile-menu" class="fixed inset-0 z-50 lg:hidden" data-drawer-target="panel" hidden>
+  <div class="absolute inset-0 bg-ink-950/50" data-action="click->drawer#close"></div>
+  <div class="absolute inset-y-0 left-0 flex w-[min(88vw,380px)] flex-col overflow-y-auto bg-white shadow-2xl dark:bg-ink-900" role="dialog" aria-modal="true" aria-label="<%= t("layout.main_nav") %>">
+    <div class="flex items-center justify-between border-b border-ink-100 p-4 dark:border-ink-800">
+      <span class="flex items-center gap-2 font-display text-lg font-bold"><%= render "shared/logo", css: "size-7" %><%= site_name %></span>
+      <button type="button" class="btn-ghost px-2" data-action="drawer#close" aria-label="<%= t("layout.close") %>"><%= icon(:x) %></button>
+    </div>
+    <div class="flex gap-2 p-4">
+      <%= link_to t("layout.list_item"), new_listing_path, class: "btn-primary flex-1" %>
+      <% if feature?(:sell_to_us_enabled) %><%= link_to t("layout.sell_to_us"), new_buyback_request_path, class: "btn-outline flex-1" %><% end %>
+    </div>
+    <nav class="flex-1 px-2 pb-6">
+      <%= link_to t("layout.new"), listings_path(sort: "newest"), class: "block rounded-lg px-3 py-3 font-semibold" %>
+      <% Category.menu.each do |root| %>
+        <% children = Category.cached_children_of(root.id) %>
+        <% if children.any? %>
+          <details class="group">
+            <summary class="flex cursor-pointer items-center justify-between rounded-lg px-3 py-3 font-semibold">
+              <%= root.name %><%= icon(:chevron_down, css: "size-4 transition group-open:rotate-180") %>
+            </summary>
+            <div class="pb-2 pl-4">
+              <%= link_to t("layout.all_in", name: root.name), category_path(root), class: "block px-3 py-2 text-sm font-semibold text-brand-700 dark:text-brand-300" %>
+              <% children.each do |child| %>
+                <%= link_to child.name, category_path(child), class: "block px-3 py-2 text-sm" %>
+              <% end %>
+            </div>
+          </details>
+        <% else %>
+          <%= link_to root.name, category_path(root), class: "block rounded-lg px-3 py-3 font-semibold" %>
+        <% end %>
+      <% end %>
+      <%= link_to t("layout.deals"), deals_path, class: "block rounded-lg px-3 py-3 font-semibold text-accent-600" %>
+      <% if feature?(:pc_finder_enabled) %><%= link_to t("layout.pc_finder"), pc_finder_path, class: "block rounded-lg px-3 py-3 font-semibold text-brand-700 dark:text-brand-300" %><% end %>
+      <hr class="my-3 border-ink-100 dark:border-ink-800">
+      <%= link_to t("layout.trust"), trust_path, class: "block rounded-lg px-3 py-2.5 text-sm" %>
+      <%= link_to t("layout.sell_info"), sell_info_path, class: "block rounded-lg px-3 py-2.5 text-sm" %>
+      <%= link_to t("layout.help"), page_path("help"), class: "block rounded-lg px-3 py-2.5 text-sm" %>
+      <% if user_signed_in? %>
+        <%= link_to t("layout.notifications"), notifications_path, class: "block rounded-lg px-3 py-2.5 text-sm" %>
+      <% end %>
+    </nav>
+  </div>
+</div>

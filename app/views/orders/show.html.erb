@@ -1,0 +1,75 @@
+<% seo title: t(".title", number: @order.number), noindex: true %>
+<% counterpart = @role == :seller ? @order.buyer : @order.seller %>
+<div class="container-page max-w-5xl py-8">
+  <%= link_to (@role == :seller ? seller_sales_path : orders_path), class: "link inline-flex items-center gap-1 text-sm" do %><%= icon(:chevron_left, css: "size-4") %><%= @role == :seller ? t("layout.menu.my_sales") : t("orders.index.title") %><% end %>
+  <div class="mt-3 flex flex-wrap items-center gap-3">
+    <h1 class="section-title"><%= t(".title", number: @order.number) %></h1>
+    <%= status_badge(@order.status, "orders.statuses") %>
+  </div>
+  <p class="mt-1 text-sm text-ink-500"><%= t(".placed_on", date: l(@order.created_at, format: :long)) %></p>
+
+  <div class="mt-6 grid gap-6 lg:grid-cols-[1fr_340px]">
+    <div class="space-y-6">
+      <section class="panel">
+        <h2 class="font-display text-lg font-bold"><%= t(".next_step") %></h2>
+        <p class="mt-1 text-sm text-ink-600 dark:text-ink-300"><%= t(".guidance.#{@role}.#{@order.status}", days: setting(:seller_ship_days), deadline: (@order.ship_deadline && l(@order.ship_deadline, format: :short)), until: (@order.protection_ends_at && l(@order.protection_ends_at, format: :short))) %></p>
+        <%= render "orders/actions", order: @order, role: @role %>
+      </section>
+
+      <section class="panel">
+        <h2 class="font-display text-lg font-bold"><%= t(".items") %></h2>
+        <ul class="mt-3 divide-y divide-ink-100 dark:divide-ink-800">
+          <% @order.items.each do |item| %>
+            <li class="flex items-center gap-3 py-3 text-sm">
+              <div class="size-14 shrink-0 overflow-hidden rounded-lg"><%= listing_image(item.listing, variant: :thumb) %></div>
+              <%= link_to item.title, listing_path(item.listing), class: "flex-1 hover:text-brand-700" %>
+              <span class="text-ink-500">× <%= item.quantity %></span><strong><%= money(item.total_cents, @order.currency) %></strong>
+            </li>
+          <% end %>
+        </ul>
+        <dl class="mt-3 space-y-1 border-t border-ink-100 pt-3 text-sm dark:border-ink-800">
+          <div class="flex justify-between"><dt class="text-ink-500"><%= t("carts.show.subtotal") %></dt><dd><%= money(@order.subtotal_cents, @order.currency) %></dd></div>
+          <div class="flex justify-between"><dt class="text-ink-500"><%= t("carts.show.shipping") %></dt><dd><%= money(@order.shipping_cents, @order.currency) %></dd></div>
+          <% if @order.discount_cents.positive? %><div class="flex justify-between"><dt class="text-ink-500"><%= t(".discount") %></dt><dd>-<%= money(@order.discount_cents, @order.currency) %></dd></div><% end %>
+          <div class="flex justify-between text-base font-bold"><dt><%= t(".total") %></dt><dd><%= money(@order.total_cents, @order.currency) %></dd></div>
+          <% if @role == :seller %>
+            <div class="flex justify-between text-ink-500"><dt><%= t(".platform_fee") %></dt><dd>-<%= money(@order.platform_fee_cents, @order.currency) %></dd></div>
+            <div class="flex justify-between font-semibold"><dt><%= t(".payout") %></dt><dd><%= money(@order.total_cents - @order.platform_fee_cents, @order.currency) %></dd></div>
+          <% end %>
+        </dl>
+      </section>
+
+      <section class="panel">
+        <h2 class="font-display text-lg font-bold"><%= t(".timeline") %></h2>
+        <ol class="mt-3 space-y-3 border-l-2 border-ink-200 pl-4 text-sm dark:border-ink-700">
+          <% @order.events.each do |event| %>
+            <li><p class="font-semibold"><%= t("orders.statuses.#{event.to_status}") %></p><p class="text-xs text-ink-500"><%= l(event.created_at, format: :long) %><%= " · #{event.note}" if event.note.present? && event.note.length < 200 %></p></li>
+          <% end %>
+        </ol>
+      </section>
+    </div>
+
+    <aside class="space-y-4">
+      <div class="panel text-sm">
+        <h2 class="font-semibold"><%= @role == :seller ? t(".buyer") : t(".seller") %></h2>
+        <p class="mt-2 flex items-center gap-2"><%= avatar_for(counterpart, size: 32) %><%= link_to counterpart.display_name, store_path(counterpart), class: "link" %></p>
+        <% if feature?(:chat_enabled) %>
+          <% listing = @order.items.first&.listing %>
+          <% if @role == :buyer && listing %><%= button_to t(".message"), conversations_path, params: { listing_id: listing.id }, class: "btn-outline btn-sm mt-3 w-full", form: { data: { turbo: false } } %><% end %>
+        <% end %>
+      </div>
+      <div class="panel text-sm">
+        <h2 class="font-semibold"><%= t(".delivery") %></h2>
+        <% if @order.delivery_pickup? %>
+          <p class="mt-2"><%= t(".pickup") %></p>
+        <% else %>
+          <% address = @order.shipping_address %>
+          <address class="mt-2 not-italic text-ink-600 dark:text-ink-300"><%= address["full_name"] %><br><%= address["line1"] %><% if address["line2"].present? %><br><%= address["line2"] %><% end %><br><%= address["postal_code"] %> <%= address["city"] %><br><%= address["region"] %> <%= address["country_code"] %><% if @role == :seller && address["phone"].present? %><br><%= address["phone"] %><% end %></address>
+          <% if @order.tracking_number.present? %><p class="mt-3"><span class="text-ink-500"><%= t(".tracking") %>:</span> <strong><%= @order.carrier %> <%= @order.tracking_number %></strong></p><% end %>
+        <% end %>
+        <% if @order.buyer_note.present? %><p class="mt-3 rounded-lg bg-ink-50 p-2 text-xs dark:bg-ink-800"><%= @order.buyer_note %></p><% end %>
+      </div>
+      <%= render "shared/protection_box" if @role == :buyer %>
+    </aside>
+  </div>
+</div>

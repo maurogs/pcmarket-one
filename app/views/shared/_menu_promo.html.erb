@@ -1,0 +1,15 @@
+<% promo = case root.slug
+           when "gaming-pcs", "workstations" then feature?(:pc_finder_enabled) ? [t("layout.promo.pc_finder.title"), t("layout.promo.pc_finder.body"), pc_finder_path, "from-brand-100 to-brand-200 dark:from-brand-950 dark:to-brand-900", :sparkles] : nil
+           when "gpus", "components" then feature?(:sell_to_us_enabled) ? [t("layout.promo.sell_to_us.title"), t("layout.promo.sell_to_us.body"), new_buyback_request_path, "from-accent-400/30 to-accent-500/40", :euro] : [t("layout.promo.sell.title"), t("layout.promo.sell.body"), new_listing_path, "from-accent-400/30 to-accent-500/40", :tag]
+           else [t("layout.promo.deals.title"), t("layout.promo.deals.body"), deals_path(category: root.slug), "from-ink-100 to-ink-200 dark:from-ink-800 dark:to-ink-700", :zap]
+           end %>
+<% if promo %>
+  <%= link_to promo[2], class: "group flex flex-col justify-between rounded-2xl bg-gradient-to-br p-6 #{promo[3]}" do %>
+    <span class="grid size-12 place-items-center rounded-xl bg-white/70 text-brand-800 dark:bg-ink-950/50 dark:text-brand-200"><%= icon(promo[4], css: "size-6") %></span>
+    <span class="mt-6 block">
+      <span class="block font-display text-xl font-bold"><%= promo[0] %></span>
+      <span class="mt-1 block text-sm text-ink-700 dark:text-ink-200"><%= promo[1] %></span>
+      <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-800 dark:text-brand-200"><%= t("layout.promo.cta") %><%= icon(:chevron_right, css: "size-4 transition group-hover:translate-x-1") %></span>
+    </span>
+  <% end %>
+<% end %>

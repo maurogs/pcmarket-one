@@ -1,0 +1,67 @@
+<% seo title: t("pages.trust.title"), description: t("pages.trust.intro", site: site_name) %>
+<% json_ld({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: t("pages.trust.faqs").map { |_k, faq| { "@type": "Question", name: faq[:q].gsub("%{site}", site_name), acceptedAnswer: { "@type": "Answer", text: faq[:a].gsub("%{site}", site_name).gsub("%{days}", setting(:buyer_protection_days).to_s) } } } }) %>
+<div class="container-page py-10">
+  <section class="overflow-hidden rounded-3xl bg-gradient-to-br from-brand-800 to-brand-600 p-8 text-white sm:p-14">
+    <p class="text-xs font-bold uppercase tracking-widest text-brand-200"><%= t("layout.trust") %></p>
+    <h1 class="mt-2 max-w-2xl text-4xl font-bold sm:text-5xl"><%= t("pages.trust.hero_title", site: site_name) %></h1>
+    <p class="mt-4 max-w-2xl text-lg text-brand-50"><%= t("pages.trust.intro", site: site_name) %></p>
+    <div class="mt-8 flex flex-wrap gap-3"><%= link_to t("pages.trust.browse"), listings_path, class: "btn bg-white text-brand-800 hover:bg-brand-50" %><%= link_to t("pages.trust.contact"), new_support_ticket_path, class: "btn border border-white/40 text-white hover:bg-white/10" %></div>
+  </section>
+
+  <section class="mt-14">
+    <h2 class="section-title"><%= t("pages.trust.protection_title") %></h2>
+    <p class="mt-2 max-w-3xl text-ink-600 dark:text-ink-300"><%= t("pages.trust.protection_intro") %></p>
+    <ol class="mt-6 grid gap-6 md:grid-cols-3">
+      <% %w[hold ship release].each_with_index do |step, index| %>
+        <li class="panel"><span class="font-display text-3xl font-bold text-brand-600">0<%= index + 1 %></span><h3 class="mt-2 font-display text-lg font-bold"><%= t("pages.trust.steps.#{step}.title") %></h3><p class="mt-1 text-sm text-ink-600 dark:text-ink-300"><%= t("pages.trust.steps.#{step}.body", days: setting(:buyer_protection_days), ship_days: setting(:seller_ship_days)) %></p></li>
+      <% end %>
+    </ol>
+  </section>
+
+  <section class="mt-14 panel">
+    <h2 class="section-title"><%= t("pages.trust.covered_title") %></h2>
+    <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+      <% t("pages.trust.covered").each do |item| %><li class="flex items-start gap-2 text-sm"><%= icon(:check, css: "mt-0.5 size-4 shrink-0 text-brand-600") %><%= item.gsub("%{ship_days}", setting(:seller_ship_days).to_s) %></li><% end %>
+    </ul>
+    <p class="mt-4 text-sm text-ink-500"><%= t("pages.trust.covered_footer_html", protection: link_to(t("legal.buyer_protection.title"), legal_page_path("buyer-protection"), class: "link"), terms: link_to(t("legal.terms.title"), legal_page_path("terms"), class: "link")) %></p>
+  </section>
+
+  <section class="mt-14">
+    <h2 class="section-title"><%= t("pages.trust.pillars_title") %></h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <% [[:verified, :moderation], [:star, :reviews], [:shield, :payments], [:flag, :reports]].each do |icon_name, key| %>
+        <div class="panel"><%= icon(icon_name, css: "size-7 text-brand-600") %><h3 class="mt-3 font-display font-bold"><%= t("pages.trust.pillars.#{key}.title") %></h3><p class="mt-1 text-sm text-ink-600 dark:text-ink-300"><%= t("pages.trust.pillars.#{key}.body") %></p></div>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="mt-14 rounded-3xl bg-amber-50 p-8 dark:bg-amber-950/40">
+    <h2 class="section-title"><%= t("pages.trust.tips_title") %></h2>
+    <ul class="mt-4 grid gap-3 sm:grid-cols-2"><% t("pages.trust.tips").each do |tip| %><li class="flex items-start gap-2 text-sm"><%= icon(:alert, css: "mt-0.5 size-4 shrink-0 text-amber-600") %><%= tip.gsub("%{site}", site_name) %></li><% end %></ul>
+  </section>
+
+  <section class="mt-14 rounded-3xl bg-ink-50 p-8 dark:bg-ink-900">
+    <h2 class="section-title"><%= t("pages.trust.support_title") %></h2>
+    <div class="mt-5 grid gap-3 sm:grid-cols-3">
+      <%= link_to page_path("help"), class: "panel text-center hover:border-brand-500" do %><p class="font-semibold text-brand-700"><%= t("layout.help") %></p><p class="text-sm text-ink-500"><%= t("pages.trust.faq_short") %></p><% end %>
+      <%= link_to new_support_ticket_path, class: "panel text-center hover:border-brand-500" do %><p class="font-semibold text-brand-700"><%= t("layout.footer.contact") %></p><p class="text-sm text-ink-500"><%= t("pages.trust.ticket_short") %></p><% end %>
+      <a href="mailto:<%= setting(:support_email) %>" class="panel text-center hover:border-brand-500"><p class="font-semibold text-brand-700"><%= t("pages.trust.email") %></p><p class="text-sm text-ink-500"><%= setting(:support_email) %></p></a>
+    </div>
+  </section>
+
+  <% if @reviews.present? %>
+    <section class="mt-14">
+      <h2 class="section-title"><%= t("pages.trust.reviews_title") %></h2>
+      <div class="mt-5 grid gap-4 md:grid-cols-3"><% @reviews.each do |review| %><figure class="panel"><%= stars(review.rating) %><blockquote class="mt-3 text-sm">“<%= review.body.truncate(240) %>”</blockquote><figcaption class="mt-2 text-xs text-ink-500"><%= t("home.show.verified_purchase") %> <%= review.seller.display_name %></figcaption></figure><% end %></div>
+    </section>
+  <% end %>
+
+  <section class="mt-14 mx-auto max-w-3xl">
+    <h2 class="section-title"><%= t("pages.trust.faq_title") %></h2>
+    <div class="mt-5 divide-y divide-ink-200 border-y border-ink-200 dark:divide-ink-800 dark:border-ink-800">
+      <% t("pages.trust.faqs").each do |_key, faq| %>
+        <details class="group py-4"><summary class="flex cursor-pointer items-center justify-between gap-4 font-display text-lg font-semibold"><%= faq[:q].gsub("%{site}", site_name) %><%= icon(:plus, css: "size-5 shrink-0 transition group-open:rotate-45") %></summary><p class="mt-3 text-ink-700 dark:text-ink-300"><%= faq[:a].gsub("%{site}", site_name).gsub("%{days}", setting(:buyer_protection_days).to_s) %></p></details>
+      <% end %>
+    </div>
+  </section>
+</div>

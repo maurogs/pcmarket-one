@@ -1,0 +1,20 @@
+<%# locals: (title:) %>
+<% seo title: title, noindex: true %>
+<div class="container-page py-10">
+  <div class="mx-auto grid max-w-5xl overflow-hidden rounded-3xl border border-ink-200 lg:grid-cols-2 dark:border-ink-800">
+    <div class="hidden flex-col justify-between bg-gradient-to-br from-brand-800 to-brand-600 p-10 text-white lg:flex">
+      <span class="flex items-center gap-2 font-display text-2xl font-bold"><%= render "shared/logo", css: "size-9" %><%= site_name %></span>
+      <div>
+        <p class="font-display text-3xl font-bold leading-tight"><%= t("auth.side_title") %></p>
+        <ul class="mt-6 space-y-3 text-brand-50">
+          <% %w[protection reviewed chat].each do |key| %><li class="flex items-center gap-2"><%= icon(:check, css: "size-5 text-accent-400") %><%= t("auth.points.#{key}") %></li><% end %>
+        </ul>
+      </div>
+      <p class="text-sm text-brand-100"><%= t("auth.side_footer") %></p>
+    </div>
+    <div class="p-6 sm:p-10">
+      <h1 class="text-3xl font-bold"><%= title %></h1>
+      <div class="mt-6"><%= yield %></div>
+    </div>
+  </div>
+</div>

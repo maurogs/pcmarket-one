@@ -1,0 +1,3 @@
+<%# locals: (column:, label:) %>
+<% active = params[:sort] == column %>
+<%= link_to request.query_parameters.merge(sort: column, dir: (active && params[:dir] == "asc") ? "desc" : "asc"), class: "inline-flex items-center gap-1 hover:text-brand-700" do %><%= label %><%= icon(active && params[:dir] == "asc" ? :arrow_up : :chevron_down, css: "size-3 #{'opacity-30' unless active}") %><% end %>

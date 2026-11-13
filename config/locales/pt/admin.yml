@@ -1,0 +1,339 @@
+pt:
+  admin:
+    title: Administração
+    search_placeholder: Pesquisar anúncios por título, ID ou vendedor…
+    view_site: Ver site
+    view_public: Ver página pública
+    roles: { member: "Utilizador", moderator: "Moderador", admin: "Administrador" }
+    system: Sistema
+    all: Todos
+    all_countries: Todos os países
+    filter: Filtrar
+    from: De
+    to: Até
+    new: Novo
+    select: Selecionar
+    "on": Ativo
+    "off": Inativo
+    "yes": Sim
+    "no": Não
+    export_csv: Exportar CSV
+    results:
+      zero: Sem resultados
+      one: 1 resultado
+      other: "%{count} resultados"
+    flash:
+      created: Criado com sucesso.
+      updated: Guardado com sucesso.
+      destroyed: Eliminado com sucesso.
+      invalid_date: Data inválida.
+    nav:
+      groups: { overview: "Resumo", marketplace: "Marketplace", trust: "Confiança e segurança", catalogue: "Catálogo", growth: "Crescimento e monetização", configuration: "Configuração" }
+      dashboard: Painel
+      moderation: Fila de moderação
+      listings: Anúncios
+      users: Utilizadores
+      orders: Encomendas
+      conversations: Conversas
+      reviews: Avaliações
+      reports: Denúncias (DSA)
+      support_tickets: Apoio
+      categories: Categorias
+      filters: Filtros
+      collections: Coleções
+      games: Jogos do PC Finder
+      newsletter: Newsletter
+      promotions: Patrocínios
+      buyback: Vende-nos
+      settings: Definições e funcionalidades
+      countries: Países
+      legal_pages: Textos legais
+      audit_logs: Registo de auditoria
+    dashboard:
+      users_total: Total de utilizadores
+      users_new: Novos utilizadores
+      listings_live: Anúncios publicados
+      listings_pending: Em revisão
+      orders: Encomendas
+      gmv: Volume de vendas (GMV)
+      fees: Comissões geradas
+      sellers: Vendedores ativos
+      open_disputes: Disputas abertas
+      overdue_shipments: Envios em atraso
+      open_reports: Denúncias abertas
+      open_tickets: Pedidos de apoio abertos
+      newsletter: Subscritores
+      signups: Registos por dia
+      orders_chart: Encomendas por dia
+      moderation_queue: Fila de moderação (mais antigos primeiro)
+      queue_empty: Nada para rever. Bom trabalho!
+      top_categories: Categorias principais (anúncios publicados)
+      flags: Funcionalidades ativáveis
+      manage_flags: Gerir definições e funcionalidades
+    bulk:
+      label: Ação em massa
+      apply: Aplicar aos selecionados
+      invalid: Escolhe uma ação e pelo menos um anúncio.
+      done:
+        one: Ação aplicada a 1 anúncio.
+        other: "Ação aplicada a %{count} anúncios."
+      default_reason: O teu anúncio não cumpre as nossas regras de publicação.
+      actions: { approve: "Aprovar", reject: "Rejeitar", pause: "Pausar", archive: "Arquivar", feature: "Marcar como destaque", unfeature: "Remover destaque" }
+    listings:
+      search: Título, ID ou vendedor
+      featured: Destaque
+      listing: Anúncio
+      seller: Vendedor
+      status: Estado
+      price: Preço
+      views: Visualizações
+      date: Data
+      member_since: "membro desde %{date}"
+      specs: Especificações
+      stats: Estatísticas
+      stats_value: "%{views} visualizações · %{favorites} favoritos · %{sold} vendidos"
+      moderate: Moderação
+      approve: Aprovar e publicar
+      reject: Rejeitar
+      reject_reason: Motivo (enviado ao vendedor)
+      reason_placeholder: Motivo (para rejeições)
+      templates: Usar um modelo…
+      reject_templates:
+        photos: As fotos não são tuas ou não mostram o artigo real. Carrega fotos reais do artigo.
+        description: A descrição está incompleta. Descreve o estado, o que inclui e eventuais defeitos.
+        prohibited: Este artigo não é permitido segundo a nossa política de artigos proibidos.
+        price: O preço parece incorreto ou enganoso. Revê-o, por favor.
+        category: O artigo está na categoria errada. Escolhe a correta.
+        contact: Os anúncios não podem incluir contactos nem links para pagar fora da plataforma.
+      reason_required: Indica um motivo para a rejeição.
+      approved: Anúncio aprovado.
+      rejected: Anúncio rejeitado e vendedor avisado.
+      history: Histórico
+      events: { submitted: "Enviado para revisão", published: "Publicado", rejected: "Rejeitado", paused: "Em pausa", resumed: "Reativado", archived: "Arquivado", admin_edited: "Editado pela equipa" }
+    users:
+      search: Nome, utilizador, email ou loja
+      status: Estado
+      statuses: { active: "Ativo", suspended: "Suspenso", banned: "Banido" }
+      role: Função
+      unconfirmed: Não confirmado
+      deleted: Incluir eliminados
+      user: Utilizador
+      listings: Anúncios
+      sales: Vendas
+      purchases: Compras
+      rating: Classificação
+      joined: Registo
+      last_login: Último acesso
+      reason: Motivo da suspensão
+      confirmed: Email confirmado
+      sign_ins: Inícios de sessão
+      terms: Termos aceites
+      marketing: Consentimento de marketing
+      confirm_email: Marcar email como confirmado
+    orders:
+      totals: "%{count} encomendas · %{total} no total · %{fees} em comissões"
+      search: Número de encomenda, email ou utilizador
+      number: Encomenda
+      delivery: { shipping: "Envio", pickup: "Entrega em mão" }
+      amounts: { subtotal: "Subtotal", shipping: "Envio", discount: "Desconto", platform_fee: "Comissão", total: "Total" }
+      reasons: Motivos comunicados
+      change_status: Alterar estado
+      note: Nota interna (visível no histórico)
+      apply: Aplicar
+      final: Esta encomenda está num estado final.
+    categories:
+      name: Nome
+      slug: Slug
+      listings: Anúncios publicados
+      flags: Indicadores
+      inactive: Inativa
+      menu: No menu
+      add_child: Adicionar subcategoria
+      root: "— Nível superior —"
+      active: Ativa
+      show_in_menu: Mostrar no menu principal
+      description: Descrição
+      filters: Filtros
+      filters_hint: Os filtros associados aqui aplicam-se também a todas as subcategorias.
+    filters:
+      subtitle: Os filtros alimentam a barra lateral do catálogo, o formulário de anúncios e o PC Finder. As alterações são imediatas.
+      search: Pesquisar por chave
+      name: Nome
+      key: Chave
+      key_hint: Minúsculas, números e underscores. Não pode ser alterada depois.
+      options: Opções
+      options_hint: "As opções em destaque são sempre visíveis; as restantes aparecem em «ver mais». A pontuação alimenta as estimativas de desempenho (GPU/CPU). O preço de recompra (cêntimos) é usado no Vende-nos."
+      categories: Categorias
+      required: Obrigatório
+      on_card: No cartão
+      value: Valor
+      position: Pos.
+      featured: Destaque
+      score: Pontuação
+      buyback: Recompra (¢)
+      delete_confirm: Eliminar este filtro remove-o de todas as categorias. As especificações dos anúncios mantêm-se mas ficam ocultas. Continuar?
+      kinds: { multi_select: "Escolha múltipla", single_select: "Escolha única", boolean: "Sim / não" }
+      flags: { active: "Ativo", collapsed: "Fechado por defeito", in_listing_form: "Mostrar no formulário de anúncio", required: "Obrigatório ao publicar", show_on_card: "Mostrar nos cartões" }
+    collections:
+      subtitle: Grupos de anúncios selecionados para a página inicial, estilos e PC Finder.
+      title_label: Título
+      subtitle_label: Subtítulo
+      kind: Tipo
+      kinds: { theme: "Estilo", gamer_profile: "Perfil de jogador", home_section: "Secção da página inicial", game: "Melhores PCs para um jogo" }
+      query: Consulta do catálogo
+      query_hint: "Os mesmos parâmetros do URL do catálogo, ex. category=gaming-pcs&max_price=1000&tags[]=minimalist"
+      home: Mostrar na página inicial
+    games:
+      subtitle: Jogos disponíveis no PC Finder e usados para estimar FPS.
+      name: Jogo
+      demand: Exigência gráfica
+      demand_hint: Carga relativa da GPU. 100 ≈ um jogo moderno exigente. Menos é mais leve.
+    countries:
+      subtitle: Lança o marketplace num novo país com um clique. Espanha é o mercado de lançamento.
+      toggle: "Ativar ou desativar %{country}"
+      enable_confirm: "Lançar o marketplace em %{country}? Os utilizadores poderão comprar, vender e ver os textos legais locais."
+      disable_confirm: "Desativar %{country}? Os seus anúncios ficarão ocultos."
+      currency: Moeda
+      vat: IVA
+      locale: Idioma por defeito
+      regions: Regiões
+      enabled: Ativo
+      edit_legal: Editar dados legais
+      preview_legal: Ver textos legais
+      edit_subtitle: Configuração do país e dados usados nos textos legais.
+      legal_facts: Dados legais
+      legal_facts_hint: Deixa vazio para usar os valores por defeito mostrados. Pede a um advogado que os reveja antes do lançamento.
+      launch_checklist: "Antes do lançamento: revê com o teu advogado os textos legais do país, confirma transportadoras e IVA, traduz as descrições das categorias e ativa o país aqui."
+    settings:
+      subtitle: Opções globais e funcionalidades ativáveis. A monetização está pronta mas desativada até a ativares.
+      groups: { general: "Geral", listings: "Anúncios e moderação", commerce: "Encomendas e pagamentos", monetization: "Monetização", features: "Funcionalidades", i18n: "Idiomas" }
+      keys:
+        site_name: Nome do site
+        support_email: Email de apoio
+        support_phone: Telefone de apoio
+        default_country: País por defeito
+        announcement_enabled: Barra de anúncios
+        announcement_link: Link da barra
+        maintenance_mode: Modo de manutenção
+        registrations_open: Registos abertos
+        google_login_enabled: Iniciar sessão com Google
+        listing_approval_required: Os anúncios requerem aprovação
+        max_photos_per_listing: Máx. fotos por anúncio
+        max_active_listings_individual: Máx. anúncios ativos (particulares)
+        min_price_cents: Preço mínimo (cêntimos)
+        max_price_cents: Preço máximo (cêntimos)
+        offers_enabled: Ofertas
+        offer_expiry_hours: Validade das ofertas (horas)
+        min_offer_percent: Oferta mínima (% do preço)
+        chat_enabled: Chat entre utilizadores
+        checkout_enabled: Compra online
+        local_pickup_enabled: Entrega em mão
+        buyer_protection_days: Período de proteção (dias após a entrega)
+        seller_ship_days: Dias para o vendedor enviar
+        discount_codes_enabled: Códigos de desconto dos vendedores
+        commissions_enabled: Cobrar comissão nas vendas
+        commission_percent: Comissão (%)
+        commission_min_cents: Comissão mínima (cêntimos)
+        promotions_enabled: Patrocínio pago de anúncios
+        promotion_price_cents: Preço do patrocínio (cêntimos)
+        promotion_days: Duração do patrocínio (dias)
+        sell_to_us_enabled: Vende-nos (recompra)
+        pc_finder_enabled: PC Finder
+        saved_search_alerts_enabled: Avisos de pesquisas guardadas
+        newsletter_enabled: Subscrição da newsletter
+        reviews_enabled: Avaliações
+        dark_mode_enabled: Botão de modo escuro
+        locales_enabled: Idiomas disponíveis
+      hints:
+        site_name: Aparece nos títulos, emails e cabeçalho.
+        support_email: Endereço de contacto público.
+        support_phone: Número de telefone público.
+        default_country: Código ISO do país por defeito.
+        announcement_enabled: Mostra a barra no topo de todas as páginas.
+        announcement_link: Destino do link da barra.
+        maintenance_mode: Só a equipa pode usar o site enquanto estiver ativo.
+        registrations_open: Permitir criar novas contas.
+        google_login_enabled: Requer credenciais OAuth da Google.
+        listing_approval_required: Anúncios novos e editados aguardam moderação.
+        max_photos_per_listing: Recomendado entre 1 e 20.
+        max_active_listings_individual: Limite para vendedores particulares.
+        min_price_cents: "Exemplo: 100 = 1 €."
+        max_price_cents: "Exemplo: 5000000 = 50 000 €."
+        offers_enabled: Os compradores podem oferecer menos do que o preço.
+        offer_expiry_hours: Depois deste tempo as ofertas pendentes expiram.
+        min_offer_percent: As ofertas abaixo desta percentagem são rejeitadas.
+        chat_enabled: Mensagens internas entre compradores e vendedores.
+        checkout_enabled: Comprar pelo site com pagamento protegido.
+        local_pickup_enabled: Permitir entrega em mão.
+        buyer_protection_days: Depois deste período o dinheiro é libertado automaticamente.
+        seller_ship_days: Depois deste prazo o comprador pode cancelar.
+        discount_codes_enabled: Os vendedores podem criar códigos de desconto.
+        commissions_enabled: Manter desativado durante a fase de crescimento.
+        commission_percent: Percentagem do subtotal dos artigos.
+        commission_min_cents: Comissão mínima por encomenda.
+        promotions_enabled: Os vendedores podem pagar para destacar anúncios.
+        promotion_price_cents: Preço por patrocínio.
+        promotion_days: Quanto tempo dura um patrocínio.
+        sell_to_us_enabled: Ofertas imediatas por GPUs e CPUs.
+        pc_finder_enabled: Questionário que recomenda PCs gaming.
+        saved_search_alerts_enabled: Avisos por email de novos anúncios.
+        newsletter_enabled: Formulário de newsletter no rodapé.
+        reviews_enabled: Os compradores podem avaliar os vendedores após uma encomenda concluída.
+        dark_mode_enabled: Mostra o botão claro/escuro.
+        locales_enabled: O espanhol está sempre disponível.
+    legal:
+      subtitle: Os textos legais são gerados por país e idioma a partir de modelos. Cria uma versão personalizada para substituir um por completo.
+      new_override: Nova versão personalizada
+      page: Página
+      status: Publicada
+      empty: Sem versões personalizadas. Todos os países usam os modelos por defeito.
+      defaults: Começar uma versão a partir do modelo
+      body_hint: "Texto simples. As linhas que começam por «## » tornam-se títulos."
+      published: Publicada
+    reports:
+      subtitle: Notificações recebidas ao abrigo do Regulamento dos Serviços Digitais. As decisões têm de ser fundamentadas junto do utilizador afetado.
+      target: Conteúdo
+      reason: Motivo
+      reporter: Denunciante
+      title: "Denúncia n.º %{id}"
+      message_in: "Mensagem na conversa n.º %{id}"
+      details: Detalhes
+      resolution: Decisão
+      decide: Decisão
+      statement_hint: Explica a decisão. Esta fundamentação é guardada para os relatórios de transparência.
+      take_down: Retirar o anúncio (será rejeitado e o vendedor avisado)
+      resolve: Resolver
+      dismiss: Arquivar
+      taken_down: Retirado após a denúncia de outro utilizador.
+    reviews:
+      hide: Ocultar
+      show: Mostrar
+    tickets:
+      topic: Tema
+      from: De
+      reply: Responder por email
+      user_profile: Ver perfil do utilizador
+      internal_note: Nota interna
+    newsletter:
+      active_only: Só ativos
+      confirmed: Confirmado
+      unsubscribed: Cancelado
+    buyback:
+      disabled: A funcionalidade está desativada nas definições.
+      quote: Oferta
+    promotions:
+      disabled: Os patrocínios estão desativados nas definições.
+      period: Período
+      activate: Ativar
+      statuses: { pending: "Pendente", active: "Ativo", expired: "Expirado", cancelled: "Cancelado" }
+    conversations:
+      privacy_notice: Acesso apenas para investigar disputas e fraudes. Cada acesso fica registado no registo de auditoria.
+      by_user: Filtrar por utilizador
+      last: Última mensagem
+      audited: Este acesso foi registado
+    audit:
+      search: Filtrar por ação (ex. listing.)
+      action: Ação
+      actor: Membro da equipa
+      target: Objeto
+      details: Detalhes

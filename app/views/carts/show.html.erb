@@ -1,0 +1,59 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page py-8">
+  <h1 class="section-title"><%= t(".title_count", count: current_cart.items_count) %></h1>
+  <% if @groups.any? %>
+    <div class="mt-6 grid gap-8 lg:grid-cols-[1fr_360px]">
+      <div class="space-y-5">
+        <% @groups.each do |seller, items| %>
+          <section class="panel" aria-label="<%= seller.display_name %>">
+            <p class="flex items-center gap-2 text-sm font-semibold"><%= avatar_for(seller, size: 24) %><%= link_to seller.display_name, store_path(seller), class: "hover:text-brand-700" %></p>
+            <ul class="mt-3 divide-y divide-ink-100 dark:divide-ink-800">
+              <% items.each do |item| %>
+                <li class="flex gap-4 py-4">
+                  <%= link_to listing_path(item.listing), class: "size-24 shrink-0 overflow-hidden rounded-xl" do %><%= listing_image(item.listing, variant: :thumb) %><% end %>
+                  <div class="min-w-0 flex-1">
+                    <div class="flex justify-between gap-3">
+                      <%= link_to item.listing.title, listing_path(item.listing), class: "line-clamp-2 font-semibold hover:text-brand-700" %>
+                      <p class="shrink-0 font-bold"><%= money(item.total_cents, item.listing.currency) %></p>
+                    </div>
+                    <% if item.offer&.usable? %><p class="mt-1 badge-success"><%= t(".offer_applied", price: money(item.unit_price_cents, item.listing.currency)) %></p><% end %>
+                    <div class="mt-3 flex flex-wrap items-center gap-3 text-sm">
+                      <% if item.listing.quantity > 1 && !item.offer %>
+                        <%= form_with url: cart_item_path(item), method: :patch, data: { controller: "autosubmit" } do %>
+                          <label class="sr-only" for="qty-<%= item.id %>"><%= t(".quantity") %></label>
+                          <select id="qty-<%= item.id %>" name="quantity" class="input min-h-9 py-1" data-action="change->autosubmit#submit"><% (1..[item.listing.quantity, 20].min).each do |q| %><option <%= "selected" if q == item.quantity %>><%= q %></option><% end %></select>
+                        <% end %>
+                      <% end %>
+                      <%= button_to t(".remove"), cart_item_path(item), method: :delete, class: "link text-sm" %>
+                      <% if user_signed_in? %><%= button_to t(".save_for_later"), listing_favorite_path(item.listing), class: "link text-sm" %><% end %>
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </section>
+        <% end %>
+      </div>
+      <aside class="space-y-4 lg:sticky lg:top-24 lg:self-start">
+        <div class="panel">
+          <h2 class="font-display text-xl font-bold"><%= t(".summary") %></h2>
+          <dl class="mt-4 space-y-2 text-sm">
+            <div class="flex justify-between"><dt class="text-ink-500"><%= t(".subtotal") %></dt><dd><%= money(current_cart.subtotal_cents, current_country.currency) %></dd></div>
+            <div class="flex justify-between"><dt class="text-ink-500"><%= t(".shipping") %></dt><dd><%= t(".calculated_at_checkout") %></dd></div>
+          </dl>
+          <p class="mt-2 text-xs text-ink-500"><%= t(".vat_note") %></p>
+          <% if user_signed_in? %>
+            <%= link_to t(".checkout"), checkout_path, class: "btn-accent mt-5 w-full" %>
+          <% else %>
+            <%= link_to t(".login_to_checkout"), new_user_session_path, class: "btn-primary mt-5 w-full" %>
+            <%= link_to t(".create_account"), new_user_registration_path, class: "btn-outline mt-2 w-full" %>
+          <% end %>
+        </div>
+        <%= render "shared/protection_box" %>
+      </aside>
+    </div>
+  <% else %>
+    <%= render "shared/empty_state", icon_name: :cart, title: t(".empty_title"), body: t(".empty_body"), cta: [t(".browse"), listings_path] %>
+  <% end %>
+  <%= render "shared/listing_row", title: t(".recommended"), listings: @recommended %>
+</div>

@@ -1,0 +1,17 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.filters"), subtitle: t("admin.filters.subtitle") do %><%= link_to t("admin.new"), new_admin_filter_definition_path, class: "btn-primary btn-sm" if current_user.admin? %><% end %>
+<%= form_with url: admin_filter_definitions_path, method: :get, class: "mb-4 max-w-sm" do %><input type="search" name="q" value="<%= params[:q] %>" class="input" placeholder="<%= t("admin.filters.search") %>" aria-label="<%= t("admin.filters.search") %>"><% end %>
+<div class="panel overflow-x-auto p-0">
+  <table class="table">
+    <thead><tr><th><%= t("admin.filters.name") %></th><th><%= t("admin.filters.key") %></th><th class="text-right"><%= t("admin.filters.options") %></th><th><%= t("admin.filters.categories") %></th><th><%= t("admin.categories.flags") %></th><th></th></tr></thead>
+    <tbody>
+      <% @definitions.each do |definition| %>
+        <tr>
+          <td class="font-medium"><%= definition.name %></td><td class="font-mono text-xs"><%= definition.key %></td><td class="text-right"><%= @option_counts[definition.id].to_i %></td>
+          <td class="max-w-xs text-xs text-ink-500"><%= definition.categories.map(&:name).to_sentence.truncate(90) %></td>
+          <td class="space-x-1"><%= tag.span(t("admin.categories.inactive"), class: "badge-danger") unless definition.active %><%= tag.span(t("admin.filters.required"), class: "badge-warning") if definition.required %><%= tag.span(t("admin.filters.on_card"), class: "badge-muted") if definition.show_on_card %></td>
+          <td class="text-right"><%= link_to t("shared.edit"), edit_admin_filter_definition_path(definition), class: "link text-sm" if current_user.admin? %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

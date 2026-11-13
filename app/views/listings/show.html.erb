@@ -1,0 +1,118 @@
+<% seo title: @listing.title, description: t(".seo_description", title: @listing.title, price: money(@listing.price_cents, @listing.currency), condition: condition_label(@listing.condition)),
+       image: (@listing.cover_photo&.variable? ? url_for(@listing.cover_photo.variant(:large)) : nil), type: "product", noindex: !@listing.published? && !@listing.sold? %>
+<% json_ld listing_json_ld(@listing) if @listing.photos.any? %>
+<% json_ld breadcrumb_json_ld([[t("layout.home"), root_url]] + @listing.category.path.map { |c| [c.name, category_url(c)] } + [[@listing.title, listing_url(@listing)]]) %>
+<% seller = @details.seller %>
+
+<div class="container-page py-6">
+  <%= render "listings/owner_bar", listing: @listing if @listing.editable_by?(current_user) %>
+
+  <nav aria-label="<%= t("layout.breadcrumbs") %>" class="text-xs text-ink-500">
+    <ol class="flex flex-wrap items-center gap-1">
+      <li><%= link_to t("layout.home"), root_path, class: "hover:text-brand-700" %></li>
+      <% @listing.category.path.each do |node| %><li aria-hidden="true">/</li><li><%= link_to node.name, category_path(node), class: "hover:text-brand-700" %></li><% end %>
+    </ol>
+  </nav>
+
+  <div class="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:grid-rows-[auto_1fr] lg:gap-x-8">
+    <div class="min-w-0 lg:col-start-1">
+      <%= render "listings/gallery", listing: @listing %>
+    </div>
+
+    <%# On phones the buy box follows the gallery; on desktop it is a sticky right column. %>
+    <aside class="lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">
+      <%= render "listings/buy_box", listing: @listing, details: @details %>
+    </aside>
+
+    <div class="min-w-0 lg:col-start-1">
+      <section class="panel" aria-labelledby="overview-heading">
+        <h2 id="overview-heading" class="font-display text-xl font-bold"><%= t(".overview") %></h2>
+        <dl class="mt-4 grid grid-cols-[140px_1fr] gap-y-2 text-sm">
+          <dt class="text-ink-500"><%= t(".condition") %></dt><dd class="font-medium"><%= condition_label(@listing.condition) %></dd>
+          <% if @listing.brand.present? %><dt class="text-ink-500"><%= t(".brand") %></dt><dd class="font-medium"><%= @listing.brand %></dd><% end %>
+          <dt class="text-ink-500"><%= t(".category") %></dt><dd><%= link_to @listing.category.name, category_path(@listing.category), class: "link" %></dd>
+          <% if @listing.quantity > 1 %><dt class="text-ink-500"><%= t(".available_units") %></dt><dd class="font-medium"><%= @listing.quantity %></dd><% end %>
+          <dt class="text-ink-500"><%= t(".location") %></dt><dd><%= [@listing.city, @listing.region&.name, @listing.country.name].compact_blank.join(", ") %></dd>
+        </dl>
+        <h3 class="mt-6 font-semibold"><%= t(".description") %></h3>
+        <div class="mt-2 whitespace-pre-line text-sm leading-relaxed text-ink-700 dark:text-ink-300"><%= @listing.description %></div>
+
+        <% if (specs = @details.specs).any? %>
+          <h3 class="mt-6 font-semibold"><%= t(".specifications") %></h3>
+          <dl class="mt-2 divide-y divide-ink-100 text-sm dark:divide-ink-800">
+            <% specs.each do |name, value| %><div class="grid grid-cols-[160px_1fr] py-2"><dt class="text-ink-500"><%= name %></dt><dd class="font-medium"><%= value %></dd></div><% end %>
+          </dl>
+        <% end %>
+        <% if @listing.tags.any? %>
+          <ul class="mt-4 flex flex-wrap gap-1.5">
+            <% @listing.tags.each do |tag| %><li><%= link_to "##{FilterDefinition.cached_by_key['seller_tags']&.label_for(tag) || tag}", listings_path(tags: [tag]), class: "chip" %></li><% end %>
+          </ul>
+        <% end %>
+      </section>
+
+      <% if @listing.gpu_score.positive? && (games = @details.games.to_a).any? %>
+        <section class="panel mt-6" aria-labelledby="perf-heading">
+          <h2 id="perf-heading" class="font-display text-xl font-bold"><%= t(".performance") %></h2>
+          <p class="mt-1 text-xs text-ink-500"><%= t(".performance_note") %></p>
+          <div class="mt-4 overflow-x-auto">
+            <table class="table">
+              <thead><tr><th><%= t(".game") %></th><% Listing::RESOLUTION_FACTORS.each_key do |res| %><th class="text-right"><%= res %></th><% end %></tr></thead>
+              <tbody>
+                <% games.each do |game| %>
+                  <tr><td><%= game.name %></td><% Listing::RESOLUTION_FACTORS.each_key do |res| %><td class="text-right font-semibold tabular-nums"><%= t(".fps", count: @listing.estimated_fps(game, res)) %></td><% end %></tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      <% end %>
+
+      <section class="panel mt-6" aria-labelledby="shipping-heading">
+        <h2 id="shipping-heading" class="font-display text-xl font-bold"><%= t(".shipping_returns") %></h2>
+        <dl class="mt-4 grid grid-cols-[140px_1fr] gap-y-2 text-sm">
+          <dt class="text-ink-500"><%= t(".shipping") %></dt>
+          <dd><%= @listing.shipping_available? ? (@listing.free_shipping? ? t(".free_shipping") : money(@listing.shipping_price_cents, @listing.currency)) : t(".no_shipping") %></dd>
+          <dt class="text-ink-500"><%= t(".pickup") %></dt><dd><%= @listing.local_pickup? ? t(".pickup_yes", city: @listing.city.presence || @listing.region&.name) : t(".pickup_no") %></dd>
+          <dt class="text-ink-500"><%= t(".returns") %></dt><dd><%= seller.return_window_days.positive? ? t(".returns_window", days: seller.return_window_days) : t(".returns_protection_only") %></dd>
+        </dl>
+        <% if @listing.shipping_available? %>
+          <% eta = @details.estimated_arrival %>
+          <ol class="mt-6 grid grid-cols-3 gap-2 text-center text-xs">
+            <% [[:ordered, :check], [:ships, :package], [:arrives, :truck]].each_with_index do |(key, icon_name), index| %>
+              <li class="flex flex-col items-center">
+                <span class="grid size-10 place-items-center rounded-full bg-brand-700 text-white dark:bg-brand-500 dark:text-ink-950"><%= icon(icon_name, css: "size-5") %></span>
+                <span class="mt-2 font-semibold"><%= l(eta[key], format: :short) %></span>
+                <span class="text-ink-500"><%= t(".eta.#{key}", days: @listing.handling_days) %></span>
+              </li>
+            <% end %>
+          </ol>
+        <% end %>
+        <div class="mt-6 rounded-xl bg-brand-50 p-4 text-sm dark:bg-brand-950">
+          <p class="flex items-center gap-2 font-semibold"><%= icon(:shield, css: "size-5 text-brand-700") %><%= t(".protection_title", site: site_name) %></p>
+          <p class="mt-1 text-ink-700 dark:text-ink-300"><%= t(".protection_body", days: setting(:buyer_protection_days)) %> <%= link_to t(".learn_more"), legal_page_path("buyer-protection"), class: "link" %></p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <%= render "shared/listing_row", title: t(".similar"), listings: @details.similar, link: category_path(@listing.category) %>
+  <%= render "shared/listing_row", title: t(".more_from", name: seller.display_name), listings: @details.more_from_seller, link: store_path(seller) %>
+
+  <% reviews = @details.reviews.to_a %>
+  <% if reviews.any? %>
+    <section class="mt-14" aria-labelledby="reviews-heading">
+      <div class="flex items-end justify-between">
+        <h2 id="reviews-heading" class="section-title"><%= t(".reviews") %></h2>
+        <%= link_to t("home.see_all"), store_reviews_path(seller), class: "link text-sm" %>
+      </div>
+      <div class="mt-5 grid gap-4 md:grid-cols-2"><% reviews.each do |review| %><%= render "reviews/review", review: review %><% end %></div>
+    </section>
+  <% end %>
+
+  <p class="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-ink-500">
+    <% if @listing.published_at %><span><%= t(".published_on", date: l(@listing.published_at.to_date, format: :long)) %></span><% end %>
+    <span><%= t(".views", count: @listing.views_count) %></span>
+    <%= link_to new_report_path(reportable_type: "Listing", reportable_id: @listing.id), class: "inline-flex items-center gap-1 hover:text-red-600", rel: "nofollow" do %><%= icon(:flag, css: "size-3.5") %><%= t(".report") %><% end %>
+    <%= link_to t(".sell_similar"), new_listing_path(category_id: @listing.category_id), class: "link" %>
+  </p>
+</div>

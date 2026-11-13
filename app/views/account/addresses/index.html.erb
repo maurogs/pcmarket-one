@@ -1,0 +1,19 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page py-8">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <div class="mt-6 flex flex-col gap-6 lg:flex-row">
+    <%= render "shared/account_nav", section: :account %>
+    <div class="flex-1">
+      <div class="grid gap-3 sm:grid-cols-2">
+        <% @addresses.each do |address| %>
+          <div class="panel text-sm">
+            <p class="font-semibold"><%= address.full_name %> <% if address.default? %><span class="badge-brand ml-1"><%= t(".default") %></span><% end %></p>
+            <p class="mt-1 text-ink-600 dark:text-ink-300"><%= address.one_line %></p>
+            <div class="mt-3 flex gap-3"><%= link_to t("shared.edit"), edit_account_address_path(address), class: "link" %><%= button_to t("shared.delete"), account_address_path(address), method: :delete, class: "link text-red-700", data: { turbo_confirm: t("shared.confirm") } %></div>
+          </div>
+        <% end %>
+      </div>
+      <%= link_to t(".add"), new_account_address_path, class: "btn-primary mt-4" %>
+    </div>
+  </div>
+</div>

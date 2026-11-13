@@ -1,0 +1,113 @@
+fr:
+  legal:
+    updated_on: 11 novembre 2026
+    applies_to: "Applicable aux utilisateurs en %{country}"
+    last_updated: "Dernière mise à jour : %{date}"
+    meta_description: "%{title} de %{site} pour %{country}."
+    contact_footer: "Une question sur ce document ? Écrivez à %{email}. Ces textes sont fournis à titre d'information et doivent être validés par un avocat avant toute mise en production."
+
+    terms:
+      title: Conditions générales d'utilisation
+      sections:
+        intro: { heading: "1. Qui sommes-nous", body: ["Les présentes conditions régissent l'utilisation de %{site}, une marketplace en ligne exploitée par %{company_name}, dont le siège est situé %{company_address}, numéro fiscal %{company_tax_id} (« nous »). En créant un compte ou en utilisant la plateforme, vous acceptez ces conditions."] }
+        role: { heading: "2. Notre rôle", body: ["%{site} est une plateforme d'intermédiation permettant à des particuliers et à des vendeurs professionnels de vendre des produits technologiques neufs et d'occasion à d'autres utilisateurs. Sauf mention contraire, nous ne sommes pas le vendeur des articles proposés. Le contrat de vente est conclu directement entre l'acheteur et le vendeur.", "Chaque annonce indique si le vendeur est un particulier ou un professionnel. Le droit de la consommation ne s'applique qu'aux achats auprès de vendeurs professionnels."] }
+        accounts: { heading: "3. Comptes", body: ["Vous devez avoir au moins 18 ans et fournir des informations exactes. Vous êtes responsable de la sécurité de votre mot de passe et de toute activité sur votre compte. Une même personne ou entreprise ne peut détenir plusieurs comptes pour contourner des restrictions."] }
+        listings: { heading: "4. Annonces et modération", body: ["Les vendeurs doivent décrire honnêtement les articles, utiliser leurs propres photos, signaler tout défaut et ne proposer que des articles qu'ils possèdent et peuvent légalement vendre. Toutes les annonces sont vérifiées avant publication. Nous pouvons refuser, recatégoriser ou retirer les annonces contraires aux présentes conditions, aux conditions vendeurs ou à la politique des articles interdits."] }
+        buying: { heading: "5. Acheter", body: ["Les prix sont affichés dans la devise de %{country_name} et, pour les vendeurs professionnels, TVA incluse. Les frais de livraison sont affichés avant paiement. Passer commande implique une obligation de paiement.", "Les paiements sont traités par notre prestataire et conservés par %{site} jusqu'à la fin de la commande. Les paiements effectués hors plateforme ne sont pas couverts par la protection acheteur."] }
+        protection: { heading: "6. Protection acheteur", body: ["Les commandes payées via la plateforme sont couvertes par notre politique de protection acheteur pendant %{protection_days} jours après la livraison, sans préjudice de vos droits légaux."] }
+        offers: { heading: "7. Offres et messagerie", body: ["Les acheteurs peuvent faire des offres que le vendeur accepte ou refuse. Une offre acceptée réserve le prix pour une durée limitée, mais pas l'article. La messagerie ne doit servir qu'aux transactions sur la plateforme. Il est interdit de partager des coordonnées pour contourner la plateforme, de spammer ou de harceler."] }
+        fees: { heading: "8. Frais", body: ["L'utilisation de la plateforme est actuellement gratuite. Nous pourrions introduire des commissions ou des services payants. Nous vous préviendrons au moins 30 jours à l'avance et les changements ne s'appliqueront jamais aux commandes déjà passées."] }
+        conduct: { heading: "9. Comportements interdits", body: ["Il est interdit de frauder, de manipuler les avis, de porter atteinte aux droits de propriété intellectuelle, de proposer des articles interdits, d'extraire des données sans autorisation ou de compromettre la sécurité du service. Nous pouvons suspendre ou fermer les comptes contrevenants, avec un exposé des motifs."] }
+        liability: { heading: "10. Responsabilité", body: ["Nous fournissons le service d'intermédiation avec diligence. Nous ne sommes pas responsables des articles vendus par les utilisateurs, mais nous aidons à résoudre les litiges via la protection acheteur. Rien dans ces conditions ne limite une responsabilité qui ne peut l'être légalement."] }
+        changes: { heading: "11. Modifications et résiliation", body: ["Nous pouvons modifier ces conditions. Les changements importants seront notifiés au moins 15 jours à l'avance. Vous pouvez fermer votre compte à tout moment depuis vos paramètres."] }
+        law: { heading: "12. Droit applicable et litiges", body: ["Ces conditions sont régies par le droit de %{country_name}, sans priver les consommateurs de la protection des dispositions impératives de leur pays de résidence. Les litiges peuvent être portés devant %{courts}. Réclamations des consommateurs : %{complaints}."] }
+
+    privacy:
+      title: Politique de confidentialité
+      sections:
+        controller: { heading: "1. Responsable du traitement", body: ["Le responsable du traitement de vos données est %{company_name}, %{company_address}. Contact pour la protection des données : %{privacy_email}."] }
+        data: { heading: "2. Données traitées", body: ["Données de compte (nom, pseudo, e-mail, téléphone), informations de profil et de boutique, annonces et photos, messages échangés, données de commande et de livraison, confirmations de paiement (nous ne conservons jamais les données de carte), données d'appareil et d'usage (adresse IP, connexions) et, pour les professionnels, les informations exigées par la loi."] }
+        purposes: { heading: "3. Finalités et bases légales", body: ["Fournir la marketplace et traiter les commandes (exécution du contrat, art. 6.1.b %{gdpr}).", "Prévenir la fraude, modérer les contenus et sécuriser la plateforme (intérêt légitime, art. 6.1.f).", "Respecter nos obligations légales : fiscalité, déclarations %{dac7} et %{dsa_regulation} (art. 6.1.c).", "Envoyer la newsletter et des communications marketing, uniquement avec votre consentement (art. 6.1.a), retirable à tout moment."] }
+        recipients: { heading: "4. Destinataires", body: ["Nous partageons des données avec l'autre partie de chaque transaction (par exemple l'adresse de livraison avec le vendeur), avec nos sous-traitants (hébergement, e-mail, paiement, support) et avec les autorités lorsque la loi l'exige. Nous ne vendons pas vos données personnelles."] }
+        transfers: { heading: "5. Transferts internationaux", body: ["Si un prestataire traite des données hors de l'Espace économique européen, nous nous appuyons sur des décisions d'adéquation ou des clauses contractuelles types."] }
+        retention: { heading: "6. Durée de conservation", body: ["Nous conservons les données du compte tant qu'il est actif. Après suppression, nous anonymisons le profil mais conservons les données de commandes et de facturation pendant les durées imposées par le droit fiscal et commercial (en général jusqu'à 6 ans) et les données DSA le temps requis."] }
+        rights: { heading: "7. Vos droits", body: ["Vous pouvez accéder à vos données, les rectifier, les effacer, en limiter le traitement ou vous y opposer, demander leur portabilité et retirer votre consentement. Vous pouvez télécharger vos données et supprimer votre compte depuis vos paramètres, ou écrire à %{privacy_email}. Vous pouvez également introduire une réclamation auprès de la %{data_authority}."] }
+        security: { heading: "8. Sécurité", body: ["Nous appliquons des mesures techniques et organisationnelles : chiffrement en transit, mots de passe hachés, contrôle d'accès et journaux d'audit."] }
+        law: { heading: "9. Cadre légal", body: ["Cette politique est conforme au %{gdpr} et à la %{data_law}."] }
+
+    cookies:
+      title: Politique de cookies
+      sections:
+        what: { heading: "1. Qu'est-ce qu'un cookie ?", body: ["Les cookies sont de petits fichiers enregistrés sur votre appareil. Nous utilisons aussi des technologies similaires comme le stockage local."] }
+        necessary: { heading: "2. Cookies strictement nécessaires", body: ["Cookies de session et de sécurité (connexion, protection CSRF), votre panier, votre choix de langue et de pays, et vos préférences cookies. Ils ne nécessitent pas de consentement car le service ne peut fonctionner sans eux."] }
+        optional: { heading: "3. Cookies facultatifs", body: ["Les cookies de mesure d'audience et marketing ne sont déposés que si vous les acceptez dans le bandeau. Actuellement, la plateforme ne charge aucun cookie tiers d'analyse ou de publicité."] }
+        manage: { heading: "4. Gérer votre choix", body: ["Vous pouvez modifier votre choix à tout moment via « Préférences cookies » en pied de page ou supprimer les cookies dans votre navigateur. Le consentement est conservé 6 mois."] }
+        law: { heading: "5. Base légale", body: ["Cette politique est conforme à l'%{cookie_law} et aux lignes directrices de la %{data_authority}."] }
+
+    legal_notice:
+      title: Mentions légales
+      sections:
+        owner: { heading: "Éditeur du site", body: ["Raison sociale : %{company_name}", "Siège social : %{company_address}", "Numéro fiscal : %{company_tax_id}", "Immatriculation : %{company_registry}", "E-mail : %{legal_email}"] }
+        purpose: { heading: "Objet", body: ["Ce site exploite une marketplace en ligne de produits technologiques entre utilisateurs, conformément à la %{ecommerce_law}."] }
+        ip: { heading: "Propriété intellectuelle", body: ["Le design, le code, la marque et les contenus créés par %{site} sont protégés par le droit de la propriété intellectuelle. Les contenus publiés par les utilisateurs leur appartiennent ; ils nous concèdent une licence pour les afficher sur la plateforme."] }
+        liability: { heading: "Responsabilité", body: ["Nous agissons en qualité d'hébergeur des contenus fournis par les utilisateurs et retirons promptement tout contenu illicite dès que nous en avons effectivement connaissance."] }
+      country_sections:
+        es: { lssi: { heading: "Información LSSI-CE", body: ["Conformément à l'article 10 de la Ley 34/2002 de Servicios de la Sociedad de la Información y de Comercio Electrónico, les informations d'identification du prestataire figurent ci-dessus."] } }
+        de: { impressum: { heading: "Impressum", body: ["Informations selon le %{ecommerce_law} : %{company_name}, %{company_address}. Représentée par sa direction. Contact : %{legal_email}. N° TVA : %{company_tax_id}. Registre : %{company_registry}.", "Règlement des litiges de consommation : %{complaints}"] } }
+        fr: { mediation: { heading: "Médiation de la consommation", body: ["Conformément au Code de la consommation, le consommateur peut recourir gratuitement à un médiateur de la consommation. %{complaints}."] } }
+        pt: { complaints_book: { heading: "Livro de Reclamações", body: ["Conformément au droit portugais, les consommateurs peuvent déposer une réclamation via le livre de réclamations électronique : %{complaints}."] } }
+        it: { info: { heading: "Informazioni societarie", body: ["Les informations sur la société sont fournies conformément au %{ecommerce_law} et au Codice Civile."] } }
+        gb: { info: { heading: "Company information", body: ["Informations fournies conformément aux %{ecommerce_law}."] } }
+
+    returns:
+      title: Retours et droit de rétractation
+      sections:
+        professional: { heading: "1. Achats auprès de vendeurs professionnels", body: ["Si vous achetez en tant que consommateur auprès d'un vendeur professionnel, vous disposez d'un droit de rétractation de %{withdrawal_days} jours à compter de la réception, sans motif, conformément au %{consumer_law}.", "Pour l'exercer, contactez le vendeur depuis votre commande ou écrivez à %{support_email}. Renvoyez l'article dans les 14 jours suivant votre rétractation. Le vendeur rembourse le prix et la livraison standard dans les 14 jours suivant la réception de l'article ou de la preuve d'expédition."] }
+        exceptions: { heading: "2. Exceptions", body: ["Le droit de rétractation ne s'applique pas aux logiciels ou jeux vidéo scellés une fois descellés, aux articles réalisés selon les spécifications de l'acheteur, ni aux autres exceptions prévues par la loi."] }
+        private: { heading: "3. Achats auprès de particuliers", body: ["Les droits légaux de rétractation et de garantie ne s'appliquent pas entre particuliers. Votre achat est couvert par notre protection acheteur : si l'article n'arrive pas ou n'est pas conforme, vous êtes remboursé."] }
+        warranty: { heading: "4. Garantie légale", body: ["Les vendeurs professionnels répondent des défauts de conformité. En %{country_name}, la garantie légale des biens neufs est de %{warranty_years} ans ; pour les biens d'occasion elle peut être plus courte lorsque la loi le permet, ce qui doit être indiqué dans l'annonce."] }
+        store: { heading: "5. Politiques de retour volontaires", body: ["Les vendeurs peuvent proposer un délai de retour volontaire supplémentaire, indiqué sur leur boutique et leurs annonces."] }
+        model: { heading: "6. Formulaire type de rétractation", body: ["À l'attention de : [nom et adresse du vendeur]. Je vous notifie par la présente ma rétractation du contrat portant sur la vente du bien ci-dessous : [article], commandé le [date] / reçu le [date]. Nom, adresse, signature (uniquement en cas de version papier), date."] }
+
+    buyer_protection:
+      title: Protection acheteur
+      sections:
+        what: { heading: "1. Ce qui est couvert", body: ["Toute commande payée via %{site} est couverte si l'article n'arrive pas, arrive endommagé, défectueux ou contrefait, diffère sensiblement de sa description, ou n'est pas expédié sous %{ship_days} jours ouvrés."] }
+        how: { heading: "2. Fonctionnement", body: ["Nous conservons votre paiement jusqu'à la fin de la commande. Après livraison, vous avez %{protection_days} jours pour vérifier l'article. Si tout est correct, validez la commande. Sinon, ouvrez un litige depuis la page de la commande pendant ce délai."] }
+        dispute: { heading: "3. Litiges", body: ["Lorsque vous ouvrez un litige, nous suspendons le paiement au vendeur et demandons des preuves aux deux parties (photos, suivi, messages). Nous visons une décision sous 7 jours. Si la réclamation est fondée, vous êtes intégralement remboursé, généralement après retour de l'article aux frais du vendeur."] }
+        excluded: { heading: "4. Ce qui n'est pas couvert", body: ["Les paiements hors plateforme, le simple changement d'avis lors d'un achat entre particuliers, les dommages postérieurs à la livraison et les réclamations hors délai."] }
+        rights: { heading: "5. Vos droits légaux", body: ["La protection acheteur s'ajoute à vos droits légaux de consommateur au titre du %{consumer_law} et ne les limite pas."] }
+
+    seller_terms:
+      title: Conditions vendeurs
+      sections:
+        eligibility: { heading: "1. Qui peut vendre", body: ["Tout utilisateur de plus de 18 ans ayant confirmé son e-mail peut vendre. Si vous vendez régulièrement ou dans un cadre professionnel, vous devez vous enregistrer comme vendeur professionnel et fournir raison sociale, adresse, coordonnées, numéros d'immatriculation et fiscal, et certifier ne proposer que des produits conformes (art. 30 %{dsa_regulation})."] }
+        obligations: { heading: "2. Vos obligations", body: ["Décrivez fidèlement les articles, utilisez vos propres photos, respectez la politique des articles interdits, tenez votre stock à jour, répondez aux acheteurs dans un délai raisonnable et expédiez sous %{ship_days} jours ouvrés avec suivi.", "Les vendeurs professionnels doivent respecter les droits des consommateurs, dont le droit de rétractation de %{withdrawal_days} jours et la garantie légale, et émettre des factures lorsque c'est requis."] }
+        payments: { heading: "3. Paiements et versements", body: ["Les acheteurs paient via la plateforme. Les fonds vous sont versés quand l'acheteur valide la commande ou à la fin de la période de protection sans litige. Toute commission en vigueur au moment de la vente est déduite du versement."] }
+        taxes: { heading: "4. Fiscalité et déclarations", body: ["Vous êtes responsable de vos impôts. En vertu de la %{dac7}, nous devons collecter des données d'identification et déclarer à l'administration fiscale les vendeurs dépassant 30 ventes ou 2 000 € sur une année civile."] }
+        moderation: { heading: "5. Modération et sanctions", body: ["Nous pouvons refuser ou retirer des annonces, limiter des fonctionnalités ou suspendre des comptes contrevenants. Nous vous fournirons toujours un exposé des motifs et vous pourrez faire appel via notre système interne de réclamation."] }
+
+    prohibited_items:
+      title: Articles interdits
+      sections:
+        list: { heading: "1. Articles que vous ne pouvez pas vendre", body: ["Biens volés ou ne vous appartenant pas. Contrefaçons, répliques et articles portant atteinte aux marques. Appareils modifiés ou débloqués illégalement, outils de piratage et logiciels piratés. Appareils verrouillés à un compte (iCloud, Google FRP) ou déclarés perdus ou volés. Armes, drogues, contenus pour adultes, données personnelles, comptes ou monnaies de jeu lorsque l'éditeur l'interdit.", "Produits rappelés ou non conformes aux exigences de sécurité de l'UE, et batteries gonflées ou endommagées."] }
+        restricted: { heading: "2. Articles soumis à conditions", body: ["Licences et clés numériques uniquement si elles sont cessibles et acquises légitimement. Les rigs de minage et GPU d'occasion doivent préciser leur historique d'utilisation."] }
+        enforcement: { heading: "3. Application", body: ["Les annonces contraires à cette politique sont refusées ou retirées et les infractions répétées peuvent entraîner la suspension du compte."] }
+
+    dsa:
+      title: Règlement sur les services numériques
+      sections:
+        contact: { heading: "1. Points de contact", body: ["Point de contact unique pour les autorités, la Commission européenne et les utilisateurs (art. 11 et 12 %{dsa_regulation}) : %{dsa_contact_email}. Langues : espagnol et anglais, ainsi que la langue de chaque pays où nous opérons."] }
+        notice: { heading: "2. Notification et action", body: ["Toute personne peut signaler un contenu qu'elle estime illicite via le lien « Signaler » présent sur chaque annonce et profil, en expliquant les raisons et en identifiant le contenu. Nous accusons réception et vous informons de notre décision."] }
+        reasons: { heading: "3. Exposé des motifs", body: ["Lorsque nous retirons ou restreignons des contenus ou des comptes, nous informons l'utilisateur concerné par un exposé clair des motifs, incluant les faits, le fondement légal ou contractuel et les voies de recours."] }
+        complaints: { heading: "4. Réclamations internes et règlement extrajudiciaire", body: ["Vous pouvez contester nos décisions de modération dans un délai de 6 mois en contactant le support. Les décisions sont réexaminées par une personne. Vous pouvez aussi saisir un organisme certifié de règlement extrajudiciaire des litiges."] }
+        traders: { heading: "5. Traçabilité des professionnels", body: ["Nous collectons et vérifions les informations des vendeurs professionnels avant qu'ils puissent proposer des produits et les affichons sur leurs annonces."] }
+        transparency: { heading: "6. Transparence", body: ["Nous publions des rapports annuels sur le nombre de notifications, de décisions de modération et de réclamations. Les annonces sont classées par pertinence, date et, le cas échéant, sponsorisation payante, clairement signalée."] }
+
+    accessibility:
+      title: Déclaration d'accessibilité
+      sections:
+        commitment: { heading: "1. Notre engagement", body: ["Nous voulons que chacun puisse utiliser %{site}. Nous suivons les règles WCAG 2.2 niveau AA et l'Acte européen sur l'accessibilité."] }
+        measures: { heading: "2. Mesures", body: ["HTML sémantique, navigation au clavier, focus visible, textes alternatifs, contrastes suffisants en mode clair et sombre, respect de la préférence de réduction des animations et formulaires avec libellés et erreurs explicites."] }
+        limitations: { heading: "3. Limites connues", body: ["Les photos publiées par les vendeurs peuvent manquer de descriptions détaillées. Nous travaillons à l'améliorer."] }
+        feedback: { heading: "4. Retours", body: ["Si vous rencontrez un obstacle d'accessibilité, écrivez-nous à %{support_email}. Nous vous répondrons sous 10 jours ouvrés."] }

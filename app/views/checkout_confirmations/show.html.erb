@@ -1,0 +1,15 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page max-w-2xl py-12 text-center">
+  <span class="mx-auto grid size-16 place-items-center rounded-full bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-300"><%= icon(:check, css: "size-8") %></span>
+  <h1 class="mt-5 section-title"><%= t(".title") %></h1>
+  <p class="mt-2 text-ink-600 dark:text-ink-300"><%= t(".body") %></p>
+  <ul class="mt-8 space-y-3 text-left">
+    <% @orders.each do |order| %>
+      <li class="panel flex items-center justify-between gap-3">
+        <div><p class="font-semibold"><%= order.number %></p><p class="text-sm text-ink-500"><%= t(".sold_by", name: order.seller.display_name) %> · <%= status_badge(order.status, "orders.statuses") %></p></div>
+        <%= link_to t(".view"), order_path(order), class: "btn-outline btn-sm" %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to t(".continue"), root_path, class: "btn-primary mt-8" %>
+</div>

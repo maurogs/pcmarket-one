@@ -1,0 +1,1153 @@
+en:
+  date:
+    formats:
+      month_year: "%B %Y"
+  time:
+    ago: "%{time} ago"
+  locales: { es: "Español", en: "English (UK)", fr: "Français", de: "Deutsch", it: "Italiano", pt: "Português" }
+  countries: { es: "Spain", fr: "France", gb: "United Kingdom", de: "Germany", it: "Italy", pt: "Portugal" }
+
+  seo:
+    default_description: "%{site} is the marketplace to buy and sell new and second-hand gaming PCs, graphics cards, components, peripherals, laptops, phones and consoles with buyer protection."
+    og_locale: en_GB
+
+  shared:
+    save: Save
+    cancel: Cancel
+    delete: Delete
+    edit: Edit
+    confirm: Are you sure?
+
+  layout:
+    skip_to_content: Skip to content
+    back_to_top: Back to top
+    announcement: "Upgrade season is here: browse discounted listings."
+    announcement_cta: See deals
+    secondary_nav: Secondary navigation
+    main_nav: Main navigation
+    help: Help
+    trust: Trust & Safety
+    sell_info: Sell on PCMarket
+    pc_finder: PC Finder
+    open_menu: Open menu
+    close: Close
+    home: Home
+    home_label: "%{site} home"
+    search_label: Search listings and sellers
+    search_placeholder: Search listings and sellers
+    list_item: List an item
+    sell_to_us: Sell to us
+    wishlist: Wishlist
+    notifications: Notifications
+    cart: Cart
+    cart_label:
+      one: Cart, 1 item
+      other: "Cart, %{count} items"
+    account_menu: Account menu
+    log_in: Log in
+    new: New
+    deals: Deals
+    all_in: "All %{name}"
+    breadcrumbs: Breadcrumbs
+    pagination: Pagination
+    previous_page: Previous page
+    next_page: Next page
+    language: Language
+    country: Country
+    toggle_theme: Toggle dark mode
+    light: Light
+    dark: Dark
+    menu:
+      orders: My orders
+      inbox: Inbox & offers
+      wishlist: Wishlist
+      saved_searches: Saved searches
+      account: Account settings
+      my_store: My store
+      public_profile: Public profile
+      dashboard: Seller dashboard
+      my_listings: My listings
+      my_sales: My sales
+      store_settings: Store settings
+      admin: Admin panel
+      log_out: Log out
+    promo:
+      cta: Discover
+      pc_finder: { title: "Find the perfect PC", body: "Answer a few questions and we'll match you with PCs that hit your FPS target." }
+      sell_to_us: { title: "Turn your gear into cash", body: "Get an instant offer for your GPU or CPU." }
+      sell: { title: "Sell your gear", body: "Listing is free and buyers are protected." }
+      deals: { title: "Deals of the week", body: "Discounted listings from verified sellers." }
+    footer:
+      tagline: The marketplace for gamers and PC builders. Buy and sell new and second-hand hardware with protected payments.
+      newsletter_title: Get the good drops
+      newsletter_body: Be the first to hear about new drops, sales and giveaways.
+      email: Email address
+      subscribe: Sign up
+      newsletter_legal_html: "We'll ask you to confirm your email. You can unsubscribe at any time. See our %{privacy}."
+      about: About
+      about_us: About us
+      how_it_works: How it works
+      credits: Image credits
+      buy_sell: Buying & selling
+      fees: Fees
+      shipping_guide: How to ship safely
+      photo_guide: How to take great photos
+      help: Help
+      contact: Contact support
+      legal_nav: Legal
+      cookie_preferences: Cookie preferences
+      copyright: "© %{year} %{company}. All rights reserved."
+
+  cookies:
+    title: We value your privacy
+    body_html: "We use strictly necessary cookies to make the site work. With your consent we would also use analytics and marketing cookies. You can change your choice at any time. Read our %{link}."
+    necessary: Strictly necessary (always on)
+    analytics: Analytics
+    marketing: Marketing
+    accept_all: Accept all
+    reject_all: Reject all
+    customize: Customise
+    save: Save choices
+
+  auth:
+    side_title: Buy and sell gaming hardware without the stress.
+    side_footer: Payments held until you receive your item.
+    points:
+      protection: Buyer protection on every order
+      reviewed: Every listing reviewed by our team
+      chat: Built-in chat with sellers
+    sign_up_title: Create your account
+    no_account: "Don't have an account?"
+    or: or
+    username_placeholder: e.g. pixel_builder
+    username_hint: 3–30 characters. Letters, numbers, dots, dashes and underscores. This is public.
+    terms_html: "I accept the %{terms} and have read the %{privacy}."
+    marketing_consent: I'd like to receive news and offers by email (optional).
+    age_notice: You must be at least 18 years old to buy or sell on the platform.
+
+  errors:
+    forbidden: You are not allowed to do that.
+    account_suspended: Your account is suspended. Contact support if you think this is a mistake.
+    confirm_email_first: Please confirm your email address before buying or selling.
+    registrations_closed: New registrations are temporarily closed.
+    too_many_attempts: Too many attempts. Please wait a few minutes and try again.
+    oauth_failed: We couldn't sign you in with that provider.
+    not_found: { title: "Page not found", body: "The page you're looking for doesn't exist or is no longer available.", cta: "Back to home" }
+    maintenance: { title: "We'll be right back", body: "We're doing some maintenance. Please try again in a few minutes." }
+
+  api:
+    errors:
+      not_found: Resource not found.
+      unauthorized: Authentication required.
+      forbidden: You are not allowed to perform this action.
+      parameter_missing: A required parameter is missing.
+      maintenance: The service is under maintenance.
+      invalid_credentials: Invalid email or password.
+      rate_limited: Too many requests. Please slow down.
+      registrations_closed: Registrations are closed.
+      terms_required: You must accept the terms of service.
+      not_actionable: This action is no longer available.
+
+  home:
+    see_all: See all
+    show:
+      seo_title: Buy and sell gaming PCs, GPUs and components
+      seo_description: "Second-hand and new gaming PCs, graphics cards, components and peripherals from private sellers and shops in Spain. Payments protected by %{site}."
+      hero:
+        kicker: Upgrade season
+        title: Hardware that has been loved. Prices that make sense.
+        body: Buy and sell gaming PCs, graphics cards and components with protected payments and listings reviewed by humans.
+        browse: Browse listings
+        sell: Start selling
+        point_protection: Buyer protection
+        point_reviewed: Reviewed listings
+        point_fees: No selling fees
+        deals_title: Deals of the day
+      categories_label: Categories
+      finder:
+        title: Find exactly what you're looking for
+        body: Tell us which games you play, your monitor and your budget. We'll show you PCs that hit your target FPS.
+        cta: Find the perfect PC
+      themes_title: Shop PCs by vibe
+      most_watched: Most watched this week
+      gpus: Graphics cards
+      sell_banner:
+        title: Turn your old gear into extra cash
+        body: Listing is free. Chat with buyers, ship with tracking and get paid once they receive it.
+        cta: List an item
+      on_sale: On sale
+      on_sale_subtitle: Grab them while they're hot.
+      newest: Just listed
+      reviews_title: What buyers say
+      verified_purchase: Verified purchase from
+      recently_sold: Recently sold
+      values:
+        protection: { title: "Your money is protected", body: "We hold the payment until you confirm your item arrived as described." }
+        moderation: { title: "Humans review every listing", body: "Our team checks listings before they go live to keep scams out." }
+        chat: { title: "Talk before you buy", body: "Ask questions, request more photos and negotiate with built-in chat and offers." }
+
+  listings:
+    conditions: { brand_new: "Brand new in box", open_box: "New – open box", like_new: "Used – like new", good: "Used – good", fair: "Used – fair", for_parts: "As-is / for parts" }
+    statuses: { draft: "Draft", pending_review: "Pending review", published: "Published", rejected: "Rejected", paused: "Paused", sold: "Sold", archived: "Archived" }
+    badges:
+      sold: Sold out
+      save: "Save %{percent}%"
+      free_shipping: Free shipping
+      promoted: Promoted
+    card:
+      sold_for: Sold for
+      performance: Total performance
+      value: Price to performance
+    submitted:
+      published: Your listing is live!
+      pending: Thanks! Your listing will be reviewed by our team shortly.
+    saved_draft: Draft saved.
+    destroy:
+      success: Listing removed.
+    pauses:
+      create: { success: "Listing paused. It's hidden from buyers." }
+      destroy: { success: "Listing is live again." }
+    owner:
+      status: "Listing status:"
+      rejection: "Rejected: %{reason}"
+      pending_notice: Our team is reviewing your listing. This usually takes less than 24 hours.
+      edit: Edit
+      submit: Submit for review
+      pause: Pause
+      resume: Resume
+      promote: Promote
+    index:
+      title: All listings
+      deals_title: Deals
+      search_title: "Results for “%{query}”"
+      seo_description: "%{title}: new and second-hand listings from verified sellers on %{site}."
+      results:
+        zero: No listings
+        one: 1 listing
+        other: "%{count} listings"
+      filters: Filters
+      save_search: Save search & alert me
+      sort_label: Sort by
+      sorts: { best_match: "Best match", newest: "Newest", price_asc: "Price: low to high", price_desc: "Price: high to low", most_watched: "Most watched", performance: "Best performance", value: "Best value" }
+      empty_title: No listings match your filters
+      empty_body: Try removing some filters or save the search to be alerted when something new appears.
+      clear_filters: Clear filters
+      seo_footer: "Looking for %{name}? On %{site} you'll find new and second-hand %{name} from private sellers and specialist shops, with payments held until you receive your item, chat with the seller and listings reviewed by our team."
+    filters:
+      title: Filters
+      search: Filter listings
+      active: Filtering by
+      clear_all: Clear all
+      remove: "Remove filter %{name}"
+      price: Price
+      price_range: "Price: %{min} – %{max}"
+      min_price: Minimum price
+      max_price: Maximum price
+      min: Min
+      max: Max
+      condition: Condition
+      show_more:
+        one: Show 1 more
+        other: "Show %{count} more"
+      show_less: Show less
+      location: Location
+      region: Region
+      any_region: "Anywhere in %{country}"
+      other: Other
+      free_shipping: Free shipping
+      local_pickup: Local pickup available
+      on_sale: On sale
+      seller_type: Seller type
+      any_seller: Any seller
+      apply: Apply filters
+      show_results:
+        zero: No results
+        one: Show 1 result
+        other: "Show %{count} results"
+      flags:
+        region: "Region: %{value}"
+        free_shipping: Free shipping
+        on_sale: On sale
+        local_pickup: Local pickup
+        seller_type: "Seller: %{value}"
+    gallery:
+      label: Photo gallery
+      thumbnails: Thumbnails
+      photo: "Photo %{number}"
+      alt: "%{title} – photo %{number}"
+      previous: Previous photo
+      next: Next photo
+    show:
+      seo_description: "%{title} for %{price} (%{condition}). Buy with buyer protection."
+      overview: Overview & specs
+      condition: Condition
+      brand: Brand
+      category: Category
+      available_units: Units available
+      location: Location
+      description: Description from the seller
+      specifications: Specifications
+      performance: Estimated gaming performance
+      performance_note: Estimates based on GPU and CPU benchmarks at high settings. Real results vary.
+      game: Game
+      fps:
+        one: 1 FPS
+        other: "%{count} FPS"
+      shipping_returns: Shipping & returns
+      shipping: Shipping
+      free_shipping: Free shipping
+      no_shipping: Collection only
+      pickup: Local pickup
+      pickup_yes: "Available in %{city}"
+      pickup_no: Not available
+      returns: Returns
+      returns_window: "Returns accepted within %{days} days"
+      returns_protection_only: Covered by buyer protection
+      eta:
+        ordered: Order placed
+        ships: "Ships within %{days} days"
+        arrives: Delivered
+      protection_title: "%{site} buyer protection"
+      protection_body: "Receive your item as described or get your money back. You have %{days} days after delivery to report a problem."
+      learn_more: Learn more
+      similar: Similar listings
+      more_from: "More from %{name}"
+      reviews: Seller reviews
+      published_on: "Published on %{date}"
+      views:
+        one: 1 view
+        other: "%{count} views"
+      report: Report listing
+      sell_similar: Have a similar item? Sell yours
+      plus_shipping: "+ %{price} shipping"
+      pickup_only: Local pickup only
+      watchers:
+        zero: Be the first to save this
+        one: 1 person is watching this
+        other: "%{count} people are watching this"
+      sold_out: This item has been sold.
+      not_available: This listing is not available right now.
+      seller_on_vacation: "The seller is on holiday. %{message}"
+      your_listing: This is your listing.
+      buy_now: Buy now
+      buy_at_offer: "Buy now at your offer: %{price}"
+      add_to_cart: Add to cart
+      message_seller: Message
+      make_offer: Make an offer
+      offer_pending: "Offer sent: %{price}"
+      share: Share
+      link_copied: Link copied!
+      trader_info: Professional seller information
+      trader_notice: This seller is a business. Consumer protection law applies to your purchase, including the right of withdrawal.
+      private_seller_notice: This seller is a private individual. Consumer protection rights against professional sellers do not apply, but your purchase is covered by buyer protection.
+    new:
+      title: List an item
+    edit:
+      title: Edit listing
+    form:
+      pick_category: Choose the category that best describes your item.
+      choose: Choose
+      errors:
+        one: "1 error prevented the listing from being saved:"
+        other: "%{count} errors prevented the listing from being saved:"
+      basics: The basics
+      category: Category
+      change: Change
+      title_placeholder: e.g. Gaming PC Ryzen 7 7800X3D | RTX 4070 Super | 32GB DDR5
+      condition_hint: Be honest. Accurate listings sell faster and avoid disputes.
+      description_placeholder: Describe the condition, usage, what's included, any defects, benchmarks…
+      photos: Photos
+      photos_hint: "Up to %{count} photos. Use your own photos, taken in good light. Include any defects."
+      photo_guide: Photo tips
+      remove_photo: Remove
+      upload: Click to upload or drag photos here
+      upload_formats: JPG, PNG, WebP or AVIF · max. 10 MB each
+      too_many_photos: "You can upload up to %{count} photos."
+      photo_too_large: Each photo must be smaller than 10 MB.
+      specs: Specifications
+      specs_hint: Specs help buyers find your item with filters. Fill in as many as you can.
+      select: Select…
+      tags_hint: Optional. Pick up to 10 style tags that describe your build.
+      pricing: Price
+      original_price_hint: Optional. Shows a discount badge.
+      quantity_hint: For shops selling several identical units.
+      you_receive: "You'll receive:"
+      no_fees: No selling fees
+      fee_note: "Includes a %{percent}% platform fee."
+      allow_offers: Accept offers from buyers
+      delivery: Location & delivery
+      shipping_available: I can ship this item
+      shipping_price_hint: Leave 0 for free shipping.
+      local_pickup: Local pickup available
+      review_notice: Listings are reviewed by our team before going live.
+      instant_notice: Your listing will go live immediately.
+      save_draft: Save draft
+      publish: Publish
+      save_changes: Save changes
+    offers:
+      new:
+        title: Make an offer
+        amount: Your offer
+        hint: "Offers must be at least %{percent}% of the price. The seller has %{hours} hours to respond."
+        message: Message to the seller (optional)
+        submit: Send offer
+      create:
+        success: Offer sent! You'll be notified when the seller responds.
+
+  favorites:
+    add: Add to wishlist
+    remove: Remove from wishlist
+    save: Save
+    saved: Saved
+    index:
+      title: Wishlist
+      empty_title: Your wishlist is empty
+      empty_body: Tap the heart on any listing to save it here.
+      browse: Browse listings
+
+  stores:
+    verified: Verified seller
+    business: Professional seller
+    seller_types: { individual: "Private seller", business: "Professional seller" }
+    reviews_count:
+      zero: No reviews
+      one: 1 review
+      other: "%{count} reviews"
+    no_reviews: No reviews yet
+    sales:
+      zero: No sales yet
+      one: 1 sale
+      other: "%{count} sales"
+    followers:
+      one: 1 follower
+      other: "%{count} followers"
+    for_sale:
+      one: 1 for sale
+      other: "%{count} for sale"
+    member_since: "Member since %{date}"
+    on_vacation: "On holiday."
+    follow: Follow
+    unfollow: Following
+    report: Report user
+    edit_store: Edit store
+    about: About
+    policies: Store policies
+    listings: Listings
+    all_categories: All categories
+    empty: This store has no listings yet.
+    show:
+      seo_title: "%{name} – store"
+      seo_description: "Shop listings from %{name} on %{site}."
+    reviews:
+      index:
+        title: "Reviews for %{name}"
+        order: Order
+        newest: Newest first
+        oldest: Oldest first
+
+  reviews:
+    rating_label: "%{rating} out of 5 stars"
+    purchased: "Purchased: %{title}"
+    seller_reply: Seller reply
+    reply_placeholder: Reply publicly to this review
+    reply: Reply
+    statuses: { visible: "Visible", hidden: "Hidden" }
+
+  pc_finders:
+    show:
+      seo_title: PC Finder – find the right gaming PC
+      seo_description: "Answer a few questions and %{site} will recommend gaming PCs that hit your target FPS in your favourite games."
+      title: A PC for every gamer
+      subtitle: Answer a few questions and get personalised recommendations.
+      questions:
+        games: What games will you play?
+        games_hint: Choose up to three games
+        resolution: "What's your monitor's resolution?"
+        fps: "What's your target FPS?"
+        budget: "What's your budget?"
+        case_color: Which case colour do you prefer?
+        cooling: How should it be cooled?
+        vibe: "What's your vibe?"
+      answers:
+        no_preference: No preference
+        resolution: { 1080p: "1080p (Full HD)", 1440p: "1440p (QHD)", 2160p: "2160p (4K)" }
+        fps: { "60": "60 FPS", "144": "144 FPS", "240": "240+ FPS" }
+        budget: { under_800: "Under €800", "800_1200": "€800 – €1,200", "1200_2000": "€1,200 – €2,000", over_2000: "Over €2,000" }
+        case_color: { black: "Black", white: "White", multicolor: "Colourful" }
+        cooling: { air: "Air", aio: "AIO liquid", custom_loop: "Custom loop" }
+        vibe: { minimalist: "Minimalist", rgb: "RGB everything", anime: "Anime", competitive: "Competitive", retro: "Retro" }
+      back: Back
+      next: Next question
+      see_results: See results
+      results:
+        zero: No PCs match yet
+        one: 1 PC matches your answers
+        other: "%{count} PCs match your answers"
+      reset: Start again
+      no_results: No PCs match all your answers
+      no_results_body: Try a lower FPS target, a higher budget or fewer games.
+      browse_all: Browse all gaming PCs
+      by_gamer: PCs by gamer
+      best_for: Best PCs for
+
+  saved_searches:
+    default_name: My search
+    create: { success: "Search saved. We'll email you when new listings match." }
+    update: { success: "Saved search updated." }
+    destroy: { success: "Saved search deleted." }
+    index:
+      title: Saved searches
+      subtitle: "We'll notify you when new listings match your searches."
+      last_alert: "Last alert %{time} ago"
+      no_alerts_yet: No alerts yet
+      email_alerts: Email alerts
+      frequency: Frequency
+      frequencies: { instant: "Instant", daily: "Daily digest" }
+      delete: Delete
+      empty_title: No saved searches
+      empty_body: Use “Save search” on any results page to get alerts for new listings.
+
+  notifications:
+    index:
+      title: Notifications
+      mark_all: Mark all as read
+      empty: "You're all caught up."
+    kinds:
+      listing_approved: "Your listing “%{title}” has been approved and is now live."
+      listing_rejected: "Your listing “%{title}” needs changes before it can be published."
+      new_message: "New message from %{sender}."
+      new_offer: "%{sender} sent you an offer."
+      offer_accepted: "Your offer for “%{title}” was accepted. Complete your purchase now."
+      offer_declined: "Your offer for “%{title}” was declined."
+      order_placed: "New order %{number}."
+      order_paid: "Order %{number} has been paid."
+      order_shipped: "Order %{number} has been shipped."
+      order_delivered: "Order %{number} was delivered."
+      order_completed: "Order %{number} is complete."
+      order_cancelled: "Order %{number} was cancelled."
+      order_refunded: "Order %{number} was refunded."
+      order_disputed: "A problem was reported with order %{number}."
+      new_review: "You received a new %{rating}-star review."
+      saved_search_match: "New listing for your search “%{name}”: %{title}"
+      new_follower: "%{follower} started following your store."
+      followed_seller_listing: "%{seller} just listed “%{title}”."
+  notification_readings:
+    create: { success: "All notifications marked as read." }
+
+  conversations:
+    index:
+      title: Inbox
+      blocked_users: Blocked users
+      tabs: Inbox sections
+      tab_chats: Chats
+      tab_offers: Offers
+      role_buyer: Buying
+      role_seller: Selling
+      no_listing: General conversation
+      empty_title: No messages yet
+      empty_body: Message a seller from any listing to start a conversation.
+    show:
+      title: Conversation
+      make_offer: Make an offer
+      more: More options
+      block: Block user
+      block_confirm: "Block this user? Neither of you will be able to message the other."
+      report: Report user
+      safety_notice: "Keep payments on %{site}. We'll never ask you to pay by bank transfer, Bizum or PayPal Friends. Off-platform payments are not protected."
+      blocked: This conversation is closed because one of you blocked the other.
+      placeholder: Write a message…
+      send: Send
+  messages:
+    create:
+      blocked: You can't message this user.
+      invalid: Your message couldn't be sent.
+    off_platform_warning: Careful – payments outside the platform are not protected.
+    system:
+      offer_accepted: The seller accepted the offer.
+      offer_declined: The seller declined the offer.
+    offer:
+      title: Offer
+      listed_at: "Listed at %{price}"
+      expires: "Expires %{time}"
+      accept: Accept
+      decline: Decline
+      withdraw: Withdraw offer
+      buy: Buy at this price
+  offers:
+    accepted: Offer accepted. The buyer has been notified.
+    declined: Offer declined.
+    withdrawed: Offer withdrawn.
+    not_actionable: This offer can no longer be changed.
+    statuses: { pending: "Pending", accepted: "Accepted", declined: "Declined", withdrawn: "Withdrawn", expired: "Expired", purchased: "Purchased" }
+
+  blocks:
+    create: { success: "%{name} has been blocked." }
+    destroy: { success: "User unblocked." }
+    index:
+      title: Blocked users
+      subtitle: Blocked users can't message you or buy from you.
+      unblock: Unblock
+      empty: "You haven't blocked anyone."
+
+  reports:
+    reasons: { prohibited_item: "Prohibited item", counterfeit: "Counterfeit or replica", scam: "Suspected scam or fraud", misleading: "Misleading description or photos", offensive: "Offensive content", intellectual_property: "Intellectual property infringement", illegal_content: "Illegal content", spam: "Spam", other: "Other" }
+    statuses: { open: "Open", reviewing: "Under review", resolved: "Resolved", dismissed: "Dismissed" }
+    new:
+      title: Report content
+      subtitle_html: "Reports are reviewed by our trust & safety team. Read how we handle notices in our %{dsa}."
+      reporting: "You are reporting: %{name}"
+      details_hint: Explain why this content is illegal or breaks our rules. Include links or evidence if possible.
+      good_faith: I confirm the information in this report is accurate and complete to the best of my knowledge.
+      submit: Send report
+    create:
+      success: "Thanks. We've received your report and will review it shortly."
+
+  cart_items:
+    create: { success: "Added to your cart." }
+    destroy: { success: "Removed from your cart." }
+    errors:
+      unavailable: This item is no longer available.
+      own_listing: "You can't buy your own listing."
+  carts:
+    show:
+      title: Cart
+      title_count:
+        zero: Your cart
+        one: Cart (1 item)
+        other: "Cart (%{count} items)"
+      removed: "Some items are no longer available and were removed: %{titles}."
+      offer_applied: "Offer price applied: %{price}"
+      quantity: Quantity
+      remove: Remove
+      save_for_later: Save to wishlist
+      summary: Order summary
+      subtotal: Subtotal
+      shipping: Shipping
+      calculated_at_checkout: Calculated at checkout
+      vat_note: Prices from professional sellers include VAT.
+      checkout: Checkout
+      login_to_checkout: Log in to check out
+      create_account: Create an account
+      empty_title: Your cart is empty
+      empty_body: Find something you love and add it to your cart.
+      browse: Browse listings
+      recommended: Recommended for you
+  checkout:
+    shipping_line: "Shipping for order %{number}"
+    stripe_line: "Order %{number}: %{title}"
+    errors:
+      disabled: Checkout is temporarily unavailable.
+      empty: Your cart is empty.
+      own_listing: "You can't buy your own listing."
+      blocked: "You can't buy from this seller."
+      address_required: Please add a shipping address.
+      unavailable: "“%{title}” is no longer available in the requested quantity."
+      no_shipping: "“%{title}” can't be shipped. Choose local pickup."
+      no_pickup: "“%{title}” isn't available for local pickup."
+      invalid_discount: That discount code is not valid.
+  checkouts:
+    show:
+      title: Checkout
+      address: Shipping address
+      add_address: Add address
+      no_address: Add a shipping address to receive your order, or choose local pickup.
+      sold_by: "Sold by %{name}"
+      delivery_method: Delivery
+      ship_for: "Shipping (%{price})"
+      free: free
+      pickup_in: "Local pickup in %{city}"
+      discount_code: Discount code
+      note: Note for the seller (optional)
+      shipping_per_seller: Per seller, shown above
+      legal_notice_html: "By placing your order you agree to our %{terms} and confirm you've read the %{privacy} and %{withdrawal}. Your order involves an obligation to pay."
+      pay: Place order and pay
+      simulated_payments: "Demo mode: payments are simulated."
+      secure_payments: Secure payment processed by Stripe.
+  checkout_confirmations:
+    show:
+      title: Thanks for your order!
+      body: "We've emailed you a confirmation. The seller has been notified and must ship within the agreed time."
+      sold_by: "Sold by %{name}"
+      view: View order
+      continue: Continue shopping
+
+  orders:
+    statuses: { pending_payment: "Awaiting payment", paid: "Paid – to ship", shipped: "Shipped", delivered: "Delivered", completed: "Completed", cancelled: "Cancelled", refunded: "Refunded", disputed: "Problem reported" }
+    default_cancel_reason: Cancelled by user
+    index:
+      title: My orders
+      empty_title: No orders yet
+      empty_body: Your purchases will appear here.
+    show:
+      title: "Order %{number}"
+      placed_on: "Placed on %{date}"
+      next_step: "What's next"
+      items: Items
+      discount: Discount
+      total: Total
+      platform_fee: Platform fee
+      payout: Your payout
+      timeline: Timeline
+      buyer: Buyer
+      seller: Seller
+      message: Message the seller
+      delivery: Delivery
+      pickup: Local pickup. Arrange the handover with the seller through the chat.
+      tracking: Tracking
+      guidance:
+        buyer:
+          pending_payment: "We're waiting for your payment to be confirmed."
+          paid: "The seller has been notified and must ship within %{days} business days (by %{deadline})."
+          shipped: Your order is on its way. Confirm delivery once it arrives.
+          delivered: "Check your item. If everything is fine, accept the order. You can report a problem until %{until}."
+          completed: Order complete. Thanks for buying! Don't forget to leave a review.
+          cancelled: This order was cancelled. Any payment has been refunded.
+          refunded: This order was refunded.
+          disputed: "You've reported a problem. Our team will review the case and contact both parties."
+        seller:
+          pending_payment: The buyer has not completed the payment yet. Don't ship anything.
+          paid: "Ship the item within %{days} business days (by %{deadline}) and add the tracking number."
+          shipped: Waiting for the buyer to receive the item.
+          delivered: "The buyer has received the item. Funds will be released on %{until} unless a problem is reported."
+          completed: Order complete. Your payout is on its way.
+          cancelled: This order was cancelled. The item is available again.
+          refunded: This order was refunded to the buyer.
+          disputed: The buyer reported a problem. Reply through the chat; our team will mediate.
+    actions:
+      carrier: Carrier
+      tracking: Tracking number
+      mark_shipped: Mark as shipped
+      mark_picked_up: Mark as handed over
+      cancel: Cancel order
+      cancel_reason: Reason for cancelling
+      confirm: Are you sure?
+      confirm_delivery: I've received my order
+      accept: Everything is OK – complete order
+      accept_confirm: "Completing the order releases the payment to the seller. Continue?"
+      report_problem: Report a problem
+      dispute_placeholder: Describe the problem (item not received, not as described, damaged…)
+      open_dispute: Open a dispute
+      leave_review: Leave a review
+      shipped: Order marked as shipped.
+      delivered: Delivery confirmed.
+      accepted: Order completed. Thanks!
+      cancelled: Order cancelled.
+      disputed: "We've received your report. Our team will get in touch."
+      reviewed: Thanks for your review!
+    errors:
+      invalid_transition: That action is not available for this order.
+      tracking_required: Please add a tracking number.
+      reason_required: Please describe the problem (at least 10 characters).
+    reviews:
+      new:
+        title: Leave a review
+        subtitle: "How was your experience with %{name}?"
+        rating: Rating
+        body: Your review (optional)
+        submit: Publish review
+
+  account:
+    nav:
+      profile: Profile
+      security: Login & security
+      addresses: Addresses
+      notifications: Notifications
+      privacy: Privacy & data
+    profiles:
+      edit:
+        title: Account settings
+        username_hint: Your public username.
+        email_html: "Your email is %{email}. You can change it in %{link}."
+      update: { success: "Profile updated." }
+    stores:
+      edit:
+        title: Store settings
+        branding: Branding
+        logo_hint: Square image, at least 256×256 px.
+        banner_hint: Wide image, around 1600×360 px.
+        about: About your store
+        policies: Policies
+        no_returns: No returns (buyer protection only)
+        days:
+          one: 1 day
+          other: "%{count} days"
+        returns_hint: Professional sellers must accept a 14-day withdrawal period for consumers.
+        allow_offers_default: Accept offers on new listings by default
+        seller_status: Seller status
+        seller_status_hint: "If you sell regularly or as part of a business, you must register as a professional seller. This is a legal requirement in the EU (Digital Services Act)."
+        seller_type_hint:
+          individual: Selling your own used items occasionally.
+          business: Company or self-employed seller trading regularly.
+        legal_name: Legal name
+        tax_id: Tax ID (NIF/VAT)
+        business_address: Business address
+        trade_register_number: Trade register number
+        trader_certification: I certify that my business only offers products that comply with applicable EU law (DSA art. 30).
+        dac7_notice: Under EU directive DAC7 we must report sellers who exceed 30 sales or €2,000 per year to the tax authorities. We'll ask for any missing data before that happens.
+      update: { success: "Store updated." }
+    notification_settings:
+      edit:
+        title: Notification preferences
+        messages: Messages and offers
+        messages_hint: Email me when someone messages me or sends an offer.
+        orders: Orders
+        orders_hint: Email me about purchases and sales. Recommended.
+        saved_searches: Saved search alerts
+        saved_searches_hint: Email me when new listings match my saved searches.
+        marketing: News and promotions
+        marketing_hint: Occasional emails about new features, deals and giveaways.
+      update: { success: "Preferences saved." }
+    addresses:
+      index:
+        title: Addresses
+        default: Default
+        add: Add address
+        make_default: Use as default address
+      new: { title: "New address" }
+      edit: { title: "Edit address" }
+      create: { success: "Address saved." }
+      update: { success: "Address updated." }
+      destroy: { success: "Address deleted." }
+    deletions:
+      new:
+        title: Privacy & data
+        export_title: Download your data
+        export_body: Get a copy of the personal data we hold about you in a machine-readable format (JSON).
+        export: Download my data
+        delete_title: Delete account
+        delete_body: Your listings will be removed and your personal data anonymised. We keep order records for the period required by tax law. This can't be undone.
+        password: Current password
+        confirm: Delete your account permanently?
+        delete: Delete my account
+      create:
+        wrong_password: Wrong password.
+        open_orders: You have orders in progress. Complete or cancel them before deleting your account.
+        success: Your account has been deleted. We're sorry to see you go.
+
+  seller:
+    dashboards:
+      show:
+        title: Seller dashboard
+        period: Period
+        periods: { 7d: "7 days", 30d: "30 days", 90d: "90 days", 365d: "12 months" }
+        revenue: Revenue
+        orders: Orders
+        views: Views
+        favorites: Saves
+        revenue_chart: Revenue per day
+        to_ship: To ship
+        disputes: Disputes
+        pending_review: Pending review
+        offers: Offers to answer
+        vacation: Holiday mode
+        vacation_toggle: Hide my listings while I'm away
+        vacation_message: Message for buyers (optional)
+        top_listings: Top listings
+        listing: Listing
+        payouts: Payouts
+        payouts_body: "Payouts are released when the buyer accepts the order or %{days} days after delivery if no problem is reported."
+    listings:
+      index:
+        title: My listings
+        filter: Filter by status
+        all: "All (%{count})"
+        listing: Listing
+        status: Status
+        price: Price
+        stock: Stock
+        stats: Stats
+        empty: No listings here yet.
+    sales:
+      index:
+        title: My sales
+        filter: Filter by status
+        all: All
+        empty: No sales yet.
+    discount_codes:
+      index:
+        title: Discount codes
+        create: Create code
+        code: Code
+        discount: Discount
+        uses: Uses
+        expires: Expires
+        activate: Activate
+        deactivate: Deactivate
+      create: { success: "Discount code created." }
+      update: { success: "Discount code updated." }
+      destroy: { success: "Discount code deleted." }
+    vacations:
+      update:
+        enabled: Holiday mode on. Your listings are hidden.
+        disabled: Holiday mode off. Your listings are visible again.
+    promotions:
+      new:
+        title: Promote listing
+        body: "Your listing will be highlighted at the top of search results for %{days} days for %{price}."
+        submit: Promote now
+      create: { success: "Your listing is now promoted." }
+    review_replies:
+      update: { success: "Reply published." }
+
+  buyback_requests:
+    statuses: { submitted: "Submitted", accepted: "Accepted", label_sent: "Label sent", received: "Received", paid: "Paid", rejected: "Rejected", cancelled: "Cancelled" }
+    new:
+      title: The simplest way to sell your parts
+      subtitle: Sell your working GPU or CPU directly to us for an instant price.
+      get_offer: Get an instant offer
+      model: Model
+      condition: Condition
+      conditions: { working: "Fully working", minor_issues: "Works with minor cosmetic issues" }
+      payout_email: PayPal email for payment
+      notes: Notes
+      submit: Request offer
+      login_required: Log in to request an offer.
+      how_it_works: How it works
+      price_list: Current prices
+      steps:
+        s1: { title: "Get an offer", body: "Choose your part and get an instant price." }
+        s2: { title: "Ship it", body: "We'll email you a prepaid shipping label." }
+        s3: { title: "Inspection", body: "We'll test your part to make sure it works." }
+        s4: { title: "Get paid", body: "We pay you within 5 business days." }
+    index:
+      title: My sell-to-us requests
+      new: New request
+    create:
+      success: "Request received. We'll email you the shipping label within one business day."
+
+  support_tickets:
+    topics: { general: "General question", order_issue: "Problem with an order", payment: "Payments and refunds", account: "My account", selling: "Selling", legal: "Legal notice", privacy_request: "Data protection request" }
+    statuses: { open: "Open", pending: "Waiting for reply", closed: "Closed" }
+    new:
+      title: Contact support
+      subtitle: "Our team replies within one business day. For order problems, include the order number."
+      subject: Subject
+      privacy_html: "We'll use your data only to answer your request. See our %{link}."
+      submit: Send message
+    create:
+      success: "Message received. We've sent you a confirmation email."
+
+  newsletter_subscriptions:
+    create:
+      success: Almost there! Check your email to confirm your subscription.
+      invalid: Please enter a valid email address.
+    show:
+      title: Newsletter subscription
+      confirm: Confirm subscription
+      unsubscribe: Unsubscribe
+    update: { success: "Subscription confirmed. Welcome!" }
+    destroy: { success: "You've been unsubscribed." }
+
+  mailers:
+    footer: "You're receiving this email because you have an account on %{site}."
+    manage_notifications: Manage email preferences
+    listing:
+      approved:
+        subject: "Your listing is live: %{title}"
+        title: Your listing has been approved
+        body: "Good news! “%{title}” has been reviewed and is now visible to buyers."
+        cta: View listing
+      rejected:
+        subject: "Your listing needs changes: %{title}"
+        title: Your listing needs some changes
+        body: "We couldn't publish “%{title}” yet. Here's what needs fixing:"
+        cta: Edit listing
+    order:
+      status_changed:
+        cta: View order
+        subject:
+          pending_payment: "Order %{number} created"
+          paid: "Order %{number} confirmed"
+          shipped: "Order %{number} has been shipped"
+          delivered: "Order %{number} delivered"
+          completed: "Order %{number} complete"
+          cancelled: "Order %{number} cancelled"
+          refunded: "Order %{number} refunded"
+          disputed: "Problem reported on order %{number}"
+        body:
+          buyer:
+            pending_payment: "We've created order %{number}. Complete the payment to confirm it."
+            paid: "Thanks for your purchase! The seller must ship order %{number} within %{days} business days."
+            shipped: "Order %{number} is on its way."
+            delivered: "Order %{number} was delivered. Check your item and accept the order if everything is fine."
+            completed: "Order %{number} is complete. How did it go? Leave a review for the seller."
+            cancelled: "Order %{number} has been cancelled. Any payment has been refunded."
+            refunded: "Order %{number} has been refunded."
+            disputed: "We've received your report on order %{number}."
+          seller:
+            pending_payment: "A buyer has started order %{number}."
+            paid: "You've sold something! Ship order %{number} within %{days} business days and add the tracking number."
+            shipped: "Order %{number} is marked as shipped."
+            delivered: "Order %{number} has been delivered to the buyer."
+            completed: "Order %{number} is complete. Your payout is on its way."
+            cancelled: "Order %{number} has been cancelled."
+            refunded: "Order %{number} has been refunded to the buyer."
+            disputed: "The buyer reported a problem with order %{number}. Please reply through the chat."
+    message:
+      new_message:
+        subject: "New message from %{sender}"
+        cta: Reply
+        safety: "For your safety, always pay through %{site}."
+    saved_search:
+      matches:
+        subject:
+          one: "1 new listing for “%{name}”"
+          other: "%{count} new listings for “%{name}”"
+        title: "New listings for “%{name}”"
+        cta: See all results
+        manage: Manage saved searches
+    newsletter:
+      confirmation:
+        subject: "Confirm your %{site} newsletter subscription"
+        title: One more step
+        body: Click the button to confirm you want to receive our newsletter.
+        cta: Confirm subscription
+    support:
+      received:
+        subject: "We've received your request #%{id}"
+        body: "Hi %{name}, thanks for contacting us. Our team will reply within one business day."
+
+  activerecord:
+    models:
+      listing: { one: "Listing", other: "Listings" }
+      user: { one: "User", other: "Users" }
+      order: { one: "Order", other: "Orders" }
+      review: { one: "Review", other: "Reviews" }
+      offer: { one: "Offer", other: "Offers" }
+    attributes:
+      user:
+        email: Email
+        password: Password
+        password_confirmation: Confirm password
+        current_password: Current password
+        remember_me: Remember me
+        username: Username
+        first_name: First name
+        last_name: Last name
+        phone: Phone
+        bio: About you
+        locale: Language
+        region_id: Region
+        region: Region
+        city: City
+        avatar: Profile photo
+        store_name: Store name
+        store_tagline: Tagline
+        store_logo: Logo
+        store_banner: Banner
+        store_policies: Store policies
+        return_window_days: Return window
+        seller_type: Seller type
+        legal_name: Legal name
+        tax_id: Tax ID
+        business_address: Business address
+        trade_register_number: Trade register number
+      listing:
+        title: Title
+        description: Description
+        brand: Brand
+        category: Category
+        category_id: Category
+        condition: Condition
+        price: Price
+        original_price: Original price
+        quantity: Quantity
+        photos: Photos
+        specs: Specifications
+        region_id: Region
+        city: City
+        postal_code: Postcode
+        shipping_price: Shipping price
+        handling_days: Ships within (days)
+        status: Status
+        featured: Featured
+      address:
+        full_name: Full name
+        company: Company (optional)
+        line1: Address
+        line2: Flat, floor, etc. (optional)
+        city: City
+        region: Province / region
+        postal_code: Postcode
+        country_code: Country
+        phone: Phone
+        default: Default
+      review:
+        rating: Rating
+        body: Review
+      report:
+        reason: Reason
+        details: Details
+        reporter_email: Your email
+      offer:
+        amount: Amount
+      discount_code:
+        code: Code
+        percent_off: Discount (%)
+        max_uses: Max. uses
+        expires_at: Expires on
+      support_ticket:
+        name: Name
+        email: Email
+        topic: Topic
+        subject: Subject
+        body: Message
+      message:
+        body: Message
+      category:
+        slug: Slug
+        parent_id: Parent category
+        icon: Icon
+        position: Position
+      collection:
+        slug: Slug
+        accent_color: Accent colour
+        position: Position
+        image: Image
+      game:
+        name: Name
+        slug: Slug
+        position: Position
+        cover: Cover
+      legal_page:
+        title: Title
+        body: Content
+      filter_definition:
+        kind: Type
+        unit: Unit
+        position: Position
+      order:
+        carrier: Carrier
+        tracking_number: Tracking number
+      country:
+        currency: Currency
+        vat_rate: VAT rate
+    errors:
+      messages:
+        too_many_images: "can have at most %{count} photos"
+        invalid_image_type: must be a JPG, PNG, WebP, GIF or AVIF image
+        image_too_large: "must be smaller than %{size} MB"
+        delivery_method_required: Choose at least one delivery method (shipping or local pickup)
+        unknown_spec: "contains an unknown field (%{key})"
+        invalid_spec: "has an invalid value for %{name}"
+        missing_spec: "is missing %{name}"
+        must_be_leaf: must be a specific subcategory
+        too_many_saved_searches: "You can save up to %{count} searches"
+        cannot_message_yourself: "You can't message yourself"
+        offer_too_low: "must be at least %{minimum}"
+        offer_too_high: must be lower than the listing price
+        offers_not_allowed: This listing doesn't accept offers
+        cannot_offer_own_listing: "You can't make an offer on your own listing"
+        offer_already_pending: You already have a pending offer for this listing
+        blocked: "You can't interact with this user"
+        not_shipping_there: "We don't ship to this country yet"
+        not_reviewable: This order can't be reviewed
+        terms_required: You must accept the terms of service and privacy policy
+
+  devise:
+    shared:
+      minimum_password_length:
+        one: "(%{count} character minimum)"
+        other: "(%{count} characters minimum)"
+    failure:
+      banned: Your account has been closed. Contact support for more information.

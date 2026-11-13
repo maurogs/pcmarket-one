@@ -1,0 +1,42 @@
+<%# locals: (order:, role:) %>
+<div class="mt-4 flex flex-col gap-3">
+  <% if role == :seller && order.paid? %>
+    <% if order.delivery_pickup? %>
+      <%= button_to t("orders.actions.mark_picked_up"), order_shipment_path(order), class: "btn-primary w-full sm:w-auto" %>
+    <% else %>
+      <%= form_with url: order_shipment_path(order), class: "grid gap-2 sm:grid-cols-[160px_1fr_auto]" do %>
+        <label class="sr-only" for="carrier"><%= t("orders.actions.carrier") %></label>
+        <select id="carrier" name="carrier" class="input"><% %w[Correos SEUR MRW GLS DHL UPS Nacex CTT Chronopost DPD Royal\ Mail Other].each do |carrier| %><option><%= carrier %></option><% end %></select>
+        <label class="sr-only" for="tracking_number"><%= t("orders.actions.tracking") %></label>
+        <input id="tracking_number" name="tracking_number" class="input" required maxlength="60" placeholder="<%= t("orders.actions.tracking") %>">
+        <button class="btn-primary"><%= t("orders.actions.mark_shipped") %></button>
+      <% end %>
+    <% end %>
+    <details><summary class="cursor-pointer text-sm text-red-700"><%= t("orders.actions.cancel") %></summary>
+      <%= form_with url: order_cancellation_path(order), class: "mt-2 flex gap-2" do %><input name="reason" class="input" required minlength="5" placeholder="<%= t("orders.actions.cancel_reason") %>"><button class="btn-danger btn-sm shrink-0" data-turbo-confirm="<%= t("orders.actions.confirm") %>"><%= t("orders.actions.cancel") %></button><% end %>
+    </details>
+  <% end %>
+
+  <% if role == :buyer %>
+    <% if order.pending_payment? || order.ship_deadline_passed? %>
+      <%= form_with url: order_cancellation_path(order), class: "flex gap-2" do %><input name="reason" class="input" placeholder="<%= t("orders.actions.cancel_reason") %>"><button class="btn-outline btn-sm shrink-0" data-turbo-confirm="<%= t("orders.actions.confirm") %>"><%= t("orders.actions.cancel") %></button><% end %>
+    <% end %>
+    <% if order.shipped? %>
+      <%= button_to t("orders.actions.confirm_delivery"), order_delivery_path(order), class: "btn-primary w-full sm:w-auto" %>
+    <% end %>
+    <% if order.delivered? %>
+      <%= button_to t("orders.actions.accept"), order_acceptance_path(order), class: "btn-primary w-full sm:w-auto", data: { turbo_confirm: t("orders.actions.accept_confirm") } %>
+    <% end %>
+    <% if order.within_protection_window? && !order.pending_payment? %>
+      <details><summary class="cursor-pointer text-sm font-semibold text-red-700"><%= t("orders.actions.report_problem") %></summary>
+        <%= form_with url: order_dispute_path(order), class: "mt-2 space-y-2" do %>
+          <textarea name="reason" rows="3" class="input" required minlength="10" placeholder="<%= t("orders.actions.dispute_placeholder") %>" aria-label="<%= t("orders.actions.report_problem") %>"></textarea>
+          <button class="btn-danger btn-sm"><%= t("orders.actions.open_dispute") %></button>
+        <% end %>
+      </details>
+    <% end %>
+    <% if order.reviewable_by?(current_user) %>
+      <%= link_to t("orders.actions.leave_review"), new_order_review_path(order), class: "btn-accent w-full sm:w-auto" %>
+    <% end %>
+  <% end %>
+</div>

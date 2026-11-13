@@ -1,0 +1,3 @@
+<h1 style="font-size:20px;margin:0 0 12px"><%= t("mailers.listing.approved.title") %></h1>
+<p><%= t("mailers.listing.approved.body", title: @listing.title) %></p>
+<p><a href="<%= listing_url(@listing) %>" style="display:inline-block;background:#067d74;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600"><%= t("mailers.listing.approved.cta") %></a></p>

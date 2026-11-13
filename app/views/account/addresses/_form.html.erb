@@ -1,0 +1,19 @@
+<%# locals: (address:) %>
+<%= form_with model: address, url: address.persisted? ? account_address_path(address) : account_addresses_path, class: "panel mt-6 space-y-4" do |f| %>
+  <%= hidden_field_tag :return_to, params[:return_to] %>
+  <% if address.errors.any? %><p class="field-error" role="alert"><%= address.errors.full_messages.to_sentence %></p><% end %>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div><%= f.label :full_name, class: "label" %><%= f.text_field :full_name, class: "input", required: true, autocomplete: "name" %></div>
+    <div><%= f.label :company, class: "label" %><%= f.text_field :company, class: "input", autocomplete: "organization" %></div>
+    <div class="sm:col-span-2"><%= f.label :line1, class: "label" %><%= f.text_field :line1, class: "input", required: true, autocomplete: "address-line1" %></div>
+    <div class="sm:col-span-2"><%= f.label :line2, class: "label" %><%= f.text_field :line2, class: "input", autocomplete: "address-line2" %></div>
+    <div><%= f.label :postal_code, class: "label" %><%= f.text_field :postal_code, class: "input", required: true, autocomplete: "postal-code" %></div>
+    <div><%= f.label :city, class: "label" %><%= f.text_field :city, class: "input", required: true, autocomplete: "address-level2" %></div>
+    <div><%= f.label :region, class: "label" %><%= f.text_field :region, class: "input", autocomplete: "address-level1", list: "regions" %>
+      <datalist id="regions"><% current_country.regions.each do |r| %><option value="<%= r.name %>"><% end %></datalist></div>
+    <div><%= f.label :country_code, class: "label" %><%= f.select :country_code, Country.enabled.ordered.map { |c| [c.name, c.code] }, {}, class: "input", autocomplete: "country" %></div>
+    <div><%= f.label :phone, class: "label" %><%= f.telephone_field :phone, class: "input", autocomplete: "tel" %></div>
+    <label class="flex items-center gap-2 self-end text-sm"><%= f.check_box :default, class: "checkbox" %><%= t("account.addresses.index.make_default") %></label>
+  </div>
+  <div class="flex justify-end"><button class="btn-primary"><%= t("shared.save") %></button></div>
+<% end %>

@@ -1,0 +1,27 @@
+<%= form_with model: [:admin, @category], class: "panel max-w-4xl space-y-4" do |f| %>
+  <%= render "admin/shared/errors", record: @category %>
+  <div class="grid gap-4 sm:grid-cols-4">
+    <div><%= f.label :slug, class: "label" %><%= f.text_field :slug, class: "input", required: true, pattern: "[a-z0-9-]+" %></div>
+    <div><%= f.label :parent_id, class: "label" %><%= f.collection_select :parent_id, Category.where.not(id: @category.id).ordered, :id, :name, { include_blank: t("admin.categories.root") }, class: "input" %></div>
+    <div><%= f.label :icon, class: "label" %><%= f.select :icon, IconsHelper::ICONS.keys, { include_blank: true }, class: "input" %></div>
+    <div><%= f.label :position, class: "label" %><%= f.number_field :position, class: "input" %></div>
+  </div>
+  <div class="flex flex-wrap gap-5 text-sm">
+    <label class="flex items-center gap-2"><%= f.check_box :active, class: "checkbox" %><%= t("admin.categories.active") %></label>
+    <label class="flex items-center gap-2"><%= f.check_box :show_in_menu, class: "checkbox" %><%= t("admin.categories.show_in_menu") %></label>
+    <label class="flex items-center gap-2"><%= f.check_box :pc_finder, class: "checkbox" %><%= t("layout.pc_finder") %></label>
+  </div>
+  <%= render "admin/shared/translated_fields", form: f, attribute: :name, label: t("admin.categories.name") %>
+  <%= render "admin/shared/translated_fields", form: f, attribute: :description, label: t("admin.categories.description"), type: :text_area %>
+  <fieldset class="rounded-xl border border-ink-200 p-4 dark:border-ink-700">
+    <legend class="px-1 text-xs font-semibold uppercase tracking-wide text-ink-500"><%= t("admin.categories.filters") %></legend>
+    <p class="hint mb-3"><%= t("admin.categories.filters_hint") %></p>
+    <%= f.collection_check_boxes :filter_definition_ids, FilterDefinition.ordered, :id, :name do |b| %>
+      <label class="mr-2 mb-2 inline-flex items-center gap-1.5 chip"><%= b.check_box(class: "checkbox") %><%= b.text %> <span class="text-ink-400">(<%= b.object.key %>)</span></label>
+    <% end %>
+  </fieldset>
+  <div class="flex justify-between gap-2">
+    <% if @category.persisted? %><%= link_to t("shared.delete"), admin_category_path(@category), class: "btn-ghost text-red-700", data: { turbo_method: :delete, turbo_confirm: t("shared.confirm") } %><% else %><span></span><% end %>
+    <div class="flex gap-2"><%= link_to t("shared.cancel"), admin_categories_path, class: "btn-ghost" %><button class="btn-primary"><%= t("shared.save") %></button></div>
+  </div>
+<% end %>

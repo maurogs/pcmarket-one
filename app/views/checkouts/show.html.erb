@@ -1,0 +1,81 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page py-8">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <%= form_with url: checkout_path, class: "mt-6 grid gap-8 lg:grid-cols-[1fr_380px]", data: { turbo: false } do %>
+    <div class="space-y-6">
+      <section class="panel" aria-labelledby="address-heading">
+        <div class="flex items-center justify-between">
+          <h2 id="address-heading" class="font-display text-lg font-bold"><%= t(".address") %></h2>
+          <%= link_to t(".add_address"), new_account_address_path(return_to: checkout_path), class: "link text-sm" %>
+        </div>
+        <% if @addresses.any? %>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <% @addresses.each_with_index do |address, index| %>
+              <label class="cursor-pointer rounded-xl border-2 border-ink-200 p-4 text-sm has-[:checked]:border-brand-600 dark:border-ink-700">
+                <input type="radio" name="address_id" value="<%= address.id %>" class="sr-only" <%= "checked" if (params[:address_id].to_i == address.id) || (params[:address_id].blank? && index.zero?) %>>
+                <span class="block font-semibold"><%= address.full_name %></span>
+                <span class="block text-ink-600 dark:text-ink-300"><%= address.one_line %></span>
+              </label>
+            <% end %>
+          </div>
+        <% else %>
+          <p class="mt-3 text-sm text-ink-600 dark:text-ink-300"><%= t(".no_address") %></p>
+        <% end %>
+      </section>
+
+      <% @groups.each do |seller, items| %>
+        <% listings = items.map(&:listing) %>
+        <section class="panel" aria-label="<%= seller.display_name %>">
+          <p class="flex items-center gap-2 text-sm font-semibold"><%= avatar_for(seller, size: 24) %><%= t(".sold_by", name: seller.display_name) %></p>
+          <ul class="mt-3 space-y-3">
+            <% items.each do |item| %>
+              <li class="flex items-center gap-3 text-sm"><div class="size-14 shrink-0 overflow-hidden rounded-lg"><%= listing_image(item.listing, variant: :thumb) %></div><span class="flex-1"><%= item.listing.title %> <span class="text-ink-500">× <%= item.quantity %></span></span><strong><%= money(item.total_cents, item.listing.currency) %></strong></li>
+            <% end %>
+          </ul>
+          <fieldset class="mt-4">
+            <legend class="label"><%= t(".delivery_method") %></legend>
+            <div class="grid gap-2 sm:grid-cols-2">
+              <% if listings.all?(&:shipping_available?) %>
+                <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-ink-200 p-3 text-sm has-[:checked]:border-brand-600 dark:border-ink-700">
+                  <input type="radio" name="delivery[<%= seller.id %>]" value="shipping" class="checkbox" checked>
+                  <%= t(".ship_for", price: (shipping = listings.map(&:shipping_price_cents).max).zero? ? t(".free") : money(shipping, listings.first.currency)) %>
+                </label>
+              <% end %>
+              <% if feature?(:local_pickup_enabled) && listings.all?(&:local_pickup?) %>
+                <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-ink-200 p-3 text-sm has-[:checked]:border-brand-600 dark:border-ink-700">
+                  <input type="radio" name="delivery[<%= seller.id %>]" value="pickup" class="checkbox" <%= "checked" unless listings.all?(&:shipping_available?) %>>
+                  <%= t(".pickup_in", city: listings.first.city.presence || listings.first.region&.name) %>
+                </label>
+              <% end %>
+            </div>
+          </fieldset>
+          <% if feature?(:discount_codes_enabled) && seller.discount_codes.any? %>
+            <div class="mt-4 max-w-xs">
+              <label for="discount-<%= seller.id %>" class="label"><%= t(".discount_code") %></label>
+              <input id="discount-<%= seller.id %>" name="discount[<%= seller.id %>]" class="input uppercase" maxlength="20" value="<%= params.dig(:discount, seller.id.to_s) %>">
+            </div>
+          <% end %>
+        </section>
+      <% end %>
+
+      <section class="panel">
+        <label for="note" class="label"><%= t(".note") %></label>
+        <textarea id="note" name="note" rows="2" maxlength="500" class="input"><%= params[:note] %></textarea>
+      </section>
+    </div>
+
+    <aside class="space-y-4 lg:sticky lg:top-24 lg:self-start">
+      <div class="panel">
+        <h2 class="font-display text-xl font-bold"><%= t("carts.show.summary") %></h2>
+        <dl class="mt-4 space-y-2 text-sm">
+          <div class="flex justify-between"><dt class="text-ink-500"><%= t("carts.show.subtotal") %></dt><dd><%= money(current_cart.subtotal_cents, current_country.currency) %></dd></div>
+          <div class="flex justify-between"><dt class="text-ink-500"><%= t("carts.show.shipping") %></dt><dd><%= t(".shipping_per_seller") %></dd></div>
+        </dl>
+        <p class="mt-3 text-xs text-ink-500"><%= t(".legal_notice_html", terms: link_to(t("legal.terms.title"), legal_page_path("terms"), class: "underline", target: "_blank"), privacy: link_to(t("legal.privacy.title"), legal_page_path("privacy"), class: "underline", target: "_blank"), withdrawal: link_to(t("legal.returns.title"), legal_page_path("returns"), class: "underline", target: "_blank")) %></p>
+        <button class="btn-accent mt-5 w-full text-base" <%= "disabled" if @groups.empty? %>><%= icon(:lock, css: "size-4") %><%= t(".pay") %></button>
+        <p class="mt-3 text-center text-xs text-ink-500"><%= Payments::Gateway.current.is_a?(Payments::SimulatedGateway) ? t(".simulated_payments") : t(".secure_payments") %></p>
+      </div>
+      <%= render "shared/protection_box" %>
+    </aside>
+  <% end %>
+</div>

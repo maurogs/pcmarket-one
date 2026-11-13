@@ -1,0 +1,9 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page max-w-4xl py-8">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <% if params[:change_category] %>
+    <%= render "listings/category_picker", categories: @categories, path: ->(category) { edit_listing_path(@listing, category_id: category.id) } %>
+  <% else %>
+    <%= render "listings/form", listing: @listing %>
+  <% end %>
+</div>

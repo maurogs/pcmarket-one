@@ -1,0 +1,22 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page py-8">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <div class="mt-6 flex flex-col gap-6 lg:flex-row">
+    <%= render "shared/account_nav", section: :account %>
+    <div class="flex-1 space-y-6">
+      <section class="panel">
+        <h2 class="font-display text-lg font-bold"><%= t(".export_title") %></h2>
+        <p class="mt-1 text-sm text-ink-600 dark:text-ink-300"><%= t(".export_body") %></p>
+        <%= link_to t(".export"), account_data_export_path, class: "btn-outline mt-4", data: { turbo: false } %>
+      </section>
+      <section class="panel border-red-200 dark:border-red-900">
+        <h2 class="font-display text-lg font-bold text-red-700"><%= t(".delete_title") %></h2>
+        <p class="mt-1 text-sm text-ink-600 dark:text-ink-300"><%= t(".delete_body") %></p>
+        <%= form_with url: account_deletion_path, class: "mt-4 flex flex-col gap-3 sm:flex-row" do %>
+          <% unless current_user.provider.present? %><label class="sr-only" for="password"><%= t(".password") %></label><input id="password" type="password" name="password" required class="input" placeholder="<%= t(".password") %>" autocomplete="current-password"><% end %>
+          <button class="btn-danger shrink-0" data-turbo-confirm="<%= t(".confirm") %>"><%= t(".delete") %></button>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</div>

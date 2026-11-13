@@ -1,0 +1,19 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page py-8">
+  <h1 class="section-title"><%= t(".title") %></h1>
+  <div class="mt-6 flex flex-col gap-6 lg:flex-row">
+    <%= render "shared/account_nav", section: :seller %>
+    <div class="min-w-0 flex-1">
+      <nav class="flex flex-wrap gap-2" aria-label="<%= t(".filter") %>">
+        <%= link_to t(".all"), seller_sales_path, class: "chip #{'chip-active' if params[:status].blank?}" %>
+        <% %w[paid shipped delivered completed disputed cancelled].each do |status| %><%= link_to t("orders.statuses.#{status}"), seller_sales_path(status: status), class: "chip #{'chip-active' if params[:status] == status}" %><% end %>
+      </nav>
+      <% if @orders.any? %>
+        <ul class="mt-4 space-y-3"><% @orders.each do |order| %><%= render "orders/row", order: order, counterpart: order.buyer %><% end %></ul>
+        <%= pagination(@pagy) %>
+      <% else %>
+        <%= render "shared/empty_state", icon_name: :package, title: t(".empty") %>
+      <% end %>
+    </div>
+  </div>
+</div>

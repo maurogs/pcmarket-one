@@ -1,0 +1,23 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page max-w-3xl py-8">
+  <div class="flex items-center justify-between gap-3">
+    <h1 class="section-title"><%= t(".title") %></h1>
+    <%= button_to t(".mark_all"), notification_readings_path, class: "btn-outline btn-sm" if @notifications.any? %>
+  </div>
+  <% if @notifications.any? %>
+    <ul class="mt-6 divide-y divide-ink-100 dark:divide-ink-800">
+      <% @notifications.each do |notification| %>
+        <li>
+          <%= button_to notification_path(notification), method: :patch, class: "flex w-full items-start gap-3 rounded-xl px-2 py-3 text-left hover:bg-ink-50 dark:hover:bg-ink-900" do %>
+            <span class="mt-1.5 size-2 shrink-0 rounded-full <%= notification.read? ? "bg-transparent" : "bg-brand-600" %>"></span>
+            <span class="flex-1 text-sm <%= "font-semibold" unless notification.read? %>"><%= notification.message %></span>
+            <span class="shrink-0 text-xs text-ink-500"><%= time_ago(notification.created_at) %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <%= pagination(@pagy) %>
+  <% else %>
+    <%= render "shared/empty_state", icon_name: :bell, title: t(".empty") %>
+  <% end %>
+</div>

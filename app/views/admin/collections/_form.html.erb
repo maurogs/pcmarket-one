@@ -1,0 +1,22 @@
+<%= form_with model: [:admin, @collection], class: "panel max-w-4xl space-y-4" do |f| %>
+  <%= render "admin/shared/errors", record: @collection %>
+  <div class="grid gap-4 sm:grid-cols-4">
+    <div><%= f.label :slug, class: "label" %><%= f.text_field :slug, class: "input", required: true %></div>
+    <div><%= f.label :kind, t("admin.collections.kind"), class: "label" %><%= f.select :kind, Collection.kinds.keys.map { |k| [t("admin.collections.kinds.#{k}"), k] }, {}, class: "input" %></div>
+    <div><%= f.label :accent_color, class: "label" %><%= f.color_field :accent_color, class: "input h-11 p-1" %></div>
+    <div><%= f.label :position, class: "label" %><%= f.number_field :position, class: "input" %></div>
+  </div>
+  <div>
+    <label for="collection_query_string" class="label"><%= t("admin.collections.query") %></label>
+    <input id="collection_query_string" name="collection[query_string]" value="<%= @collection.query.to_query %>" class="input font-mono text-xs">
+    <p class="hint"><%= t("admin.collections.query_hint") %></p>
+  </div>
+  <div><%= f.label :image, class: "label" %><%= f.file_field :image, accept: "image/*", class: "input py-2" %></div>
+  <div class="flex gap-5 text-sm"><label class="flex items-center gap-2"><%= f.check_box :active, class: "checkbox" %><%= t("admin.categories.active") %></label><label class="flex items-center gap-2"><%= f.check_box :show_on_home, class: "checkbox" %><%= t("admin.collections.home") %></label></div>
+  <%= render "admin/shared/translated_fields", form: f, attribute: :title, label: t("admin.collections.title_label") %>
+  <%= render "admin/shared/translated_fields", form: f, attribute: :subtitle, label: t("admin.collections.subtitle_label") %>
+  <div class="flex justify-between gap-2">
+    <% if @collection.persisted? %><%= link_to t("shared.delete"), admin_collection_path(@collection), class: "btn-ghost text-red-700", data: { turbo_method: :delete, turbo_confirm: t("shared.confirm") } %><% else %><span></span><% end %>
+    <div class="flex gap-2"><%= link_to t("shared.cancel"), admin_collections_path, class: "btn-ghost" %><button class="btn-primary"><%= t("shared.save") %></button></div>
+  </div>
+<% end %>

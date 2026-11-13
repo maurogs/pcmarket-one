@@ -1,0 +1,5 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.audit_logs") %>
+<%= form_with url: admin_audit_logs_path, method: :get, class: "mb-4 max-w-sm" do %><input type="search" name="q" value="<%= params[:q] %>" class="input" placeholder="<%= t("admin.audit.search") %>" aria-label="<%= t("admin.audit.search") %>"><% end %>
+<div class="panel overflow-x-auto p-0"><table class="table"><thead><tr><th><%= t("admin.audit.action") %></th><th><%= t("admin.audit.actor") %></th><th><%= t("admin.audit.target") %></th><th><%= t("admin.audit.details") %></th><th>IP</th><th><%= t("admin.listings.date") %></th></tr></thead>
+  <tbody><% @logs.each do |log| %><tr><td class="font-mono text-xs"><%= log.action %></td><td><%= log.actor&.username %></td><td class="text-xs"><%= log.auditable_type %> <%= log.auditable_id %></td><td class="max-w-md truncate font-mono text-xs"><%= log.details.to_json %></td><td class="text-xs"><%= log.ip_address %></td><td class="text-xs text-ink-500"><%= l(log.created_at, format: :short) %></td></tr><% end %></tbody></table></div>
+<%= pagination(@pagy) %>

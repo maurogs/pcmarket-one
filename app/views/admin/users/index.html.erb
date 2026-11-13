@@ -1,0 +1,32 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.users"), subtitle: t("admin.results", count: @pagy.count) %>
+<%= form_with url: admin_users_path, method: :get, class: "panel mb-4 grid gap-3 p-4 sm:grid-cols-3 lg:grid-cols-6" do %>
+  <input type="search" name="q" value="<%= params[:q] %>" class="input lg:col-span-2" placeholder="<%= t("admin.users.search") %>" aria-label="<%= t("admin.users.search") %>">
+  <select name="status" class="input" aria-label="<%= t("admin.users.status") %>"><option value=""><%= t("admin.users.status") %></option><% User.statuses.each_key do |s| %><option value="<%= s %>" <%= "selected" if params[:status] == s %>><%= t("admin.users.statuses.#{s}") %></option><% end %></select>
+  <select name="role" class="input" aria-label="<%= t("admin.users.role") %>"><option value=""><%= t("admin.users.role") %></option><% User.roles.each_key do |r| %><option value="<%= r %>" <%= "selected" if params[:role] == r %>><%= t("admin.roles.#{r}") %></option><% end %></select>
+  <select name="seller_type" class="input" aria-label="<%= t("listings.filters.seller_type") %>"><option value=""><%= t("listings.filters.seller_type") %></option><% User.seller_types.each_key do |r| %><option value="<%= r %>" <%= "selected" if params[:seller_type] == r %>><%= t("stores.seller_types.#{r}") %></option><% end %></select>
+  <div class="flex flex-wrap items-center gap-3 text-sm">
+    <label class="flex items-center gap-1"><input type="checkbox" name="verified" value="1" class="checkbox" <%= "checked" if params[:verified] == "1" %>><%= t("stores.verified") %></label>
+    <label class="flex items-center gap-1"><input type="checkbox" name="unconfirmed" value="1" class="checkbox" <%= "checked" if params[:unconfirmed] == "1" %>><%= t("admin.users.unconfirmed") %></label>
+    <label class="flex items-center gap-1"><input type="checkbox" name="deleted" value="1" class="checkbox" <%= "checked" if params[:deleted] == "1" %>><%= t("admin.users.deleted") %></label>
+    <button class="btn-primary btn-sm"><%= t("admin.filter") %></button>
+  </div>
+<% end %>
+<div class="panel overflow-x-auto p-0">
+  <table class="table">
+    <thead><tr><th><%= t("admin.users.user") %></th><th><%= t("admin.users.status") %></th><th><%= t("admin.users.role") %></th>
+      <th class="text-right"><%= render "admin/shared/sort_link", column: "listings_count", label: t("admin.users.listings") %></th><th class="text-right"><%= render "admin/shared/sort_link", column: "sales_count", label: t("admin.users.sales") %></th>
+      <th class="text-right"><%= render "admin/shared/sort_link", column: "rating_avg", label: t("admin.users.rating") %></th><th><%= render "admin/shared/sort_link", column: "created_at", label: t("admin.users.joined") %></th><th><%= render "admin/shared/sort_link", column: "last_sign_in_at", label: t("admin.users.last_login") %></th></tr></thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><div class="flex items-center gap-2"><%= avatar_for(user, size: 32) %><div><%= link_to user.display_name, admin_user_path(user), class: "font-medium hover:text-brand-700" %><%= icon(:verified, css: "ml-1 inline size-3.5 text-brand-600") if user.verified? %><p class="text-xs text-ink-500"><%= user.email %></p></div></div></td>
+          <td><%= status_badge(user.status, "admin.users.statuses") %><% unless user.confirmed? %> <span class="badge-muted"><%= t("admin.users.unconfirmed") %></span><% end %></td>
+          <td class="text-sm"><%= t("admin.roles.#{user.role}") %></td>
+          <td class="text-right"><%= user.listings_count %></td><td class="text-right"><%= user.sales_count %></td><td class="text-right"><%= user.reviews_count.positive? ? number_with_precision(user.rating_avg, precision: 1) : "—" %></td>
+          <td class="text-xs text-ink-500"><%= l(user.created_at.to_date) %></td><td class="text-xs text-ink-500"><%= user.last_sign_in_at ? l(user.last_sign_in_at, format: :short) : "—" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= pagination(@pagy) %>

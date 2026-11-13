@@ -1,0 +1,78 @@
+<% title = @collection&.title || @category&.name || (params[:on_sale].present? ? t(".deals_title") : (@search.query.present? ? t(".search_title", query: @search.query) : t(".title"))) %>
+<% seo title: title, description: (@collection&.subtitle.presence || @category&.description.presence || t(".seo_description", title: title, site: site_name)) %>
+<% if @category %>
+  <% json_ld breadcrumb_json_ld([[t("layout.home"), root_url]] + @category.path.map { |c| [c.name, category_url(c)] }) %>
+<% end %>
+<% base_path = @collection ? collection_path(@collection) : (@category ? category_path(@category) : listings_path) %>
+
+<div class="container-page py-6">
+  <nav aria-label="<%= t("layout.breadcrumbs") %>" class="text-xs text-ink-500">
+    <ol class="flex flex-wrap items-center gap-1">
+      <li><%= link_to t("layout.home"), root_path, class: "hover:text-brand-700" %></li>
+      <li aria-hidden="true">/</li>
+      <li><%= link_to t(".title"), listings_path, class: "hover:text-brand-700" %></li>
+      <% @category&.path&.each do |node| %>
+        <li aria-hidden="true">/</li>
+        <li><%= link_to node.name, category_path(node), class: "hover:text-brand-700", "aria-current": (node == @category ? "page" : nil) %></li>
+      <% end %>
+    </ol>
+  </nav>
+
+  <header class="mt-4 rounded-3xl bg-gradient-to-r from-brand-50 to-white p-6 sm:p-8 dark:from-brand-950 dark:to-ink-950">
+    <h1 class="text-3xl font-bold sm:text-4xl"><%= title %></h1>
+    <% if (description = @collection&.subtitle.presence || @category&.description.presence) %>
+      <p class="mt-2 max-w-2xl text-ink-700 dark:text-ink-300"><%= description %></p>
+    <% end %>
+    <% children = @category ? Category.cached_children_of(@category.id) : Category.menu.to_a %>
+    <% if children.any? %>
+      <ul class="mt-5 flex flex-wrap gap-2">
+        <% children.each do |child| %><li><%= link_to child.name, category_path(child, @search.to_query_hash.except(:category, :f)), class: "chip bg-white py-1.5 hover:border-brand-500 dark:bg-ink-900" %></li><% end %>
+      </ul>
+    <% end %>
+  </header>
+
+  <turbo-frame id="catalogue" data-turbo-action="advance" class="mt-6 block lg:grid lg:grid-cols-[260px_1fr] lg:gap-8" data-controller="toggle" data-toggle-lock-scroll-value="true" data-toggle-class-value="max-lg:hidden">
+    <%= render "listings/filters", base_path: base_path %>
+
+    <section aria-labelledby="results-heading" class="min-w-0">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <h2 id="results-heading" class="text-sm font-semibold"><%= t(".results", count: @pagy.count) %></h2>
+        <div class="flex items-center gap-2">
+          <button type="button" class="btn-outline btn-sm lg:hidden" data-action="toggle#toggle" data-toggle-target="button" aria-expanded="false" aria-controls="filters-panel">
+            <%= icon(:filter, css: "size-4") %><%= t(".filters") %><% if @search.active_filter_count.positive? %><span class="badge-brand"><%= @search.active_filter_count %></span><% end %>
+          </button>
+          <% if user_signed_in? && feature?(:saved_search_alerts_enabled) %>
+            <%= button_to saved_searches_path, params: { query: @search.to_query_hash, name: title }, class: "btn-outline btn-sm", form: { data: { turbo_frame: "_top" } } do %>
+              <%= icon(:bell, css: "size-4") %><span class="max-sm:hidden"><%= t(".save_search") %></span>
+            <% end %>
+          <% end %>
+          <%= form_with url: base_path, method: :get, data: { controller: "autosubmit", turbo_frame: "catalogue" } do %>
+            <% @search.to_query_hash.except(:category).each do |key, value| %>
+              <% Array(value.is_a?(Hash) ? nil : value).each do |v| %><input type="hidden" name="<%= value.is_a?(Array) ? "#{key}[]" : key %>" value="<%= v %>"><% end %>
+              <% if value.is_a?(Hash) %><% value.each do |field, values| %><% Array(values).each do |v| %><input type="hidden" name="f[<%= field %>][]" value="<%= v %>"><% end %><% end %><% end %>
+            <% end %>
+            <label for="sort" class="sr-only"><%= t(".sort_label") %></label>
+            <select id="sort" name="sort" class="input min-h-9 rounded-full py-1.5 text-xs" data-action="change->autosubmit#submit">
+              <% ListingSearch::SORTS.each do |sort| %><option value="<%= sort %>" <%= "selected" if @search.sort == sort %>><%= t(".sorts.#{sort}") %></option><% end %>
+            </select>
+          <% end %>
+        </div>
+      </div>
+
+      <% if @listings.any? %>
+        <div class="mt-5 grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3">
+          <% @listings.each_with_index do |listing, index| %>
+            <%= render "listings/card", listing: listing, eager: index < 3 && @pagy.page == 1 %>
+          <% end %>
+        </div>
+        <%= pagination(@pagy) %>
+      <% else %>
+        <%= render "shared/empty_state", icon_name: :search, title: t(".empty_title"), body: t(".empty_body"), cta: [t(".clear_filters"), base_path] %>
+      <% end %>
+    </section>
+  </turbo-frame>
+
+  <% if @category&.description.present? && @pagy.page == 1 %>
+    <p class="mx-auto mt-14 max-w-3xl text-sm leading-relaxed text-ink-600 dark:text-ink-400"><%= t(".seo_footer", name: @category.name, site: site_name) %></p>
+  <% end %>
+</div>

@@ -1,0 +1,43 @@
+<%= form_with model: [:admin, @definition], class: "space-y-4" do |f| %>
+  <%= render "admin/shared/errors", record: @definition %>
+  <section class="panel space-y-4">
+    <div class="grid gap-4 sm:grid-cols-4">
+      <div><%= f.label :key, t("admin.filters.key"), class: "label" %><%= f.text_field :key, class: "input font-mono", required: true, pattern: "[a-z0-9_]+", readonly: @definition.persisted? %><p class="hint"><%= t("admin.filters.key_hint") %></p></div>
+      <div><%= f.label :kind, class: "label" %><%= f.select :kind, FilterDefinition.kinds.keys.map { |k| [t("admin.filters.kinds.#{k}"), k] }, {}, class: "input" %></div>
+      <div><%= f.label :unit, class: "label" %><%= f.text_field :unit, class: "input" %></div>
+      <div><%= f.label :position, class: "label" %><%= f.number_field :position, class: "input" %></div>
+    </div>
+    <div class="flex flex-wrap gap-5 text-sm">
+      <% %i[active collapsed in_listing_form required show_on_card].each do |flag| %><label class="flex items-center gap-2"><%= f.check_box flag, class: "checkbox" %><%= t("admin.filters.flags.#{flag}") %></label><% end %>
+    </div>
+    <%= render "admin/shared/translated_fields", form: f, attribute: :name, label: t("admin.filters.name") %>
+    <fieldset class="rounded-xl border border-ink-200 p-4 dark:border-ink-700">
+      <legend class="px-1 text-xs font-semibold uppercase tracking-wide text-ink-500"><%= t("admin.filters.categories") %></legend>
+      <%= f.collection_check_boxes :category_ids, Category.ordered, :id, :name do |b| %><label class="mb-2 mr-2 inline-flex items-center gap-1.5 chip"><%= b.check_box(class: "checkbox") %><%= b.text %></label><% end %>
+    </fieldset>
+  </section>
+  <section class="panel overflow-x-auto">
+    <h2 class="font-semibold"><%= t("admin.filters.options") %></h2>
+    <p class="hint"><%= t("admin.filters.options_hint") %></p>
+    <table class="table mt-3 min-w-[1100px]">
+      <thead><tr><th><%= t("admin.filters.value") %></th><% I18n.available_locales.each do |locale| %><th><%= locale.upcase %></th><% end %><th><%= t("admin.filters.position") %></th><th><%= t("admin.filters.featured") %></th><th><%= t("admin.filters.score") %></th><th><%= t("admin.filters.buyback") %></th><th><%= t("shared.delete") %></th></tr></thead>
+      <tbody>
+        <%= f.fields_for :filter_options do |o| %>
+          <tr>
+            <td><%= o.text_field :value, class: "input min-h-9 py-1 font-mono text-xs", placeholder: "value" %></td>
+            <% I18n.available_locales.each do |locale| %><td><%= o.text_field "label_#{locale}", class: "input min-h-9 py-1 text-xs" %></td><% end %>
+            <td><%= o.number_field :position, class: "input min-h-9 w-16 py-1 text-xs" %></td>
+            <td class="text-center"><%= o.check_box :featured, class: "checkbox" %></td>
+            <td><%= o.number_field :score, value: o.object.metadata["score"], class: "input min-h-9 w-24 py-1 text-xs" %></td>
+            <td><%= o.number_field :buyback_cents, value: o.object.metadata["buyback_cents"], class: "input min-h-9 w-24 py-1 text-xs" %></td>
+            <td class="text-center"><%= o.check_box :_destroy, class: "checkbox" if o.object.persisted? %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+  <div class="flex justify-between gap-2">
+    <% if @definition.persisted? %><%= link_to t("shared.delete"), admin_filter_definition_path(@definition), class: "btn-ghost text-red-700", data: { turbo_method: :delete, turbo_confirm: t("admin.filters.delete_confirm") } %><% else %><span></span><% end %>
+    <div class="flex gap-2"><%= link_to t("shared.cancel"), admin_filter_definitions_path, class: "btn-ghost" %><button class="btn-primary"><%= t("shared.save") %></button></div>
+  </div>
+<% end %>

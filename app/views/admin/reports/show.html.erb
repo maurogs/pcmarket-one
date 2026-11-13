@@ -1,0 +1,27 @@
+<%= render "admin/shared/page_header", title: t("admin.reports.title", id: @report.id), subtitle: t("reports.reasons.#{@report.reason}") %>
+<div class="grid gap-4 lg:grid-cols-[1fr_360px]">
+  <section class="panel text-sm">
+    <dl class="grid grid-cols-[140px_1fr] gap-y-1.5">
+      <dt class="text-ink-500"><%= t("admin.reports.target") %></dt>
+      <dd><% target = @report.reportable %><%= case target
+             when Listing then link_to(target.title, admin_listing_path(target), class: "link")
+             when User then link_to(target.username, admin_user_path(target), class: "link")
+             when Message then link_to(t("admin.reports.message_in", id: target.conversation_id), admin_conversation_path(target.conversation), class: "link")
+             else "#{@report.reportable_type} ##{@report.reportable_id}" end %></dd>
+      <dt class="text-ink-500"><%= t("admin.reports.reporter") %></dt><dd><%= @report.reporter ? link_to(@report.reporter.username, admin_user_path(@report.reporter), class: "link") : @report.reporter_email %></dd>
+      <dt class="text-ink-500"><%= t("admin.listings.status") %></dt><dd><%= status_badge(@report.status, "reports.statuses") %></dd>
+      <dt class="text-ink-500"><%= t("admin.listings.date") %></dt><dd><%= l(@report.created_at, format: :long) %></dd>
+    </dl>
+    <h2 class="mt-4 font-semibold"><%= t("admin.reports.details") %></h2><p class="mt-1 whitespace-pre-line"><%= @report.details.presence || "—" %></p>
+    <% if @report.resolution_note.present? %><h2 class="mt-4 font-semibold"><%= t("admin.reports.resolution") %></h2><p class="mt-1"><%= @report.resolution_note %> — <%= @report.resolved_by&.username %></p><% end %>
+  </section>
+  <% unless @report.resolved? || @report.dismissed? %>
+    <%= form_with url: admin_report_path(@report), method: :patch, class: "panel space-y-3" do %>
+      <h2 class="font-semibold"><%= t("admin.reports.decide") %></h2>
+      <p class="text-xs text-ink-500"><%= t("admin.reports.statement_hint") %></p>
+      <textarea name="resolution_note" rows="4" class="input" required aria-label="<%= t("admin.reports.resolution") %>"></textarea>
+      <% if @report.reportable.is_a?(Listing) %><label class="flex items-center gap-2 text-sm"><input type="checkbox" name="take_down" value="1" class="checkbox"><%= t("admin.reports.take_down") %></label><% end %>
+      <div class="flex gap-2"><button name="status" value="resolved" class="btn-primary btn-sm flex-1"><%= t("admin.reports.resolve") %></button><button name="status" value="dismissed" class="btn-outline btn-sm flex-1"><%= t("admin.reports.dismiss") %></button></div>
+    <% end %>
+  <% end %>
+</div>

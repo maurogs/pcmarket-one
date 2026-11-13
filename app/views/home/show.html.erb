@@ -1,0 +1,147 @@
+<% seo title: t(".seo_title"), description: t(".seo_description", site: site_name) %>
+<%# Guests share one cached render; signed-in users see personalised favourite buttons. %>
+<% cache_if !user_signed_in?, ["home/v1", I18n.locale, current_country.code, *@page.cache_key] do %>
+
+<section class="relative overflow-hidden bg-ink-950 text-white">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(6,196,176,0.35),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(245,158,11,0.18),transparent_50%)]" aria-hidden="true"></div>
+  <div class="container-page relative grid items-center gap-10 py-14 lg:grid-cols-2 lg:py-20">
+    <div>
+      <span class="badge-accent"><%= t(".hero.kicker") %></span>
+      <h1 class="mt-4 text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl"><%= t(".hero.title") %></h1>
+      <p class="mt-5 max-w-lg text-lg text-ink-300"><%= t(".hero.body") %></p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <%= link_to t(".hero.browse"), listings_path, class: "btn-accent" %>
+        <%= link_to t(".hero.sell"), new_listing_path, class: "btn border border-white/30 text-white hover:bg-white/10" %>
+      </div>
+      <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-300">
+        <li class="flex items-center gap-2"><%= icon(:shield, css: "size-4 text-brand-400") %><%= t(".hero.point_protection") %></li>
+        <li class="flex items-center gap-2"><%= icon(:check, css: "size-4 text-brand-400") %><%= t(".hero.point_reviewed") %></li>
+        <li class="flex items-center gap-2"><%= icon(:euro, css: "size-4 text-brand-400") %><%= t(".hero.point_fees") %></li>
+      </ul>
+    </div>
+    <% deals = @page.hero_deals.to_a %>
+    <% if deals.any? %>
+      <div class="rounded-3xl bg-white/5 p-3 ring-1 ring-white/10 backdrop-blur">
+        <div class="flex items-center justify-between px-2 pb-3 pt-1">
+          <h2 class="font-display text-lg font-bold"><%= t(".hero.deals_title") %></h2>
+          <%= link_to t("home.see_all"), deals_path, class: "text-sm font-semibold text-brand-300 hover:text-white" %>
+        </div>
+        <div class="grid gap-3 sm:grid-cols-2">
+          <% deals.first(4).each_with_index do |listing, index| %>
+            <%= link_to listing_path(listing), class: "group flex gap-3 rounded-2xl bg-white p-2.5 text-ink-900 transition hover:-translate-y-0.5 dark:bg-ink-900 dark:text-ink-100" do %>
+              <div class="size-20 shrink-0 overflow-hidden rounded-xl bg-ink-100"><%= listing_image(listing, variant: :thumb, eager: index < 2) %></div>
+              <div class="min-w-0">
+                <p class="line-clamp-2 text-sm font-semibold"><%= listing.title %></p>
+                <p class="mt-1 text-sm"><%= price_tag(listing, css: "text-sm") %></p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<section class="container-page mt-10" aria-label="<%= t(".categories_label") %>">
+  <ul class="grid grid-cols-3 gap-3 sm:grid-cols-5 lg:grid-cols-9">
+    <% Category.menu.each do |category| %>
+      <li>
+        <%= link_to category_path(category), class: "flex h-full flex-col items-center gap-2 rounded-2xl border border-ink-200 p-4 text-center text-sm font-semibold transition hover:border-brand-500 hover:bg-brand-50 dark:border-ink-800 dark:hover:bg-ink-900" do %>
+          <span class="grid size-11 place-items-center rounded-xl bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300"><%= icon(category.icon.presence || :package, css: "size-6") %></span>
+          <%= category.name %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<% if feature?(:pc_finder_enabled) %>
+  <section class="container-page mt-14">
+    <div class="grid items-center gap-8 overflow-hidden rounded-3xl bg-gradient-to-br from-brand-50 to-brand-100 p-8 sm:p-12 lg:grid-cols-2 dark:from-brand-950 dark:to-ink-900">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-700 dark:text-brand-300"><%= t("layout.pc_finder") %></span>
+        <h2 class="mt-2 text-3xl font-bold sm:text-4xl"><%= t(".finder.title") %></h2>
+        <p class="mt-3 text-ink-700 dark:text-ink-300"><%= t(".finder.body") %></p>
+        <%= link_to t(".finder.cta"), pc_finder_path, class: "btn-primary mt-6" %>
+      </div>
+      <ul class="flex flex-wrap gap-2 lg:justify-end">
+        <% Game.active.limit(8).each do |game| %>
+          <li><%= link_to game.name, pc_finder_path(games: [game.slug], results: 1), class: "chip bg-white/70 py-2 text-sm hover:border-brand-500 dark:bg-ink-950/40" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+<% end %>
+
+<% themes = @page.themes.to_a %>
+<% if themes.any? %>
+  <section class="container-page mt-14">
+    <h2 class="section-title"><%= t(".themes_title") %></h2>
+    <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <% themes.each do |collection| %>
+        <%= link_to collection_path(collection), class: "group overflow-hidden rounded-2xl border border-ink-200 dark:border-ink-800" do %>
+          <div class="aspect-[16/9] overflow-hidden bg-ink-100 dark:bg-ink-800">
+            <% if collection.image.attached? %><%= image_tag collection.image.variant(:card), alt: "", loading: "lazy", class: "h-full w-full object-cover transition duration-300 group-hover:scale-105" %><% end %>
+          </div>
+          <div class="p-4" style="<%= "border-top: 4px solid #{collection.accent_color}" if collection.accent_color.present? %>">
+            <h3 class="font-display text-lg font-bold"><%= collection.title %></h3>
+            <% if collection.subtitle.present? %><p class="text-sm text-ink-600 dark:text-ink-300"><%= collection.subtitle %></p><% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+<% end %>
+
+<%= render "shared/listing_row", title: t(".most_watched"), listings: @page.most_watched, link: listings_path(sort: "most_watched") %>
+<%= render "shared/listing_row", title: t(".gpus"), listings: @page.gpus, link: category_path("gpus") %>
+<% @page.home_sections.each do |section| %>
+  <%= render "shared/listing_row", title: section.title, subtitle: section.subtitle, listings: @page.section_listings(section), link: collection_path(section) %>
+<% end %>
+
+<section class="container-page mt-14">
+  <div class="grid items-center gap-6 rounded-3xl border border-accent-400/40 bg-accent-400/10 p-8 sm:grid-cols-[1fr_auto] sm:p-10">
+    <div>
+      <h2 class="text-2xl font-bold sm:text-3xl"><%= t(".sell_banner.title") %></h2>
+      <p class="mt-2 text-ink-700 dark:text-ink-300"><%= t(".sell_banner.body") %></p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <%= link_to t(".sell_banner.cta"), new_listing_path, class: "btn-primary" %>
+      <% if feature?(:sell_to_us_enabled) %><%= link_to t("layout.sell_to_us"), new_buyback_request_path, class: "btn-outline" %><% end %>
+    </div>
+  </div>
+</section>
+
+<%= render "shared/listing_row", title: t(".on_sale"), subtitle: t(".on_sale_subtitle"), listings: @page.on_sale, link: deals_path %>
+<%= render "shared/listing_row", title: t(".newest"), listings: @page.newest, link: listings_path(sort: "newest") %>
+
+<% reviews = @page.recent_reviews.to_a %>
+<% if reviews.any? %>
+  <section class="container-page mt-14">
+    <h2 class="section-title"><%= t(".reviews_title") %></h2>
+    <div class="mt-5 grid gap-4 md:grid-cols-3">
+      <% reviews.each do |review| %>
+        <figure class="panel bg-ink-50 dark:bg-ink-900">
+          <%= stars(review.rating) %>
+          <blockquote class="mt-3 text-sm leading-relaxed text-ink-700 dark:text-ink-200">“<%= review.body.truncate(260) %>”</blockquote>
+          <figcaption class="mt-3 text-xs text-ink-500"><%= t(".verified_purchase") %> <%= link_to review.seller.display_name, store_path(review.seller), class: "link" %></figcaption>
+        </figure>
+      <% end %>
+    </div>
+  </section>
+<% end %>
+
+<%= render "shared/listing_row", title: t(".recently_sold"), listings: @page.recently_sold %>
+
+<section class="container-page mt-14">
+  <div class="grid gap-4 md:grid-cols-3">
+    <% [[:shield, :protection], [:verified, :moderation], [:message, :chat]].each do |icon_name, key| %>
+      <div class="panel">
+        <span class="grid size-11 place-items-center rounded-xl bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300"><%= icon(icon_name, css: "size-6") %></span>
+        <h3 class="mt-4 font-display text-lg font-bold"><%= t(".values.#{key}.title") %></h3>
+        <p class="mt-1 text-sm text-ink-600 dark:text-ink-300"><%= t(".values.#{key}.body") %></p>
+      </div>
+    <% end %>
+  </div>
+</section>
+<% end %>

@@ -1,0 +1,17 @@
+<%# locals: (title:, listings:, link: nil, subtitle: nil) %>
+<% if listings.any? %>
+  <section class="container-page mt-14" aria-labelledby="<%= title.parameterize %>">
+    <div class="mb-5 flex items-end justify-between gap-4">
+      <div>
+        <h2 id="<%= title.parameterize %>" class="section-title"><%= title %></h2>
+        <% if subtitle %><p class="mt-1 text-sm text-ink-600 dark:text-ink-300"><%= subtitle %></p><% end %>
+      </div>
+      <% if link %><%= link_to link, class: "link inline-flex shrink-0 items-center gap-1 text-sm" do %><%= t("home.see_all") %><%= icon(:chevron_right, css: "size-4") %><% end %><% end %>
+    </div>
+    <div class="scroll-row">
+      <% listings.each do |listing| %>
+        <div class="w-[46%] shrink-0 sm:w-[30%] lg:w-[19%]"><%= render "listings/card", listing: listing, show_specs: false %></div>
+      <% end %>
+    </div>
+  </section>
+<% end %>

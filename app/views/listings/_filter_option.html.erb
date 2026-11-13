@@ -1,0 +1,5 @@
+<%# locals: (name:, option:, checked:) %>
+<label class="flex min-h-9 items-center gap-2.5 text-sm">
+  <input type="checkbox" class="checkbox" name="<%= name %>" value="<%= option.value %>" <%= "checked" if checked %> data-action="change->autosubmit#submit">
+  <span><%= option.label %></span>
+</label>

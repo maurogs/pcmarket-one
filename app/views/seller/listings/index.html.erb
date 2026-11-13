@@ -1,0 +1,39 @@
+<% seo title: t(".title"), noindex: true %>
+<div class="container-page py-8">
+  <div class="flex flex-wrap items-center justify-between gap-3"><h1 class="section-title"><%= t(".title") %></h1><%= link_to t("layout.list_item"), new_listing_path, class: "btn-primary" %></div>
+  <div class="mt-6 flex flex-col gap-6 lg:flex-row">
+    <%= render "shared/account_nav", section: :seller %>
+    <div class="min-w-0 flex-1">
+      <nav class="flex flex-wrap gap-2" aria-label="<%= t(".filter") %>">
+        <%= link_to t(".all", count: @counts.values.sum), seller_listings_path, class: "chip #{'chip-active' unless @status}" %>
+        <% Listing.statuses.each_key do |status| %>
+          <% next unless @counts[status].to_i.positive? %>
+          <%= link_to "#{t("listings.statuses.#{status}")} (#{@counts[status]})", seller_listings_path(status: status), class: "chip #{'chip-active' if @status == status}" %>
+        <% end %>
+      </nav>
+      <%= form_with url: seller_listings_path, method: :get, class: "mt-4" do %><input type="hidden" name="status" value="<%= @status %>"><input type="search" name="q" value="<%= params[:q] %>" class="input" placeholder="<%= t("listings.filters.search") %>" aria-label="<%= t("listings.filters.search") %>"><% end %>
+      <div class="panel mt-4 overflow-x-auto p-0">
+        <table class="table">
+          <thead><tr><th><%= t(".listing") %></th><th><%= t(".status") %></th><th class="text-right"><%= t(".price") %></th><th class="text-right"><%= t(".stock") %></th><th class="text-right"><%= t(".stats") %></th><th></th></tr></thead>
+          <tbody>
+            <% @listings.each do |listing| %>
+              <tr>
+                <td><div class="flex items-center gap-3"><div class="size-12 shrink-0 overflow-hidden rounded-lg"><%= listing_image(listing, variant: :thumb) %></div><%= link_to listing.title.truncate(55), listing_path(listing), class: "font-medium hover:text-brand-700" %></div></td>
+                <td><%= status_badge(listing.status, "listings.statuses") %><% if listing.rejected? %><p class="mt-1 max-w-48 text-xs text-red-700"><%= listing.rejection_reason.to_s.truncate(80) %></p><% end %></td>
+                <td class="text-right"><%= money(listing.price_cents, listing.currency) %></td>
+                <td class="text-right"><%= listing.quantity %></td>
+                <td class="text-right text-xs text-ink-500"><%= icon(:eye, css: "inline size-3.5") %> <%= listing.views_count %> · <%= icon(:heart, css: "inline size-3.5") %> <%= listing.favorites_count %></td>
+                <td class="whitespace-nowrap text-right">
+                  <% unless listing.sold? %><%= link_to t("shared.edit"), edit_listing_path(listing), class: "link text-sm" %><% end %>
+                  <% unless listing.sold? || listing.archived? %><%= button_to t("shared.delete"), listing_path(listing), method: :delete, class: "link ml-2 text-sm text-red-700", form_class: "inline", data: { turbo_confirm: t("shared.confirm") } %><% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% if @listings.empty? %><%= render "shared/empty_state", icon_name: :layers, title: t(".empty"), cta: [t("layout.list_item"), new_listing_path] %><% end %>
+      </div>
+      <%= pagination(@pagy) %>
+    </div>
+  </div>
+</div>

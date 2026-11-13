@@ -1,0 +1,11 @@
+<%# locals: (order:, counterpart:) %>
+<li>
+  <%= link_to order_path(order), class: "panel flex items-center gap-4 p-4 hover:border-brand-500" do %>
+    <div class="size-16 shrink-0 overflow-hidden rounded-xl"><%= order.items.first&.listing ? listing_image(order.items.first.listing, variant: :thumb) : "" %></div>
+    <div class="min-w-0 flex-1">
+      <p class="truncate font-semibold"><%= order.title %></p>
+      <p class="text-xs text-ink-500"><%= order.number %> · <%= l(order.created_at.to_date, format: :short) %> · <%= counterpart.display_name %></p>
+    </div>
+    <div class="text-right"><p class="font-bold"><%= money(order.total_cents, order.currency) %></p><%= status_badge(order.status, "orders.statuses") %></div>
+  <% end %>
+</li>

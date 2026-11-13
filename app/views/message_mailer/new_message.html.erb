@@ -1,0 +1,6 @@
+<h1 style="font-size:20px;margin:0 0 12px"><%= t("mailers.message.new_message.subject", sender: @message.sender.display_name) %></h1>
+<% if @message.conversation.listing %><p style="color:#667491"><%= @message.conversation.listing.title %></p><% end %>
+<% if @message.offer? && @message.offer %><p><strong><%= t("messages.offer.title") %>: <%= money(@message.offer.amount_cents, @message.offer.listing.currency) %></strong></p><% end %>
+<% if @message.body.present? && !@message.system? %><blockquote style="border-left:3px solid #06c4b0;margin:0;padding:8px 12px;background:#effefb"><%= @message.body.truncate(500) %></blockquote><% end %>
+<p><a href="<%= conversation_url(@message.conversation) %>" style="display:inline-block;background:#067d74;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600"><%= t("mailers.message.new_message.cta") %></a></p>
+<p style="font-size:12px;color:#667491"><%= t("mailers.message.new_message.safety", site: Setting.get(:site_name)) %></p>

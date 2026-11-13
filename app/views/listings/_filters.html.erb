@@ -1,0 +1,100 @@
+<%# locals: (base_path:) %>
+<aside id="filters-panel" class="max-lg:fixed max-lg:inset-0 max-lg:z-50 max-lg:overflow-y-auto max-lg:bg-white max-lg:p-5 lg:block max-lg:hidden dark:max-lg:bg-ink-950" data-toggle-target="content" aria-label="<%= t("listings.filters.title") %>">
+  <div class="mb-4 flex items-center justify-between lg:hidden">
+    <h2 class="font-display text-xl font-bold"><%= t("listings.filters.title") %></h2>
+    <button type="button" class="btn-ghost px-2" data-action="toggle#hide" aria-label="<%= t("layout.close") %>"><%= icon(:x) %></button>
+  </div>
+
+  <%= form_with url: base_path, method: :get, id: "filters-form", data: { controller: "autosubmit", turbo_frame: "catalogue" }, class: "space-y-1" do %>
+    <input type="hidden" name="sort" value="<%= params[:sort] %>">
+    <% if params[:on_sale].present? %><input type="hidden" name="on_sale" value="1"><% end %>
+    <div class="relative">
+      <label for="filter-q" class="sr-only"><%= t("listings.filters.search") %></label>
+      <span class="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-ink-400"><%= icon(:search, css: "size-4") %></span>
+      <input id="filter-q" type="search" name="q" value="<%= @search.query %>" placeholder="<%= t("listings.filters.search") %>" class="input pl-9" data-action="input->autosubmit#debounced">
+    </div>
+
+    <% if @search.active_filter_count.positive? %>
+      <div class="py-3">
+        <div class="mb-2 flex items-center justify-between text-xs">
+          <span class="font-semibold"><%= t("listings.filters.active") %></span>
+          <%= link_to t("listings.filters.clear_all"), base_path, class: "link" %>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          <% chip = ->(label, query) { link_to(safe_join([label, icon(:x, css: "size-3")]), url_for(query.merge(only_path: true, controller: controller_path, action: action_name, id: params[:id])), class: "chip chip-active", aria: { label: t("listings.filters.remove", name: label) }) } %>
+          <% if @search.query.present? %><%= chip.(%("#{@search.query}"), search_params_without(@search, :q)) %><% end %>
+          <% if params[:min_price].present? || params[:max_price].present? %><%= chip.(t("listings.filters.price_range", min: params[:min_price].presence || "0", max: params[:max_price].presence || "∞"), search_params_without(@search, :min_price).except(:max_price)) %><% end %>
+          <% @search.list(:condition).each do |c| %><%= chip.(condition_label(c), search_params_without(@search, :condition, c)) %><% end %>
+          <% @search.spec_filters.each do |key, values| %>
+            <% definition = FilterDefinition.cached_by_key[key] %>
+            <% values.each do |value| %><%= chip.("#{definition&.name}: #{definition&.label_for(value)}", search_params_without(@search, :f, [key, value])) %><% end %>
+          <% end %>
+          <% @search.list(:labels).each do |v| %><%= chip.(@label_options&.label_for(v) || v, search_params_without(@search, :labels, v)) %><% end %>
+          <% @search.list(:tags).each do |v| %><%= chip.(@tag_options&.label_for(v) || v, search_params_without(@search, :tags, v)) %><% end %>
+          <% %i[region free_shipping on_sale local_pickup seller_type].each do |flag| %>
+            <% if params[flag].present? %><%= chip.(t("listings.filters.flags.#{flag}", value: params[flag].to_s.humanize), search_params_without(@search, flag)) %><% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= render "listings/filter_group", title: t("listings.filters.price"), open: true do %>
+      <div class="grid grid-cols-2 gap-2">
+        <label class="relative"><span class="sr-only"><%= t("listings.filters.min_price") %></span><span class="absolute inset-y-0 left-3 grid place-items-center text-sm text-ink-400"><%= currency_symbol(current_country.currency) %></span>
+          <input type="number" inputmode="decimal" min="0" name="min_price" value="<%= params[:min_price] %>" placeholder="<%= t("listings.filters.min") %>" class="input pl-7" data-action="change->autosubmit#submit"></label>
+        <label class="relative"><span class="sr-only"><%= t("listings.filters.max_price") %></span><span class="absolute inset-y-0 left-3 grid place-items-center text-sm text-ink-400"><%= currency_symbol(current_country.currency) %></span>
+          <input type="number" inputmode="decimal" min="0" name="max_price" value="<%= params[:max_price] %>" placeholder="<%= t("listings.filters.max") %>" class="input pl-7" data-action="change->autosubmit#submit"></label>
+      </div>
+    <% end %>
+
+    <%= render "listings/filter_group", title: t("listings.filters.condition"), open: true do %>
+      <% Listing.conditions.each_key do |condition| %>
+        <label class="flex min-h-9 items-center gap-2.5 text-sm"><input type="checkbox" class="checkbox" name="condition[]" value="<%= condition %>" <%= "checked" if @search.list(:condition).include?(condition) %> data-action="change->autosubmit#submit"><%= condition_label(condition) %></label>
+      <% end %>
+    <% end %>
+
+    <% @filters.each do |definition| %>
+      <% next if definition.filter_options.empty? || %w[product_labels seller_tags].include?(definition.key) %>
+      <% selected = @search.spec_filters.fetch(definition.key, []) %>
+      <%= render "listings/filter_group", title: definition.name, open: !definition.collapsed || selected.any? do %>
+        <% featured, more = definition.filter_options.partition(&:featured) %>
+        <% featured.each do |option| %><%= render "listings/filter_option", name: "f[#{definition.key}][]", option: option, checked: selected.include?(option.value) %><% end %>
+        <% if more.any? %>
+          <details class="group" <%= "open" if (more.map(&:value) & selected).any? %>>
+            <summary class="cursor-pointer py-1.5 text-xs font-semibold text-brand-700 dark:text-brand-300"><span class="group-open:hidden"><%= t("listings.filters.show_more", count: more.size) %></span><span class="hidden group-open:inline"><%= t("listings.filters.show_less") %></span></summary>
+            <% more.each do |option| %><%= render "listings/filter_option", name: "f[#{definition.key}][]", option: option, checked: selected.include?(option.value) %><% end %>
+          </details>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <% [[@label_options, :labels], [@tag_options, :tags]].each do |definition, param| %>
+      <% next unless definition&.filter_options&.any? %>
+      <%= render "listings/filter_group", title: definition.name, open: @search.list(param).any? do %>
+        <% definition.filter_options.each do |option| %><%= render "listings/filter_option", name: "#{param}[]", option: option, checked: @search.list(param).include?(option.value) %><% end %>
+      <% end %>
+    <% end %>
+
+    <%= render "listings/filter_group", title: t("listings.filters.location"), open: params[:region].present? do %>
+      <label for="filter-region" class="sr-only"><%= t("listings.filters.region") %></label>
+      <select id="filter-region" name="region" class="input" data-action="change->autosubmit#submit">
+        <option value=""><%= t("listings.filters.any_region", country: current_country.name) %></option>
+        <% current_country.regions.each do |region| %><option value="<%= region.code %>" <%= "selected" if params[:region] == region.code %>><%= region.name %></option><% end %>
+      </select>
+    <% end %>
+
+    <%= render "listings/filter_group", title: t("listings.filters.other"), open: params.values_at(:free_shipping, :local_pickup, :seller_type).any?(&:present?) do %>
+      <% %i[free_shipping local_pickup on_sale].each do |flag| %>
+        <label class="flex min-h-9 items-center gap-2.5 text-sm"><input type="checkbox" class="checkbox" name="<%= flag %>" value="1" <%= "checked" if params[flag].present? %> data-action="change->autosubmit#submit"><%= t("listings.filters.#{flag}") %></label>
+      <% end %>
+      <label for="filter-seller-type" class="label mt-3"><%= t("listings.filters.seller_type") %></label>
+      <select id="filter-seller-type" name="seller_type" class="input" data-action="change->autosubmit#submit">
+        <option value=""><%= t("listings.filters.any_seller") %></option>
+        <% User.seller_types.each_key do |type| %><option value="<%= type %>" <%= "selected" if params[:seller_type] == type %>><%= t("stores.seller_types.#{type}") %></option><% end %>
+      </select>
+    <% end %>
+
+    <noscript><button class="btn-primary mt-4 w-full"><%= t("listings.filters.apply") %></button></noscript>
+    <button type="button" class="btn-primary sticky bottom-0 mt-6 w-full lg:hidden" data-action="toggle#hide"><%= t("listings.filters.show_results", count: @pagy.count) %></button>
+  <% end %>
+</aside>

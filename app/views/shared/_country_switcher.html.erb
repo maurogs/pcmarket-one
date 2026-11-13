@@ -1,0 +1,13 @@
+<% countries = Country.enabled.ordered.to_a %>
+<% if countries.size > 1 %>
+  <%= form_with url: country_preference_path, method: :patch, class: "inline", data: { controller: "autosubmit" } do %>
+    <label for="country-select" class="sr-only"><%= t("layout.country") %></label>
+    <select id="country-select" name="country" class="chip cursor-pointer bg-transparent pr-6" data-action="change->autosubmit#submit">
+      <% countries.each do |country| %>
+        <option value="<%= country.code %>" <%= "selected" if country == current_country %>><%= country.name %></option>
+      <% end %>
+    </select>
+  <% end %>
+<% else %>
+  <span class="chip"><%= icon(:map_pin, css: "size-3.5") %><%= current_country.name %></span>
+<% end %>

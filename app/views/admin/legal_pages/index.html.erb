@@ -1,0 +1,17 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.legal_pages"), subtitle: t("admin.legal.subtitle") do %><%= link_to t("admin.legal.new_override"), new_admin_legal_page_path, class: "btn-primary btn-sm" %><% end %>
+<div class="panel overflow-x-auto p-0">
+  <table class="table"><thead><tr><th><%= t("admin.legal.page") %></th><th><%= t("layout.country") %></th><th><%= t("layout.language") %></th><th><%= t("admin.legal.status") %></th><th></th></tr></thead>
+    <tbody>
+      <% @pages.each do |page| %><tr><td><%= t("legal.#{page.slug}.title") %></td><td><%= page.country_code %></td><td><%= page.locale %></td><td><%= page.published ? t("admin.on") : t("admin.off") %></td><td class="text-right"><%= link_to t("shared.edit"), edit_admin_legal_page_path(page), class: "link text-sm" %></td></tr><% end %>
+    </tbody></table>
+  <% if @pages.empty? %><p class="p-6 text-sm text-ink-500"><%= t("admin.legal.empty") %></p><% end %>
+</div>
+<section class="panel mt-6">
+  <h2 class="font-semibold"><%= t("admin.legal.defaults") %></h2>
+  <div class="mt-3 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-3">
+    <% Country.ordered.each do |country| %>
+      <div><p class="font-semibold"><%= country.name %></p>
+        <% LegalPage::SLUGS.each do |slug| %><p><%= link_to t("legal.#{slug}.title"), new_admin_legal_page_path(slug: slug, country_code: country.code), class: "link text-xs" %></p><% end %></div>
+    <% end %>
+  </div>
+</section>

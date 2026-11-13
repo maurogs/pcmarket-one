@@ -1,0 +1,10 @@
+<div class="relative" data-controller="dropdown" data-action="keydown.esc->dropdown#close click@window->dropdown#closeOutside">
+  <button type="button" class="chip" data-action="dropdown#toggle" data-dropdown-target="button" aria-haspopup="menu" aria-expanded="false">
+    <%= icon(:globe, css: "size-3.5") %><span class="sr-only"><%= t("layout.language") %>:</span> <%= t("locales.#{I18n.locale}") %>
+  </button>
+  <ul class="absolute bottom-full right-0 z-50 mb-2 w-44 rounded-xl border border-ink-200 bg-white p-1 shadow-lg dark:border-ink-700 dark:bg-ink-900" data-dropdown-target="menu" role="menu" hidden>
+    <% enabled_locales.each do |locale| %>
+      <li><a href="<%= locale_url(locale) %>" hreflang="<%= locale %>" lang="<%= locale %>" role="menuitem" class="block rounded-lg px-3 py-2 text-sm hover:bg-ink-100 dark:hover:bg-ink-800 <%= "font-bold text-brand-700" if locale == I18n.locale.to_s %>"><%= t("locales.#{locale}", locale: locale) %></a></li>
+    <% end %>
+  </ul>
+</div>

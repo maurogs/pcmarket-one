@@ -1,0 +1,126 @@
+es:
+  pages:
+    about:
+      title: Quiénes somos
+      intro: Somos gamers y montadores de PCs que queríamos un lugar más seguro y justo para comprar y vender hardware en Europa.
+      sections:
+        mission: { heading: "Nuestra misión", body: ["El buen hardware merece una segunda vida. Hacemos que comprar y vender PCs gaming, componentes y periféricos entre particulares y tiendas especializadas sea fácil y seguro.", "Empezamos en España y estamos construyendo, paso a paso, el marketplace de referencia de hardware para PC en Europa."] }
+        different: { heading: "Qué nos hace diferentes", body: ["Nuestro equipo revisa cada anuncio antes de publicarlo. Retenemos el pago hasta que el comprador confirma que el artículo ha llegado como se describía. Y nuestro catálogo entiende de hardware: filtra por GPU, CPU, memoria, socket y decenas de especificaciones más."] }
+        community: { heading: "Hecho con la comunidad", body: ["Escuchamos a compradores y vendedores para decidir qué construir después. Escríbenos cuando quieras desde el formulario de contacto."] }
+    how_it_works:
+      title: Cómo funciona
+      intro: Comprar y vender en PCMarket en cuatro pasos.
+      sections:
+        find: { heading: "1. Encuentra o publica", body: ["Busca con filtros que entienden de hardware o usa el buscador de PCs. Para vender, crea un anuncio con tus propias fotos y especificaciones detalladas. Nuestro equipo lo revisa antes de publicarlo."] }
+        talk: { heading: "2. Habla y negocia", body: ["Pregunta al vendedor por el chat integrado o hazle una oferta. Mantén la conversación y el pago dentro de la plataforma para estar protegido."] }
+        pay: { heading: "3. Paga de forma segura", body: ["Paga al finalizar la compra. Retenemos el dinero mientras el vendedor envía el artículo con seguimiento, o mientras acordáis la entrega en mano."] }
+        receive: { heading: "4. Recibe y confirma", body: ["Revisa el artículo cuando llegue. Si es como se describía, acepta el pedido y el vendedor cobra. Si no, comunica un problema dentro del plazo de protección y te ayudamos."] }
+    fees:
+      title: Comisiones
+      intro: Vender en PCMarket es gratis ahora mismo. Sin cuotas por publicar ni comisiones por vender.
+      sections:
+        now: { heading: "Hoy", body: ["Publicar es gratis y no cobramos comisión por las ventas durante nuestra fase de lanzamiento. El comprador paga el precio del artículo más el envío fijado por el vendedor."] }
+        later: { heading: "En el futuro", body: ["Podríamos introducir una pequeña comisión sobre las ventas completadas y promociones de pago opcionales para destacar anuncios. Avisaremos de cualquier cambio con al menos 30 días de antelación y nunca se aplicará a pedidos ya realizados."] }
+    shipping_guide:
+      title: Cómo enviar tu hardware de forma segura
+      intro: Un buen embalaje evita daños, disputas y compradores descontentos.
+      sections:
+        pc: { heading: "Enviar un PC completo", body: ["Retira o sujeta la tarjeta gráfica y los disipadores grandes, o rellena la caja con espuma o cojines de aire. Usa la caja original o una caja de doble canal con al menos 5 cm de relleno por cada lado.", "Haz fotos del proceso de embalaje. Ayudan a resolver cualquier disputa."] }
+        parts: { heading: "Enviar componentes", body: ["Usa bolsas antiestáticas para GPUs, placas base y memoria. Protege los pines de la CPU y los sockets con sus tapas originales."] }
+        carrier: { heading: "Seguimiento y seguro", body: ["Envía siempre con un servicio con seguimiento y añade el número al pedido dentro del plazo. Para artículos de mucho valor, elige un servicio con seguro."] }
+    photo_guide:
+      title: Cómo hacer buenas fotos
+      intro: Las buenas fotos venden antes y a mejor precio.
+      sections:
+        light: { heading: "Usa luz natural", body: ["Haz las fotos cerca de una ventana durante el día. Evita el flash y las sombras duras."] }
+        angles: { heading: "Muestra todos los ángulos", body: ["Incluye frontal, trasera, laterales, conectores y números de serie. En los PCs, enseña el interior sin el panel lateral y con los componentes encendidos."] }
+        honest: { heading: "Sé honesto", body: ["Fotografía cualquier arañazo, golpe o defecto. Las fotos deben ser tuyas: rechazamos los anuncios con fotos de catálogo o ajenas."] }
+    help:
+      title: Centro de ayuda
+      intro: Respuestas a las preguntas más habituales sobre comprar y vender.
+      still_need_help: "¿No encuentras lo que buscas?"
+      faqs:
+        buy: { q: "¿Cómo compro un artículo?", a: "Pulsa «Comprar ahora» o añade el artículo al carrito y finaliza la compra. Elige envío o recogida en mano y paga. El vendedor recibe el aviso al momento." }
+        protection: { q: "¿Qué es la protección al comprador?", a: "Retenemos tu pago hasta que confirmas que el artículo ha llegado como se describía. Si no llega, llega dañado o no es como se describía, comunica un problema y te devolvemos todo el dinero." }
+        offer: { q: "¿Puedo negociar el precio?", a: "Sí, si el vendedor acepta ofertas. Pulsa «Hacer una oferta». El vendedor tiene un tiempo limitado para aceptarla o rechazarla. Si la acepta, puedes comprar a ese precio." }
+        sell: { q: "¿Cómo vendo?", a: "Pulsa «Publicar anuncio», elige una categoría y añade fotos, especificaciones y precio. Nuestro equipo revisa cada anuncio antes de publicarlo, normalmente en menos de 24 horas." }
+        paid: { q: "¿Cuándo cobro como vendedor?", a: "Cuando el comprador acepta el pedido, o automáticamente cuando termina el plazo de protección tras la entrega sin que se haya comunicado ningún problema." }
+        shipping: { q: "¿Quién paga el envío?", a: "El vendedor fija el precio del envío en el anuncio. Los anuncios con envío gratis llevan una etiqueta." }
+        cancel: { q: "¿Puedo cancelar un pedido?", a: "Antes de pagar, sí. Después del pago, si el vendedor no lo ha enviado dentro del plazo, puedes cancelarlo y recuperar todo el dinero. Los vendedores también pueden cancelar pedidos pagados que no puedan cumplir." }
+        withdrawal: { q: "¿Tengo derecho de desistimiento?", a: "Cuando compras a un vendedor profesional tienes derecho legal a desistir en los 14 días siguientes a la entrega. Las compras a particulares están cubiertas por nuestra protección al comprador." }
+        account: { q: "¿Cómo elimino mi cuenta o descargo mis datos?", a: "Ve a Ajustes de la cuenta › Privacidad y datos. Puedes descargar una copia de tus datos o eliminar tu cuenta definitivamente." }
+    trust:
+      title: Confianza y seguridad
+      hero_title: "¿Es seguro %{site}? Sí."
+      intro: "Cada pedido en %{site} está protegido: retenemos tu pago hasta que confirmas que el artículo ha llegado como se describía, o te devolvemos el dinero."
+      browse: Explorar el marketplace
+      contact: Contactar con soporte
+      protection_title: Protección al comprador en cada pedido
+      protection_intro: La gran diferencia con las webs de anuncios clasificados es que tu dinero está protegido hasta que tienes el artículo en tus manos.
+      steps:
+        hold: { title: "Retenemos el pago", body: "Cuando pagas, guardamos el dinero. El vendedor solo cobra cuando el artículo se ha entregado y has tenido tiempo de revisarlo." }
+        ship: { title: "Tu artículo viaja con seguimiento", body: "El vendedor debe enviarlo en %{ship_days} días hábiles con un servicio con seguimiento, para que sigas el paquete hasta tu puerta." }
+        release: { title: "Lo revisas y liberamos el pago", body: "Tienes %{days} días tras la entrega para revisar el artículo. Lo recibes como se describía o te devolvemos el dinero." }
+      covered_title: Estás cubierto si
+      covered:
+        - El pedido nunca llega
+        - El artículo llega dañado, defectuoso o es falso
+        - El artículo no es como se describía en el anuncio
+        - "El pedido no se envía en %{ship_days} días hábiles"
+      covered_footer_html: "Consulta la política completa en %{protection} y en nuestras %{terms}."
+      pillars_title: Hecho por expertos, respaldado por una comunidad real
+      pillars:
+        moderation: { title: "Moderación humana", body: "Nuestro equipo revisa cada anuncio antes de publicarlo y retira cualquier cosa sospechosa." }
+        reviews: { title: "Valoraciones verificadas", body: "Solo los compradores que han completado un pedido pueden valorar a un vendedor. Las valoraciones son públicas en cada tienda." }
+        payments: { title: "Pagos seguros", body: "Los pagos los procesa un proveedor de pagos regulado. Nunca vemos los datos de tu tarjeta." }
+        reports: { title: "Denuncia lo que sea", body: "Denuncia un anuncio o usuario en dos clics. Actuamos rápido y explicamos nuestras decisiones." }
+      tips_title: Consejos de seguridad
+      tips:
+        - "Mantén las conversaciones y los pagos en %{site}. Los pagos fuera de la plataforma (transferencia, Bizum, PayPal amigos) no están protegidos."
+        - Desconfía de los precios demasiado buenos para ser verdad.
+        - "Nunca compartas contraseñas ni códigos de un solo uso. El equipo de %{site} nunca te los pedirá."
+        - En las entregas en mano, queda en un sitio público y prueba el artículo antes de confirmar.
+      support_title: Habla con un equipo de verdad
+      faq_short: Guías y preguntas frecuentes
+      ticket_short: Respuesta en 1 día hábil
+      email: Escríbenos
+      reviews_title: No te fíes solo de nuestra palabra
+      faq_title: Preguntas frecuentes
+      faqs:
+        scam: { q: "¿%{site} es una estafa?", a: "No. %{site} existe precisamente para evitar estafas. Tu pago queda retenido hasta que el artículo llega y confirmas que coincide con el anuncio. Si nunca llega o no es como se describía, te devolvemos todo el dinero." }
+        not_arrived: { q: "¿Qué pasa si mi artículo no llega o no es como se describía?", a: "Abre una disputa desde tu pedido en los %{days} días siguientes a la entrega. Paramos el pago al vendedor, revisamos las pruebas de ambas partes y te reembolsamos si la reclamación es válida." }
+        refund: { q: "¿Cómo funcionan los reembolsos?", a: "Los reembolsos vuelven a tu método de pago original. La mayoría de bancos los muestran en 5–10 días hábiles." }
+        payments: { q: "¿Cómo se protegen mis pagos?", a: "Los pagos los procesa nuestro proveedor de pagos. %{site} retiene el dinero y solo lo libera al vendedor cuando el pedido se completa." }
+        inspect: { q: "¿Cuánto tiempo tengo para revisar mi pedido?", a: "Tienes %{days} días desde la entrega. Si no comunicas ningún problema en ese tiempo, el pedido se completa automáticamente." }
+    sell:
+      title: Vender en PCMarket
+      hero_title: "Empieza a vender en %{site}"
+      intro: "Llega a miles de gamers que buscan hardware. Publicar es gratis y cobras de forma segura."
+      cta: Publica tu equipo
+      perks:
+        fees: { title: "Sin comisiones", body: "Vender es gratis durante nuestra fase de lanzamiento." }
+        protection: { title: "Protección al vendedor", body: "El pago está confirmado antes de que envíes. Sin sorpresas con contracargos." }
+        chat: { title: "Chat integrado", body: "Responde dudas y negocia ofertas sin compartir tu teléfono." }
+        stores: { title: "Tiendas profesionales", body: "Las tiendas tienen página propia con su marca, códigos de descuento y anuncios con varias unidades." }
+      how_title: Cómo funciona vender
+      steps:
+        list: { title: "Publícalo", body: "Sube tus fotos y especificaciones. Nuestra base de opciones lo hace rápido." }
+        review: { title: "Lo revisamos", body: "Nuestro equipo revisa cada anuncio para mantener la confianza en el marketplace." }
+        sell: { title: "Envíalo", body: "Cuando se venda te avisamos. Envíalo en %{ship_days} días hábiles y añade el seguimiento." }
+        paid: { title: "Cobra", body: "Cobras cuando el comprador acepta el pedido o %{days} días después de la entrega." }
+      faq_title: Preguntas de vendedores
+      faqs:
+        why: { q: "¿Por qué vender aquí y no en una web de anuncios general?", a: "Nuestros compradores buscan específicamente hardware de PC, y nuestros filtros entienden de especificaciones. Los pagos protegidos significan menos curiosos y cero estafas." }
+        business: { q: "Tengo una tienda. ¿Puedo vender?", a: "Sí. Regístrate como vendedor profesional en Ajustes de la tienda, añade los datos de tu empresa y tendrás una tienda con tu marca, anuncios con varias unidades y códigos de descuento." }
+        protection: { q: "¿Cómo estoy protegido como vendedor?", a: "El comprador paga por adelantado y el pago se confirma antes de que envíes. Nuestro equipo revisa las disputas con las pruebas de ambas partes." }
+        elsewhere: { q: "¿Puedo anunciar mis artículos también en otras webs?", a: "Sí, pero mantén el stock al día. Si un artículo se vende en otro sitio, pausa o elimina el anuncio de inmediato." }
+        paid: { q: "¿Cuándo cobro?", a: "El pago se libera cuando el comprador acepta el pedido o automáticamente cuando termina el plazo de protección al comprador." }
+      recently_sold: Vendidos recientemente
+      final_title: Empieza tu camino como vendedor
+    credits:
+      title: Créditos de imágenes
+      intro: Los anuncios de demostración usan fotos con licencia libre. Gracias a sus autores.
+      image: Imagen
+      author: Autor
+      source: Fuente
+      license: Licencia

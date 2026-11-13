@@ -1,0 +1,4 @@
+<div class="rounded-2xl bg-brand-50 p-5 dark:bg-brand-950">
+  <p class="flex items-center gap-2 font-display font-bold"><%= icon(:shield, css: "size-5 text-brand-700 dark:text-brand-300") %><%= t("listings.show.protection_title", site: site_name) %></p>
+  <p class="mt-1 text-sm text-ink-700 dark:text-ink-300"><%= t("listings.show.protection_body", days: setting(:buyer_protection_days)) %> <%= link_to t("listings.show.learn_more"), legal_page_path("buyer-protection"), class: "link" %></p>
+</div>

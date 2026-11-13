@@ -1,0 +1,5 @@
+<%= render "admin/shared/page_header", title: t("admin.nav.support_tickets") %>
+<nav class="mb-4 flex flex-wrap gap-2"><% (SupportTicket.statuses.keys + ["all"]).each do |s| %><%= link_to (s == "all" ? t("admin.all") : t("support_tickets.statuses.#{s}")), admin_support_tickets_path(status: s), class: "chip #{'chip-active' if (params[:status].presence || 'open') == s}" %><% end %></nav>
+<div class="panel overflow-x-auto p-0"><table class="table"><thead><tr><th><%= t("support_tickets.new.subject") %></th><th><%= t("admin.tickets.topic") %></th><th><%= t("admin.tickets.from") %></th><th><%= t("admin.listings.status") %></th><th><%= t("admin.listings.date") %></th></tr></thead>
+  <tbody><% @tickets.each do |ticket| %><tr><td><%= link_to ticket.subject.truncate(60), admin_support_ticket_path(ticket), class: "link" %></td><td><%= t("support_tickets.topics.#{ticket.topic}") %></td><td class="text-sm"><%= ticket.name %> &lt;<%= ticket.email %>&gt;</td><td><%= status_badge(ticket.status, "support_tickets.statuses") %></td><td class="text-xs text-ink-500"><%= l(ticket.created_at, format: :short) %></td></tr><% end %></tbody></table></div>
+<%= pagination(@pagy) %>
